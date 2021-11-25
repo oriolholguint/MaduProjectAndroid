@@ -1,6 +1,7 @@
 package com.example.madu_project;
 
 import android.app.AlertDialog;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.example.madu_project.idioma.IdiomasAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 
 public class FragmentIdioma extends Fragment
@@ -56,13 +58,21 @@ public class FragmentIdioma extends Fragment
                 if(generoSeleccionado != null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-                    builder.setMessage("prueba")
-                            .setTitle("prueba");
+                    builder.setMessage(idioma.getNombre())
+                            .setTitle(idioma.getNombre());
 
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 }
-                activity.generos = new ArrayList<Genero>(Arrays.asList(generoSeleccionado));
+
+                //Añado a la tablet el nuevo idioma para usar fichero strings.xml correspondiente
+                String nuevoLenguaje = idioma.getNombre();
+                Locale locale = new Locale(nuevoLenguaje);
+                Locale.setDefault(locale);
+                Configuration config = new Configuration();
+                config.locale = locale;
+
+                //activity.generos = generoSeleccionado;
             }
         });
 
