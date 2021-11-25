@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Strings introduccion -->
-    <string name="introduccion_1">"Aprende respondiendo preguntas sobre diferentes géneros musicales."</string>
-    <string name="introduccion_2">"Las preguntas podrán tener una imagen, vídeo o sonido relacionados con la pregunta."</string>
-    <string name="introduccion_3">"Hay tres niveles de dificultad, como más dificultad menos tiempo para responder las preguntas."</string>
-    <string name="introduccion_4">"Una vez finalizada la partida obtendrás una puntuación y un artista musical. Si la puntuación es alta, podrás liderar el ranking de partidas."</string>
+    <string name="introduccion_1">Aprende respondiendo preguntas sobre diferentes géneros musicales.</string>
+    <string name="introduccion_2">Las preguntas podrán tener una imagen, vídeo o sonido relacionados con la pregunta.</string>
+    <string name="introduccion_3">Hay tres niveles de dificultad, como más dificultad menos tiempo para responder las preguntas.</string>
+    <string name="introduccion_4">Una vez finalizada la partida obtendrás una puntuación y un artista musical. Si la puntuación es alta, podrás liderar el ranking de partidas.</string>
 
-    <!-- Niveles de dificultad -->
-    <string name="facil">"Facil"</string>
-    <string name="medio">"Medio"></string>
-    <string name="dificil">"Dificil"</string>
+    <!-- Niveles de dificultad + tiempo -->
+    <string name="facil">Facil: 30s</string>
+    <string name="medio">Medio: 25s</string>
+    <string name="dificil">Dificil: 20s</string>
 </resources>
