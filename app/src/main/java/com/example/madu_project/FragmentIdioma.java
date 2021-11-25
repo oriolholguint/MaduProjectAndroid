@@ -54,6 +54,9 @@ public class FragmentIdioma extends Fragment
             {
                 Idioma idioma = idiomas[listaIdiomas.getChildAdapterPosition(view)];
 
+                adapter.selectedPos = listaIdiomas.getChildAdapterPosition(view);
+                adapter.notifyDataSetChanged();
+
                 Genero[] generoSeleccionado = GestorArchivos.getGenero(path + idioma.getFilePath());
                 if(generoSeleccionado != null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
