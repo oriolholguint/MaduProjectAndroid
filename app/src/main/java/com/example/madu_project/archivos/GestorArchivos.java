@@ -3,7 +3,6 @@ package com.example.madu_project.archivos;
 import com.example.madu_project.Genero;
 import com.example.madu_project.idioma.Idioma;
 import com.google.gson.Gson;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

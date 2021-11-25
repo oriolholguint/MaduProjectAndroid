@@ -42,9 +42,10 @@ public class Genero
         return imagenMenu;
     }
 
-    public ArrayList<Pregunta>  getPreguntas() {
+    public ArrayList<Pregunta> getPreguntas() {
         return preguntas;
     }
+
 
     public ArrayList<Personaje> getPersonajes() {
         return personajes;

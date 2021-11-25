@@ -14,10 +14,10 @@ import java.util.ArrayList;
 
 public class GeneroAdapter extends RecyclerView.Adapter<GeneroAdapter.ViewHolder> implements View.OnClickListener
 {
-    private ArrayList<Genero> generos;
+    private Genero [] generos;
     private View.OnClickListener listener;
 
-    public GeneroAdapter(ArrayList<Genero> generos)
+    public GeneroAdapter(Genero [] generos)
     {
         this.generos = generos;
     }
@@ -53,12 +53,12 @@ public class GeneroAdapter extends RecyclerView.Adapter<GeneroAdapter.ViewHolder
 
     public void onBindViewHolder(ViewHolder holder, int position)
     {
-        holder.bindGenero(generos.get(position));
+        holder.bindGenero(generos[position]);
     }
 
     public int getItemCount()
     {
-        return generos.size();
+        return generos.length;
     }
 
 

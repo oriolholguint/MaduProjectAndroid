@@ -40,6 +40,7 @@ public class FragmentBotones extends Fragment
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_botones, container, false);
 
+
         btnAtras = view.findViewById(R.id.btnAtras);
         btnSiguienteCentro = view.findViewById(R.id.btnSiguienteCentro);
         btnSiguiente = view.findViewById(R.id.btnSiguiente);

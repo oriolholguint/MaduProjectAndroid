@@ -39,7 +39,9 @@ public class FragmentIdioma extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_idioma, container, false);
 
+        activity = (MainActivity) getActivity();
         RecyclerView listaIdiomas = view.findViewById(R.id.listaIdiomas);
+
         IdiomasAdapter adapter = new IdiomasAdapter(idiomas);
         listaIdiomas.setHasFixedSize(true);
         listaIdiomas.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
@@ -56,13 +58,17 @@ public class FragmentIdioma extends Fragment
                 if(generoSeleccionado != null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-                    builder.setMessage("prueba")
-                            .setTitle("prueba");
+                    builder.setMessage(idioma.getNombre())
+                            .setTitle(idioma.getNombre());
 
                     AlertDialog dialog = builder.create();
                     dialog.show();
+
+                    activity.generos = generoSeleccionado;
                 }
-                activity.generos = new ArrayList<Genero>(Arrays.asList(generoSeleccionado));
+
+
+
             }
         });
 

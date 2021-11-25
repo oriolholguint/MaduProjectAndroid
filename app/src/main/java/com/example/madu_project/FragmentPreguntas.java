@@ -36,6 +36,8 @@ public class FragmentPreguntas extends Fragment {
 
                 descPregunta.setText(preguntas.get(0).getPregunta());
 
+
+
             }
         });
 

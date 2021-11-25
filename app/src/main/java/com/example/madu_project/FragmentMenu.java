@@ -19,13 +19,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class FragmentMenu extends Fragment {
 
    View view;
    MainActivity activity;
-   ArrayList<Genero> generos;
+   Genero [] generos;
    ArrayList<Pregunta> preguntas;
    RecyclerView listGeneros;
 
@@ -61,10 +62,18 @@ public class FragmentMenu extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Genero genero = (Genero) generos.get(listGeneros.getChildAdapterPosition(view));
+                Genero genero = (Genero) generos[listGeneros.getChildAdapterPosition(view)];
 
                 preguntas = genero.getPreguntas();
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                builder.setMessage("Pregunta: " + preguntas.get(0).getPregunta())
+                        .setTitle(genero.getNombre());
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                /*
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("pregunta",preguntas);
                 getParentFragmentManager().setFragmentResult("preguntas",bundle);
@@ -75,7 +84,7 @@ public class FragmentMenu extends Fragment {
                 FragmentPreguntas fragmentPreguntas = new FragmentPreguntas();
                 fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentPreguntas);
                 fragmentTransaction.commit();
-
+                */
 
 
             }
