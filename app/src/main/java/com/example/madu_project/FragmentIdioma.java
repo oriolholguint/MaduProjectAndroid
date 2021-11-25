@@ -70,12 +70,13 @@ public class FragmentIdioma extends Fragment
                     dialog.show();
                 }
 
-                //Añado a la tablet el nuevo idioma para usar fichero strings.xml correspondiente
+                //Cambio el idioma de la tablet el nuevo idioma para usar fichero strings.xml correspondiente
                 String nuevoLenguaje = idioma.getNombre();
                 Locale locale = new Locale(nuevoLenguaje);
                 Locale.setDefault(locale);
                 Configuration config = new Configuration();
                 config.locale = locale;
+                getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
 
                 //activity.generos = generoSeleccionado;
             }
