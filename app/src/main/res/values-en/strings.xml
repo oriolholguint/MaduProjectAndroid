@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Strings introduccion -->
+    <string name="introduccion_1">Learn by answering questions about different musical genres.</string>
+    <string name="introduccion_2">The questions may have an image, video or sound related to the question.</string>
+    <string name="introduccion_3">Tere are three difficulties and depending on the one selected, the time to answer the questions will vary.</string>
+    <string name="introduccion_4">Once you\'re finished you will get a score and a musical artist. If the score is high, you could lead the matches leaderboard.</string>
+
+    <!-- Niveles de dificultad + tiempo -->
+    <string name="facil">Easy: 30s</string>
+    <string name="medio">Medium: 25s</string>
+    <string name="dificil">Hard: 20s</string>
+</resources>

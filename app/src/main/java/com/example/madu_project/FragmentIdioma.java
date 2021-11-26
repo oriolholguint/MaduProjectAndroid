@@ -1,6 +1,7 @@
 package com.example.madu_project;
 
 import android.app.AlertDialog;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.example.madu_project.idioma.IdiomasAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 
 public class FragmentIdioma extends Fragment
@@ -54,6 +56,11 @@ public class FragmentIdioma extends Fragment
             {
                 Idioma idioma = idiomas[listaIdiomas.getChildAdapterPosition(view)];
 
+                //Añado fondo al idioma seleccionado
+                adapter.selectedPos = listaIdiomas.getChildAdapterPosition(view);
+                adapter.notifyDataSetChanged();
+
+                //Obtengo el array de generos en el idioma seleccionado
                 Genero[] generoSeleccionado = GestorArchivos.getGenero(path + idioma.getFilePath());
                 if(generoSeleccionado != null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -67,8 +74,15 @@ public class FragmentIdioma extends Fragment
                     activity.generos = generoSeleccionado;
                 }
 
+                //Cambio el idioma de la tablet el nuevo idioma para usar fichero strings.xml correspondiente
+                String nuevoLenguaje = idioma.getNombre();
+                Locale locale = new Locale(nuevoLenguaje);
+                Locale.setDefault(locale);
+                Configuration config = new Configuration();
+                config.locale = locale;
+                getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
 
-
+                //activity.generos = generoSeleccionado;
             }
         });
 

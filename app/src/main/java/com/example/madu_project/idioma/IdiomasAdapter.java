@@ -2,10 +2,12 @@ package com.example.madu_project.idioma;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +17,7 @@ import com.example.madu_project.R;
 public class IdiomasAdapter extends RecyclerView.Adapter<IdiomasAdapter.ViewHolder> implements View.OnClickListener
 {
     private Idioma [] idiomas;
+    public int selectedPos = RecyclerView.NO_POSITION;
     private View.OnClickListener listener;
 
     public IdiomasAdapter(Idioma[] idiomas)
@@ -24,18 +27,18 @@ public class IdiomasAdapter extends RecyclerView.Adapter<IdiomasAdapter.ViewHold
 
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
-        ImageButton imageButton;
+        ImageView imagen;
 
         public ViewHolder(@NonNull View item)
         {
             super(item);
-            imageButton = item.findViewById(R.id.btnIdioma);
+            imagen = item.findViewById(R.id.imgIdioma);
         }
 
         void bindIdiomas(Idioma idioma)
         {
             Bitmap bMap = BitmapFactory.decodeFile("/data/data/com.example.madu_project/files/images/" + idioma.getImageButton());
-            imageButton.setImageBitmap(bMap);
+            imagen.setImageBitmap(bMap);
         }
     }
 
@@ -50,7 +53,17 @@ public class IdiomasAdapter extends RecyclerView.Adapter<IdiomasAdapter.ViewHold
 
     public void onBindViewHolder(ViewHolder holder, int position)
     {
-        holder.bindIdiomas(idiomas[position]);
+        if(selectedPos == position)
+        {
+            holder.bindIdiomas(idiomas[position]);
+            holder.imagen.setBackgroundColor(R.drawable.element_selected_border);
+        }
+        else
+        {
+            holder.bindIdiomas(idiomas[position]);
+            holder.imagen.setBackgroundColor(Color.TRANSPARENT);
+        }
+        //holder.bindIdiomas(idiomas[position]);
     }
 
     public int getItemCount()
@@ -66,9 +79,9 @@ public class IdiomasAdapter extends RecyclerView.Adapter<IdiomasAdapter.ViewHold
     @Override
     public void onClick(View view)
     {
-        if(listener != null)
-        {
+        if (listener != null) {
             listener.onClick(view);
         }
     }
+
 }
