@@ -85,7 +85,8 @@ public class MainActivity extends AppCompatActivity
                 //Si el num no esta repetido y aun quedan por revisar mas numeros entra aqui
                 while(!numeroRepetido && counter < numerosAleatorios.size())
                 {
-                    if(numeroAleatorio == numerosAleatorios.get(counter) && jugador.get) //Si el num aleatorio esta repetido
+                    //Si el num aleatorio esta repetido o el jugador es menor de edad y la pregunta es para mayor de edad
+                    if(numeroAleatorio == numerosAleatorios.get(counter) || (!jugador.getEsMayorEdad() && preguntas[numeroAleatorio].isEsMayorEdad()))
                     {
                         numeroRepetido = true;
                     }
