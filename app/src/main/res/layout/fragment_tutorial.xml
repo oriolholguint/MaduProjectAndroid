@@ -5,7 +5,7 @@
     android:layout_width="600dp"
     android:layout_height="300dp"
     android:orientation="vertical"
-    android:padding="50dp"
+    android:padding="10dp"
     android:layout_gravity="center">
 
     <TextView
@@ -16,6 +16,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/introduccion_2"
+        android:textSize="@dimen/tam_introduccion"
         android:text="@string/introduccion_1"/>
 
     <TextView
@@ -26,6 +27,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/introduccion_3"
+        android:textSize="@dimen/tam_introduccion"
         android:text="@string/introduccion_2"/>
 
     <TextView
@@ -36,6 +38,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/dificultades"
+        android:textSize="@dimen/tam_introduccion"
         android:text="@string/introduccion_3"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,6 +55,7 @@
             android:id="@+id/dificultadFacil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tam_introduccion"
             android:text="@string/facil"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/dificultadMedio"
@@ -62,6 +66,7 @@
             android:id="@+id/dificultadMedio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tam_introduccion"
             android:text="@string/medio"
             app:layout_constraintLeft_toRightOf="@id/dificultadFacil"
             app:layout_constraintRight_toLeftOf="@id/dificultadDificil"
@@ -72,6 +77,7 @@
             android:id="@+id/dificultadDificil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/tam_introduccion"
             android:text="@string/dificil"
             app:layout_constraintLeft_toRightOf="@id/dificultadMedio"
             app:layout_constraintRight_toRightOf="parent"
@@ -88,6 +94,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="@dimen/tam_introduccion"
         android:text="@string/introduccion_4"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
