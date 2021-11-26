@@ -10,12 +10,12 @@ public class Genero
     private String musicaFondo;
     private String imagenFondo;
     private String imagenMenu;
-    private ArrayList<Pregunta> preguntas;
-    private ArrayList<Personaje> personajes;
-    private ArrayList<Partida> partidas;
+    private Pregunta[] preguntas;
+    private Personaje[] personajes;
+    private Partida[] partidas;
 
     public Genero(String nombre, String musicaFondo, String imagenFondo, String imagenMenu,
-                  ArrayList<Pregunta> preguntas, ArrayList<Personaje> personajes, ArrayList<Partida> partidas)
+                  Pregunta[] preguntas, Personaje[] personajes, Partida[] partidas)
     {
         this.nombre = nombre;
         this.musicaFondo = musicaFondo;
@@ -42,16 +42,16 @@ public class Genero
         return imagenMenu;
     }
 
-    public ArrayList<Pregunta> getPreguntas() {
+    public Pregunta[] getPreguntas() {
         return preguntas;
     }
 
 
-    public ArrayList<Personaje> getPersonajes() {
+    public Personaje[] getPersonajes() {
         return personajes;
     }
 
-    public ArrayList<Partida> getPartidas() {
+    public Partida[] getPartidas() {
         return partidas;
     }
 
@@ -71,15 +71,15 @@ public class Genero
         this.imagenMenu = imagenMenu;
     }
 
-    public void setPreguntas(ArrayList<Pregunta> preguntas) {
+    public void setPreguntas(Pregunta[] preguntas) {
         this.preguntas = preguntas;
     }
 
-    public void setPersonajes(ArrayList<Personaje> personajes) {
+    public void setPersonajes(Personaje[] personajes) {
         this.personajes = personajes;
     }
 
-    public void setPartidas(ArrayList<Partida>  partidas) {
+    public void setPartidas( Partida[]  partidas) {
         this.partidas = partidas;
     }
 

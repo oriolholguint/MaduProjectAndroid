@@ -82,7 +82,6 @@ public class FragmentIdioma extends Fragment
                 config.locale = locale;
                 getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
 
-                //activity.generos = generoSeleccionado;
             }
         });
 

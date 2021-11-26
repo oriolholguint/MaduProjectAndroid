@@ -27,7 +27,7 @@ public class FragmentMenu extends Fragment {
    View view;
    MainActivity activity;
    Genero [] generos;
-   ArrayList<Pregunta> preguntas;
+   Pregunta[] preguntas;
    RecyclerView listGeneros;
 
 
@@ -68,7 +68,7 @@ public class FragmentMenu extends Fragment {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-                builder.setMessage("Pregunta: " + preguntas.get(0).getPregunta())
+                builder.setMessage("Pregunta: " + preguntas[0].getPreguntaDescripcion())
                         .setTitle(genero.getNombre());
 
                 AlertDialog dialog = builder.create();

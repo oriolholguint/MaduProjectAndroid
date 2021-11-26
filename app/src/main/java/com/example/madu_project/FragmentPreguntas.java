@@ -34,7 +34,7 @@ public class FragmentPreguntas extends Fragment {
             public void onFragmentResult(@NonNull  String requestKey, @NonNull Bundle result) {
                 preguntas = (ArrayList<Pregunta>) result.getSerializable("pregunta");
 
-                descPregunta.setText(preguntas.get(0).getPregunta());
+                descPregunta.setText(preguntas.get(0).getPreguntaDescripcion());
 
 
 

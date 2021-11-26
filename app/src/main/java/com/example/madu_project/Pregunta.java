@@ -8,23 +8,23 @@ import java.util.Arrays;
 
 public class Pregunta implements Serializable
 {
-    private String pregunta;
+    private String preguntaDescripcion;
     private String imagen;
     private String sonido;
     private boolean esMayorEdad;
     private Respuesta[] respuestas;
 
-    public Pregunta(String pregunta, String imagen, String sonido, boolean esMayorEdad, Respuesta[] respuestas)
+    public Pregunta(String preguntaDescripcion, String imagen, String sonido, boolean esMayorEdad, Respuesta[] respuestas)
     {
-        this.pregunta = pregunta;
+        this.preguntaDescripcion = preguntaDescripcion;
         this.imagen = imagen;
         this.sonido = sonido;
         this.esMayorEdad = esMayorEdad;
         this.respuestas = respuestas;
     }
 
-    public String getPregunta() {
-        return pregunta;
+    public String getPreguntaDescripcion() {
+        return preguntaDescripcion;
     }
 
     public String getImagen() {
@@ -43,8 +43,8 @@ public class Pregunta implements Serializable
         return respuestas;
     }
 
-    public void setPregunta(String pregunta) {
-        this.pregunta = pregunta;
+    public void setPreguntaDescripcion(String pregunta) {
+        this.preguntaDescripcion = preguntaDescripcion;
     }
 
     public void setImagen(String imagen) {
@@ -67,7 +67,7 @@ public class Pregunta implements Serializable
     public String toString()
     {
         return "Pregunta{" +
-                "Pregunta='" + pregunta + '\'' +
+                "Pregunta='" + preguntaDescripcion + '\'' +
                 ", Imagen='" + imagen + '\'' +
                 ", Sonido='" + sonido + '\'' +
                 ", EsMayorEdad=" + esMayorEdad +

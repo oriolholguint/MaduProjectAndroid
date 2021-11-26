@@ -1,23 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MADU_Project</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string-array name="radio_buttons">
-        <item>Respuesta 1</item>
-        <item>Respuesta 2</item>
-        <item>Respuesta 3</item>
-        <item>Respuesta 4</item>
-    </string-array>
 
     <!-- Strings introduccion -->
-    <string name="introduccion_1">Aprende respondiendo preguntas sobre diferentes géneros musicales.</string>
-    <string name="introduccion_2">Las preguntas podrán tener una imagen, vídeo o sonido relacionados con la pregunta.</string>
-    <string name="introduccion_3">Hay tres niveles de dificultad, como más dificultad menos tiempo para responder las preguntas.</string>
-    <string name="introduccion_4">Una vez finalizada la partida obtendrás una puntuación y un artista musical. Si la puntuación es alta, podrás liderar el ranking de partidas.</string>
+    <string name="introduccion_1">Learn by answering questions about different musical genres.</string>
+    <string name="introduccion_2">The questions may have an image, video or sound related to the question.</string>
+    <string name="introduccion_3">Tere are three difficulties and depending on the one selected, the time to answer the questions will vary.</string>
+    <string name="introduccion_4">Once you\'re finished you will get a score and a musical artist. If the score is high, you could lead the matches leaderboard.</string>
 
     <!-- Niveles de dificultad + tiempo -->
-    <string name="facil">Facil: 30s</string>
-    <string name="medio">Medio: 25s</string>
-    <string name="dificil">Dificil: 20s</string>
+    <string name="facil">Easy: 30s</string>
+    <string name="medio">Medium: 25s</string>
+    <string name="dificil">Hard: 20s</string>
 </resources>
