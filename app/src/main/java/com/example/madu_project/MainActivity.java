@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity
      * @param cantidadPreguntas cantidad de preguntas aleatorias a obtener
      * @return array con preguntas aleatorias
      */
-    public static ArrayList<Pregunta> getPreguntasPartida(Pregunta[] preguntas,int cantidadPreguntas)
+    public static ArrayList<Pregunta> getPreguntasPartida(Pregunta[] preguntas,int cantidadPreguntas, Jugador jugador)
     {
         ArrayList<Pregunta> preguntasSeleccionadas = new ArrayList<>(); //Preguntas que saldran en la partida
         ArrayList<Integer> numerosAleatorios = new ArrayList<>(); //Numeros aleatorios para no repetirlos
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity
                 //Si el num no esta repetido y aun quedan por revisar mas numeros entra aqui
                 while(!numeroRepetido && counter < numerosAleatorios.size())
                 {
-                    if(numeroAleatorio == numerosAleatorios.get(counter)) //Si el num aleatorio esta repetido
+                    if(numeroAleatorio == numerosAleatorios.get(counter) && jugador.get) //Si el num aleatorio esta repetido
                     {
                         numeroRepetido = true;
                     }
