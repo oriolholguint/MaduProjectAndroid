@@ -58,7 +58,7 @@ public class FragmentBotones extends Fragment
             @Override
             public void onClick(View view) {
 
-                if(ActivityMain.layout.equals("Idioma")){
+                if(ActivityMain.layout.equals("Idioma") && ActivityMain.generos != null){
                     ActivityMain.layout = "Introduccion";
 
                     FragmentManager mg = getFragmentManager();
