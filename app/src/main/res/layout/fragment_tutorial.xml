@@ -11,7 +11,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewIntroduccion_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="5dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -21,14 +23,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/tam_introduccion"
-            android:text="@string/introduccion_1"/>
+            android:text="@string/introduccion_1"
+            android:layout_gravity="center"/>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/introduccion_2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="5dp"
         app:layout_constraintTop_toBottomOf="@id/cardViewIntroduccion_1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -38,14 +43,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/tam_introduccion"
-            android:text="@string/introduccion_2"/>
+            android:text="@string/introduccion_2"
+            android:layout_gravity="center"/>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/introduccion_3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="5dp"
         app:layout_constraintTop_toBottomOf="@id/introduccion_2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -59,6 +67,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:textSize="@dimen/tam_introduccion"
                 android:text="@string/introduccion_3"
                 app:layout_constraintTop_toTopOf="parent"
@@ -68,8 +77,9 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/dificultades"
-                android:layout_width="300dp"
+                android:layout_width="600dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -77,9 +87,12 @@
 
                 <TextView
                     android:id="@+id/dificultadFacil"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:textSize="@dimen/tam_introduccion"
+
                     android:text="@string/facil"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/dificultadMedio"
@@ -88,8 +101,10 @@
 
                 <TextView
                     android:id="@+id/dificultadMedio"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:textSize="@dimen/tam_introduccion"
                     android:text="@string/medio"
                     app:layout_constraintLeft_toRightOf="@id/dificultadFacil"
@@ -99,8 +114,10 @@
 
                 <TextView
                     android:id="@+id/dificultadDificil"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:textSize="@dimen/tam_introduccion"
                     android:text="@string/dificil"
                     app:layout_constraintLeft_toRightOf="@id/dificultadMedio"
@@ -117,7 +134,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/introduccion_4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="5dp"
         app:layout_constraintTop_toBottomOf="@id/introduccion_3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -127,7 +146,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/tam_introduccion"
-            android:text="@string/introduccion_4"/>
+            android:text="@string/introduccion_4"
+            android:layout_gravity="center"/>
 
     </androidx.cardview.widget.CardView>
 

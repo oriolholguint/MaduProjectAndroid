@@ -8,7 +8,7 @@
     <string name="introduccion_4">Once you\'re finished you will get a score and a musical artist. If the score is high, you could lead the matches leaderboard.</string>
 
     <!-- Niveles de dificultad + tiempo -->
-    <string name="facil">Easy: 30s</string>
-    <string name="medio">Medium: 25s</string>
-    <string name="dificil">Hard: 20s</string>
+    <string name="facil">Easy: 30\"</string>
+    <string name="medio">Medium: 25\"</string>
+    <string name="dificil">Hard: 20\"</string>
 </resources>
