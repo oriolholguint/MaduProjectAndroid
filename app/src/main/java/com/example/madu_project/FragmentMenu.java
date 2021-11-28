@@ -66,6 +66,7 @@ public class FragmentMenu extends Fragment {
 
                 preguntas = genero.getPreguntas();
 
+                /*
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
                 builder.setMessage("Pregunta: " + preguntas[0].getPreguntaDescripcion())
@@ -73,7 +74,9 @@ public class FragmentMenu extends Fragment {
 
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                /*
+
+                 */
+
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("pregunta",preguntas);
                 getParentFragmentManager().setFragmentResult("preguntas",bundle);
@@ -84,7 +87,7 @@ public class FragmentMenu extends Fragment {
                 FragmentPreguntas fragmentPreguntas = new FragmentPreguntas();
                 fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentPreguntas);
                 fragmentTransaction.commit();
-                */
+
 
 
             }
