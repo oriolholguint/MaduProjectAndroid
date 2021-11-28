@@ -52,50 +52,63 @@
         app:layout_constraintBottom_toTopOf="@id/introduccion_4"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/tam_introduccion"
-            android:text="@string/introduccion_3"/>
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/dificultades"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/dificultadFacil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/tam_introduccion"
-                android:text="@string/facil"
+                android:text="@string/introduccion_3"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/dificultadMedio"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <TextView
-                android:id="@+id/dificultadMedio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/tam_introduccion"
-                android:text="@string/medio"
-                app:layout_constraintLeft_toRightOf="@id/dificultadFacil"
-                app:layout_constraintRight_toLeftOf="@id/dificultadDificil"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <TextView
-                android:id="@+id/dificultadDificil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/tam_introduccion"
-                android:text="@string/dificil"
-                app:layout_constraintLeft_toRightOf="@id/dificultadMedio"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toTopOf="@id/dificultades"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/dificultades"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/dificultadFacil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/tam_introduccion"
+                    android:text="@string/facil"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/dificultadMedio"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/dificultadMedio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/tam_introduccion"
+                    android:text="@string/medio"
+                    app:layout_constraintLeft_toRightOf="@id/dificultadFacil"
+                    app:layout_constraintRight_toLeftOf="@id/dificultadDificil"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/dificultadDificil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/tam_introduccion"
+                    android:text="@string/dificil"
+                    app:layout_constraintLeft_toRightOf="@id/dificultadMedio"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
