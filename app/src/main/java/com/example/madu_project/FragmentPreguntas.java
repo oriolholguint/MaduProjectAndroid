@@ -19,7 +19,7 @@ public class FragmentPreguntas extends Fragment {
 
     View view;
     TextView descPregunta;
-    ArrayList<Pregunta> preguntas;
+    Pregunta[] preguntas;
 
 
     @Override
@@ -32,9 +32,9 @@ public class FragmentPreguntas extends Fragment {
         getParentFragmentManager().setFragmentResultListener("preguntas", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull  String requestKey, @NonNull Bundle result) {
-                preguntas = (ArrayList<Pregunta>) result.getSerializable("pregunta");
+                preguntas = (Pregunta[]) result.getSerializable("pregunta");
 
-                descPregunta.setText(preguntas.get(0).getPreguntaDescripcion());
+                descPregunta.setText(preguntas[0].getPreguntaDescripcion());
 
 
 
