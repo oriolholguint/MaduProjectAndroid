@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import java.security.acl.Group;
 import java.util.ArrayList;
@@ -54,7 +55,6 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentBotones);
         fragmentTransaction.commit();
 
-
         settingsDialog = new Dialog(this);
         settingsDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         settingsDialog.setContentView(R.layout.settings_dialog);
@@ -66,7 +66,34 @@ public class MainActivity extends AppCompatActivity
         final ImageButton btnSalir = settingsDialog.findViewById(R.id.btnSalir);
         final ImageButton btnMenu = settingsDialog.findViewById(R.id.btnMenu);
 
+
+        final Spinner sprDificultad = findViewById(R.id.sprDificultad);
+        /*
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.combo_dificultad, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sprDificultad.setAdapter(adapter);
+
+         */
+
         final FragmentMenu fragmentMenu = new FragmentMenu();
+
+        //duracion = sprDificultad.getSelectedItemPosition() * 5 + 20;
+
+        /*
+        sprDificultad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                duracion = sprDificultad.getSelectedItemPosition() * 5 + 20;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+         */
 
         imgBtnConfiguracion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +154,10 @@ public class MainActivity extends AppCompatActivity
 
                 } else
                 {
+                    if(layout.equals("Idioma")){
+                        MainActivity.this.finish(); System.exit(0);
+                    }
+
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
 
@@ -138,6 +169,8 @@ public class MainActivity extends AppCompatActivity
                     fragmentBotones.btnSiguienteCentro.setVisibility(View.VISIBLE);
                     generos = null;
                 }
+
+
 
                 settingsDialog.cancel();
 
