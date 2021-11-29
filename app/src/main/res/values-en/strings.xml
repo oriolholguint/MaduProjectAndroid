@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Titulos strings introduccion -->
+    <string name="titulo_introduccion_1">Learn about music</string>
+    <string name="titulo_introduccion_2">Multimedia resources</string>
+    <string name="titulo_introduccion_3">Test yourself</string>
+    <string name="titulo_introduccion_4">Face the best</string>
 
     <!-- Strings introduccion -->
     <string name="introduccion_1">Learn by answering questions about different musical genres.</string>

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Titulos strings introduccion -->
+    <string name="titulo_introduccion_1">Aprende sobre música</string>
+    <string name="titulo_introduccion_2">Recursos multimedia</string>
+    <string name="titulo_introduccion_3">Ponte a prueba</string>
+    <string name="titulo_introduccion_4">Enfrentate a los mejores</string>
+
     <!-- Strings introduccion -->
     <string name="introduccion_1">Aprende respondiendo preguntas sobre diferentes géneros musicales.</string>
     <string name="introduccion_2">Las preguntas podrán tener una imagen, vídeo o sonido relacionados con la pregunta.</string>

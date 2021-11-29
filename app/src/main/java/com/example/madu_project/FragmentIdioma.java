@@ -54,7 +54,6 @@ public class FragmentIdioma extends Fragment
             @Override
             public void onClick(View view)
             {
-
                 Idioma idioma = idiomas[listaIdiomas.getChildAdapterPosition(view)];
 
                 //Añado fondo al idioma seleccionado
