@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -23,36 +24,12 @@
         android:id="@+id/imgAvatar"
         android:layout_width="27dp"
         android:layout_height="23dp"
-        android:layout_marginStart="204dp"
-        android:layout_marginTop="21dp"
-        app:layout_constraintEnd_toStartOf="@+id/imgMoneda"
-        app:layout_constraintHorizontal_bias="0.085"
+        android:layout_marginStart="520dp"
+        android:layout_marginTop="28dp"
+        android:contentDescription="Avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="Avatar"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-    <ImageView
-        android:id="@+id/imgMoneda"
-        android:layout_width="27dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="276dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="Moneda"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-    <TextView
-        android:id="@+id/lbLPuntos2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="352dp"
-        android:layout_marginTop="24dp"
-        android:text="0"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/lbLPuntos"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/LblNombreJugador"
@@ -62,7 +39,7 @@
         android:text="Jugador"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintHorizontal_bias="0.358"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -100,14 +77,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <androidx.constraintlayout.widget.Group
         android:id="@+id/grpDatosUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="731dp"
         android:visibility="invisible"
-        app:constraint_referenced_ids="lbLPuntos,imgMoneda,lbLPuntos2,LblScore,LblNombreJugador,imgAvatar"
+        app:constraint_referenced_ids="lbLPuntos,LblScore,LblNombreJugador,imgAvatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -123,15 +99,6 @@
 
 
         />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="82dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
