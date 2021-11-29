@@ -43,6 +43,7 @@ public class FragmentMenu extends Fragment {
 
         listGeneros = view.findViewById(R.id.ListGeneros);
         GeneroAdapter adapter = new GeneroAdapter(generos);
+
         listGeneros.setHasFixedSize(true);
         listGeneros.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
 
