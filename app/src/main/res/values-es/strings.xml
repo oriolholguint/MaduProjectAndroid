@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Titulos strings introduccion -->
+    <string name="titulo_introduccion_1">Aprende sobre música</string>
+    <string name="titulo_introduccion_2">Recursos multimedia</string>
+    <string name="titulo_introduccion_3">Ponte a prueba</string>
+    <string name="titulo_introduccion_4">Enfrentate a los mejores</string>
+
     <!-- Strings introduccion -->
     <string name="introduccion_1">Aprende respondiendo preguntas sobre diferentes géneros musicales.</string>
     <string name="introduccion_2">Las preguntas podrán tener una imagen, vídeo o sonido relacionados con la pregunta.</string>
     <string name="introduccion_3">Hay tres niveles de dificultad, como más dificultad menos tiempo para responder las preguntas.</string>
-    <string name="introduccion_4">Una vez finalizada la partida obtendrás una puntuación y un artista musical. Si la puntuación es alta, podrás liderar el ranking de partidas.</string>
+    <string name="introduccion_4">Al finalizar la partida obtendrás una puntuación y un artista musical. Si la puntuación es alta, podrás liderar el ranking de partidas.</string>
 
     <!-- Niveles de dificultad + tiempo -->
-    <string name="facil">Facil: 30s</string>
-    <string name="medio">Medio: 25s</string>
-    <string name="dificil">Dificil: 20s</string>
+    <string name="facil">Facil: 30\"</string>
+    <string name="medio">Medio: 25\"</string>
+    <string name="dificil">Dificil: 20\"</string>
 </resources>

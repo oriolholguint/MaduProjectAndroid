@@ -1,0 +1,242 @@
+[
+  {
+    "nombre": "Rock",
+    "musicaFondo": "iphone-notificacion.mp3",
+    "imagenFondo": "earth.png",
+    "imagenMenu": "earth.png",
+    "personajes": [],
+    "partidas": [],
+    "preguntas": [
+      {
+        "preguntaDescripcion": "¿Qué banda nació primero?",
+        "imagen": "",
+        "sonido": "",
+        "esMayor": false,
+        "respuestas": [
+          {
+            "respuestaDescripcion": "The Rolling Stones",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "The Beatles",
+            "esCorrecta": true
+          },
+          {
+            "respuestaDescripcion": "The Doors",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "The Who",
+            "esCorrecta": false
+          }
+        ]
+      },
+      {
+        "preguntaDescripcion": "¿En qué año se formó Nirvana?",
+        "imagen": "",
+        "sonido": "",
+        "esMayor": false,
+        "respuestas": [
+          {
+            "respuestaDescripcion": "1990",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "1989",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "1988",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "1987",
+            "esCorrecta": true
+          }
+        ]
+      },
+      {
+        "preguntaDescripcion": "¿Cuando inicio el Rock en Español?",
+        "imagen": "",
+        "sonido": "",
+        "esMayor": false,
+        "respuestas": [
+          {
+            "respuestaDescripcion": "Entre 1930 y 1940",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "Entre 1950 y 1960",
+            "esCorrecta": true
+          },
+          {
+            "respuestaDescripcion": "Entre 1970 y 1980",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "Entre 1990 y 2000",
+            "esCorrecta": false
+          }
+        ]
+      },
+      {
+        "preguntaDescripcion": "¿Pregunta prueba de rock y generarJSON?",
+        "imagen": "",
+        "sonido": "",
+        "esMayor": false,
+        "respuestas": [
+          {
+            "respuestaDescripcion": "Prueba JSON 1",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "Prueba JSON 2",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "Prueba JSON 3",
+            "esCorrecta": true
+          },
+          {
+            "respuestaDescripcion": "Prueba JSON 4",
+            "esCorrecta": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "Rap",
+    "musicaFondo": "iphone-notificacion.mp3",
+    "imagenFondo": "earth.png",
+    "imagenMenu": "earth.png",
+    "personajes": [],
+    "partidas": [],
+    "preguntas": [
+      {
+        "preguntaDescripcion": "¿En que época surgió el hip-hop?",
+        "imagen": "",
+        "sonido": "",
+        "esMayor": false,
+        "respuestas": [
+          {
+            "respuestaDescripcion": "En los 70",
+            "esCorrecta": true
+          },
+          {
+            "respuestaDescripcion": "En los 60",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "En los 90",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "En los 80",
+            "esCorrecta": false
+          }
+        ]
+      },
+      {
+        "preguntaDescripcion": "¿De cuántos 'elementos' se compone el hip-hop?",
+        "imagen": "",
+        "sonido": "",
+        "esMayor": false,
+        "respuestas": [
+          {
+            "respuestaDescripcion": "5",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "4",
+            "esCorrecta": true
+          },
+          {
+            "respuestaDescripcion": "2",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "3",
+            "esCorrecta": false
+          }
+        ]
+      },
+      {
+        "preguntaDescripcion": "¿En que país surgió el rap?",
+        "imagen": "",
+        "sonido": "",
+        "esMayor": false,
+        "respuestas": [
+          {
+            "respuestaDescripcion": "Inglaterra",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "Mexico",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "Francia",
+            "esCorrecta": false
+          },
+          {
+            "respuestaDescripcion": "Estados Unidos",
+            "esCorrecta": true
+          }
+        ]
+      },
+      {
+        "preguntaDescripcion": "¿Lil Wayne también es conocido como Wheezy?",
+        "imagen": "",
+        "sonido": "",
+        "esMayor": false,
+        "respuestas": [
+          {
+            "respuestaDescripcion": "Verdadero",
+            "esCorrecta": true
+          },
+          {
+            "respuestaDescripcion": "Falso",
+            "esCorrecta": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "Pop",
+    "musicaFondo": "iphone-notificacion.mp3",
+    "imagenFondo": "earth.png",
+    "imagenMenu": "earth.png",
+    "personajes": [
+      {
+        "nombre": "asdasd",
+        "imagen": "venus.png",
+        "posicionRanking": 1
+      },
+      {
+        "nombre": "asdasd",
+        "imagen": "neptune.png",
+        "posicionRanking": 2
+      },
+      {
+        "nombre": "asdasda",
+        "imagen": "sun.png",
+        "posicionRanking": 3
+      }
+    ],
+    "partidas": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "preguntas": []
+  }
+]
