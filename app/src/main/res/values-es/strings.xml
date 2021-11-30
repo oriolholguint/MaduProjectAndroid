@@ -10,7 +10,7 @@
     <string name="introduccion_1">Aprende respondiendo preguntas sobre diferentes géneros musicales.</string>
     <string name="introduccion_2">Las preguntas podrán tener una imagen, vídeo o sonido relacionados con la pregunta.</string>
     <string name="introduccion_3">Hay tres niveles de dificultad, como más dificultad menos tiempo para responder las preguntas.</string>
-    <string name="introduccion_4">Al finalizar la partida obtendrás una puntuación y un artista musical. Si la puntuación es alta, podrás liderar el ranking de partidas.</string>
+    <string name="introduccion_4">Al finalizar la partida obtendrás una puntuación y un artista musical. Si la puntuación es alta, podrás liderar el ranking.</string>
 
     <!-- Niveles de dificultad + tiempo -->
     <string name="facil">Facil: 30\"</string>
