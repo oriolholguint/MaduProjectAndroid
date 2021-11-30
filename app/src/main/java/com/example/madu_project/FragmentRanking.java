@@ -2,8 +2,10 @@ package com.example.madu_project;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,15 +24,15 @@ public class FragmentRanking extends Fragment {
 
     View view;
     //MainActivity ma;
-    Genero [] generos;
+    Genero[] generos;
 
-    public static void sort(ArrayList<Partida> list)
-    {
+    //public static void sort(ArrayList<Partida> list)
+    //{
 
         //list.sort((o1, o2)
                 //-> o1.getCustomProperty().compareTo(
                 //o2.getCustomProperty()));
-    }
+    //}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,31 +40,45 @@ public class FragmentRanking extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_ranking, container, false);
 
-        //Inicializar variables, Arrays, GridViews,... y metodos
-        RecyclerView RankingList = view.findViewById(R.id.ListGeneros);
+        getParentFragmentManager().setFragmentResultListener("generos", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                generos = (Genero[]) result.getSerializable("generos");
 
-        for ( Genero g : this.generos) {
-            //ArrayList<Partida> p = new ArrayList<>();
-            //    sort(g.getPartidas());
-            for( Partida p : g.getPartidas()){
+                //Inicializar variables, Arrays, GridViews,... y metodos
+                RecyclerView RankingList = view.findViewById(R.id.RankingList);
+
+                Ranking[] rankings = new Ranking[generos.length];
+/*                for ( Genero g : generos) {
+                    ArrayList<Partida> games = new ArrayList<>();
+                    int cont = 0;
+                    for( Partida p : g.getPartidas()) {
+                        games.add(p);
+                    }
+                    Ranking newrank = new Ranking(g.getNombre(),p)
+                }*/
+
+                RankingAdapter adapter = new RankingAdapter(rankings);
+                RankingList.setHasFixedSize(true);
+                RankingList.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+                //generos = ma.generos;
+                //generos;
+                //for ()
+                RankingList.setAdapter(adapter);
+
+                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
+
+                dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
+                RankingList.addItemDecoration(dividerItemDecoration);
+
+
 
             }
-            //tl.addTab(tb.setText(g.getNombre()));
-            //Toast.makeText(getActivity(), tb.getText(), Toast.LENGTH_SHORT).show();
-        }
-        Ranking[] rankings = new Ranking[generos.length];
-        RankingAdapter adapter = new RankingAdapter(rankings);
-        RankingList.setHasFixedSize(true);
-        RankingList.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
-        //generos = ma.generos;
-        //generos;
-        //for ()
-        RankingList.setAdapter(adapter);
+        });
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
 
-        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
-        RankingList.addItemDecoration(dividerItemDecoration);
+
+
         //TabLayout tl = view.findViewById(R.id.tablayoutranking);
         //this.ma = (MainActivity) getActivity();
         //tl.setTabMode(TabLayout.MODE_SCROLLABLE);

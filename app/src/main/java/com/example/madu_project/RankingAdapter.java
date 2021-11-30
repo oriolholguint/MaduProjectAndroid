@@ -29,7 +29,37 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
         }
 
         void bindRanking(Ranking rank){
-            txtNombreRanking.setText(rank.getNombreGenero());
+
+            Partida[] pruebaDeSort = new Partida[]{
+                    new Partida(10,"farsi",null,null),
+                    new Partida(102,"farsi",null,null),
+                    new Partida(230,"farsi",null,null),
+                    new Partida(320,"farsi",null,null),
+                    new Partida(420,"farsi",null,null),
+                    new Partida(560,"farsi",null,null),
+                    new Partida(670,"farsi",null,null),
+                    new Partida(780,"farsi",null,null),
+                    new Partida(890,"farsi",null,null),
+                    new Partida(900,"farsi",null,null),
+                    new Partida(340,"farsi",null,null),
+                    new Partida(1440,"farsi",null,null),
+                    new Partida(131230,"farsi",null,null),
+                    new Partida(13875680,"farsi",null,null),
+                    new Partida(13210,"farsi",null,null),
+                    new Partida(130,"farsi",null,null),
+                    new Partida(1542353440,"farsi",null,null)
+            };
+            rank = new Ranking("Potatoe",pruebaDeSort);
+            String ranking = "";
+            int cont = 0;
+            ranking+=rank.getNombreGenero()+"\n\n";
+            Partida[] procesadas = RankingManager.bubbleSort(rank.getTopRanks());
+            for ( Partida e : procesadas){
+                if(e == null)System.out.println("Error at "+cont);
+                //ranking += cont+". "+e.getJugador().getNombre()+" Score: "+e.getPuntuacion()+"\n";
+                ranking += ++cont +". "+"Pepito"+" Score: "+e.getPuntuacion()+"\n";
+            }
+            txtNombreRanking.setText(ranking);
         }
 
     }
