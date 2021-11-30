@@ -54,6 +54,7 @@ public class FragmentIdioma extends Fragment
             @Override
             public void onClick(View view)
             {
+
                 Idioma idioma = idiomas[listaIdiomas.getChildAdapterPosition(view)];
 
                 //Añado fondo al idioma seleccionado
@@ -61,6 +62,7 @@ public class FragmentIdioma extends Fragment
                 adapter.notifyDataSetChanged();
 
                 //Obtengo el array de generos en el idioma seleccionado
+
                 Genero[] generoSeleccionado = GestorArchivos.getGenero(path + idioma.getFilePath());
                 if(generoSeleccionado != null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

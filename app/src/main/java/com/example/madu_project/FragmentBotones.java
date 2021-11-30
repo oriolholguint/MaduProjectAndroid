@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Group;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -14,7 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 
 public class FragmentBotones extends Fragment
@@ -49,14 +53,14 @@ public class FragmentBotones extends Fragment
 
         getFragmentManager().beginTransaction().add(R.id.frLContenedorFragments,fragmentIdioma).commit();
 
-
         ActivityMain = (MainActivity)getActivity();
 
-
+        ConstraintLayout constraintLayout = ActivityMain.settingsDialog.findViewById(R.id.dialogSettings);
 
         btnSiguienteCentro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 if(ActivityMain.layout.equals("Idioma") && ActivityMain.generos != null){
                     ActivityMain.layout = "Introduccion";
@@ -137,6 +141,8 @@ public class FragmentBotones extends Fragment
 
                 } else if (ActivityMain.layout.equals("Login")) // i el usuario sea diferente a null
                 {
+                    Group grpDificultad = ActivityMain.settingsDialog.findViewById(R.id.grpDificultad);
+
                     ActivityMain.layout = "Menu";
                     ActivityMain.status = "Juego";
                     FragmentManager mg = getFragmentManager();
@@ -146,8 +152,10 @@ public class FragmentBotones extends Fragment
                     fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentMenu);
                     fragmentTransaction.commit();
 
-
                     ActivityMain.findViewById(R.id.grpDatosUsuario).setVisibility(View.VISIBLE);
+                    grpDificultad.setVisibility(View.VISIBLE);
+
+
 
 
                     btnSiguiente.setText("Siguiente");

@@ -63,8 +63,8 @@ public class FragmentMenu extends Fragment {
             @Override
             public void onClick(View view) {
 
+                activity.layout = "Preguntas";
                 Genero genero = (Genero) generos[listGeneros.getChildAdapterPosition(view)];
-
                 preguntas = genero.getPreguntas();
 
                 /*
