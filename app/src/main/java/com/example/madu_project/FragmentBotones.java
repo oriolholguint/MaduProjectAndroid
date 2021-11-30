@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.madu_project.idioma.FragmentIdioma;
 import com.example.madu_project.introduccion.FragmentTutorial;
 
 
