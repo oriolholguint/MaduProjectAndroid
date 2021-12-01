@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
+    android:layout_marginLeft="200dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="378dp"
         android:layout_height="407dp"
-        android:background="@color/teal_700">
+        android:background="@color/white">
 
 
         <TextView
@@ -19,8 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
+            android:gravity="center"
             android:text=""
-            android:textSize="30dp"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.439"
@@ -28,20 +30,23 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <!--<com.google.android.material.tabs.TabLayout
-            android:id="@+id/tablayoutranking"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            tools:ignore="MissingConstraints">
+        <!--  <com.google.android.material.tabs.TabLayout
+             android:id="@+id/tablayoutranking"
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             tools:ignore="MissingConstraints">
 
             <com.google.android.material.tabs.TabItem
-                android:text="Rock"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                 android:text="Facil"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"/>
 
-            <com.google.android.material.tabs.TabItem
-                android:text="Pop" android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+             <com.google.android.material.tabs.TabItem
+                 android:text="Normal" android:layout_width="match_parent"
+                 android:layout_height="match_parent"/>
+             <com.google.android.material.tabs.TabItem
+                 android:text="Dificil" android:layout_width="match_parent"
+                 android:layout_height="match_parent"/>
 
         </com.google.android.material.tabs.TabLayout>-->
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,19 +1,19 @@
 package com.example.madu_project;
 
 public class Ranking {
-    private Partida[] topRanks;
+    private Partida[] partidasRank;
     private String nombreGenero;
 
     public Ranking(String nombreGenero,Partida[] ranks){
         this.nombreGenero = nombreGenero;
-        this.topRanks = ranks;
+        this.partidasRank = ranks;
     }
-    public Partida[] getTopRanks() {
-        return this.topRanks;
+    public Partida[] getPartidasRank() {
+        return this.partidasRank;
     }
 
-    public void setTopRanks(Partida[] topRanks) {
-        this.topRanks = topRanks;
+    public void setPartidasRank(Partida[] partidasRank) {
+        this.partidasRank = partidasRank;
     }
 
     public String getNombreGenero() {

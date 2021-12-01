@@ -8,19 +8,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHolder> implements View.OnClickListener{
+public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHolder> implements View.OnClickListener {
 
     private Ranking[] ranks;
     private View.OnClickListener listener;
 
-    public RankingAdapter(Ranking[] ranks)
-    {
+    public RankingAdapter(Ranking[] ranks) {
         this.ranks = ranks;
     }
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder
-    {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtNombreRanking;
 
         public ViewHolder(@NonNull View item) {
@@ -28,9 +26,9 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
             txtNombreRanking = item.findViewById(R.id.txtNombreRanking);
         }
 
-        void bindRanking(Ranking rank){
+        void bindRanking(Ranking rank) {
 
-            Partida[] pruebaDeSort = new Partida[]{
+/*            Partida[] pruebaDeSort = new Partida[]{
                     new Partida(10,"farsi",null,null),
                     new Partida(102,"farsi",null,null),
                     new Partida(230,"farsi",null,null),
@@ -48,16 +46,20 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
                     new Partida(13210,"farsi",null,null),
                     new Partida(130,"farsi",null,null),
                     new Partida(1542353440,"farsi",null,null)
-            };
-            rank = new Ranking("Potatoe",pruebaDeSort);
-            String ranking = "";
+            };*/
+            rank = new Ranking(rank.getNombreGenero(), rank.getPartidasRank());
+            String ranking = rank.getNombreGenero() + "\n\n";
             int cont = 0;
-            ranking+=rank.getNombreGenero()+"\n\n";
-            Partida[] procesadas = RankingManager.bubbleSort(rank.getTopRanks());
-            for ( Partida e : procesadas){
-                if(e == null)System.out.println("Error at "+cont);
-                //ranking += cont+". "+e.getJugador().getNombre()+" Score: "+e.getPuntuacion()+"\n";
-                ranking += ++cont +". "+"Pepito"+" Score: "+e.getPuntuacion()+"\n";
+            Partida[] procesadas = RankingManager.bubbleSort(rank.getPartidasRank());
+            for (Partida e : procesadas) {
+                if (e != null) {
+                    if (e.check()) {//retona true si tot esta correcte
+
+                        ranking += ++cont + ". " + e.getJugador().getNombre().toUpperCase() + " Score: " + e.getPuntuacion() + "Dificultad: "+e.getDificultad()+"\n";
+                    }
+                }else{
+                    ranking += "\n";
+                }
             }
             txtNombreRanking.setText(ranking);
         }
@@ -66,10 +68,9 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
 
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-    {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View item = LayoutInflater.from(parent.getContext()).
-                inflate(R.layout.ranking_item,parent,false);
+                inflate(R.layout.ranking_item, parent, false);
 
         item.setOnClickListener(this);
 
@@ -77,26 +78,23 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
     }
 
 
-    public void onBindViewHolder(RankingAdapter.ViewHolder holder, int position)
-    {
+    public void onBindViewHolder(RankingAdapter.ViewHolder holder, int position) {
         holder.bindRanking(ranks[position]);
     }
 
-    public int getItemCount()
-    {
+    public int getItemCount() {
         return ranks.length;
     }
 
 
-    public void setOnClickListener(View.OnClickListener listener)
-    {
+    public void setOnClickListener(View.OnClickListener listener) {
         this.listener = listener;
     }
 
 
     @Override
     public void onClick(View view) {
-        if(listener != null){
+        if (listener != null) {
             listener.onClick(view);
         }
     }

@@ -49,14 +49,10 @@ public class FragmentRanking extends Fragment {
                 RecyclerView RankingList = view.findViewById(R.id.RankingList);
 
                 Ranking[] rankings = new Ranking[generos.length];
-/*                for ( Genero g : generos) {
-                    ArrayList<Partida> games = new ArrayList<>();
-                    int cont = 0;
-                    for( Partida p : g.getPartidas()) {
-                        games.add(p);
-                    }
-                    Ranking newrank = new Ranking(g.getNombre(),p)
-                }*/
+                int cont = 0;
+                for ( Genero g : generos) {
+                    rankings[cont++] = new Ranking(g.getNombre(),g.getPartidas());
+                }
 
                 RankingAdapter adapter = new RankingAdapter(rankings);
                 RankingList.setHasFixedSize(true);

@@ -5,7 +5,16 @@
     "imagenFondo": "earth.png",
     "imagenMenu": "earth.png",
     "personajes": [],
-    "partidas": [],
+    "partidas": [
+      {
+        "puntuacion":100,
+        "dificultad":"facil",
+        "fecha":"2001-02-02",
+        "jugador": {
+          "nombre": "pepito",
+          "esMayorEdad": true,
+          "avatar": "holavads"
+        }}],
     "preguntas": [
       {
         "preguntaDescripcion": "¿Qué banda nació primero?",
@@ -225,18 +234,7 @@
         "posicionRanking": 3
       }
     ],
-    "partidas": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
+    "partidas": [],
     "preguntas": []
   }
 ]
