@@ -52,11 +52,11 @@ public class Partida
     @Override
     public String toString()
     {
-        return "Partida{" +
-                "Puntuacion=" + puntuacion +
-                ", Dificultad='" + dificultad + '\'' +
-                ", Fecha=" + fecha +
-                ", Jugador=" + jugador +
+        return "{" +
+                "puntuacion=" + puntuacion +
+                ", dificultad='" + dificultad + '\'' +
+                ", fecha=" + fecha +
+                ", jugador=" + jugador +
                 '}';
     }
 }

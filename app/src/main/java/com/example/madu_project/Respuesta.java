@@ -2,25 +2,25 @@ package com.example.madu_project;
 
 public class Respuesta
 {
-    private String respuesta;
+    private String respuestaDescripcion;
     private boolean esCorrecta;
 
-    public Respuesta(String respuesta, boolean esCorrecta)
+    public Respuesta(String respuestaDescripcion, boolean esCorrecta)
     {
-        this.respuesta = respuesta;
+        this.respuestaDescripcion = respuestaDescripcion;
         this.esCorrecta = esCorrecta;
     }
 
-    public String getRespuesta() {
-        return respuesta;
+    public String getrespuestaDescripcion() {
+        return respuestaDescripcion;
     }
 
     public boolean isEsCorrecta() {
         return esCorrecta;
     }
 
-    public void setRespuesta(String respuesta) {
-        this.respuesta = respuesta;
+    public void setrespuestaDescripcion(String respuestaDescripcion) {
+        this.respuestaDescripcion = respuestaDescripcion;
     }
 
     public void setEsCorrecta(boolean esCorrecta) {
@@ -30,9 +30,9 @@ public class Respuesta
     @Override
     public String toString()
     {
-        return "Respuesta{" +
-                "Respuesta='" + respuesta + '\'' +
-                ", EsCorrecta=" + esCorrecta +
+        return "{" +
+                "respuestaDescripcion='" + respuestaDescripcion + '\'' +
+                ", esCorrecta=" + esCorrecta +
                 '}';
     }
 }

@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.madu_project.Genero;
@@ -52,22 +53,27 @@ public class FragmentIdioma extends Fragment
         listaIdiomas.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         listaIdiomas.setAdapter(adapter);
 
+        //Cuando se selecciona un elemento del RecyclerView entra en el evento
         adapter.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
+                //Creamos un objeto Idioma con los atributos del elemento seleccionado
                 Idioma idioma = idiomas[listaIdiomas.getChildAdapterPosition(view)];
 
-                //Añado fondo al idioma seleccionado
+                //Guardo la posicion del elemento seleccionado en una variable del adapter
                 adapter.selectedPos = listaIdiomas.getChildAdapterPosition(view);
+                //Recargo el adapter
                 adapter.notifyDataSetChanged();
 
                 //Obtengo el array de generos en el idioma seleccionado
+                Genero[] generoSeleccionado = GestorArchivos.getGeneros(path + idioma.getFilePath());
 
-                Genero[] generoSeleccionado = GestorArchivos.getGenero(path + idioma.getFilePath());
+                //En el caso que se obtengan los generos correctamente se podran enviar a la Activity
                 if(generoSeleccionado != null)
                 {
+                    //Se envian los generos a la Activity
                     activity.generos = generoSeleccionado;
                 }
 
