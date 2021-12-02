@@ -1,4 +1,4 @@
-package com.example.madu_project;
+package com.example.madu_project.idioma;
 
 import android.app.AlertDialog;
 import android.content.res.Configuration;
@@ -17,8 +17,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.madu_project.Genero;
+import com.example.madu_project.MainActivity;
+import com.example.madu_project.R;
 import com.example.madu_project.archivos.GestorArchivos;
 import com.example.madu_project.idioma.Idioma;
 import com.example.madu_project.idioma.IdiomasAdapter;
@@ -30,6 +34,9 @@ import java.util.Locale;
 
 public class FragmentIdioma extends Fragment
 {
+    public static final String GENEROS_ESP = "GenerosEsp.json";
+    public static final String GENEROS_ENG = "GenerosEng.json";
+
     MainActivity activity;
     String path = "/data/data/com.example.madu_project/files/";
     Idioma[] idiomas = GestorArchivos.getIdiomas("/data/data/com.example.madu_project/files/idiomas.json");
@@ -49,36 +56,37 @@ public class FragmentIdioma extends Fragment
         listaIdiomas.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         listaIdiomas.setAdapter(adapter);
 
+        //Cuando se selecciona un elemento del RecyclerView entra en el evento
         adapter.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
+                //Creamos un objeto Idioma con los atributos del elemento seleccionado
                 Idioma idioma = idiomas[listaIdiomas.getChildAdapterPosition(view)];
 
-                //Añado fondo al idioma seleccionado
+                //Guardo la posicion del elemento seleccionado en una variable del adapter
                 adapter.selectedPos = listaIdiomas.getChildAdapterPosition(view);
+                //Recargo el adapter
                 adapter.notifyDataSetChanged();
 
-                //Obtengo el array de generos en el idioma seleccionado
+                /*Dependiendo del idioma seleccionado se enviara como array de generos principal un idioma
+                u otro y como array aux otros, en el caso que se añado un idioma nuevo se tendra que
+                annadir un else if con el idioma nuevo*/
+                if(idiomas[listaIdiomas.getChildAdapterPosition(view)].getFilePath().equals(GENEROS_ESP))
+                {
+                    activity.generos = GestorArchivos.getGeneros(path + GENEROS_ESP);
+                    activity.generosAux = GestorArchivos.getGeneros(path + GENEROS_ENG);
+                }
+                else if(idiomas[listaIdiomas.getChildAdapterPosition(view)].getFilePath().equals(GENEROS_ENG))
+                {
 
-                Genero[] generoSeleccionado = GestorArchivos.getGenero(path + idioma.getFilePath());
-                if(generoSeleccionado != null) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-                    builder.setMessage(idioma.getNombre())
-                            .setTitle(idioma.getNombre());
-
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-
-                    activity.generos = generoSeleccionado;
+                    activity.generos = GestorArchivos.getGeneros(path + GENEROS_ENG);
+                    activity.generosAux = GestorArchivos.getGeneros(path + GENEROS_ESP);
                 }
 
                 //Cambio el idioma de la tablet el nuevo idioma para usar fichero strings.xml correspondiente
                 cambiarIdioma(idioma.getNombre());
-
-                                
             }
         });
 
@@ -94,7 +102,5 @@ public class FragmentIdioma extends Fragment
         config.locale = locale;
         getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
     }
-
-
-
+    
 }

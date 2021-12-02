@@ -4,27 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
-import android.media.Image;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Spinner;
 
-import java.security.acl.Group;
+import com.example.madu_project.idioma.FragmentIdioma;
+
 import java.util.ArrayList;
-import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity
@@ -33,6 +23,7 @@ public class MainActivity extends AppCompatActivity
     public String layout = "Idioma";
     public String status = "Pricipal";
     public Genero [] generos;
+    public Genero [] generosAux;
     public Dialog settingsDialog;
     public int duracion;
 

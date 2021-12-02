@@ -39,7 +39,7 @@ public class Jugador
 
     @Override
     public String toString() {
-        return "Jugador{" +
+        return "{" +
                 "nombre='" + nombre + '\'' +
                 ", esMayorEdad=" + esMayorEdad +
                 ", avatar='" + avatar + '\'' +

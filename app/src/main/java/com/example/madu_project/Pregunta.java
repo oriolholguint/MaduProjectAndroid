@@ -66,12 +66,12 @@ public class Pregunta implements Serializable
     @Override
     public String toString()
     {
-        return "Pregunta{" +
-                "Pregunta='" + preguntaDescripcion + '\'' +
-                ", Imagen='" + imagen + '\'' +
-                ", Sonido='" + sonido + '\'' +
-                ", EsMayorEdad=" + esMayorEdad +
-                ", Respuestas=" + Arrays.toString(respuestas) +
+        return "{" +
+                "pregunta='" + preguntaDescripcion + '\'' +
+                ", imagen='" + imagen + '\'' +
+                ", sonido='" + sonido + '\'' +
+                ", esMayorEdad=" + esMayorEdad +
+                ", respuestas=" + Arrays.toString(respuestas) +
                 '}';
     }
 }

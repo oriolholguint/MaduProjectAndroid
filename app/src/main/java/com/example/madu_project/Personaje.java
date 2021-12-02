@@ -40,10 +40,10 @@ public class Personaje
     @Override
     public String toString()
     {
-        return "Personaje{" +
-                "Nombre='" + nombre + '\'' +
-                ", Imagen='" + imagen + '\'' +
-                ", PosicionRanking=" + posicionRanking +
+        return "{" +
+                "nombre='" + nombre + '\'' +
+                ", imagen='" + imagen + '\'' +
+                ", posicionRanking=" + posicionRanking +
                 '}';
     }
 }
