@@ -262,3 +262,5 @@ public class MainActivity extends AppCompatActivity
         int range = (max -min) + 1;
         return (int) (Math.random() * range + min);
     }
+
+}
