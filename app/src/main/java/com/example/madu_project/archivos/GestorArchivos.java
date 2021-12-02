@@ -46,6 +46,11 @@ public class GestorArchivos
         return generos;
     }
 
+    /**
+     * Obtiene los idiomas de un fichero JSON
+     * @param filePath ruta donde se encuentra el fichero JSON
+     * @return array de idiomas
+     */
     public static Idioma[] getIdiomas(String filePath)
     {
         Idioma[] idiomas = null;
@@ -70,6 +75,12 @@ public class GestorArchivos
         return idiomas;
     }
 
+    /**
+     * Se escribe un fichero JSON
+     * @param generos array con los objetos Genero para escribir en JSON
+     * @param filePath ruta donde se guardara el fichero JSON
+     * @throws JSONException
+     */
     public static void writeJson(Genero[] generos, String filePath) throws JSONException
     {
         try
@@ -85,6 +96,5 @@ public class GestorArchivos
         {
             ex.printStackTrace();
         }
-
     }
 }
