@@ -9,6 +9,10 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity
     public Genero [] generosAux;
     public Dialog settingsDialog;
     public int duracion;
+    private ArrayAdapter mAdapter;
 
 
     @Override
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        duracion = 30;
         ImageButton imgBtnConfiguracion = findViewById(R.id.imgBtnConfiguracion);
         androidx.constraintlayout.widget.Group grpDatosUsuario = findViewById(R.id.grpDatosUsuario);
 
@@ -58,33 +64,39 @@ public class MainActivity extends AppCompatActivity
         final ImageButton btnMenu = settingsDialog.findViewById(R.id.btnMenu);
 
 
-        final Spinner sprDificultad = findViewById(R.id.sprDificultad);
-        /*
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.combo_dificultad, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sprDificultad.setAdapter(adapter);
+        final Spinner sprDificultad = (Spinner) settingsDialog.findViewById(R.id.sprDificultad);
+        ArrayList<String> spritems = llenarSpinner();
 
-         */
+
+        mAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,spritems);
+        mAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        sprDificultad.setAdapter(mAdapter);
 
         final FragmentMenu fragmentMenu = new FragmentMenu();
 
-        //duracion = sprDificultad.getSelectedItemPosition() * 5 + 20;
-
-        /*
         sprDificultad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                duracion = sprDificultad.getSelectedItemPosition() * 5 + 20;
+               // duracion = sprDificultad.getSelectedItemPosition() * 5 + 20;
+                int index = sprDificultad.getSelectedItemPosition();
+
+                if(index == 0){
+                    duracion = 30;
+                }
+                else if(index == 1)
+                {
+                    duracion = 25;
+                }
+                else if(index == 2)
+                {
+                    duracion = 20;
+                }
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) { }
         });
 
-         */
 
         imgBtnConfiguracion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,6 +185,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+
     /**
      * Se obtienen preguntas aleatorias de un array enviado por parametros.
      * @param preguntas array donde obtener preguntas
@@ -233,5 +246,6 @@ public class MainActivity extends AppCompatActivity
         int range = (max -min) + 1;
         return (int) (Math.random() * range + min);
     }
+    
 
 }
