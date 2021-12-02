@@ -9,10 +9,13 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+
+
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
@@ -186,6 +189,19 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+
+
+    public ArrayList<String> llenarSpinner ()
+    {
+        ArrayList<String> items = new ArrayList<>();
+        items.add("Facil");
+        items.add("Medio");
+        items.add("Dificil");
+
+        return items;
+
+    }
+
     /**
      * Se obtienen preguntas aleatorias de un array enviado por parametros.
      * @param preguntas array donde obtener preguntas
@@ -246,15 +262,3 @@ public class MainActivity extends AppCompatActivity
         int range = (max -min) + 1;
         return (int) (Math.random() * range + min);
     }
-
-    public ArrayList<String> llenarSpinner ()
-    {
-        ArrayList<String> items = new ArrayList<>();
-        items.add("Facil");
-        items.add("Medio");
-        items.add("Dificil");
-
-        return items;
-
-    }
-}
