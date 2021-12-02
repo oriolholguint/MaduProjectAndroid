@@ -115,7 +115,6 @@
         android:layout_height="27dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="60dp"
-        android:entries="@array/combo_dificultad"
         app:layout_constraintStart_toEndOf="@+id/lblDificultad"
         app:layout_constraintTop_toTopOf="parent" />
 

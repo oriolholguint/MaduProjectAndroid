@@ -5,18 +5,17 @@ public class Respuesta
     private String respuestaDescripcion;
     private boolean esCorrecta;
 
-    public Respuesta(String respuestaDescripcion, boolean esCorrecta)
-    {
+    public Respuesta(String respuestaDescripcion, boolean esCorrecta) {
         this.respuestaDescripcion = respuestaDescripcion;
         this.esCorrecta = esCorrecta;
     }
 
-    public String getrespuestaDescripcion() {
+    public String getRespuestaDescripcion() {
         return respuestaDescripcion;
     }
 
-    public boolean isEsCorrecta() {
-        return esCorrecta;
+    public void setRespuestaDescripcion(String respuestaDescripcion) {
+        this.respuestaDescripcion = respuestaDescripcion;
     }
 
     public void setrespuestaDescripcion(String respuestaDescripcion) {

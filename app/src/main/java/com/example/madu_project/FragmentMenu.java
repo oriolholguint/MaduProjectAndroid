@@ -56,31 +56,17 @@ public class FragmentMenu extends Fragment {
         listGeneros.addItemDecoration(dividerItemDecoration);
 
 
-
-
-
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 activity.layout = "Preguntas";
-                Genero genero = (Genero) generos[listGeneros.getChildAdapterPosition(view)];
-                preguntas = genero.getPreguntas();
+                Genero genero = generos[listGeneros.getChildAdapterPosition(view)];
 
-                /*
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-                builder.setMessage("Pregunta: " + preguntas[0].getPreguntaDescripcion())
-                        .setTitle(genero.getNombre());
-
-                AlertDialog dialog = builder.create();
-                dialog.show();
-
-                 */
 
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("pregunta",preguntas);
-                getParentFragmentManager().setFragmentResult("preguntas",bundle);
+                bundle.putSerializable("genero",genero);
+                getParentFragmentManager().setFragmentResult("genero",bundle);
 
                 FragmentManager mg = getFragmentManager();
                 FragmentTransaction fragmentTransaction = mg.beginTransaction();
