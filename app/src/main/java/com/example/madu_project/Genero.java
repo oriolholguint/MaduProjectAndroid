@@ -1,10 +1,11 @@
 package com.example.madu_project;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Genero
+public class Genero implements Serializable
 {
     private String nombre;
     private String musicaFondo;
