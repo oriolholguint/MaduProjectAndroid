@@ -56,6 +56,10 @@ public class FragmentIdioma extends Fragment
         listaIdiomas.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         listaIdiomas.setAdapter(adapter);
 
+        //Por defecto el idioma seleccionado es el espannol
+        activity.generos = GestorArchivos.getGeneros(path + GENEROS_ESP);
+        activity.generosAux = GestorArchivos.getGeneros(path + GENEROS_ENG);
+
         //Cuando se selecciona un elemento del RecyclerView entra en el evento
         adapter.setOnClickListener(new View.OnClickListener()
         {
