@@ -19,7 +19,7 @@ public class RankingManager {
                 }
             }
         }
-        Partida[] finalProcessed = Arrays.copyOfRange(top,0,9);
+        Partida[] finalProcessed = Arrays.copyOfRange(top,0,10);
         return finalProcessed;
     }
 

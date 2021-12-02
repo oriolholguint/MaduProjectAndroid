@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHolder> implements View.OnClickListener {
@@ -28,39 +29,15 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
 
         void bindRanking(Ranking rank) {
 
-/*            Partida[] pruebaDeSort = new Partida[]{
-                    new Partida(10,"farsi",null,null),
-                    new Partida(102,"farsi",null,null),
-                    new Partida(230,"farsi",null,null),
-                    new Partida(320,"farsi",null,null),
-                    new Partida(420,"farsi",null,null),
-                    new Partida(560,"farsi",null,null),
-                    new Partida(670,"farsi",null,null),
-                    new Partida(780,"farsi",null,null),
-                    new Partida(890,"farsi",null,null),
-                    new Partida(900,"farsi",null,null),
-                    new Partida(340,"farsi",null,null),
-                    new Partida(1440,"farsi",null,null),
-                    new Partida(131230,"farsi",null,null),
-                    new Partida(13875680,"farsi",null,null),
-                    new Partida(13210,"farsi",null,null),
-                    new Partida(130,"farsi",null,null),
-                    new Partida(1542353440,"farsi",null,null)
-            };*/
             rank = new Ranking(rank.getNombreGenero(), rank.getPartidasRank());
             String ranking = rank.getNombreGenero() + "\n\n";
-            int cont = 0;
             Partida[] procesadas = RankingManager.bubbleSort(rank.getPartidasRank());
-            /*for (Partida e : procesadas) {
-                if (e != null) {
-                    if (e.check()) {//retona true si tot esta correcte
+            ScoreAdapter sa = new ScoreAdapter(procesadas);
+            RecyclerView rv = itemView.findViewById(R.id.ScoreItem);
+            rv.setHasFixedSize(true);
+            rv.setLayoutManager(new LinearLayoutManager(itemView.getContext(),LinearLayoutManager.VERTICAL,false));
+            rv.setAdapter(sa);
 
-                        ranking += ++cont + ". " + e.getJugador().getNombre().toUpperCase() + " Score: " + e.getPuntuacion() + " Dificultad: "+e.getDificultad()+"\n";
-                    }
-                }else{
-                    ranking += "\n";
-                }
-            }*/
             txtNombreRanking.setText(ranking);
         }
 
@@ -80,6 +57,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
 
     public void onBindViewHolder(RankingAdapter.ViewHolder holder, int position) {
         holder.bindRanking(ranks[position]);
+
     }
 
     public int getItemCount() {

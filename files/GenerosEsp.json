@@ -7,85 +7,85 @@
   "personajes": [],
   "partidas": [
     {
-      "puntuacion":105430,
+      "puntuacion":10,
       "dificultad":"facil",
       "fecha":"2001-02-02",
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
-      "puntuacion":1064560,
+      "puntuacion":9,
       "dificultad":"difisil",
       "fecha":"2001-02-02",
       "jugador": {
         "nombre": "Jonas",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
-      "puntuacion":456546,
+      "puntuacion":8,
       "dificultad":"facil",
       "fecha":"2001-02-02",
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
-      "puntuacion":66554,
+      "puntuacion":7,
       "dificultad":"difisil",
       "fecha":"2001-02-02",
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
-      "puntuacion":65645,
+      "puntuacion":6,
       "dificultad":"facil",
       "fecha":"2001-02-02",
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
-      "puntuacion":554,
+      "puntuacion":5,
       "dificultad":"difisil",
       "fecha":"2001-02-02",
       "jugador": {
         "nombre": "Jonas",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
-      "puntuacion":100656,
+      "puntuacion":4,
       "dificultad":"difisil",
       "fecha":"2001-02-02",
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
-      "puntuacion":1065465460,
+      "puntuacion":3,
       "dificultad":"difisil",
       "fecha":"2001-02-02",
       "jugador": {
         "nombre": "Jonas",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
-      "puntuacion":6546,
+      "puntuacion":2,
       "dificultad":"facil",
       "fecha":"2001-02-02",
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
-      "puntuacion":654634,
+      "puntuacion":1,
       "dificultad":"difisil",
       "fecha":"2001-02-02",
       "jugador": {
         "nombre": "Jonas",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }}],
   "preguntas": [
     {
@@ -200,7 +200,7 @@
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":1064560,
       "dificultad":"difisil",
@@ -208,7 +208,7 @@
       "jugador": {
         "nombre": "Jonas",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":456546,
       "dificultad":"facil",
@@ -216,7 +216,7 @@
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":66554,
       "dificultad":"difisil",
@@ -224,7 +224,7 @@
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":65645,
       "dificultad":"facil",
@@ -232,7 +232,7 @@
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":554,
       "dificultad":"difisil",
@@ -240,7 +240,7 @@
       "jugador": {
         "nombre": "Jonas",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":100656,
       "dificultad":"difisil",
@@ -248,7 +248,7 @@
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":1065465460,
       "dificultad":"difisil",
@@ -256,7 +256,7 @@
       "jugador": {
         "nombre": "Jonas",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":6546,
       "dificultad":"facil",
@@ -264,7 +264,7 @@
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":654634,
       "dificultad":"difisil",
@@ -272,7 +272,7 @@
       "jugador": {
         "nombre": "Jonas",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }}],
   "preguntas": [
     {
@@ -395,7 +395,7 @@
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":1064560,
       "dificultad":"difisil",
@@ -403,7 +403,7 @@
       "jugador": {
         "nombre": "Jonas",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":456546,
       "dificultad":"facil",
@@ -411,7 +411,7 @@
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":66554,
       "dificultad":"difisil",
@@ -419,7 +419,7 @@
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":65645,
       "dificultad":"facil",
@@ -427,7 +427,7 @@
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":554,
       "dificultad":"difisil",
@@ -435,7 +435,7 @@
       "jugador": {
         "nombre": "Jonas",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":100656,
       "dificultad":"difisil",
@@ -443,7 +443,7 @@
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":1065465460,
       "dificultad":"difisil",
@@ -451,7 +451,7 @@
       "jugador": {
         "nombre": "Jonas",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":6546,
       "dificultad":"facil",
@@ -459,7 +459,7 @@
       "jugador": {
         "nombre": "pepito",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }},{
       "puntuacion":654634,
       "dificultad":"difisil",
@@ -467,7 +467,7 @@
       "jugador": {
         "nombre": "Jonas",
         "esMayorEdad": true,
-        "avatar": "holavads"
+        "avatar": 2131230807
       }}],
   "preguntas": []
 }

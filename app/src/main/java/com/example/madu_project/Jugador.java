@@ -4,10 +4,10 @@ public class Jugador
 {
     private String nombre;
     private Boolean esMayorEdad;
-    private String avatar;
+    private int avatar;//int porque es el drawable
 
 
-    public Jugador(String nombre, Boolean esMayorEdad, String avatar) {
+    public Jugador(String nombre, Boolean esMayorEdad, int avatar) {
         this.nombre = nombre;
         this.esMayorEdad = esMayorEdad;
         this.avatar = avatar;
@@ -29,11 +29,11 @@ public class Jugador
         this.esMayorEdad = esMayorEdad;
     }
 
-    public String getAvatar() {
+    public int getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(int avatar) {
         this.avatar = avatar;
     }
 
