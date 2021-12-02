@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity
     public String layout = "Idioma";
     public String status = "Pricipal";
     public Genero [] generos;
+    public Genero [] generosAux;
     public Dialog settingsDialog;
     public int duracion;
 

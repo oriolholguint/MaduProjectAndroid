@@ -34,6 +34,9 @@ import java.util.Locale;
 
 public class FragmentIdioma extends Fragment
 {
+    public static final String GENEROS_ESP = "GenerosEsp.json";
+    public static final String GENEROS_ENG = "GenerosEng.json";
+
     MainActivity activity;
     String path = "/data/data/com.example.madu_project/files/";
     Idioma[] idiomas = GestorArchivos.getIdiomas("/data/data/com.example.madu_project/files/idiomas.json");
@@ -67,14 +70,19 @@ public class FragmentIdioma extends Fragment
                 //Recargo el adapter
                 adapter.notifyDataSetChanged();
 
-                //Obtengo el array de generos en el idioma seleccionado
-                Genero[] generoSeleccionado = GestorArchivos.getGeneros(path + idioma.getFilePath());
-
-                //En el caso que se obtengan los generos correctamente se podran enviar a la Activity
-                if(generoSeleccionado != null)
+                /*Dependiendo del idioma seleccionado se enviara como array de generos principal un idioma
+                u otro y como array aux otros, en el caso que se añado un idioma nuevo se tendra que
+                annadir un else if con el idioma nuevo*/
+                if(idiomas[listaIdiomas.getChildAdapterPosition(view)].getFilePath().equals(GENEROS_ESP))
                 {
-                    //Se envian los generos a la Activity
-                    activity.generos = generoSeleccionado;
+                    activity.generos = GestorArchivos.getGeneros(path + GENEROS_ESP);
+                    activity.generosAux = GestorArchivos.getGeneros(path + GENEROS_ENG);
+                }
+                else if(idiomas[listaIdiomas.getChildAdapterPosition(view)].getFilePath().equals(GENEROS_ENG))
+                {
+
+                    activity.generos = GestorArchivos.getGeneros(path + GENEROS_ENG);
+                    activity.generosAux = GestorArchivos.getGeneros(path + GENEROS_ESP);
                 }
 
                 //Cambio el idioma de la tablet el nuevo idioma para usar fichero strings.xml correspondiente
@@ -94,7 +102,5 @@ public class FragmentIdioma extends Fragment
         config.locale = locale;
         getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
     }
-
-
-
+    
 }
