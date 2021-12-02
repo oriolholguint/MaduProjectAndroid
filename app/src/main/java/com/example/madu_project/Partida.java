@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Partida
 {
-    private int puntuacion;
+    private Integer puntuacion;
     private String dificultad;
     private Date fecha;
     private Jugador jugador;
@@ -17,7 +17,7 @@ public class Partida
         this.jugador = jugador;
     }
 
-    public int getPuntuacion() {
+    public Integer getPuntuacion() {
         return puntuacion;
     }
 
@@ -33,7 +33,7 @@ public class Partida
         return jugador;
     }
 
-    public void setPuntuacion(int puntuacion) {
+    public void setPuntuacion(Integer puntuacion) {
         this.puntuacion = puntuacion;
     }
 
@@ -48,15 +48,17 @@ public class Partida
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
     }
-
+    public boolean check(){
+        return !(this.dificultad == null || this.fecha == null || this.jugador == null || this.puntuacion == null);
+    }
     @Override
     public String toString()
     {
-        return "Partida{" +
-                "Puntuacion=" + puntuacion +
-                ", Dificultad='" + dificultad + '\'' +
-                ", Fecha=" + fecha +
-                ", Jugador=" + jugador +
+        return "{" +
+                "puntuacion=" + puntuacion +
+                ", dificultad='" + dificultad + '\'' +
+                ", fecha=" + fecha +
+                ", jugador=" + jugador +
                 '}';
     }
 }

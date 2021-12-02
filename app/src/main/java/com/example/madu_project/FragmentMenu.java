@@ -15,8 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.madu_project.introduccion.FragmentTutorial;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,20 +45,45 @@ public class FragmentMenu extends Fragment {
         generos = activity.generos;
 
         listGeneros = view.findViewById(R.id.ListGeneros);
-        GeneroAdapter adapter = new GeneroAdapter(generos);
+        GeneroAdapter generoAdapter = new GeneroAdapter(generos);
+
         listGeneros.setHasFixedSize(true);
         listGeneros.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
 
 
-        listGeneros.setAdapter(adapter);
+        listGeneros.setAdapter(generoAdapter);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
 
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
         listGeneros.addItemDecoration(dividerItemDecoration);
 
+        ImageButton imgBtnRanking = view.findViewById(R.id.imgBtnRanking);
+        imgBtnRanking.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                activity.layout = "Ranking";
+                Genero[] genero = generos;
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("generos",genero);
+
 
         adapter.setOnClickListener(new View.OnClickListener() {
+                getParentFragmentManager().setFragmentResult("generos",bundle);
+
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+
+                FragmentRanking fragmentRanking = new FragmentRanking();
+                fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentRanking);
+                fragmentTransaction.commit();
+            }
+
+        });
+
+
+        generoAdapter.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 

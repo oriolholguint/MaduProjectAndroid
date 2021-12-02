@@ -86,14 +86,14 @@ public class Genero implements Serializable
 
     @Override
     public String toString() {
-        return "Genero{" +
-                "Nombre='" + nombre + '\'' +
-                ", MusicaFondo='" + musicaFondo + '\'' +
-                ", ImagenFondo='" + imagenFondo + '\'' +
-                ", ImagenMenu='" + imagenMenu + '\'' +
-                ", Preguntas=" + preguntas +
-                ", Personajes=" + personajes +
-                ", Partidas=" + partidas +
+        return "{" +
+                "nombre='" + nombre + '\'' +
+                ", musicaFondo='" + musicaFondo + '\'' +
+                ", imagenFondo='" + imagenFondo + '\'' +
+                ", imagenMenu='" + imagenMenu + '\'' +
+                ", preguntas=" + Arrays.toString(preguntas) +
+                ", personajes=" + Arrays.toString(personajes) +
+                ", partidas=" + Arrays.toString(partidas) +
                 '}';
     }
 }

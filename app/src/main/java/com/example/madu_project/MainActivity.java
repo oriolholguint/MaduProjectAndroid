@@ -4,28 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
-import android.media.Image;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Spinner;
 
-import java.security.acl.Group;
+import com.example.madu_project.idioma.FragmentIdioma;
+
 import java.util.ArrayList;
-import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity
@@ -34,6 +29,7 @@ public class MainActivity extends AppCompatActivity
     public String layout = "Idioma";
     public String status = "Pricipal";
     public Genero [] generos;
+    public Genero [] generosAux;
     public Dialog settingsDialog;
     public int duracion;
     private ArrayAdapter mAdapter;
@@ -192,6 +188,7 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+
     public ArrayList<String> llenarSpinner ()
     {
         ArrayList<String> items = new ArrayList<>();
@@ -201,6 +198,67 @@ public class MainActivity extends AppCompatActivity
 
         return items;
 
+    }
+
+    /**
+     * Se obtienen preguntas aleatorias de un array enviado por parametros.
+     * @param preguntas array donde obtener preguntas
+     * @param cantidadPreguntas cantidad de preguntas aleatorias a obtener
+     * @return array con preguntas aleatorias
+     */
+    public static ArrayList<Pregunta> getPreguntasPartida(Pregunta[] preguntas,int cantidadPreguntas, Jugador jugador)
+    {
+        ArrayList<Pregunta> preguntasSeleccionadas = new ArrayList<>(); //Preguntas que saldran en la partida
+        ArrayList<Integer> numerosAleatorios = new ArrayList<>(); //Numeros aleatorios para no repetirlos
+        int numeroAleatorio = 0;
+
+        for(int i = 0; i < cantidadPreguntas; i++) //Bucle con la cantidad de preguntas necesarias
+        {
+            boolean preguntaCorrecta = false;
+
+            while(!preguntaCorrecta) //Bucle para elegir pregunta que no se repita
+            {
+                numeroAleatorio = obtenerNumeroAleatorio(0, preguntas.length - 1);
+                int counter = 0;
+                boolean numeroRepetido = false;
+                //Si el num no esta repetido y aun quedan por revisar mas numeros entra aqui
+                while(!numeroRepetido && counter < numerosAleatorios.size())
+                {
+                    //Si el num aleatorio esta repetido o el jugador es menor de edad y la pregunta es para mayor de edad
+                    if(numeroAleatorio == numerosAleatorios.get(counter) || (!jugador.getEsMayorEdad() && preguntas[numeroAleatorio].isEsMayorEdad()))
+                    {
+                        numeroRepetido = true;
+                    }
+                    else //Si el num aleatorio no esta repetido
+                    {
+                        counter++; //Itera el contador para comprobar siguiente numero
+                    }
+                }
+
+                if(!numeroRepetido)//Si el numero no esta repetido
+                {
+                    //Agrego el numero aleatorio al array de los numeros que ya han salido
+                    numerosAleatorios.add(numeroAleatorio);
+                    //Agrego la pregunta al array de preguntas selecciondas
+                    preguntasSeleccionadas.add(preguntas[numeroAleatorio]);
+                    preguntaCorrecta = true; //Señalo que la respuesta se agrega correctamente para salir del bucle
+                }
+            }
+        }
+
+        return preguntasSeleccionadas;
+    }
+
+    /**
+     * Devuelve un numero aleatorio dado un minimo y un maximo, ambos incluidos
+     * @param min numero minimo a obtener
+     * @param max numero maximo a obtener
+     * @return numero aleatorio
+     */
+    public static int obtenerNumeroAleatorio(int min, int max)
+    {
+        int range = (max -min) + 1;
+        return (int) (Math.random() * range + min);
     }
 
 

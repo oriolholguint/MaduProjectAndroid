@@ -1,0 +1,12 @@
+[
+  {
+    "nombre": "es",
+    "imageButton": "espana_flag.png",
+    "filePath": "GenerosEsp.json"
+  },
+  {
+    "nombre": "en",
+    "imageButton": "reino_unido_flag.png",
+    "filePath": "GenerosEng.json"
+  }
+]

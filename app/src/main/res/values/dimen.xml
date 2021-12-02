@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tam_introduccion">20sp</dimen>
+    <dimen name="corner_radius_introduccion_card">10dp</dimen>
+    <dimen name="margin_introduction">3dp</dimen>
+    <dimen name="marginXSides_introduction">20dp</dimen>
+
+    <dimen name="tam_introduccion_titulo">40sp</dimen>
+    <dimen name="tam_introduccion_descripcion">20sp</dimen>
+</resources>
