@@ -246,6 +246,15 @@ public class MainActivity extends AppCompatActivity
         int range = (max -min) + 1;
         return (int) (Math.random() * range + min);
     }
-    
 
+    public ArrayList<String> llenarSpinner ()
+    {
+        ArrayList<String> items = new ArrayList<>();
+        items.add("Facil");
+        items.add("Medio");
+        items.add("Dificil");
+
+        return items;
+
+    }
 }

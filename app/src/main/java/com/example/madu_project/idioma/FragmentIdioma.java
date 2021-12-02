@@ -73,12 +73,12 @@ public class FragmentIdioma extends Fragment
                 /*Dependiendo del idioma seleccionado se enviara como array de generos principal un idioma
                 u otro y como array aux otros, en el caso que se añado un idioma nuevo se tendra que
                 annadir un else if con el idioma nuevo*/
-                if(idiomas[listaIdiomas.getChildAdapterPosition(view)].getFilePath().equals(GENEROS_ESP))
+                if(idiomas[adapter.selectedPos].getFilePath().equals(GENEROS_ESP))
                 {
                     activity.generos = GestorArchivos.getGeneros(path + GENEROS_ESP);
                     activity.generosAux = GestorArchivos.getGeneros(path + GENEROS_ENG);
                 }
-                else if(idiomas[listaIdiomas.getChildAdapterPosition(view)].getFilePath().equals(GENEROS_ENG))
+                else if(idiomas[adapter.selectedPos].getFilePath().equals(GENEROS_ENG))
                 {
 
                     activity.generos = GestorArchivos.getGeneros(path + GENEROS_ENG);
