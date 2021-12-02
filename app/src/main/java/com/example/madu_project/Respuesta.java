@@ -5,14 +5,14 @@ public class Respuesta
     private String respuestaDescripcion;
     private boolean esCorrecta;
 
-    public Respuesta(String respuestaDescripcion, boolean esCorrecta)
-    {
+    public Respuesta(String respuestaDescripcion, boolean esCorrecta) {
 
         this.respuestaDescripcion = respuestaDescripcion;
         this.esCorrecta = esCorrecta;
     }
 
-    public String getrespuestaDescripcion() {
+
+    public String getRespuestaDescripcion() {
 
         return respuestaDescripcion;
     }
@@ -22,12 +22,9 @@ public class Respuesta
     }
 
 
+
     public boolean isEsCorrecta() {
         return esCorrecta;
-    }
-    public void setrespuestaDescripcion(String respuestaDescripcion) {
-        this.respuestaDescripcion = respuestaDescripcion;
-
     }
 
     public void setEsCorrecta(boolean esCorrecta) {

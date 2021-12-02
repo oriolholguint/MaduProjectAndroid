@@ -68,7 +68,9 @@ public class FragmentMenu extends Fragment {
                 bundle.putSerializable("generos",genero);
 
 
+        /*
         adapter.setOnClickListener(new View.OnClickListener() {
+
                 getParentFragmentManager().setFragmentResult("generos",bundle);
 
                 FragmentManager fm = getFragmentManager();
@@ -79,11 +81,10 @@ public class FragmentMenu extends Fragment {
                 fragmentTransaction.commit();
             }
 
-        });
+        });*/
 
 
         generoAdapter.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
 
