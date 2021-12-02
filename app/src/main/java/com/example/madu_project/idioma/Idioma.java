@@ -6,10 +6,11 @@ public class Idioma
     private String imageButton;
     private String filePath;
 
-    public Idioma(String nombre, String imageButton)
+    public Idioma(String nombre, String imageButton, String filePath)
     {
         this.nombre = nombre;
         this.imageButton = imageButton;
+        this.filePath = filePath;
     }
 
     public String getNombre() {

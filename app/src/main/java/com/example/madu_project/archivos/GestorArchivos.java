@@ -53,24 +53,9 @@ public class GestorArchivos
      */
     public static Idioma[] getIdiomas(String filePath)
     {
-        Idioma[] idiomas = null;
-
-        try
-        {
-            FileReader fr = new FileReader(filePath);
-            BufferedReader br = new BufferedReader(fr);
-
-            Gson gson = new Gson();
-
-            idiomas = gson.fromJson(br, Idioma[].class);
-
-            br.close();
-            fr.close();
-        }
-        catch(IOException ex)
-        {
-            ex.printStackTrace();
-        }
+        Idioma[] idiomas = {
+                new Idioma("es", "espana_flag.png", "GenerosEsp.json"),
+                new Idioma("en", "reino_unido_flag.png", "GenerosEng.json")};
 
         return idiomas;
     }
