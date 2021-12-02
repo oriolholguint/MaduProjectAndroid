@@ -51,16 +51,16 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
             String ranking = rank.getNombreGenero() + "\n\n";
             int cont = 0;
             Partida[] procesadas = RankingManager.bubbleSort(rank.getPartidasRank());
-            for (Partida e : procesadas) {
+            /*for (Partida e : procesadas) {
                 if (e != null) {
                     if (e.check()) {//retona true si tot esta correcte
 
-                        ranking += ++cont + ". " + e.getJugador().getNombre().toUpperCase() + " Score: " + e.getPuntuacion() + "Dificultad: "+e.getDificultad()+"\n";
+                        ranking += ++cont + ". " + e.getJugador().getNombre().toUpperCase() + " Score: " + e.getPuntuacion() + " Dificultad: "+e.getDificultad()+"\n";
                     }
                 }else{
                     ranking += "\n";
                 }
-            }
+            }*/
             txtNombreRanking.setText(ranking);
         }
 

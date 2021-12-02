@@ -10,12 +10,12 @@
         android:layout_height="wrap_content">
 
     </androidx.recyclerview.widget.RecyclerView>
-
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="" />
+
+
     <!-- <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayoutranking"
         android:layout_height="wrap_content"
