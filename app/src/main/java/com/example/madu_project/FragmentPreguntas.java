@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,10 +34,10 @@ public class FragmentPreguntas extends Fragment {
     Genero genero;
     ProgressBar progressBar;
     Button btnSiguietePregunta;
-    Button btnResp1;
-    Button btnResp2;
-    Button btnResp3;
-    Button btnResp4;
+    RadioButton btnResp1;
+    RadioButton btnResp2;
+    RadioButton btnResp3;
+    RadioButton btnResp4;
     MainActivity activity;
     int cont = 0;
 
@@ -68,17 +69,11 @@ public class FragmentPreguntas extends Fragment {
                 descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
                 progressBar.setScaleY(2f);
-
                 progressAnimation(btnSiguietePregunta,progressBar, activity.duracion);
 
                 Respuesta [] respuestas = preguntas[cont].getRespuestas();
 
-                btnResp1.setText(respuestas[0].getRespuestaDescripcion());
-                btnResp2.setText(respuestas[1].getRespuestaDescripcion());
-                btnResp3.setText(respuestas[2].getRespuestaDescripcion());
-                btnResp4.setText(respuestas[3].getRespuestaDescripcion());
-
-
+                llenarRespuestas(respuestas);
 
                 if(progressBar.getProgress() == 1000){
                     btnSiguietePregunta.setEnabled(true);
@@ -94,15 +89,13 @@ public class FragmentPreguntas extends Fragment {
                 cont++;
                 btnSiguietePregunta.setEnabled(false);
                 descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
+
                 progressAnimation(btnSiguietePregunta, progressBar, activity.duracion);
 
                 Respuesta [] respuestas = preguntas[cont].getRespuestas();
 
-                btnResp1.setText(respuestas[0].getRespuestaDescripcion());
-                btnResp2.setText(respuestas[1].getRespuestaDescripcion());
-                btnResp3.setText(respuestas[2].getRespuestaDescripcion());
-                btnResp4.setText(respuestas[3].getRespuestaDescripcion());
-
+                llenarRespuestas(respuestas);
+                restablecerRadioButons(btnResp1,btnResp2,btnResp3,btnResp4);
 
 
                 if (cont ==  preguntas.length -1){
@@ -141,9 +134,27 @@ public class FragmentPreguntas extends Fragment {
         progressBar.startAnimation(animation);
     }
 
+    private void llenarRespuestas(Respuesta[] resp)
+    {
+        if(resp.length == 4){
+            btnResp1.setText(resp[0].getRespuestaDescripcion());
+            btnResp2.setText(resp[1].getRespuestaDescripcion());
+            btnResp3.setText(resp[2].getRespuestaDescripcion());
+            btnResp4.setText(resp[3].getRespuestaDescripcion());
+        } else {
+            btnResp1.setText(resp[0].getRespuestaDescripcion());
+            btnResp2.setText(resp[1].getRespuestaDescripcion());
+        }
+
+    }
 
 
-
+    private void restablecerRadioButons(RadioButton r1, RadioButton r2, RadioButton r3, RadioButton r4){
+        r1.setChecked(false);
+        r2.setChecked(false);
+        r3.setChecked(false);
+        r4.setChecked(false);
+    }
 
 
 
