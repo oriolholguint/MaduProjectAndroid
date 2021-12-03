@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#45B39D"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#45B39D">
 
 
     <TextView
@@ -35,22 +35,23 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="390dp"
-        android:layout_height="206dp"
+        android:layout_width="391dp"
+        android:layout_height="204dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/ladrillos"
         android:scaleType="fitXY"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clbotonesRrespuestas"
-        android:layout_width="1184dp"
+        android:layout_width="1191dp"
         android:layout_height="215dp"
-        android:layout_marginTop="290dp"
+        android:layout_marginTop="172dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -95,6 +96,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <RadioButton
             android:id="@+id/btnResp3"
             android:layout_width="400dp"
@@ -118,6 +120,50 @@
             android:text="RadioButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <RadioButton
+            android:id="@+id/btnRespVerdadero"
+            android:layout_width="400dp"
+            android:layout_height="71dp"
+            android:layout_marginTop="84dp"
+            android:background="@drawable/bg_radiobutton2"
+            android:button="@null"
+            android:gravity="center"
+            android:textSize="40sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/btnRespFalso"
+            android:layout_width="400dp"
+            android:layout_height="71dp"
+            android:layout_marginTop="84dp"
+            android:background="@drawable/bg_radiobutton1"
+            android:button="@null"
+            android:gravity="center"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/grp4Respuestas"
+            android:layout_width="25dp"
+            android:layout_height="76dp"
+            app:constraint_referenced_ids="btnResp1,btnResp2,btnResp3,btnResp4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/grp2Respuestas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:constraint_referenced_ids="btnRespFalso,btnRespVerdadero"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

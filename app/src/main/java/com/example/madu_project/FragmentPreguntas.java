@@ -3,6 +3,8 @@ package com.example.madu_project;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
@@ -16,9 +18,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -34,6 +38,9 @@ public class FragmentPreguntas extends Fragment {
     Genero genero;
     ProgressBar progressBar;
     Button btnSiguietePregunta;
+    androidx.constraintlayout.widget.Group grp2Respuestas;
+    androidx.constraintlayout.widget.Group grp4Respuestas;
+    androidx.constraintlayout.widget.ConstraintLayout clbotonesRrespuestas;
     RadioButton btnResp1;
     RadioButton btnResp2;
     RadioButton btnResp3;
@@ -49,7 +56,11 @@ public class FragmentPreguntas extends Fragment {
         view = inflater.inflate(R.layout.fragment_preguntas, container, false);
         activity = (MainActivity) getActivity();
         descPregunta = view.findViewById(R.id.lblDescPregunta);
+        clbotonesRrespuestas = view.findViewById(R.id.clbotonesRrespuestas);
         progressBar = view.findViewById(R.id.prbarDificultadTiempo);
+        grp2Respuestas = view.findViewById(R.id.grp2Respuestas);
+        grp4Respuestas = view.findViewById(R.id.grp4Respuestas);
+
         btnResp1 = view.findViewById(R.id.btnResp1);
         btnResp2 = view.findViewById(R.id.btnResp2);
         btnResp3 = view.findViewById(R.id.btnResp3);
@@ -66,6 +77,7 @@ public class FragmentPreguntas extends Fragment {
 
                 preguntas = genero.getPreguntas();
 
+
                 descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
                 progressBar.setScaleY(2f);
@@ -73,7 +85,7 @@ public class FragmentPreguntas extends Fragment {
 
                 Respuesta [] respuestas = preguntas[cont].getRespuestas();
 
-                llenarRespuestas(respuestas);
+                llenarRespuestas(respuestas,grp2Respuestas,grp4Respuestas);
 
                 if(progressBar.getProgress() == 1000){
                     btnSiguietePregunta.setEnabled(true);
@@ -90,11 +102,13 @@ public class FragmentPreguntas extends Fragment {
                 btnSiguietePregunta.setEnabled(false);
                 descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
+
+
                 progressAnimation(btnSiguietePregunta, progressBar, activity.duracion);
 
                 Respuesta [] respuestas = preguntas[cont].getRespuestas();
 
-                llenarRespuestas(respuestas);
+                llenarRespuestas(respuestas,grp2Respuestas,grp4Respuestas);
                 restablecerRadioButons(btnResp1,btnResp2,btnResp3,btnResp4);
 
 
@@ -134,14 +148,19 @@ public class FragmentPreguntas extends Fragment {
         progressBar.startAnimation(animation);
     }
 
-    private void llenarRespuestas(Respuesta[] resp)
+    private void llenarRespuestas(Respuesta[] resp, androidx.constraintlayout.widget.Group grpRes2, androidx.constraintlayout.widget.Group grpRes4)
     {
+
         if(resp.length == 4){
+            grpRes2.setVisibility(View.INVISIBLE);
+            grpRes4.setVisibility(View.VISIBLE);
             btnResp1.setText(resp[0].getRespuestaDescripcion());
             btnResp2.setText(resp[1].getRespuestaDescripcion());
             btnResp3.setText(resp[2].getRespuestaDescripcion());
             btnResp4.setText(resp[3].getRespuestaDescripcion());
         } else {
+            grpRes2.setVisibility(View.VISIBLE);
+            grpRes4.setVisibility(View.INVISIBLE);
             btnResp1.setText(resp[0].getRespuestaDescripcion());
             btnResp2.setText(resp[1].getRespuestaDescripcion());
         }
