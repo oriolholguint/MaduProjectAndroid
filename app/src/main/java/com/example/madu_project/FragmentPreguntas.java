@@ -1,5 +1,6 @@
 package com.example.madu_project;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,7 @@ public class FragmentPreguntas extends Fragment {
     View view;
     TextView descPregunta;
     Pregunta[] preguntas;
+    Respuesta [] respuestas;
     Genero genero;
     ProgressBar progressBar;
     Button btnSiguietePregunta;
@@ -45,6 +47,8 @@ public class FragmentPreguntas extends Fragment {
     RadioButton btnResp2;
     RadioButton btnResp3;
     RadioButton btnResp4;
+    RadioButton btnRespVerdadero;
+    RadioButton btnRespFalso;
     MainActivity activity;
     int cont = 0;
 
@@ -66,6 +70,9 @@ public class FragmentPreguntas extends Fragment {
         btnResp3 = view.findViewById(R.id.btnResp3);
         btnResp4 = view.findViewById(R.id.btnResp4);
 
+        btnRespVerdadero = view.findViewById(R.id.btnRespVerdadero);
+        btnRespFalso = view.findViewById(R.id.btnRespFalso);
+
 
         btnSiguietePregunta = view.findViewById(R.id.btnSiguietePregunta);
 
@@ -77,13 +84,12 @@ public class FragmentPreguntas extends Fragment {
 
                 preguntas = genero.getPreguntas();
 
-
                 descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
                 progressBar.setScaleY(2f);
                 progressAnimation(btnSiguietePregunta,progressBar, activity.duracion);
 
-                Respuesta [] respuestas = preguntas[cont].getRespuestas();
+                respuestas = preguntas[cont].getRespuestas();
 
                 llenarRespuestas(respuestas,grp2Respuestas,grp4Respuestas);
 
@@ -91,6 +97,79 @@ public class FragmentPreguntas extends Fragment {
                     btnSiguietePregunta.setEnabled(true);
                 }
 
+            }
+        });
+
+        btnResp1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                btnResp2.setChecked(false);
+                btnResp3.setChecked(false);
+                btnResp4.setChecked(false);
+                VerificarRespuesta(btnResp1.getText().toString(),btnResp1.isChecked());
+
+                //desactivarRadioButtons();
+
+            }
+        });
+
+        btnResp2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnResp1.setChecked(false);
+                btnResp3.setChecked(false);
+                btnResp4.setChecked(false);
+
+                VerificarRespuesta(btnResp2.getText().toString(),btnResp2.isChecked());
+
+                //desactivarRadioButtons();
+            }
+        });
+
+
+        btnResp3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnResp1.setChecked(false);
+                btnResp2.setChecked(false);
+                btnResp4.setChecked(false);
+
+                VerificarRespuesta(btnResp3.getText().toString(),btnResp3.isChecked());
+
+                //desactivarRadioButtons();
+            }
+        });
+
+        btnResp4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnResp1.setChecked(false);
+                btnResp2.setChecked(false);
+                btnResp3.setChecked(false);
+
+                VerificarRespuesta(btnResp4.getText().toString(),btnResp4.isChecked());
+
+                //desactivarRadioButtons();
+            }
+        });
+
+        btnRespVerdadero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnRespFalso.setChecked(false);
+
+                VerificarRespuesta(btnRespVerdadero.getText().toString(),btnRespVerdadero.isChecked());
+                //desactivarRadioButtons();
+            }
+        });
+
+        btnRespFalso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnRespVerdadero.setChecked(false);
+                VerificarRespuesta(btnRespFalso.getText().toString(),btnRespFalso.isChecked());
+                //desactivarRadioButtons();
             }
         });
 
@@ -106,10 +185,10 @@ public class FragmentPreguntas extends Fragment {
 
                 progressAnimation(btnSiguietePregunta, progressBar, activity.duracion);
 
-                Respuesta [] respuestas = preguntas[cont].getRespuestas();
+                respuestas = preguntas[cont].getRespuestas();
 
                 llenarRespuestas(respuestas,grp2Respuestas,grp4Respuestas);
-                restablecerRadioButons(btnResp1,btnResp2,btnResp3,btnResp4);
+                restablecerRadioButons();
 
 
                 if (cont ==  preguntas.length -1){
@@ -161,21 +240,65 @@ public class FragmentPreguntas extends Fragment {
         } else {
             grpRes2.setVisibility(View.VISIBLE);
             grpRes4.setVisibility(View.INVISIBLE);
-            btnResp1.setText(resp[0].getRespuestaDescripcion());
-            btnResp2.setText(resp[1].getRespuestaDescripcion());
+            btnRespVerdadero.setText(resp[0].getRespuestaDescripcion());
+            btnRespFalso.setText(resp[1].getRespuestaDescripcion());
         }
 
     }
 
 
-    private void restablecerRadioButons(RadioButton r1, RadioButton r2, RadioButton r3, RadioButton r4){
-        r1.setChecked(false);
-        r2.setChecked(false);
-        r3.setChecked(false);
-        r4.setChecked(false);
+    private void restablecerRadioButons(){
+        btnResp1.setChecked(false);
+        btnResp2.setChecked(false);
+        btnResp3.setChecked(false);
+        btnResp4.setChecked(false);
+        btnRespVerdadero.setChecked(false);
+        btnRespFalso.setChecked(false);
+    }
+
+    private void desactivarRadioButtons()
+    {
+        btnResp1.setEnabled(false);
+        btnResp2.setEnabled(false);
+        btnResp3.setEnabled(false);
+        btnResp4.setEnabled(false);
+        btnRespVerdadero.setEnabled(false);
+        btnRespFalso.setEnabled(false);
     }
 
 
+
+    private void VerificarRespuesta(String respuesta, Boolean esCorrecta)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        boolean correcto = false;
+        for(int i = 0; i < respuestas.length;i++)
+        {
+            if(respuesta.equals(respuestas[i].getRespuestaDescripcion()) && esCorrecta == respuestas[i].isEsCorrecta()){
+                correcto = true;
+            }
+        }
+
+        if(correcto){
+            builder.setMessage("correcto")
+                    .setTitle("correcto");
+
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+            
+
+        } else {
+            builder.setMessage("incorrecta")
+                    .setTitle("incorrecta");
+
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+    }
 
 
 
