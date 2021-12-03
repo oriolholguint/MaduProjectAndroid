@@ -1,6 +1,8 @@
 package com.example.madu_project;
 
 import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -49,6 +51,7 @@ public class FragmentPreguntas extends Fragment {
     RadioButton btnResp4;
     RadioButton btnRespVerdadero;
     RadioButton btnRespFalso;
+    Boolean correcta = false;
     MainActivity activity;
     int cont = 0;
 
@@ -69,6 +72,8 @@ public class FragmentPreguntas extends Fragment {
         btnResp2 = view.findViewById(R.id.btnResp2);
         btnResp3 = view.findViewById(R.id.btnResp3);
         btnResp4 = view.findViewById(R.id.btnResp4);
+
+
 
         btnRespVerdadero = view.findViewById(R.id.btnRespVerdadero);
         btnRespFalso = view.findViewById(R.id.btnRespFalso);
@@ -104,10 +109,15 @@ public class FragmentPreguntas extends Fragment {
             @Override
             public void onClick(View view) {
 
+
+
                 btnResp2.setChecked(false);
                 btnResp3.setChecked(false);
                 btnResp4.setChecked(false);
-                VerificarRespuesta(btnResp1.getText().toString(),btnResp1.isChecked());
+
+                correcta = VerificarRespuesta(btnResp1.getText().toString(),btnResp1.isChecked());
+
+                colorearRadiobutons(btnResp1);
 
                 //desactivarRadioButtons();
 
@@ -121,7 +131,9 @@ public class FragmentPreguntas extends Fragment {
                 btnResp3.setChecked(false);
                 btnResp4.setChecked(false);
 
-                VerificarRespuesta(btnResp2.getText().toString(),btnResp2.isChecked());
+                correcta = VerificarRespuesta(btnResp2.getText().toString(),btnResp2.isChecked());
+
+                colorearRadiobutons(btnResp2);
 
                 //desactivarRadioButtons();
             }
@@ -135,7 +147,9 @@ public class FragmentPreguntas extends Fragment {
                 btnResp2.setChecked(false);
                 btnResp4.setChecked(false);
 
-                VerificarRespuesta(btnResp3.getText().toString(),btnResp3.isChecked());
+                correcta = VerificarRespuesta(btnResp3.getText().toString(),btnResp3.isChecked());
+
+
 
                 //desactivarRadioButtons();
             }
@@ -148,7 +162,9 @@ public class FragmentPreguntas extends Fragment {
                 btnResp2.setChecked(false);
                 btnResp3.setChecked(false);
 
-                VerificarRespuesta(btnResp4.getText().toString(),btnResp4.isChecked());
+                correcta = VerificarRespuesta(btnResp4.getText().toString(),btnResp4.isChecked());
+
+
 
                 //desactivarRadioButtons();
             }
@@ -159,7 +175,7 @@ public class FragmentPreguntas extends Fragment {
             public void onClick(View view) {
                 btnRespFalso.setChecked(false);
 
-                VerificarRespuesta(btnRespVerdadero.getText().toString(),btnRespVerdadero.isChecked());
+                correcta = VerificarRespuesta(btnRespVerdadero.getText().toString(),btnRespVerdadero.isChecked());
                 //desactivarRadioButtons();
             }
         });
@@ -168,7 +184,7 @@ public class FragmentPreguntas extends Fragment {
             @Override
             public void onClick(View view) {
                 btnRespVerdadero.setChecked(false);
-                VerificarRespuesta(btnRespFalso.getText().toString(),btnRespFalso.isChecked());
+                correcta = VerificarRespuesta(btnRespFalso.getText().toString(),btnRespFalso.isChecked());
                 //desactivarRadioButtons();
             }
         });
@@ -268,11 +284,10 @@ public class FragmentPreguntas extends Fragment {
 
 
 
-    private void VerificarRespuesta(String respuesta, Boolean esCorrecta)
+    private Boolean VerificarRespuesta(String respuesta, Boolean esCorrecta)
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
         boolean correcto = false;
+
         for(int i = 0; i < respuestas.length;i++)
         {
             if(respuesta.equals(respuestas[i].getRespuestaDescripcion()) && esCorrecta == respuestas[i].isEsCorrecta()){
@@ -280,26 +295,22 @@ public class FragmentPreguntas extends Fragment {
             }
         }
 
-        if(correcto){
-            builder.setMessage("correcto")
-                    .setTitle("correcto");
-
-
-            AlertDialog dialog = builder.create();
-            dialog.show();
-
-            
-
-        } else {
-            builder.setMessage("incorrecta")
-                    .setTitle("incorrecta");
-
-
-            AlertDialog dialog = builder.create();
-            dialog.show();
-        }
+        return correcto;
     }
 
+
+    private void colorearRadiobutons(RadioButton respuesta)
+    {
+        for(int i = 0; i < respuestas.length;i++)
+        {
+            if(respuesta.getText().equals(respuestas[i].getRespuestaDescripcion()) && respuesta.isChecked() == respuestas[i].isEsCorrecta()){
+               respuesta.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+            }
+
+        }
+
+
+    }
 
 
 }
