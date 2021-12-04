@@ -2,12 +2,14 @@ package com.example.madu_project;
 
 import android.app.AlertDialog;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.constraintlayout.widget.Group;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
@@ -25,7 +27,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -53,7 +54,9 @@ public class FragmentPreguntas extends Fragment {
     RadioButton btnRespFalso;
     Boolean correcta = false;
     MainActivity activity;
-    int cont = 0;
+    TextView lbLPuntos;
+    private int cont = 0;
+    private int puntuacion = 0;
 
 
     @Override
@@ -62,11 +65,16 @@ public class FragmentPreguntas extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_preguntas, container, false);
         activity = (MainActivity) getActivity();
+
+        lbLPuntos = activity.findViewById(R.id.lbLPuntos);
+
         descPregunta = view.findViewById(R.id.lblDescPregunta);
         clbotonesRrespuestas = view.findViewById(R.id.clbotonesRrespuestas);
         progressBar = view.findViewById(R.id.prbarDificultadTiempo);
         grp2Respuestas = view.findViewById(R.id.grp2Respuestas);
         grp4Respuestas = view.findViewById(R.id.grp4Respuestas);
+        Group grpPuntuacion = activity.findViewById(R.id.grpPuntuacion);
+        grpPuntuacion.setVisibility(View.VISIBLE);
 
         btnResp1 = view.findViewById(R.id.btnResp1);
         btnResp2 = view.findViewById(R.id.btnResp2);
@@ -115,11 +123,9 @@ public class FragmentPreguntas extends Fragment {
                 btnResp3.setChecked(false);
                 btnResp4.setChecked(false);
 
-                correcta = VerificarRespuesta(btnResp1.getText().toString(),btnResp1.isChecked());
-
+                VerificarRespuesta(btnResp1.getText().toString(),btnResp1.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
-
-                //desactivarRadioButtons();
+                desactivarRadioButtons();
 
             }
         });
@@ -131,11 +137,9 @@ public class FragmentPreguntas extends Fragment {
                 btnResp3.setChecked(false);
                 btnResp4.setChecked(false);
 
-                correcta = VerificarRespuesta(btnResp2.getText().toString(),btnResp2.isChecked());
-
+                VerificarRespuesta(btnResp2.getText().toString(),btnResp2.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
-
-                //desactivarRadioButtons();
+                desactivarRadioButtons();
             }
         });
 
@@ -147,11 +151,10 @@ public class FragmentPreguntas extends Fragment {
                 btnResp2.setChecked(false);
                 btnResp4.setChecked(false);
 
-                correcta = VerificarRespuesta(btnResp3.getText().toString(),btnResp3.isChecked());
-
+                VerificarRespuesta(btnResp3.getText().toString(),btnResp3.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
 
-                //desactivarRadioButtons();
+                desactivarRadioButtons();
             }
         });
 
@@ -162,11 +165,9 @@ public class FragmentPreguntas extends Fragment {
                 btnResp2.setChecked(false);
                 btnResp3.setChecked(false);
 
-                correcta = VerificarRespuesta(btnResp4.getText().toString(),btnResp4.isChecked());
-
+                VerificarRespuesta(btnResp4.getText().toString(),btnResp4.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
-
-                //desactivarRadioButtons();
+                desactivarRadioButtons();
             }
         });
 
@@ -175,9 +176,9 @@ public class FragmentPreguntas extends Fragment {
             public void onClick(View view) {
                 btnRespFalso.setChecked(false);
 
-                correcta = VerificarRespuesta(btnRespVerdadero.getText().toString(),btnRespVerdadero.isChecked());
+                VerificarRespuesta(btnRespVerdadero.getText().toString(),btnRespVerdadero.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
-                //desactivarRadioButtons();
+                desactivarRadioButtons();
             }
         });
 
@@ -185,9 +186,9 @@ public class FragmentPreguntas extends Fragment {
             @Override
             public void onClick(View view) {
                 btnRespVerdadero.setChecked(false);
-                correcta = VerificarRespuesta(btnRespFalso.getText().toString(),btnRespFalso.isChecked());
+                VerificarRespuesta(btnRespFalso.getText().toString(),btnRespFalso.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
-                //desactivarRadioButtons();
+                desactivarRadioButtons();
             }
         });
 
@@ -272,6 +273,13 @@ public class FragmentPreguntas extends Fragment {
         btnRespVerdadero.setChecked(false);
         btnRespFalso.setChecked(false);
 
+        btnResp1.setEnabled(true);
+        btnResp2.setEnabled(true);
+        btnResp3.setEnabled(true);
+        btnResp4.setEnabled(true);
+        btnRespVerdadero.setEnabled(true);
+        btnRespFalso.setEnabled(true);
+
         btnResp1.setBackgroundResource(R.drawable.bg_radiobutton1);
         btnResp2.setBackgroundResource(R.drawable.bg_radiobutton2);
         btnResp3.setBackgroundResource(R.drawable.bg_radiobutton3);
@@ -292,7 +300,9 @@ public class FragmentPreguntas extends Fragment {
 
 
 
-    private Boolean VerificarRespuesta(String respuesta, Boolean esCorrecta)
+
+
+    private void VerificarRespuesta(String respuesta, Boolean esCorrecta)
     {
         boolean correcto = false;
 
@@ -305,9 +315,6 @@ public class FragmentPreguntas extends Fragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-
-
-
         if(correcto){
 
             builder.setMessage("correcto")
@@ -315,21 +322,20 @@ public class FragmentPreguntas extends Fragment {
 
             AlertDialog dialog = builder.create();
             dialog.show();
-        } else {
-            builder.setMessage("incorrecto")
-                    .setTitle(respuesta);
 
-            AlertDialog dialog = builder.create();
-            dialog.show();
+            puntuacion += 100;
+            lbLPuntos.setText(Integer.toString(puntuacion));
+
         }
 
-        return correcto;
+
     }
 
 
     private void VerRespuestasCorrectasIncorrectas(RadioButton r1, RadioButton r2, RadioButton r3, RadioButton r4, RadioButton rVer, RadioButton rFals)
     {
-        if(respuestas.length == 4){
+        if(respuestas.length == 4)
+        {
             if(r1.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
                 r1.setBackgroundResource(R.drawable.bg_respuesta_correcta);
             } else {
@@ -354,6 +360,7 @@ public class FragmentPreguntas extends Fragment {
                 r4.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
         } else {
+
             if(rVer.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
                 rVer.setBackgroundResource(R.drawable.bg_respuesta_correcta);
             } else {
@@ -365,9 +372,8 @@ public class FragmentPreguntas extends Fragment {
             } else {
                 rFals.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
+
         }
-
-
 
 
 

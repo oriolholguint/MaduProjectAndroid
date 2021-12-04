@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity
         settingsDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         settingsDialog.setContentView(R.layout.settings_dialog);
 
+        androidx.constraintlayout.widget.Group grpPuntuacion = findViewById(R.id.grpPuntuacion);
         androidx.constraintlayout.widget.Group grpMenu = settingsDialog.findViewById(R.id.grpMenu);
         androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
 
@@ -133,6 +134,7 @@ public class MainActivity extends AppCompatActivity
 
                     grpMenu.setVisibility(View.INVISIBLE);
                     grpDificultad.setVisibility(View.VISIBLE);
+                    grpPuntuacion.setVisibility(View.INVISIBLE);
                     settingsDialog.cancel();
                 }
             }
@@ -156,6 +158,7 @@ public class MainActivity extends AppCompatActivity
                     generos = null;
                     androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
                     grpDificultad.setVisibility(View.INVISIBLE);
+                    grpPuntuacion.setVisibility(View.INVISIBLE);
 
 
                 } else
@@ -179,6 +182,7 @@ public class MainActivity extends AppCompatActivity
 
 
                 settingsDialog.cancel();
+
 
             }
         });
