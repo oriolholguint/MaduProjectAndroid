@@ -117,7 +117,7 @@ public class FragmentPreguntas extends Fragment {
 
                 correcta = VerificarRespuesta(btnResp1.getText().toString(),btnResp1.isChecked());
 
-                colorearRadiobutons(btnResp1,btnResp2,btnResp3,btnResp4);
+                VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
 
                 //desactivarRadioButtons();
 
@@ -133,7 +133,7 @@ public class FragmentPreguntas extends Fragment {
 
                 correcta = VerificarRespuesta(btnResp2.getText().toString(),btnResp2.isChecked());
 
-                colorearRadiobutons(btnResp1,btnResp2,btnResp3,btnResp4);
+                VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
 
                 //desactivarRadioButtons();
             }
@@ -149,7 +149,7 @@ public class FragmentPreguntas extends Fragment {
 
                 correcta = VerificarRespuesta(btnResp3.getText().toString(),btnResp3.isChecked());
 
-                colorearRadiobutons(btnResp1,btnResp2,btnResp3,btnResp4);
+                VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
 
                 //desactivarRadioButtons();
             }
@@ -164,7 +164,7 @@ public class FragmentPreguntas extends Fragment {
 
                 correcta = VerificarRespuesta(btnResp4.getText().toString(),btnResp4.isChecked());
 
-                colorearRadiobutons(btnResp1,btnResp2,btnResp3,btnResp4);
+                VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
 
                 //desactivarRadioButtons();
             }
@@ -176,6 +176,7 @@ public class FragmentPreguntas extends Fragment {
                 btnRespFalso.setChecked(false);
 
                 correcta = VerificarRespuesta(btnRespVerdadero.getText().toString(),btnRespVerdadero.isChecked());
+                VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 //desactivarRadioButtons();
             }
         });
@@ -185,6 +186,7 @@ public class FragmentPreguntas extends Fragment {
             public void onClick(View view) {
                 btnRespVerdadero.setChecked(false);
                 correcta = VerificarRespuesta(btnRespFalso.getText().toString(),btnRespFalso.isChecked());
+                VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 //desactivarRadioButtons();
             }
         });
@@ -274,8 +276,8 @@ public class FragmentPreguntas extends Fragment {
         btnResp2.setBackgroundResource(R.drawable.bg_radiobutton2);
         btnResp3.setBackgroundResource(R.drawable.bg_radiobutton3);
         btnResp4.setBackgroundResource(R.drawable.bg_radiobutton4);
-        btnRespVerdadero.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-        btnRespFalso.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+        btnRespVerdadero.setBackgroundResource(R.drawable.bg_radiobutton2);
+        btnRespFalso.setBackgroundResource(R.drawable.bg_radiobutton1);
     }
 
     private void desactivarRadioButtons()
@@ -301,36 +303,71 @@ public class FragmentPreguntas extends Fragment {
             }
         }
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+
+
+
+        if(correcto){
+
+            builder.setMessage("correcto")
+                    .setTitle(respuesta);
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        } else {
+            builder.setMessage("incorrecto")
+                    .setTitle(respuesta);
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
         return correcto;
     }
 
 
-    private void colorearRadiobutons(RadioButton r1, RadioButton r2, RadioButton r3, RadioButton r4)
+    private void VerRespuestasCorrectasIncorrectas(RadioButton r1, RadioButton r2, RadioButton r3, RadioButton r4, RadioButton rVer, RadioButton rFals)
     {
+        if(respuestas.length == 4){
+            if(r1.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
+                r1.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+            } else {
+                r1.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+            }
 
-        if(r1.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
-           r1.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+            if(r2.getText().equals(respuestas[1].getRespuestaDescripcion()) && respuestas[1].isEsCorrecta()){
+                r2.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+            } else {
+                r2.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+            }
+
+            if(r3.getText().equals(respuestas[2].getRespuestaDescripcion()) && respuestas[2].isEsCorrecta()){
+                r3.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+            } else {
+                r3.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+            }
+
+            if(r4.getText().equals(respuestas[3].getRespuestaDescripcion()) && respuestas[3].isEsCorrecta()){
+                r4.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+            } else {
+                r4.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+            }
         } else {
-           r1.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+            if(rVer.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
+                rVer.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+            } else {
+                rVer.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+            }
+
+            if(rFals.getText().equals(respuestas[1].getRespuestaDescripcion()) && respuestas[1].isEsCorrecta()){
+                rFals.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+            } else {
+                rFals.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+            }
         }
 
-        if(r2.getText().equals(respuestas[1].getRespuestaDescripcion()) && respuestas[1].isEsCorrecta()){
-            r2.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-        } else {
-            r2.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
-        }
 
-        if(r3.getText().equals(respuestas[2].getRespuestaDescripcion()) && respuestas[2].isEsCorrecta()){
-            r3.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-        } else {
-            r3.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
-        }
-
-        if(r4.getText().equals(respuestas[3].getRespuestaDescripcion()) && respuestas[3].isEsCorrecta()){
-            r4.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-        } else {
-            r4.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
-        }
 
 
 
