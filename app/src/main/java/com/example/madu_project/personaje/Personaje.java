@@ -1,4 +1,4 @@
-package com.example.madu_project;
+package com.example.madu_project.personaje;
 
 public class Personaje
 {
