@@ -18,6 +18,7 @@ import android.widget.Button;
 
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.madu_project.idioma.FragmentIdioma;
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity
         ImageButton imgBtnConfiguracion = findViewById(R.id.imgBtnConfiguracion);
         androidx.constraintlayout.widget.Group grpDatosUsuario = findViewById(R.id.grpDatosUsuario);
 
+        TextView lbLPuntos = findViewById(R.id.lbLPuntos);
         androidx.fragment.app.FragmentManager mgr = getSupportFragmentManager();
         final androidx.fragment.app.FragmentTransaction fragmentTransaction = mgr.beginTransaction();
 
@@ -135,6 +137,8 @@ public class MainActivity extends AppCompatActivity
                     grpMenu.setVisibility(View.INVISIBLE);
                     grpDificultad.setVisibility(View.VISIBLE);
                     grpPuntuacion.setVisibility(View.INVISIBLE);
+                    lbLPuntos.setText("0");
+
                     settingsDialog.cancel();
                 }
             }
@@ -159,6 +163,7 @@ public class MainActivity extends AppCompatActivity
                     androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
                     grpDificultad.setVisibility(View.INVISIBLE);
                     grpPuntuacion.setVisibility(View.INVISIBLE);
+                    lbLPuntos.setText("0");
 
 
                 } else

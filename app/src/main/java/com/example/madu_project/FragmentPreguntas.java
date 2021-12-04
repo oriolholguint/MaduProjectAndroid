@@ -1,6 +1,7 @@
 package com.example.madu_project;
 
 import android.app.AlertDialog;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
@@ -17,10 +18,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
@@ -41,22 +44,24 @@ public class FragmentPreguntas extends Fragment {
     Pregunta[] preguntas;
     Respuesta [] respuestas;
     Genero genero;
+    ImageView imgPregunta;
     ProgressBar progressBar;
     Button btnSiguietePregunta;
     androidx.constraintlayout.widget.Group grp2Respuestas;
     androidx.constraintlayout.widget.Group grp4Respuestas;
     androidx.constraintlayout.widget.ConstraintLayout clbotonesRrespuestas;
+    androidx.constraintlayout.widget.ConstraintLayout.LayoutParams posicionConstraintBarraRespuestas;
     RadioButton btnResp1;
     RadioButton btnResp2;
     RadioButton btnResp3;
     RadioButton btnResp4;
     RadioButton btnRespVerdadero;
     RadioButton btnRespFalso;
-    Boolean correcta = false;
     MainActivity activity;
     TextView lbLPuntos;
     private int cont = 0;
     private int puntuacion = 0;
+    private int pixeles;
 
 
     @Override
@@ -69,7 +74,12 @@ public class FragmentPreguntas extends Fragment {
         lbLPuntos = activity.findViewById(R.id.lbLPuntos);
 
         descPregunta = view.findViewById(R.id.lblDescPregunta);
+        imgPregunta = view.findViewById(R.id.imgPregunta);
+
+
+
         clbotonesRrespuestas = view.findViewById(R.id.clbotonesRrespuestas);
+        posicionConstraintBarraRespuestas = (ConstraintLayout.LayoutParams) clbotonesRrespuestas.getLayoutParams();
         progressBar = view.findViewById(R.id.prbarDificultadTiempo);
         grp2Respuestas = view.findViewById(R.id.grp2Respuestas);
         grp4Respuestas = view.findViewById(R.id.grp4Respuestas);
@@ -87,7 +97,8 @@ public class FragmentPreguntas extends Fragment {
         btnRespFalso = view.findViewById(R.id.btnRespFalso);
 
 
-        btnSiguietePregunta = view.findViewById(R.id.btnSiguietePregunta);
+        btnSiguietePregunta = (Button) view.findViewById(R.id.btnSiguietePregunta);
+        pixeles = convertirDpPixeles();
 
         getParentFragmentManager().setFragmentResultListener("genero", this, new FragmentResultListener() {
             @Override
@@ -98,6 +109,8 @@ public class FragmentPreguntas extends Fragment {
                 preguntas = genero.getPreguntas();
 
                 descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
+
+                MoverConstraintLayoutBarraRespuestas(preguntas[cont].getImagen());
 
                 progressBar.setScaleY(2f);
                 progressAnimation(btnSiguietePregunta,progressBar, activity.duracion);
@@ -200,7 +213,7 @@ public class FragmentPreguntas extends Fragment {
                 btnSiguietePregunta.setEnabled(false);
                 descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
-
+                MoverConstraintLayoutBarraRespuestas(preguntas[cont].getImagen());
                 progressAnimation(btnSiguietePregunta, progressBar, activity.duracion);
 
                 respuestas = preguntas[cont].getRespuestas();
@@ -372,12 +385,36 @@ public class FragmentPreguntas extends Fragment {
             } else {
                 rFals.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
-
         }
+    }
 
 
+    public int convertirDpPixeles(){
+        int pixeles;
+        float dip = 172f;
+        Resources r = getResources();
+        float px = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                dip,
+                r.getDisplayMetrics()
+        );
 
+        pixeles = (int)px;
 
+        return pixeles;
+    }
+
+    public void MoverConstraintLayoutBarraRespuestas(String imagen){
+
+        if(!imagen.equals("")){
+            imgPregunta.setVisibility(View.VISIBLE);
+            posicionConstraintBarraRespuestas.setMargins(posicionConstraintBarraRespuestas.leftMargin,450,posicionConstraintBarraRespuestas.rightMargin,posicionConstraintBarraRespuestas.bottomMargin);
+            clbotonesRrespuestas.setLayoutParams(posicionConstraintBarraRespuestas);
+        } else {
+            imgPregunta.setVisibility(View.INVISIBLE);
+            posicionConstraintBarraRespuestas.setMargins(posicionConstraintBarraRespuestas.leftMargin,pixeles,posicionConstraintBarraRespuestas.rightMargin,posicionConstraintBarraRespuestas.bottomMargin);
+            clbotonesRrespuestas.setLayoutParams(posicionConstraintBarraRespuestas);
+        }
     }
 
 
