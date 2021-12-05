@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity
     public Dialog settingsDialog;
     public int duracion;
     private ArrayAdapter mAdapter;
+    public Partida partida;
+    public Jugador jugador;
 
 
     @Override
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         duracion = 30;
+        partida = null;
+        jugador = new Jugador("jugador1",true,3);
         ImageButton imgBtnConfiguracion = findViewById(R.id.imgBtnConfiguracion);
         androidx.constraintlayout.widget.Group grpDatosUsuario = findViewById(R.id.grpDatosUsuario);
 

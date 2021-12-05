@@ -31,6 +31,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
@@ -59,9 +61,13 @@ public class FragmentPreguntas extends Fragment {
     RadioButton btnRespFalso;
     MainActivity activity;
     TextView lbLPuntos;
+    TextView lblItem;
     private int cont = 0;
     private int puntuacion = 0;
     private int pixeles;
+    private boolean ultimaPregunta = false;
+    Date currentTime = null;
+    String dificultad = null;
 
 
     @Override
@@ -98,6 +104,8 @@ public class FragmentPreguntas extends Fragment {
 
 
         btnSiguietePregunta = (Button) view.findViewById(R.id.btnSiguietePregunta);
+        lblItem = view.findViewById(R.id.lblItem);
+
         pixeles = convertirDpPixeles();
 
         getParentFragmentManager().setFragmentResultListener("genero", this, new FragmentResultListener() {
@@ -107,11 +115,9 @@ public class FragmentPreguntas extends Fragment {
                 descPregunta.setText(genero.getNombre());
 
                 preguntas = genero.getPreguntas();
-
                 descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
                 MoverConstraintLayoutBarraRespuestas(preguntas[cont].getImagen());
-
                 progressBar.setScaleY(2f);
                 progressAnimation(btnSiguietePregunta,progressBar, activity.duracion);
 
@@ -129,13 +135,10 @@ public class FragmentPreguntas extends Fragment {
         btnResp1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
                 btnResp2.setChecked(false);
                 btnResp3.setChecked(false);
                 btnResp4.setChecked(false);
-
+                Verificarultimapregunta();
                 VerificarRespuesta(btnResp1.getText().toString(),btnResp1.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
@@ -149,7 +152,7 @@ public class FragmentPreguntas extends Fragment {
                 btnResp1.setChecked(false);
                 btnResp3.setChecked(false);
                 btnResp4.setChecked(false);
-
+                Verificarultimapregunta();
                 VerificarRespuesta(btnResp2.getText().toString(),btnResp2.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
@@ -163,10 +166,9 @@ public class FragmentPreguntas extends Fragment {
                 btnResp1.setChecked(false);
                 btnResp2.setChecked(false);
                 btnResp4.setChecked(false);
-
+                Verificarultimapregunta();
                 VerificarRespuesta(btnResp3.getText().toString(),btnResp3.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
-
                 desactivarRadioButtons();
             }
         });
@@ -177,7 +179,7 @@ public class FragmentPreguntas extends Fragment {
                 btnResp1.setChecked(false);
                 btnResp2.setChecked(false);
                 btnResp3.setChecked(false);
-
+                Verificarultimapregunta();
                 VerificarRespuesta(btnResp4.getText().toString(),btnResp4.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
@@ -188,7 +190,7 @@ public class FragmentPreguntas extends Fragment {
             @Override
             public void onClick(View view) {
                 btnRespFalso.setChecked(false);
-
+                Verificarultimapregunta();
                 VerificarRespuesta(btnRespVerdadero.getText().toString(),btnRespVerdadero.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
@@ -199,9 +201,10 @@ public class FragmentPreguntas extends Fragment {
             @Override
             public void onClick(View view) {
                 btnRespVerdadero.setChecked(false);
+                Verificarultimapregunta();
                 VerificarRespuesta(btnRespFalso.getText().toString(),btnRespFalso.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
-                desactivarRadioButtons();
+
             }
         });
 
@@ -209,38 +212,20 @@ public class FragmentPreguntas extends Fragment {
         btnSiguietePregunta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cont++;
-                btnSiguietePregunta.setEnabled(false);
-                descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
-                MoverConstraintLayoutBarraRespuestas(preguntas[cont].getImagen());
-                progressAnimation(btnSiguietePregunta, progressBar, activity.duracion);
+                if (ultimaPregunta) {
+                    IrAfragmentPersonaje();
+                } else {
+                    cont++;
+                    btnSiguietePregunta.setEnabled(false);
+                    descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
-                respuestas = preguntas[cont].getRespuestas();
-
-                llenarRespuestas(respuestas,grp2Respuestas,grp4Respuestas);
-                restablecerRadioButons();
-
-
-                if (cont ==  preguntas.length -1){
-                    /*
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("genero",genero);
-                    getParentFragmentManager().setFragmentResult("genero",bundle);
-
-                    FragmentManager mg = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = mg.beginTransaction();
-
-                    FragmentPersonaje fragmentPersonaje = new FragmentPersonaje();
-                    fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentPersonaje);
-                    fragmentTransaction.commit();
-
-                     */
+                    MoverConstraintLayoutBarraRespuestas(preguntas[cont].getImagen());
+                    progressAnimation(btnSiguietePregunta, progressBar, activity.duracion);
+                    respuestas = preguntas[cont].getRespuestas();
+                    llenarRespuestas(respuestas,grp2Respuestas,grp4Respuestas);
+                    restablecerRadioButons();
                 }
-
-
-
-
 
             }
         });
@@ -416,6 +401,50 @@ public class FragmentPreguntas extends Fragment {
             clbotonesRrespuestas.setLayoutParams(posicionConstraintBarraRespuestas);
         }
     }
+
+
+    public void Verificarultimapregunta(){
+        if (cont ==  preguntas.length -1){
+            ultimaPregunta = true;
+        }
+    }
+
+    public void IrAfragmentPersonaje()
+    {
+        if(activity.duracion == 30){
+            dificultad = "Facil";
+        } else if (activity.duracion == 25){
+            dificultad = "Medio";
+        } else if (activity.duracion == 20){
+            dificultad = "Dificil";
+        }
+
+        currentTime = Calendar.getInstance().getTime();
+
+        activity.partida = new Partida(puntuacion,dificultad,currentTime, activity.jugador);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setMessage("Puntos: " +puntuacion + ", Dificultad: " + dificultad + ", Fecha: " + currentTime.toString() + "Jugador: " + activity.jugador.getNombre())
+                .setTitle("PARTIDA");
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        /*
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("genero",genero);
+        getParentFragmentManager().setFragmentResult("genero",bundle);
+
+        FragmentManager mg = getFragmentManager();
+        FragmentTransaction fragmentTransaction = mg.beginTransaction();
+
+        FragmentPersonaje fragmentPersonaje = new FragmentPersonaje();
+        fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentPersonaje);
+        fragmentTransaction.commit();*/
+    }
+
 
 
 }
