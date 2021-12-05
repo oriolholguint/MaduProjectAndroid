@@ -311,19 +311,9 @@ public class FragmentPreguntas extends Fragment {
             }
         }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
         if(correcto){
-
-            builder.setMessage("correcto")
-                    .setTitle(respuesta);
-
-            AlertDialog dialog = builder.create();
-            dialog.show();
-
             puntuacion += 100;
             lbLPuntos.setText(Integer.toString(puntuacion));
-
         }
 
 
@@ -336,24 +326,28 @@ public class FragmentPreguntas extends Fragment {
         {
             if(r1.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
                 r1.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+                r1.setTextColor(Color.BLACK);
             } else {
                 r1.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(r2.getText().equals(respuestas[1].getRespuestaDescripcion()) && respuestas[1].isEsCorrecta()){
                 r2.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+                r2.setTextColor(Color.BLACK);
             } else {
                 r2.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(r3.getText().equals(respuestas[2].getRespuestaDescripcion()) && respuestas[2].isEsCorrecta()){
                 r3.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+                r3.setTextColor(Color.BLACK);
             } else {
                 r3.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(r4.getText().equals(respuestas[3].getRespuestaDescripcion()) && respuestas[3].isEsCorrecta()){
                 r4.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+                r4.setTextColor(Color.BLACK);
             } else {
                 r4.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
@@ -361,12 +355,14 @@ public class FragmentPreguntas extends Fragment {
 
             if(rVer.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
                 rVer.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+                rVer.setTextColor(Color.BLACK);
             } else {
                 rVer.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(rFals.getText().equals(respuestas[1].getRespuestaDescripcion()) && respuestas[1].isEsCorrecta()){
                 rFals.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+                rFals.setTextColor(Color.BLACK);
             } else {
                 rFals.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
@@ -423,16 +419,6 @@ public class FragmentPreguntas extends Fragment {
 
         activity.partida = new Partida(puntuacion,dificultad,currentTime, activity.jugador);
 
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-        builder.setMessage("Puntos: " +puntuacion + ", Dificultad: " + dificultad + ", Fecha: " + currentTime.toString() + "Jugador: " + activity.jugador.getNombre())
-                .setTitle("PARTIDA");
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-        /*
         Bundle bundle = new Bundle();
         bundle.putSerializable("genero",genero);
         getParentFragmentManager().setFragmentResult("genero",bundle);
@@ -442,7 +428,7 @@ public class FragmentPreguntas extends Fragment {
 
         FragmentPersonaje fragmentPersonaje = new FragmentPersonaje();
         fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentPersonaje);
-        fragmentTransaction.commit();*/
+        fragmentTransaction.commit();
     }
 
 

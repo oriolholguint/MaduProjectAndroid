@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity
 
                     fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales,fragmentMenu);
                     fragmentTransaction2.commit();
-
+                    partida = null;
                     grpMenu.setVisibility(View.INVISIBLE);
                     grpDificultad.setVisibility(View.VISIBLE);
                     grpPuntuacion.setVisibility(View.INVISIBLE);
@@ -164,6 +164,8 @@ public class MainActivity extends AppCompatActivity
                     status = "Principal";
                     layout = "Idioma";
                     generos = null;
+                    partida = null;
+                    jugador = null;
                     androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
                     grpDificultad.setVisibility(View.INVISIBLE);
                     grpPuntuacion.setVisibility(View.INVISIBLE);
