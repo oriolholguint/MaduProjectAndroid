@@ -115,6 +115,7 @@ public class FragmentPreguntas extends Fragment {
                 descPregunta.setText(genero.getNombre());
 
                 preguntas = genero.getPreguntas();
+                //preguntas = (Pregunta[]) activity.getPreguntasPartida(genero.getPreguntas(),1,activity.jugador).toArray();
                 descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
                 MoverConstraintLayoutBarraRespuestas(preguntas[cont].getImagen());

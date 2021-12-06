@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity
 
                     settingsDialog.cancel();
                 }
+
             }
         });
 

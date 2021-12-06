@@ -1,9 +1,12 @@
 package com.example.madu_project;
 
-import android.app.Activity;
+
 import android.app.AlertDialog;
+import android.app.Dialog;
+
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -15,14 +18,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.madu_project.introduccion.FragmentTutorial;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class FragmentMenu extends Fragment {
@@ -30,9 +31,9 @@ public class FragmentMenu extends Fragment {
    View view;
    MainActivity activity;
    Genero [] generos;
-   Pregunta[] preguntas;
    RecyclerView listGeneros;
-
+   FrameLayout frLinformacion;
+   ConstraintLayout frmMenu;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,13 +44,18 @@ public class FragmentMenu extends Fragment {
         activity = (MainActivity) getActivity();
 
         generos = activity.generos;
+        frLinformacion = view.findViewById(R.id.frLinformacion);
+        frmMenu = (ConstraintLayout)view.findViewById(R.id.frmMenu);
+
+        FragmentTutorial fragmentTutorial = new FragmentTutorial();
+        getFragmentManager().beginTransaction().add(R.id.frLinformacion,fragmentTutorial).commit();
+
 
         listGeneros = view.findViewById(R.id.ListGeneros);
         GeneroAdapter generoAdapter = new GeneroAdapter(generos);
 
         listGeneros.setHasFixedSize(true);
         listGeneros.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
-
 
         listGeneros.setAdapter(generoAdapter);
 
@@ -59,6 +65,24 @@ public class FragmentMenu extends Fragment {
         listGeneros.addItemDecoration(dividerItemDecoration);
 
         ImageButton imgBtnRanking = view.findViewById(R.id.imgBtnRanking);
+        ImageButton imgBtnInformacion = view.findViewById(R.id.imgBtnInformacion);
+
+
+        frmMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                builder.setMessage("mens")
+                        .setTitle("mens");
+
+                AlertDialog dialog = builder.create();
+                dialog.show();*/
+
+                frLinformacion.setVisibility(View.INVISIBLE);
+            }
+        });
 
         imgBtnRanking.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -78,6 +102,15 @@ public class FragmentMenu extends Fragment {
 
             }
 
+        });
+
+
+        imgBtnInformacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                frLinformacion.setVisibility(View.VISIBLE);
+            }
         });
 
 
@@ -107,6 +140,9 @@ public class FragmentMenu extends Fragment {
 
 
 
+
+
         return view;
     }
+
 }
