@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity
     private ArrayAdapter mAdapter;
     public Partida partida;
     public Jugador jugador;
+    public Genero generoSelect;
 
 
     @Override

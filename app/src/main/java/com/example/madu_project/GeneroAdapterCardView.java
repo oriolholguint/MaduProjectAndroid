@@ -2,6 +2,8 @@ package com.example.madu_project;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +11,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 
 public class GeneroAdapterCardView extends PagerAdapter {
 
     private Context context;
     private Genero [] generos;
+    private MainActivity activity;
+    private Fragment fragment;
+
 
     public GeneroAdapterCardView(Context context, Genero[] generos) {
         this.context = context;
         this.generos = generos;
     }
+
 
     @Override
     public int getCount() {
@@ -49,16 +60,23 @@ public class GeneroAdapterCardView extends PagerAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 1. Instantiate an <code><a href="/reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code> with its constructor
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-// 2. Chain together various setter methods to set the dialog characteristics
-                builder.setMessage("mensaje")
-                        .setTitle(nombre);
 
-// 3. Get the <code><a href="/reference/android/app/AlertDialog.html">AlertDialog</a></code> from <code><a href="/reference/android/app/AlertDialog.Builder.html#create()">create()</a></code>
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("genero",genero);
+                fragment.getParentFragmentManager().setFragmentResult("genero",bundle);
+
+                FragmentManager mg = fragment.getFragmentManager();
+                FragmentTransaction fragmentTransaction = mg.beginTransaction();
+
+                FragmentPreguntas fragmentPreguntas = new FragmentPreguntas();
+                FragmentBotones fragmentBotones = new FragmentBotones();
+                fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentBotones);
+                fragmentTransaction.commit();
+
+
+
+
             }
         });
 

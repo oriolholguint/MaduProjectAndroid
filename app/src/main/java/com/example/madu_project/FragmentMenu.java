@@ -4,6 +4,7 @@ package com.example.madu_project;
 import android.app.AlertDialog;
 import android.app.Dialog;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +52,7 @@ public class FragmentMenu extends Fragment {
         frLinformacion = view.findViewById(R.id.frLinformacion);
         frmMenu = view.findViewById(R.id.frmMenu);
         vpGeneros = view.findViewById(R.id.vpGeneros);
-        //loadCards();
+
         FragmentTutorial fragmentTutorial = new FragmentTutorial();
         getFragmentManager().beginTransaction().add(R.id.frLinformacion,fragmentTutorial).commit();
 
@@ -58,12 +60,8 @@ public class FragmentMenu extends Fragment {
         listGeneros = view.findViewById(R.id.ListGeneros);
         GeneroAdapter generoAdapter = new GeneroAdapter(generos);
 
-
-        GeneroAdapterCardView generoAdapterCardView = new GeneroAdapterCardView(getContext(),generos);
-        vpGeneros.setAdapter(generoAdapterCardView);
-        vpGeneros.setPadding(50,0,50,0);
-        vpGeneros.setPageMargin(500);
-
+        //GeneroAdapterCardView generoAdapterCardView = new GeneroAdapterCardView(getContext(),generos);
+        //vpGeneros.setAdapter(generoAdapterCardView);
 
 
         listGeneros.setHasFixedSize(true);
@@ -74,12 +72,17 @@ public class FragmentMenu extends Fragment {
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
 
+        //RecyclerView.ItemDecoration dividerItemDecorator = new DividerItemDecorator(getActivity());
+        //listGeneros.addItemDecoration(dividerItemDecorator);
+
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
         listGeneros.addItemDecoration(dividerItemDecoration);
 
 
+
         ImageButton imgBtnRanking = view.findViewById(R.id.imgBtnRanking);
         ImageButton imgBtnInformacion = view.findViewById(R.id.imgBtnInformacion);
+
 
 
         vpGeneros.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -100,20 +103,9 @@ public class FragmentMenu extends Fragment {
         });
 
 
-
-
-
         frmMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-                builder.setMessage("mens")
-                        .setTitle("mens");
-
-                AlertDialog dialog = builder.create();
-                dialog.show();*/
 
                 frLinformacion.setVisibility(View.INVISIBLE);
             }
@@ -174,11 +166,10 @@ public class FragmentMenu extends Fragment {
         });
 
 
-
-
-
         return view;
     }
+
+
 
 
 }

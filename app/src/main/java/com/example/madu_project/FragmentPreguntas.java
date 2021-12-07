@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
@@ -51,6 +52,7 @@ public class FragmentPreguntas extends Fragment {
     Button btnSiguietePregunta;
     androidx.constraintlayout.widget.Group grp2Respuestas;
     androidx.constraintlayout.widget.Group grp4Respuestas;
+    androidx.constraintlayout.widget.ConstraintLayout clFondoPreguntaGenero;
     androidx.constraintlayout.widget.ConstraintLayout clbotonesRrespuestas;
     androidx.constraintlayout.widget.ConstraintLayout.LayoutParams posicionConstraintBarraRespuestas;
     RadioButton btnResp1;
@@ -68,6 +70,7 @@ public class FragmentPreguntas extends Fragment {
     private boolean ultimaPregunta = false;
     Date currentTime = null;
     String dificultad = null;
+    BitmapDrawable fondoGeneroUrl;
 
 
     @Override
@@ -82,8 +85,7 @@ public class FragmentPreguntas extends Fragment {
         descPregunta = view.findViewById(R.id.lblDescPregunta);
         imgPregunta = view.findViewById(R.id.imgPregunta);
 
-
-
+        clFondoPreguntaGenero = view.findViewById(R.id.clFondoPreguntaGenero);
         clbotonesRrespuestas = view.findViewById(R.id.clbotonesRrespuestas);
         posicionConstraintBarraRespuestas = (ConstraintLayout.LayoutParams) clbotonesRrespuestas.getLayoutParams();
         progressBar = view.findViewById(R.id.prbarDificultadTiempo);
@@ -116,6 +118,10 @@ public class FragmentPreguntas extends Fragment {
 
                 preguntas = genero.getPreguntas();
                 //preguntas = (Pregunta[]) activity.getPreguntasPartida(genero.getPreguntas(),1,activity.jugador).toArray();
+
+                fondoGeneroUrl = new BitmapDrawable(genero.getImagenFondo());
+                clFondoPreguntaGenero.setBackground(fondoGeneroUrl);
+
                 descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
                 MoverConstraintLayoutBarraRespuestas(preguntas[cont].getImagen());

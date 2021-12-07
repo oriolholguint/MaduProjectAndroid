@@ -1,6 +1,9 @@
 package com.example.madu_project;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -25,15 +29,20 @@ public class GeneroAdapter extends RecyclerView.Adapter<GeneroAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
-        TextView lblNombreGenero;
+        TextView lblNombreGeneroPag;
+        ConstraintLayout clImgFondoGenero;
 
         public ViewHolder(@NonNull View item) {
             super(item);
-            lblNombreGenero = item.findViewById(R.id.lblNombreGenero);
+            lblNombreGeneroPag = item.findViewById(R.id.lblNombreGeneroPag);
+            clImgFondoGenero = item.findViewById(R.id.clImgFondoGenero);
         }
 
         void bindGenero(Genero genero){
-            lblNombreGenero.setText(genero.getNombre());
+
+            lblNombreGeneroPag.setText(genero.getNombre());
+            BitmapDrawable fondoGeneroUrl = new BitmapDrawable(genero.getImagenFondo());
+            clImgFondoGenero.setBackground(fondoGeneroUrl);
         }
 
     }
@@ -43,7 +52,7 @@ public class GeneroAdapter extends RecyclerView.Adapter<GeneroAdapter.ViewHolder
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View item = LayoutInflater.from(parent.getContext()).
-                inflate(R.layout.genero_item,parent,false);
+                inflate(R.layout.genero_page_item,parent,false);
 
         item.setOnClickListener(this);
 
