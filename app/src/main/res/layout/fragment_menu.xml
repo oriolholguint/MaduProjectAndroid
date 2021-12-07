@@ -34,14 +34,15 @@
 
     </androidx.viewpager.widget.ViewPager>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clBotonesMenu"
-        android:layout_width="1391dp"
-        android:layout_height="333dp"
+        android:layout_width="match_parent"
+        android:layout_height="326dp"
         android:layout_marginTop="420dp"
         android:background="@drawable/concierto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -67,7 +68,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ListGeneros"
 
@@ -87,7 +87,7 @@
         android:layout_width="988dp"
         android:layout_height="484dp"
         android:layout_marginStart="156dp"
-        android:background="@drawable/border_style"
+        android:background="@drawable/border_style2"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
