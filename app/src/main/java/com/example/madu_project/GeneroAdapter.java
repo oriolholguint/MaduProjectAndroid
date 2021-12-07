@@ -25,15 +25,15 @@ public class GeneroAdapter extends RecyclerView.Adapter<GeneroAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
-        TextView txtNombreGenero;
+        TextView lblNombreGenero;
 
         public ViewHolder(@NonNull View item) {
             super(item);
-            txtNombreGenero = item.findViewById(R.id.txtNombreGenero);
+            lblNombreGenero = item.findViewById(R.id.lblNombreGenero);
         }
 
         void bindGenero(Genero genero){
-            txtNombreGenero.setText(genero.getNombre());
+            lblNombreGenero.setText(genero.getNombre());
         }
 
     }

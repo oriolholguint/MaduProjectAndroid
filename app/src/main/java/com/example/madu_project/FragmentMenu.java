@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,8 @@ public class FragmentMenu extends Fragment {
    RecyclerView listGeneros;
    FrameLayout frLinformacion;
    ConstraintLayout frmMenu;
+   ViewPager vpGeneros;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,8 +48,9 @@ public class FragmentMenu extends Fragment {
 
         generos = activity.generos;
         frLinformacion = view.findViewById(R.id.frLinformacion);
-        frmMenu = (ConstraintLayout)view.findViewById(R.id.frmMenu);
-
+        frmMenu = view.findViewById(R.id.frmMenu);
+        vpGeneros = view.findViewById(R.id.vpGeneros);
+        //loadCards();
         FragmentTutorial fragmentTutorial = new FragmentTutorial();
         getFragmentManager().beginTransaction().add(R.id.frLinformacion,fragmentTutorial).commit();
 
@@ -54,18 +58,49 @@ public class FragmentMenu extends Fragment {
         listGeneros = view.findViewById(R.id.ListGeneros);
         GeneroAdapter generoAdapter = new GeneroAdapter(generos);
 
+
+        GeneroAdapterCardView generoAdapterCardView = new GeneroAdapterCardView(getContext(),generos);
+        vpGeneros.setAdapter(generoAdapterCardView);
+        vpGeneros.setPadding(50,0,50,0);
+        vpGeneros.setPageMargin(500);
+
+
+
         listGeneros.setHasFixedSize(true);
         listGeneros.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
 
         listGeneros.setAdapter(generoAdapter);
+
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
 
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
         listGeneros.addItemDecoration(dividerItemDecoration);
 
+
         ImageButton imgBtnRanking = view.findViewById(R.id.imgBtnRanking);
         ImageButton imgBtnInformacion = view.findViewById(R.id.imgBtnInformacion);
+
+
+        vpGeneros.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
+
 
 
         frmMenu.setOnClickListener(new View.OnClickListener() {
@@ -144,5 +179,6 @@ public class FragmentMenu extends Fragment {
 
         return view;
     }
+
 
 }

@@ -8,6 +8,7 @@
     android:layout_height="match_parent">
 
 
+
     <TextView
         android:id="@+id/lblMenu"
         android:layout_width="wrap_content"
@@ -18,6 +19,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpGeneros"
+        android:layout_width="match_parent"
+        android:layout_height="325dp"
+        android:layout_marginTop="88dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.viewpager.widget.ViewPager>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clBotonesMenu"
@@ -55,6 +69,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ListGeneros"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="325dp"
         android:layout_marginTop="88dp"
