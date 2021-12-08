@@ -23,8 +23,9 @@ import java.util.ArrayList;
 public class FragmentRanking extends Fragment {
 
     View view;
-    //MainActivity ma;
+    MainActivity ma;
     Genero[] generos;
+    Genero[] generoAux;
 
     //public static void sort(ArrayList<Partida> list)
     //{
@@ -44,7 +45,10 @@ public class FragmentRanking extends Fragment {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 generos = (Genero[]) result.getSerializable("generos");
+                //ma = getActivity(MainActivity);
 
+                ma = (MainActivity)getActivity();
+                generoAux = ma.generosAux;
                 //Inicializar variables, Arrays, GridViews,... y metodos
                 RecyclerView RankingList = view.findViewById(R.id.RankingList);
 
@@ -53,13 +57,14 @@ public class FragmentRanking extends Fragment {
                 for ( Genero g : generos) {
                     rankings[cont++] = new Ranking(g.getNombre(),g.getPartidas());
                 }
+                cont = 0;
+                for ( Genero g : generoAux) {
+                    rankings[cont++] = new Ranking(g.getNombre(),g.getPartidas());
+                }
 
                 RankingAdapter adapter = new RankingAdapter(rankings);
                 RankingList.setHasFixedSize(true);
                 RankingList.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
-                //generos = ma.generos;
-                //generos;
-                //for ()
                 RankingList.setAdapter(adapter);
 
                 DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
