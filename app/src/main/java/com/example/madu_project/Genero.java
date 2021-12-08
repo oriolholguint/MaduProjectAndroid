@@ -1,8 +1,8 @@
 package com.example.madu_project;
 
+import com.example.madu_project.personaje.Personaje;
+
 import java.io.Serializable;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Genero implements Serializable
