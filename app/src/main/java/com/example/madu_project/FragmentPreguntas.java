@@ -18,6 +18,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.madu_project.personaje.FragmentPersonaje;
+
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -106,7 +108,16 @@ public class FragmentPreguntas extends Fragment {
 
 
                 if (cont ==  preguntas.length -1){
-                    btnSiguietePregunta.setEnabled(false);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("genero",genero);
+                    getParentFragmentManager().setFragmentResult("genero",bundle);
+
+                    FragmentManager mg = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = mg.beginTransaction();
+
+                    FragmentPersonaje fragmentPersonaje = new FragmentPersonaje();
+                    fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentPersonaje);
+                    fragmentTransaction.commit();
                 }
 
 

@@ -39,7 +39,7 @@ public class FragmentIdioma extends Fragment
 
     MainActivity activity;
     String path = "/data/data/com.example.madu_project/files/";
-    Idioma[] idiomas = GestorArchivos.getIdiomas("/data/data/com.example.madu_project/files/idiomas.json");
+    Idioma[] idiomas = getIdiomas();
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -106,5 +106,13 @@ public class FragmentIdioma extends Fragment
         config.locale = locale;
         getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
     }
-    
+
+    public static Idioma[] getIdiomas()
+    {
+        Idioma[] idiomas = {
+                new Idioma("es", "espana_flag.png", "GenerosEsp.json"),
+                new Idioma("en", "reino_unido_flag.png", "GenerosEng.json")};
+
+        return idiomas;
+    }
 }

@@ -46,19 +46,7 @@ public class GestorArchivos
         return generos;
     }
 
-    /**
-     * Obtiene los idiomas de un fichero JSON
-     * @param filePath ruta donde se encuentra el fichero JSON
-     * @return array de idiomas
-     */
-    public static Idioma[] getIdiomas(String filePath)
-    {
-        Idioma[] idiomas = {
-                new Idioma("es", "espana_flag.png", "GenerosEsp.json"),
-                new Idioma("en", "reino_unido_flag.png", "GenerosEng.json")};
 
-        return idiomas;
-    }
 
     /**
      * Se escribe un fichero JSON

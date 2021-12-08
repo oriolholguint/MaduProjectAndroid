@@ -9,10 +9,13 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+
+
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
@@ -21,13 +24,12 @@ import com.example.madu_project.idioma.FragmentIdioma;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity
-{
+public class MainActivity extends AppCompatActivity {
 
     public String layout = "Idioma";
     public String status = "Pricipal";
-    public Genero [] generos;
-    public Genero [] generosAux;
+    public Genero[] generos;
+    public Genero[] generosAux;
     public Dialog settingsDialog;
     public int duracion;
     private ArrayAdapter mAdapter;
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity
 
         final FragmentBotones fragmentBotones = new FragmentBotones();
 
-        fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentBotones);
+        fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales, fragmentBotones);
         fragmentTransaction.commit();
 
         settingsDialog = new Dialog(this);
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity
         ArrayList<String> spritems = llenarSpinner();
 
 
-        mAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,spritems);
+        mAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spritems);
         mAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         sprDificultad.setAdapter(mAdapter);
 
@@ -77,24 +79,21 @@ public class MainActivity extends AppCompatActivity
         sprDificultad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-               // duracion = sprDificultad.getSelectedItemPosition() * 5 + 20;
+                // duracion = sprDificultad.getSelectedItemPosition() * 5 + 20;
                 int index = sprDificultad.getSelectedItemPosition();
 
-                if(index == 0){
+                if (index == 0) {
                     duracion = 30;
-                }
-                else if(index == 1)
-                {
+                } else if (index == 1) {
                     duracion = 25;
-                }
-                else if(index == 2)
-                {
+                } else if (index == 2) {
                     duracion = 20;
                 }
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) { }
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
         });
 
 
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 settingsDialog.show();
 
-                if(layout.equals("Preguntas")){
+                if (layout.equals("Preguntas")) {
 
                     grpMenu.setVisibility(View.VISIBLE);
                     grpDificultad.setVisibility(View.INVISIBLE);
@@ -116,16 +115,15 @@ public class MainActivity extends AppCompatActivity
         });
 
 
-
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(layout.equals("Preguntas")){
+                if (layout.equals("Preguntas")) {
                     layout = "Menu";
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
 
-                    fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales,fragmentMenu);
+                    fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales, fragmentMenu);
                     fragmentTransaction2.commit();
 
                     grpMenu.setVisibility(View.INVISIBLE);
@@ -141,11 +139,11 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
 
 
-                if(status.equals("Juego")){
+                if (status.equals("Juego")) {
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
 
-                    fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales,fragmentBotones);
+                    fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales, fragmentBotones);
                     fragmentTransaction2.commit();
                     grpDatosUsuario.setVisibility(View.INVISIBLE);
                     status = "Principal";
@@ -155,17 +153,17 @@ public class MainActivity extends AppCompatActivity
                     grpDificultad.setVisibility(View.INVISIBLE);
 
 
-                } else
-                {
-                    if(layout.equals("Idioma")){
-                        MainActivity.this.finish(); System.exit(0);
+                } else {
+                    if (layout.equals("Idioma")) {
+                        MainActivity.this.finish();
+                        System.exit(0);
                     }
 
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
 
                     FragmentIdioma fragmentIdioma = new FragmentIdioma();
-                    fragmentTransaction2.replace(R.id.frLContenedorFragments,fragmentIdioma);
+                    fragmentTransaction2.replace(R.id.frLContenedorFragments, fragmentIdioma);
                     fragmentTransaction2.commit();
                     layout = "Idioma";
                     fragmentBotones.grpBotones.setVisibility(View.INVISIBLE);
@@ -174,54 +172,58 @@ public class MainActivity extends AppCompatActivity
                 }
 
 
-
                 settingsDialog.cancel();
 
             }
         });
 
 
-
-
     }
 
 
+    public ArrayList<String> llenarSpinner() {
+        ArrayList<String> items = new ArrayList<>();
+        items.add("Facil");
+        items.add("Medio");
+        items.add("Dificil");
+
+        return items;
+
+    }
+
     /**
      * Se obtienen preguntas aleatorias de un array enviado por parametros.
-     * @param preguntas array donde obtener preguntas
+     *
+     * @param preguntas         array donde obtener preguntas
      * @param cantidadPreguntas cantidad de preguntas aleatorias a obtener
      * @return array con preguntas aleatorias
      */
-    public static ArrayList<Pregunta> getPreguntasPartida(Pregunta[] preguntas,int cantidadPreguntas, Jugador jugador)
-    {
+    public static ArrayList<Pregunta> getPreguntasPartida(Pregunta[] preguntas, int cantidadPreguntas, Jugador jugador) {
         ArrayList<Pregunta> preguntasSeleccionadas = new ArrayList<>(); //Preguntas que saldran en la partida
         ArrayList<Integer> numerosAleatorios = new ArrayList<>(); //Numeros aleatorios para no repetirlos
         int numeroAleatorio = 0;
 
-        for(int i = 0; i < cantidadPreguntas; i++) //Bucle con la cantidad de preguntas necesarias
+        for (int i = 0; i < cantidadPreguntas; i++) //Bucle con la cantidad de preguntas necesarias
         {
             boolean preguntaCorrecta = false;
 
-            while(!preguntaCorrecta) //Bucle para elegir pregunta que no se repita
+            while (!preguntaCorrecta) //Bucle para elegir pregunta que no se repita
             {
                 numeroAleatorio = obtenerNumeroAleatorio(0, preguntas.length - 1);
                 int counter = 0;
                 boolean numeroRepetido = false;
                 //Si el num no esta repetido y aun quedan por revisar mas numeros entra aqui
-                while(!numeroRepetido && counter < numerosAleatorios.size())
-                {
+                while (!numeroRepetido && counter < numerosAleatorios.size()) {
                     //Si el num aleatorio esta repetido o el jugador es menor de edad y la pregunta es para mayor de edad
-                    if(numeroAleatorio == numerosAleatorios.get(counter) || (!jugador.getEsMayorEdad() && preguntas[numeroAleatorio].isEsMayorEdad()))
-                    {
+                    if (numeroAleatorio == numerosAleatorios.get(counter) || (!jugador.getEsMayorEdad() && preguntas[numeroAleatorio].isEsMayorEdad())) {
                         numeroRepetido = true;
-                    }
-                    else //Si el num aleatorio no esta repetido
+                    } else //Si el num aleatorio no esta repetido
                     {
                         counter++; //Itera el contador para comprobar siguiente numero
                     }
                 }
 
-                if(!numeroRepetido)//Si el numero no esta repetido
+                if (!numeroRepetido)//Si el numero no esta repetido
                 {
                     //Agrego el numero aleatorio al array de los numeros que ya han salido
                     numerosAleatorios.add(numeroAleatorio);
@@ -237,24 +239,13 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * Devuelve un numero aleatorio dado un minimo y un maximo, ambos incluidos
+     *
      * @param min numero minimo a obtener
      * @param max numero maximo a obtener
      * @return numero aleatorio
      */
-    public static int obtenerNumeroAleatorio(int min, int max)
-    {
-        int range = (max -min) + 1;
+    public static int obtenerNumeroAleatorio(int min, int max) {
+        int range = (max - min) + 1;
         return (int) (Math.random() * range + min);
-    }
-
-    public ArrayList<String> llenarSpinner ()
-    {
-        ArrayList<String> items = new ArrayList<>();
-        items.add("Facil");
-        items.add("Medio");
-        items.add("Dificil");
-
-        return items;
-
     }
 }
