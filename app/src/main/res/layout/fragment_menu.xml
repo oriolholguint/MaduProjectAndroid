@@ -20,6 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vpGeneros"
         android:layout_width="match_parent"
@@ -33,14 +34,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </androidx.viewpager.widget.ViewPager>
-
+-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clBotonesMenu"
         android:layout_width="match_parent"
         android:layout_height="326dp"
         android:layout_marginTop="420dp"
-        android:background="@drawable/concierto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

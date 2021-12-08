@@ -120,21 +120,20 @@ public class FragmentPreguntas extends Fragment {
                 //preguntas = (Pregunta[]) activity.getPreguntasPartida(genero.getPreguntas(),1,activity.jugador).toArray();
 
                 fondoGeneroUrl = new BitmapDrawable(genero.getImagenFondo());
-                clFondoPreguntaGenero.setBackground(fondoGeneroUrl);
+                activity.clBackgroundApp.setBackground(fondoGeneroUrl);
 
                 descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
                 MoverConstraintLayoutBarraRespuestas(preguntas[cont].getImagen());
                 progressBar.setScaleY(2f);
-                progressAnimation(btnSiguietePregunta,progressBar, activity.duracion);
 
                 respuestas = preguntas[cont].getRespuestas();
 
                 llenarRespuestas(respuestas,grp2Respuestas,grp4Respuestas);
 
-                if(progressBar.getProgress() == 1000){
-                    btnSiguietePregunta.setEnabled(true);
-                }
+                progressAnimation(respuestas,btnResp1,btnResp2,btnResp3,btnResp4,btnRespVerdadero,btnRespFalso,btnSiguietePregunta,progressBar, activity.duracion);
+
+
 
             }
         });
@@ -145,10 +144,12 @@ public class FragmentPreguntas extends Fragment {
                 btnResp2.setChecked(false);
                 btnResp3.setChecked(false);
                 btnResp4.setChecked(false);
+
                 Verificarultimapregunta();
                 VerificarRespuesta(btnResp1.getText().toString(),btnResp1.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
+                btnSiguietePregunta.setEnabled(true);
 
             }
         });
@@ -163,6 +164,7 @@ public class FragmentPreguntas extends Fragment {
                 VerificarRespuesta(btnResp2.getText().toString(),btnResp2.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
+                btnSiguietePregunta.setEnabled(true);
             }
         });
 
@@ -177,6 +179,7 @@ public class FragmentPreguntas extends Fragment {
                 VerificarRespuesta(btnResp3.getText().toString(),btnResp3.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
+                btnSiguietePregunta.setEnabled(true);
             }
         });
 
@@ -190,6 +193,7 @@ public class FragmentPreguntas extends Fragment {
                 VerificarRespuesta(btnResp4.getText().toString(),btnResp4.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
+                btnSiguietePregunta.setEnabled(true);
             }
         });
 
@@ -201,6 +205,7 @@ public class FragmentPreguntas extends Fragment {
                 VerificarRespuesta(btnRespVerdadero.getText().toString(),btnRespVerdadero.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
+                btnSiguietePregunta.setEnabled(true);
             }
         });
 
@@ -211,6 +216,7 @@ public class FragmentPreguntas extends Fragment {
                 Verificarultimapregunta();
                 VerificarRespuesta(btnRespFalso.getText().toString(),btnRespFalso.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
+                btnSiguietePregunta.setEnabled(true);
 
             }
         });
@@ -228,9 +234,10 @@ public class FragmentPreguntas extends Fragment {
                     descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
                     MoverConstraintLayoutBarraRespuestas(preguntas[cont].getImagen());
-                    progressAnimation(btnSiguietePregunta, progressBar, activity.duracion);
+
                     respuestas = preguntas[cont].getRespuestas();
                     llenarRespuestas(respuestas,grp2Respuestas,grp4Respuestas);
+                    progressAnimation(respuestas,btnResp1,btnResp2,btnResp3,btnResp4,btnRespVerdadero,btnRespFalso,btnSiguietePregunta,progressBar, activity.duracion);
                     restablecerRadioButons();
                 }
 
@@ -242,12 +249,13 @@ public class FragmentPreguntas extends Fragment {
     }
 
 
-    private void progressAnimation(Button button, ProgressBar progressBar,int duracion)
+    private void progressAnimation(Respuesta [] resps,RadioButton r1, RadioButton r2,RadioButton r3,RadioButton r4,RadioButton rVer,RadioButton rFals,Button button,ProgressBar progressBar,int duracion)
     {
-        ProgressAnimation animation = new ProgressAnimation(button,progressBar,0f,1000f);
+        ProgressAnimation animation = new ProgressAnimation(resps,r1,r2,r3,r4,rVer,rFals,button,progressBar,0f,1000f);
         int milisegundos = duracion * 1000;
         animation.setDuration(milisegundos);
         progressBar.startAnimation(animation);
+
     }
 
     private void llenarRespuestas(Respuesta[] resp, androidx.constraintlayout.widget.Group grpRes2, androidx.constraintlayout.widget.Group grpRes4)

@@ -51,7 +51,7 @@ public class FragmentMenu extends Fragment {
         generos = activity.generos;
         frLinformacion = view.findViewById(R.id.frLinformacion);
         frmMenu = view.findViewById(R.id.frmMenu);
-        vpGeneros = view.findViewById(R.id.vpGeneros);
+        //vpGeneros = view.findViewById(R.id.vpGeneros);
 
         FragmentTutorial fragmentTutorial = new FragmentTutorial();
         getFragmentManager().beginTransaction().add(R.id.frLinformacion,fragmentTutorial).commit();
@@ -84,7 +84,7 @@ public class FragmentMenu extends Fragment {
         ImageButton imgBtnInformacion = view.findViewById(R.id.imgBtnInformacion);
 
 
-
+        /*
         vpGeneros.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -100,21 +100,21 @@ public class FragmentMenu extends Fragment {
             public void onPageScrollStateChanged(int state) {
 
             }
-        });
+        });*/
 
-
-        frmMenu.setOnClickListener(new View.OnClickListener() {
+        activity.clBackgroundApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 frLinformacion.setVisibility(View.INVISIBLE);
             }
         });
+
 
         imgBtnRanking.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 activity.layout = "Ranking";
+
                 Genero[] genero = generos;
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("generos", genero);

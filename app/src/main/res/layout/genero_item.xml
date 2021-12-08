@@ -7,7 +7,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="488dp"
     android:layout_height="325dp"
-    android:background="@color/design_default_color_primary"
     >
 
 
@@ -21,28 +20,17 @@
 
             <TextView
                 android:id="@+id/lblNombreGenero"
-                android:layout_width="270dp"
-                android:layout_height="59dp"
+                android:layout_width="376dp"
+                android:layout_height="109dp"
                 android:layout_marginTop="50dp"
                 android:text=""
-                android:textSize="30dp"
+                android:textSize="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.439"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.349" />
 
-            <ImageView
-                android:id="@+id/imgGenero"
-                android:layout_width="404dp"
-                android:layout_height="229dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.619"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

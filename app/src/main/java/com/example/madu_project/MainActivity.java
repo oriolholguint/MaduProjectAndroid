@@ -1,11 +1,14 @@
 package com.example.madu_project;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Dialog;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     public Partida partida;
     public Jugador jugador;
     public Genero generoSelect;
+    public ConstraintLayout clBackgroundApp;
 
 
     @Override
@@ -50,6 +54,9 @@ public class MainActivity extends AppCompatActivity
         duracion = 30;
         partida = null;
         jugador = new Jugador("jugador1",true,3);
+
+        clBackgroundApp = findViewById(R.id.clBackgroundApp);
+
         ImageButton imgBtnConfiguracion = findViewById(R.id.imgBtnConfiguracion);
         androidx.constraintlayout.widget.Group grpDatosUsuario = findViewById(R.id.grpDatosUsuario);
 
@@ -114,7 +121,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 settingsDialog.show();
 
-                if(layout.equals("Preguntas")){
+                if(layout.equals("Preguntas") || layout.equals("Ranking")){
 
                     grpMenu.setVisibility(View.VISIBLE);
                     grpDificultad.setVisibility(View.INVISIBLE);
@@ -131,8 +138,9 @@ public class MainActivity extends AppCompatActivity
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(layout.equals("Preguntas")){
+                if(layout.equals("Preguntas") || layout.equals("Ranking")){
                     layout = "Menu";
+                    clBackgroundApp.setBackgroundColor(Color.parseColor("#3498DB"));
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
 
@@ -157,6 +165,7 @@ public class MainActivity extends AppCompatActivity
 
 
                 if(status.equals("Juego")){
+                    clBackgroundApp.setBackgroundColor(Color.parseColor("#3498DB"));
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
 
