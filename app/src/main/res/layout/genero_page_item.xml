@@ -37,6 +37,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:fontFamily="@font/diary"
+                android:textColor="@color/white"
                 android:text=""
                 android:textSize="60dp"
                 app:layout_constraintBottom_toBottomOf="parent"

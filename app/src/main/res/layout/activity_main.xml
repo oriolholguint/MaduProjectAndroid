@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3498DB"
+    android:background="@drawable/fondojuego"
     tools:context=".MainActivity">
 
 
@@ -22,21 +22,21 @@
 
     <ImageView
         android:id="@+id/imgAvatar"
-        android:layout_width="27dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="580dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="588dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitXY"
         android:contentDescription="Avatar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgPuntos"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         android:layout_marginStart="920dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/puntos"
         android:contentDescription="Avatar"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +49,8 @@
         android:layout_marginTop="24dp"
         android:text="Jugador"
         android:textSize="20sp"
+        android:fontFamily="@font/diary"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.411"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +64,10 @@
         android:layout_marginStart="144dp"
         android:layout_marginTop="24dp"
         android:text="+18"
+        android:visibility="invisible"
         android:textSize="20sp"
+        android:fontFamily="@font/diary"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/LblNombreJugador"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,6 +79,8 @@
         android:layout_marginTop="24dp"
         android:text="0"
         android:textSize="20sp"
+        android:fontFamily="@font/diary"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/imgPuntos"
         app:layout_constraintTop_toTopOf="parent" />
 

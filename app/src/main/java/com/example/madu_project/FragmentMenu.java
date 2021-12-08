@@ -78,11 +78,8 @@ public class FragmentMenu extends Fragment {
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
         listGeneros.addItemDecoration(dividerItemDecoration);
 
-
-
         ImageButton imgBtnRanking = view.findViewById(R.id.imgBtnRanking);
         ImageButton imgBtnInformacion = view.findViewById(R.id.imgBtnInformacion);
-
 
         /*
         vpGeneros.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -147,7 +144,6 @@ public class FragmentMenu extends Fragment {
 
                 activity.layout = "Preguntas";
                 Genero genero = generos[listGeneros.getChildAdapterPosition(view)];
-
 
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("genero",genero);

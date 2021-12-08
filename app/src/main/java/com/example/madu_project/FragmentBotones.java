@@ -12,6 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.madu_project.idioma.FragmentIdioma;
 import com.example.madu_project.introduccion.FragmentTutorial;
@@ -108,7 +111,7 @@ public class FragmentBotones extends Fragment
                     fragmentTransaction.commit();
 
 
-
+                    btnSiguiente.setVisibility(View.VISIBLE);
                     btnSiguiente.setText("Siguiente");
 
                 }
@@ -133,14 +136,16 @@ public class FragmentBotones extends Fragment
                     fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentLogin);
                     fragmentTransaction.commit();
 
+                    btnSiguiente.setVisibility(View.INVISIBLE);
                     btnSiguiente.setText("Login");
 
-                } else if (ActivityMain.layout.equals("Login")) // i el usuario sea diferente a null
+                } else if (ActivityMain.layout.equals("Login"))
                 {
                     Group grpDificultad = ActivityMain.settingsDialog.findViewById(R.id.grpDificultad);
 
                     ActivityMain.layout = "Menu";
                     ActivityMain.status = "Juego";
+
                     FragmentManager mg = getFragmentManager();
                     FragmentTransaction fragmentTransaction = mg.beginTransaction();
 
@@ -153,7 +158,7 @@ public class FragmentBotones extends Fragment
 
 
 
-
+                    btnSiguiente.setVisibility(View.VISIBLE);
                     btnSiguiente.setText("Siguiente");
 
                 }

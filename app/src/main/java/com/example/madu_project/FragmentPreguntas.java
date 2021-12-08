@@ -150,6 +150,7 @@ public class FragmentPreguntas extends Fragment {
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
                 btnSiguietePregunta.setEnabled(true);
+                btnSiguietePregunta.setVisibility(View.VISIBLE);
 
             }
         });
@@ -165,6 +166,7 @@ public class FragmentPreguntas extends Fragment {
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
                 btnSiguietePregunta.setEnabled(true);
+                btnSiguietePregunta.setVisibility(View.VISIBLE);
             }
         });
 
@@ -180,6 +182,7 @@ public class FragmentPreguntas extends Fragment {
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
                 btnSiguietePregunta.setEnabled(true);
+                btnSiguietePregunta.setVisibility(View.VISIBLE);
             }
         });
 
@@ -194,6 +197,7 @@ public class FragmentPreguntas extends Fragment {
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
                 btnSiguietePregunta.setEnabled(true);
+                btnSiguietePregunta.setVisibility(View.VISIBLE);
             }
         });
 
@@ -206,6 +210,7 @@ public class FragmentPreguntas extends Fragment {
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
                 btnSiguietePregunta.setEnabled(true);
+                btnSiguietePregunta.setVisibility(View.VISIBLE);
             }
         });
 
@@ -217,6 +222,7 @@ public class FragmentPreguntas extends Fragment {
                 VerificarRespuesta(btnRespFalso.getText().toString(),btnRespFalso.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
                 btnSiguietePregunta.setEnabled(true);
+                btnSiguietePregunta.setVisibility(View.VISIBLE);
 
             }
         });
@@ -231,6 +237,7 @@ public class FragmentPreguntas extends Fragment {
                 } else {
                     cont++;
                     btnSiguietePregunta.setEnabled(false);
+                    btnSiguietePregunta.setVisibility(View.INVISIBLE);
                     descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
                     MoverConstraintLayoutBarraRespuestas(preguntas[cont].getImagen());
@@ -341,28 +348,28 @@ public class FragmentPreguntas extends Fragment {
         {
             if(r1.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
                 r1.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                r1.setTextColor(Color.BLACK);
+                r1.setTextColor(Color.WHITE);
             } else {
                 r1.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(r2.getText().equals(respuestas[1].getRespuestaDescripcion()) && respuestas[1].isEsCorrecta()){
                 r2.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                r2.setTextColor(Color.BLACK);
+                r2.setTextColor(Color.WHITE);
             } else {
                 r2.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(r3.getText().equals(respuestas[2].getRespuestaDescripcion()) && respuestas[2].isEsCorrecta()){
                 r3.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                r3.setTextColor(Color.BLACK);
+                r3.setTextColor(Color.WHITE);
             } else {
                 r3.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(r4.getText().equals(respuestas[3].getRespuestaDescripcion()) && respuestas[3].isEsCorrecta()){
                 r4.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                r4.setTextColor(Color.BLACK);
+                r4.setTextColor(Color.WHITE);
             } else {
                 r4.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
@@ -370,14 +377,14 @@ public class FragmentPreguntas extends Fragment {
 
             if(rVer.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
                 rVer.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                rVer.setTextColor(Color.BLACK);
+                rVer.setTextColor(Color.WHITE);
             } else {
                 rVer.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(rFals.getText().equals(respuestas[1].getRespuestaDescripcion()) && respuestas[1].isEsCorrecta()){
                 rFals.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                rFals.setTextColor(Color.BLACK);
+                rFals.setTextColor(Color.WHITE);
             } else {
                 rFals.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }

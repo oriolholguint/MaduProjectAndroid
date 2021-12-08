@@ -20,6 +20,7 @@ import android.widget.Button;
 
 
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity
     public Jugador jugador;
     public Genero generoSelect;
     public ConstraintLayout clBackgroundApp;
+    public TextView LblNombreJugador;
+    public ImageView imgAvatar;
+    public TextView LblEdad;
 
 
     @Override
@@ -53,9 +57,13 @@ public class MainActivity extends AppCompatActivity
 
         duracion = 30;
         partida = null;
-        jugador = new Jugador("jugador1",true,3);
+        jugador = new Jugador(null,false,0);
 
         clBackgroundApp = findViewById(R.id.clBackgroundApp);
+
+        LblNombreJugador = findViewById(R.id.LblNombreJugador);
+        imgAvatar = findViewById(R.id.imgAvatar);
+        LblEdad = findViewById(R.id.lblEdad);
 
         ImageButton imgBtnConfiguracion = findViewById(R.id.imgBtnConfiguracion);
         androidx.constraintlayout.widget.Group grpDatosUsuario = findViewById(R.id.grpDatosUsuario);
@@ -140,7 +148,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 if(layout.equals("Preguntas") || layout.equals("Ranking")){
                     layout = "Menu";
-                    clBackgroundApp.setBackgroundColor(Color.parseColor("#3498DB"));
+                    clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
 
@@ -165,7 +173,7 @@ public class MainActivity extends AppCompatActivity
 
 
                 if(status.equals("Juego")){
-                    clBackgroundApp.setBackgroundColor(Color.parseColor("#3498DB"));
+                    clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
 
@@ -180,7 +188,9 @@ public class MainActivity extends AppCompatActivity
                     androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
                     grpDificultad.setVisibility(View.INVISIBLE);
                     grpPuntuacion.setVisibility(View.INVISIBLE);
+                    jugador = new Jugador(null,false,0);
                     lbLPuntos.setText("0");
+
 
 
                 } else
