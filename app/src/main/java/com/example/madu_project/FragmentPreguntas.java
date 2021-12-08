@@ -18,6 +18,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.madu_project.personaje.FragmentPersonaje;
+
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
