@@ -5,7 +5,7 @@
       <map>
         <entry key="src/main/res/layout/fragment_preguntas.xml" value="0.209375" />
         <entry key="src/main/res/layout/fragment_ranking.xml" value="0.151268115942029" />
-        <entry key="src/main/res/layout/ranking_item.xml" value="0.16394927536231885" />
+        <entry key="src/main/res/layout/ranking_item.xml" value="0.33" />
       </map>
     </option>
   </component>
@@ -15,5 +15,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.18" />
+      </ProjectState>
+    </option>
   </component>
 </project>

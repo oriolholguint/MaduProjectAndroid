@@ -1,5 +1,6 @@
 package com.example.madu_project;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,18 +23,22 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView SingleScore;
         ImageView avatarScore;
+        public static final int[] RankColorList =  {Color.rgb(230,194,0),Color.GRAY,Color.rgb(205,127,50),Color.WHITE,Color.WHITE,Color.WHITE,Color.WHITE,Color.WHITE,Color.WHITE,Color.WHITE};
         public ViewHolder(@NonNull View item) {
             super(item);
             SingleScore = item.findViewById(R.id.SingleScore);
             avatarScore = item.findViewById(R.id.avatarScore);
         }
 
-        void bindScore(Partida score) {
+        void bindScore(Partida score,int position) {
             this.avatarScore.setImageResource(score.getJugador().getAvatar());
             String date = new SimpleDateFormat("MM/dd/yyyy").format(score.getFecha());
             String info = (score.getJugador().getNombre());
             String space = "                                     ";
             this.SingleScore.setText(info+space.substring(0,(34-info.length())/2)+date+space.substring(0,(30-info.length())/2)+score.getPuntuacion()+"  p");
+
+            this.SingleScore.setTextColor(RankColorList[position]);
+
         }
 
     }
@@ -52,7 +57,7 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ViewHolder> 
 
         public void onBindViewHolder(ScoreAdapter.ViewHolder holder, int position) {
 
-                holder.bindScore(this.scores[position]);
+                holder.bindScore(this.scores[position],position);
 
         }
 

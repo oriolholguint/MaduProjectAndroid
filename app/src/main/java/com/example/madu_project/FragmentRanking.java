@@ -26,6 +26,7 @@ public class FragmentRanking extends Fragment {
     MainActivity ma;
     Genero[] generos;
     Genero[] generoAux;
+    public static Genero[] generosParaRanking;
 
     //public static void sort(ArrayList<Partida> list)
     //{
@@ -34,7 +35,15 @@ public class FragmentRanking extends Fragment {
                 //-> o1.getCustomProperty().compareTo(
                 //o2.getCustomProperty()));
     //}
+        public static String GetPathImageFromGeneroString(String nombreGenero){
 
+            for (Genero e : generosParaRanking){
+                if(e.getNombre().equals(nombreGenero)){
+                    return e.getImagenMenu();
+                }
+            }
+            return null;
+        }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,6 +54,7 @@ public class FragmentRanking extends Fragment {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 generos = (Genero[]) result.getSerializable("generos");
+                generosParaRanking = generos;
                 //ma = getActivity(MainActivity);
 
                 ma = (MainActivity)getActivity();

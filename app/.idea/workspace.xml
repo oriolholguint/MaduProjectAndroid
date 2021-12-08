@@ -13,6 +13,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/madu_project/FragmentRanking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/madu_project/FragmentRanking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/madu_project/RankingAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/madu_project/RankingAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/madu_project/ScoreAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/madu_project/ScoreAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/layout/ranking_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/ranking_item.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
