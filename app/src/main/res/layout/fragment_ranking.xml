@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="50dp"
-android:layout_marginLeft="270dp"
+android:layout_marginLeft="530dp"
         android:text="Ránking" />
 
     <androidx.recyclerview.widget.RecyclerView

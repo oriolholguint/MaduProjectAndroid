@@ -67,10 +67,6 @@ public class FragmentRanking extends Fragment {
                 RankingList.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
                 RankingList.setAdapter(adapter);
 
-                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
-
-                dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
-                RankingList.addItemDecoration(dividerItemDecoration);
 
 
 
