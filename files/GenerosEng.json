@@ -5,7 +5,88 @@
     "imagenFondo": "earth.png",
     "imagenMenu": "earth.png",
     "personajes": [],
-    "partidas": [],
+    "partidas": [
+    {
+      "puntuacion":10,
+      "dificultad":"facil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":9,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "Jonas",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":8,
+      "dificultad":"facil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":7,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":6,
+      "dificultad":"facil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":5,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "Jonas",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":4,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":3,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "Jonas",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":2,
+      "dificultad":"facil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":1,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "Jonas",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }}],
     "preguntas": [
       {
         "preguntaDescripcion": "Which band was born first?",
@@ -111,7 +192,88 @@
     "imagenFondo": "earth.png",
     "imagenMenu": "earth.png",
     "personajes": [],
-    "partidas": [],
+    "partidas": [
+    {
+      "puntuacion":10,
+      "dificultad":"facil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":9,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "Jonas",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":8,
+      "dificultad":"facil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":7,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":6,
+      "dificultad":"facil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":5,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "Jonas",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":4,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":3,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "Jonas",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":2,
+      "dificultad":"facil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":1,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "Jonas",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }}],
     "preguntas": [
       {
         "preguntaDescripcion": "At what time did hip-hop emerge?",
@@ -226,17 +388,87 @@
       }
     ],
     "partidas": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
+    {
+      "puntuacion":10,
+      "dificultad":"facil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":9,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "Jonas",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":8,
+      "dificultad":"facil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":7,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":6,
+      "dificultad":"facil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":5,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "Jonas",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":4,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":3,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "Jonas",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":2,
+      "dificultad":"facil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "pepito",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }},{
+      "puntuacion":1,
+      "dificultad":"difisil",
+      "fecha":"2001-02-02",
+      "jugador": {
+        "nombre": "Jonas",
+        "esMayorEdad": true,
+        "avatar": 2131230807
+      }}],
     "preguntas": []
   }
 ]
