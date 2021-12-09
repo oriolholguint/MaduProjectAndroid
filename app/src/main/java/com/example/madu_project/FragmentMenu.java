@@ -95,24 +95,14 @@ public class FragmentMenu extends Fragment {
         imgBtnRanking.setOnClickListener(new View.OnClickListener(){
 
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 activity.layout = "Ranking";
-
                 Genero[] genero = generos;
                 Bundle bundle = new Bundle();
-
                 bundle.putSerializable("generos",genero);
 
-                /*
-
-                generoAdapter.setOnClickListener(new View.OnClickListener()
-                {
 
                 getParentFragmentManager().setFragmentResult("generos",bundle);
-
-                bundle.putSerializable("generos", genero);
-
 
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
@@ -120,7 +110,6 @@ public class FragmentMenu extends Fragment {
                 FragmentRanking fragmentRanking = new FragmentRanking();
                 fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentRanking);
                 fragmentTransaction.commit();
-                */
             }
 
         });
