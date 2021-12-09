@@ -170,9 +170,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(status.equals("Juego")){
-                    clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
 
+                if(status.equals("Juego")){
+                    clBackgroundApp.setBackgroundColor(Color.parseColor("#3498DB"));
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
 

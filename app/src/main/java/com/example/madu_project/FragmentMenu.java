@@ -79,9 +79,8 @@ public class FragmentMenu extends Fragment {
         listGeneros.addItemDecoration(dividerItemDecoration);
 
         ImageButton imgBtnRanking = view.findViewById(R.id.imgBtnRanking);
-
-
         ImageButton imgBtnInformacion = view.findViewById(R.id.imgBtnInformacion);
+
 
 
         activity.clBackgroundApp.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +92,6 @@ public class FragmentMenu extends Fragment {
 
 
         imgBtnRanking.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View view) {
                 activity.layout = "Ranking";
@@ -146,6 +144,7 @@ public class FragmentMenu extends Fragment {
 
             }
         });
+
 
         return view;
     }
