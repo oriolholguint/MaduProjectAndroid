@@ -9,33 +9,42 @@
 
     <Button
         android:id="@+id/btnAtras"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="187dp"
+        android:layout_height="43dp"
         android:layout_marginStart="88dp"
         android:layout_marginTop="500dp"
+        android:background="@drawable/botonverde"
+        android:fontFamily="@font/diary"
         android:text="Atras"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSiguienteCentro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="352dp"
-        android:layout_marginTop="508dp"
+        android:layout_width="187dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="272dp"
+        android:layout_marginTop="500dp"
+        android:background="@drawable/botonverde"
+        android:fontFamily="@font/diary"
         android:text="Siguiente"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/btnAtras"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSiguiente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="400dp"
+        android:layout_width="187dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="272dp"
         android:layout_marginTop="500dp"
+        android:background="@drawable/botonverde"
+        android:fontFamily="@font/diary"
         android:text="Siguiente"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/btnSiguienteCentro"
         app:layout_constraintTop_toTopOf="parent" />

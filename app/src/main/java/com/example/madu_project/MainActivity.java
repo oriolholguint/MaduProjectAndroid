@@ -1,11 +1,14 @@
 package com.example.madu_project;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Dialog;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -17,7 +20,9 @@ import android.widget.Button;
 
 
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.madu_project.idioma.FragmentIdioma;
 
@@ -33,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
     public Dialog settingsDialog;
     public int duracion;
     private ArrayAdapter mAdapter;
+    public Partida partida;
+    public Jugador jugador;
+    public Genero generoSelect;
+    public ConstraintLayout clBackgroundApp;
+    public TextView LblNombreJugador;
+    public ImageView imgAvatar;
+    public TextView LblEdad;
 
 
     @Override
@@ -43,9 +55,19 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         duracion = 30;
+        partida = null;
+        jugador = new Jugador(null,false,0);
+
+        clBackgroundApp = findViewById(R.id.clBackgroundApp);
+
+        LblNombreJugador = findViewById(R.id.LblNombreJugador);
+        imgAvatar = findViewById(R.id.imgAvatar);
+        LblEdad = findViewById(R.id.lblEdad);
+
         ImageButton imgBtnConfiguracion = findViewById(R.id.imgBtnConfiguracion);
         androidx.constraintlayout.widget.Group grpDatosUsuario = findViewById(R.id.grpDatosUsuario);
 
+        TextView lbLPuntos = findViewById(R.id.lbLPuntos);
         androidx.fragment.app.FragmentManager mgr = getSupportFragmentManager();
         final androidx.fragment.app.FragmentTransaction fragmentTransaction = mgr.beginTransaction();
 
@@ -58,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         settingsDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         settingsDialog.setContentView(R.layout.settings_dialog);
 
+        androidx.constraintlayout.widget.Group grpPuntuacion = findViewById(R.id.grpPuntuacion);
         androidx.constraintlayout.widget.Group grpMenu = settingsDialog.findViewById(R.id.grpMenu);
         androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
 
@@ -102,7 +125,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 settingsDialog.show();
 
-                if (layout.equals("Preguntas")) {
+
+                if(layout.equals("Preguntas") || layout.equals("Ranking")){
+
 
                     grpMenu.setVisibility(View.VISIBLE);
                     grpDificultad.setVisibility(View.INVISIBLE);
@@ -118,18 +143,25 @@ public class MainActivity extends AppCompatActivity {
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (layout.equals("Preguntas")) {
+
+                if(layout.equals("Preguntas") || layout.equals("Ranking")){
+
                     layout = "Menu";
+                    clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
 
                     fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales, fragmentMenu);
                     fragmentTransaction2.commit();
-
+                    partida = null;
                     grpMenu.setVisibility(View.INVISIBLE);
                     grpDificultad.setVisibility(View.VISIBLE);
+                    grpPuntuacion.setVisibility(View.INVISIBLE);
+                    lbLPuntos.setText("0");
+
                     settingsDialog.cancel();
                 }
+
             }
         });
 
@@ -138,8 +170,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if(status.equals("Juego")){
+                    clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
 
-                if (status.equals("Juego")) {
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
 
@@ -149,8 +182,14 @@ public class MainActivity extends AppCompatActivity {
                     status = "Principal";
                     layout = "Idioma";
                     generos = null;
+                    partida = null;
+                    jugador = null;
                     androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
                     grpDificultad.setVisibility(View.INVISIBLE);
+                    grpPuntuacion.setVisibility(View.INVISIBLE);
+                    jugador = new Jugador(null,false,0);
+                    lbLPuntos.setText("0");
+
 
 
                 } else {
@@ -173,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 settingsDialog.cancel();
+
 
             }
         });

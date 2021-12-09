@@ -1,26 +1,41 @@
 package com.example.madu_project;
 
+import android.app.AlertDialog;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.constraintlayout.widget.Group;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Handler;
+import android.provider.MediaStore;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.madu_project.personaje.FragmentPersonaje;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
@@ -32,15 +47,32 @@ public class FragmentPreguntas extends Fragment {
     View view;
     TextView descPregunta;
     Pregunta[] preguntas;
+    Respuesta [] respuestas;
     Genero genero;
+    ImageView imgPregunta;
     ProgressBar progressBar;
     Button btnSiguietePregunta;
-    Button btnResp1;
-    Button btnResp2;
-    Button btnResp3;
-    Button btnResp4;
+    androidx.constraintlayout.widget.Group grp2Respuestas;
+    androidx.constraintlayout.widget.Group grp4Respuestas;
+    androidx.constraintlayout.widget.ConstraintLayout clFondoPreguntaGenero;
+    androidx.constraintlayout.widget.ConstraintLayout clbotonesRrespuestas;
+    androidx.constraintlayout.widget.ConstraintLayout.LayoutParams posicionConstraintBarraRespuestas;
+    RadioButton btnResp1;
+    RadioButton btnResp2;
+    RadioButton btnResp3;
+    RadioButton btnResp4;
+    RadioButton btnRespVerdadero;
+    RadioButton btnRespFalso;
     MainActivity activity;
-    int cont = 0;
+    TextView lbLPuntos;
+    TextView lblItem;
+    private int cont = 0;
+    private int puntuacion = 0;
+    private int pixeles;
+    private boolean ultimaPregunta = false;
+    Date currentTime = null;
+    String dificultad = null;
+    BitmapDrawable fondoGeneroUrl;
 
 
     @Override
@@ -49,15 +81,36 @@ public class FragmentPreguntas extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_preguntas, container, false);
         activity = (MainActivity) getActivity();
+
+        lbLPuntos = activity.findViewById(R.id.lbLPuntos);
+
         descPregunta = view.findViewById(R.id.lblDescPregunta);
+        imgPregunta = view.findViewById(R.id.imgPregunta);
+
+        clFondoPreguntaGenero = view.findViewById(R.id.clFondoPreguntaGenero);
+        clbotonesRrespuestas = view.findViewById(R.id.clbotonesRrespuestas);
+        posicionConstraintBarraRespuestas = (ConstraintLayout.LayoutParams) clbotonesRrespuestas.getLayoutParams();
         progressBar = view.findViewById(R.id.prbarDificultadTiempo);
+        grp2Respuestas = view.findViewById(R.id.grp2Respuestas);
+        grp4Respuestas = view.findViewById(R.id.grp4Respuestas);
+        Group grpPuntuacion = activity.findViewById(R.id.grpPuntuacion);
+        grpPuntuacion.setVisibility(View.VISIBLE);
+
         btnResp1 = view.findViewById(R.id.btnResp1);
         btnResp2 = view.findViewById(R.id.btnResp2);
         btnResp3 = view.findViewById(R.id.btnResp3);
         btnResp4 = view.findViewById(R.id.btnResp4);
 
 
-        btnSiguietePregunta = view.findViewById(R.id.btnSiguietePregunta);
+
+        btnRespVerdadero = view.findViewById(R.id.btnRespVerdadero);
+        btnRespFalso = view.findViewById(R.id.btnRespFalso);
+
+
+        btnSiguietePregunta = (Button) view.findViewById(R.id.btnSiguietePregunta);
+        lblItem = view.findViewById(R.id.lblItem);
+
+        pixeles = convertirDpPixeles();
 
         getParentFragmentManager().setFragmentResultListener("genero", this, new FragmentResultListener() {
             @Override
@@ -66,25 +119,112 @@ public class FragmentPreguntas extends Fragment {
                 descPregunta.setText(genero.getNombre());
 
                 preguntas = genero.getPreguntas();
+                //preguntas = (Pregunta[]) activity.getPreguntasPartida(genero.getPreguntas(),1,activity.jugador).toArray();
+
+                fondoGeneroUrl = new BitmapDrawable("/data/data/com.example.madu_project/files/images/"+genero.getImagenFondo());
+                activity.clBackgroundApp.setBackground(fondoGeneroUrl);
 
                 descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
+                MoverConstraintLayoutBarraRespuestas(preguntas[cont].getImagen());
                 progressBar.setScaleY(2f);
 
-                progressAnimation(btnSiguietePregunta,progressBar, activity.duracion);
+                respuestas = preguntas[cont].getRespuestas();
 
-                Respuesta [] respuestas = preguntas[cont].getRespuestas();
+                llenarRespuestas(respuestas,grp2Respuestas,grp4Respuestas);
 
-                btnResp1.setText(respuestas[0].getRespuestaDescripcion());
-                btnResp2.setText(respuestas[1].getRespuestaDescripcion());
-                btnResp3.setText(respuestas[2].getRespuestaDescripcion());
-                btnResp4.setText(respuestas[3].getRespuestaDescripcion());
+                progressAnimation(respuestas,btnResp1,btnResp2,btnResp3,btnResp4,btnRespVerdadero,btnRespFalso,btnSiguietePregunta,progressBar, activity.duracion);
 
 
 
-                if(progressBar.getProgress() == 1000){
-                    btnSiguietePregunta.setEnabled(true);
-                }
+            }
+        });
+
+        btnResp1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnResp2.setChecked(false);
+                btnResp3.setChecked(false);
+                btnResp4.setChecked(false);
+
+                Verificarultimapregunta();
+                VerificarRespuesta(btnResp1.getText().toString(),btnResp1.isChecked());
+                VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
+                desactivarRadioButtons();
+                btnSiguietePregunta.setEnabled(true);
+                btnSiguietePregunta.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        btnResp2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnResp1.setChecked(false);
+                btnResp3.setChecked(false);
+                btnResp4.setChecked(false);
+                Verificarultimapregunta();
+                VerificarRespuesta(btnResp2.getText().toString(),btnResp2.isChecked());
+                VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
+                desactivarRadioButtons();
+                btnSiguietePregunta.setEnabled(true);
+                btnSiguietePregunta.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        btnResp3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnResp1.setChecked(false);
+                btnResp2.setChecked(false);
+                btnResp4.setChecked(false);
+                Verificarultimapregunta();
+                VerificarRespuesta(btnResp3.getText().toString(),btnResp3.isChecked());
+                VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
+                desactivarRadioButtons();
+                btnSiguietePregunta.setEnabled(true);
+                btnSiguietePregunta.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btnResp4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnResp1.setChecked(false);
+                btnResp2.setChecked(false);
+                btnResp3.setChecked(false);
+                Verificarultimapregunta();
+                VerificarRespuesta(btnResp4.getText().toString(),btnResp4.isChecked());
+                VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
+                desactivarRadioButtons();
+                btnSiguietePregunta.setEnabled(true);
+                btnSiguietePregunta.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btnRespVerdadero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnRespFalso.setChecked(false);
+                Verificarultimapregunta();
+                VerificarRespuesta(btnRespVerdadero.getText().toString(),btnRespVerdadero.isChecked());
+                VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
+                desactivarRadioButtons();
+                btnSiguietePregunta.setEnabled(true);
+                btnSiguietePregunta.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btnRespFalso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnRespVerdadero.setChecked(false);
+                Verificarultimapregunta();
+                VerificarRespuesta(btnRespFalso.getText().toString(),btnRespFalso.isChecked());
+                VerRespuestasCorrectasIncorrectas(btnResp1,btnResp2,btnResp3,btnResp4, btnRespVerdadero, btnRespFalso);
+                btnSiguietePregunta.setEnabled(true);
+                btnSiguietePregunta.setVisibility(View.VISIBLE);
 
             }
         });
@@ -93,36 +233,22 @@ public class FragmentPreguntas extends Fragment {
         btnSiguietePregunta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cont++;
-                btnSiguietePregunta.setEnabled(false);
-                descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
-                progressAnimation(btnSiguietePregunta, progressBar, activity.duracion);
 
-                Respuesta [] respuestas = preguntas[cont].getRespuestas();
+                if (ultimaPregunta) {
+                    IrAfragmentPersonaje();
+                } else {
+                    cont++;
+                    btnSiguietePregunta.setEnabled(false);
+                    btnSiguietePregunta.setVisibility(View.INVISIBLE);
+                    descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
-                btnResp1.setText(respuestas[0].getRespuestaDescripcion());
-                btnResp2.setText(respuestas[1].getRespuestaDescripcion());
-                btnResp3.setText(respuestas[2].getRespuestaDescripcion());
-                btnResp4.setText(respuestas[3].getRespuestaDescripcion());
+                    MoverConstraintLayoutBarraRespuestas(preguntas[cont].getImagen());
 
-
-
-                if (cont ==  preguntas.length -1){
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("genero",genero);
-                    getParentFragmentManager().setFragmentResult("genero",bundle);
-
-                    FragmentManager mg = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = mg.beginTransaction();
-
-                    FragmentPersonaje fragmentPersonaje = new FragmentPersonaje();
-                    fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentPersonaje);
-                    fragmentTransaction.commit();
+                    respuestas = preguntas[cont].getRespuestas();
+                    llenarRespuestas(respuestas,grp2Respuestas,grp4Respuestas);
+                    progressAnimation(respuestas,btnResp1,btnResp2,btnResp3,btnResp4,btnRespVerdadero,btnRespFalso,btnSiguietePregunta,progressBar, activity.duracion);
+                    restablecerRadioButons();
                 }
-
-
-
-
 
             }
         });
@@ -132,19 +258,202 @@ public class FragmentPreguntas extends Fragment {
     }
 
 
-    private void progressAnimation(Button button, ProgressBar progressBar,int duracion)
+    private void progressAnimation(Respuesta [] resps,RadioButton r1, RadioButton r2,RadioButton r3,RadioButton r4,RadioButton rVer,RadioButton rFals,Button button,ProgressBar progressBar,int duracion)
     {
-        ProgressAnimation animation = new ProgressAnimation(button,progressBar,0f,1000f);
+        ProgressAnimation animation = new ProgressAnimation(resps,r1,r2,r3,r4,rVer,rFals,button,progressBar,0f,1000f);
         int milisegundos = duracion * 1000;
         animation.setDuration(milisegundos);
         progressBar.startAnimation(animation);
+
+    }
+
+    private void llenarRespuestas(Respuesta[] resp, androidx.constraintlayout.widget.Group grpRes2, androidx.constraintlayout.widget.Group grpRes4)
+    {
+
+        if(resp.length == 4){
+            grpRes2.setVisibility(View.INVISIBLE);
+            grpRes4.setVisibility(View.VISIBLE);
+            btnResp1.setText(resp[0].getRespuestaDescripcion());
+            btnResp2.setText(resp[1].getRespuestaDescripcion());
+            btnResp3.setText(resp[2].getRespuestaDescripcion());
+            btnResp4.setText(resp[3].getRespuestaDescripcion());
+        } else {
+            grpRes2.setVisibility(View.VISIBLE);
+            grpRes4.setVisibility(View.INVISIBLE);
+            btnRespVerdadero.setText(resp[0].getRespuestaDescripcion());
+            btnRespFalso.setText(resp[1].getRespuestaDescripcion());
+        }
+
+    }
+
+
+    private void restablecerRadioButons(){
+        btnResp1.setChecked(false);
+        btnResp2.setChecked(false);
+        btnResp3.setChecked(false);
+        btnResp4.setChecked(false);
+        btnRespVerdadero.setChecked(false);
+        btnRespFalso.setChecked(false);
+
+        btnResp1.setEnabled(true);
+        btnResp2.setEnabled(true);
+        btnResp3.setEnabled(true);
+        btnResp4.setEnabled(true);
+        btnRespVerdadero.setEnabled(true);
+        btnRespFalso.setEnabled(true);
+
+        btnResp1.setBackgroundResource(R.drawable.bg_radiobutton1);
+        btnResp2.setBackgroundResource(R.drawable.bg_radiobutton2);
+        btnResp3.setBackgroundResource(R.drawable.bg_radiobutton3);
+        btnResp4.setBackgroundResource(R.drawable.bg_radiobutton4);
+        btnRespVerdadero.setBackgroundResource(R.drawable.bg_radiobutton2);
+        btnRespFalso.setBackgroundResource(R.drawable.bg_radiobutton1);
+    }
+
+    private void desactivarRadioButtons()
+    {
+        btnResp1.setEnabled(false);
+        btnResp2.setEnabled(false);
+        btnResp3.setEnabled(false);
+        btnResp4.setEnabled(false);
+        btnRespVerdadero.setEnabled(false);
+        btnRespFalso.setEnabled(false);
     }
 
 
 
 
 
+    private void VerificarRespuesta(String respuesta, Boolean esCorrecta)
+    {
+        boolean correcto = false;
 
+        for(int i = 0; i < respuestas.length;i++)
+        {
+            if(respuesta.equals(respuestas[i].getRespuestaDescripcion()) && esCorrecta == respuestas[i].isEsCorrecta()){
+                correcto = true;
+            }
+        }
+
+        if(correcto){
+            puntuacion += 100;
+            lbLPuntos.setText(Integer.toString(puntuacion));
+        }
+
+
+    }
+
+
+    private void VerRespuestasCorrectasIncorrectas(RadioButton r1, RadioButton r2, RadioButton r3, RadioButton r4, RadioButton rVer, RadioButton rFals)
+    {
+        if(respuestas.length == 4)
+        {
+            if(r1.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
+                r1.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+                r1.setTextColor(Color.WHITE);
+            } else {
+                r1.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+            }
+
+            if(r2.getText().equals(respuestas[1].getRespuestaDescripcion()) && respuestas[1].isEsCorrecta()){
+                r2.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+                r2.setTextColor(Color.WHITE);
+            } else {
+                r2.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+            }
+
+            if(r3.getText().equals(respuestas[2].getRespuestaDescripcion()) && respuestas[2].isEsCorrecta()){
+                r3.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+                r3.setTextColor(Color.WHITE);
+            } else {
+                r3.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+            }
+
+            if(r4.getText().equals(respuestas[3].getRespuestaDescripcion()) && respuestas[3].isEsCorrecta()){
+                r4.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+                r4.setTextColor(Color.WHITE);
+            } else {
+                r4.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+            }
+        } else {
+
+            if(rVer.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
+                rVer.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+                rVer.setTextColor(Color.WHITE);
+            } else {
+                rVer.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+            }
+
+            if(rFals.getText().equals(respuestas[1].getRespuestaDescripcion()) && respuestas[1].isEsCorrecta()){
+                rFals.setBackgroundResource(R.drawable.bg_respuesta_correcta);
+                rFals.setTextColor(Color.WHITE);
+            } else {
+                rFals.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
+            }
+        }
+    }
+
+
+    public int convertirDpPixeles(){
+        int pixeles;
+        float dip = 172f;
+        Resources r = getResources();
+        float px = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                dip,
+                r.getDisplayMetrics()
+        );
+
+        pixeles = (int)px;
+
+        return pixeles;
+    }
+
+    public void MoverConstraintLayoutBarraRespuestas(String imagen){
+
+        if(!imagen.equals("")){
+            imgPregunta.setVisibility(View.VISIBLE);
+            posicionConstraintBarraRespuestas.setMargins(posicionConstraintBarraRespuestas.leftMargin,450,posicionConstraintBarraRespuestas.rightMargin,posicionConstraintBarraRespuestas.bottomMargin);
+            clbotonesRrespuestas.setLayoutParams(posicionConstraintBarraRespuestas);
+        } else {
+            imgPregunta.setVisibility(View.INVISIBLE);
+            posicionConstraintBarraRespuestas.setMargins(posicionConstraintBarraRespuestas.leftMargin,pixeles,posicionConstraintBarraRespuestas.rightMargin,posicionConstraintBarraRespuestas.bottomMargin);
+            clbotonesRrespuestas.setLayoutParams(posicionConstraintBarraRespuestas);
+        }
+    }
+
+
+    public void Verificarultimapregunta(){
+        if (cont ==  preguntas.length -1){
+            ultimaPregunta = true;
+        }
+    }
+
+    public void IrAfragmentPersonaje()
+    {
+        if(activity.duracion == 30){
+            dificultad = "Facil";
+        } else if (activity.duracion == 25){
+            dificultad = "Medio";
+        } else if (activity.duracion == 20){
+            dificultad = "Dificil";
+        }
+
+        currentTime = Calendar.getInstance().getTime();
+
+        activity.partida = new Partida(puntuacion,dificultad,currentTime, activity.jugador);
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("genero",genero);
+        getParentFragmentManager().setFragmentResult("genero",bundle);
+
+        FragmentManager mg = getFragmentManager();
+        FragmentTransaction fragmentTransaction = mg.beginTransaction();
+
+        FragmentPersonaje fragmentPersonaje = new FragmentPersonaje();
+        fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentPersonaje);
+        fragmentTransaction.commit();
+    }
 
 
 

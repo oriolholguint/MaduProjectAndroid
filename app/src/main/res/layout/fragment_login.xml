@@ -11,6 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/diary"
+        android:textColor="@color/white"
         android:text="Login"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,6 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="228dp"
         android:layout_marginTop="124dp"
+        android:fontFamily="@font/diary"
+        android:textColor="@color/white"
         android:text="Usuario:"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,10 +36,10 @@
         android:id="@+id/txtNombreUsuario"
         android:layout_width="425dp"
         android:layout_height="58dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="108dp"
-        android:textSize="30sp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="112dp"
         android:background="@color/white"
+        android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/lblLoginUsuario"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,30 +47,23 @@
         android:id="@+id/lblEdad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="260dp"
+        android:layout_marginStart="276dp"
         android:layout_marginTop="36dp"
+        android:fontFamily="@font/diary"
         android:text="Edad:"
+        android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblLoginUsuario" />
-
-    <Spinner
-        android:id="@+id/sprEdad"
-        android:layout_width="206dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="192dp"
-        android:background="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/lblEdad"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lblAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="244dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/diary"
+        android:textColor="@color/white"
         android:text="Avatar:"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +75,75 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="545dp" />
+
+
+    <CheckBox
+        android:id="@+id/cbxMayorEdad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="188dp"
+        android:fontFamily="@font/diary"
+        android:text="+18"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/lblEdad"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="170dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="916dp"
+        android:layout_marginTop="103dp"
+        android:background="@drawable/botonverde"
+        android:fontFamily="@font/diary"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <GridView
+        android:id="@+id/gvAvatares"
+        android:layout_width="788dp"
+        android:layout_height="164dp"
+        android:layout_marginTop="316dp"
+        android:layout_weight="1"
+        android:background="@drawable/border_style2"
+        android:columnWidth="110dp"
+        android:horizontalSpacing="50dp"
+        android:numColumns="5"
+        android:padding="15dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="8dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.443"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSelecAvatar"
+        android:layout_width="235dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="472dp"
+        android:layout_marginTop="256dp"
+        android:background="@drawable/botonverde"
+        android:fontFamily="@font/diary"
+        android:text="Seleccionar Avatar"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgAvatarSelect"
+        android:layout_width="48dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="720dp"
+        android:layout_marginTop="250dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
