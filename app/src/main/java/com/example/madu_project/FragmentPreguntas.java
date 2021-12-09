@@ -119,7 +119,7 @@ public class FragmentPreguntas extends Fragment {
                 preguntas = genero.getPreguntas();
                 //preguntas = (Pregunta[]) activity.getPreguntasPartida(genero.getPreguntas(),1,activity.jugador).toArray();
 
-                fondoGeneroUrl = new BitmapDrawable(genero.getImagenFondo());
+                fondoGeneroUrl = new BitmapDrawable("/data/data/com.example.madu_project/files/images/"+genero.getImagenFondo());
                 activity.clBackgroundApp.setBackground(fondoGeneroUrl);
 
                 descPregunta.setText(preguntas[cont].getPreguntaDescripcion());

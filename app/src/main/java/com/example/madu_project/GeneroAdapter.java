@@ -41,7 +41,7 @@ public class GeneroAdapter extends RecyclerView.Adapter<GeneroAdapter.ViewHolder
         void bindGenero(Genero genero){
 
             lblNombreGeneroPag.setText(genero.getNombre());
-            BitmapDrawable menuGeneroUrl = new BitmapDrawable(genero.getImagenMenu());
+            BitmapDrawable menuGeneroUrl = new BitmapDrawable("/data/data/com.example.madu_project/files/images/"+ genero.getImagenMenu());
             clImgFondoGenero.setBackground(menuGeneroUrl);
         }
 
