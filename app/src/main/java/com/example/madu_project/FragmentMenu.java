@@ -79,8 +79,7 @@ public class FragmentMenu extends Fragment {
         listGeneros.addItemDecoration(dividerItemDecoration);
 
         ImageButton imgBtnRanking = view.findViewById(R.id.imgBtnRanking);
-        imgBtnRanking.setOnClickListener(new View.OnClickListener()
-        {
+
 
         ImageButton imgBtnInformacion = view.findViewById(R.id.imgBtnInformacion);
 
@@ -102,10 +101,10 @@ public class FragmentMenu extends Fragment {
 
                 Genero[] genero = generos;
                 Bundle bundle = new Bundle();
-<
+
                 bundle.putSerializable("generos",genero);
 
-
+                /*
 
                 generoAdapter.setOnClickListener(new View.OnClickListener()
                 {
@@ -121,13 +120,7 @@ public class FragmentMenu extends Fragment {
                 FragmentRanking fragmentRanking = new FragmentRanking();
                 fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentRanking);
                 fragmentTransaction.commit();
-            }
-
-        });
-
-                fragmentTransaction.commit();
-
-
+                */
             }
 
         });
