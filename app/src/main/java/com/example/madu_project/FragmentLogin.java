@@ -106,7 +106,7 @@ public class FragmentLogin extends Fragment {
                     }else {
                         activity.findViewById(R.id.LblEdad).setVisibility(View.INVISIBLE);
                     }
-                    
+
                     grpDificultad.setVisibility(View.VISIBLE);
                 }
 
