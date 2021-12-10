@@ -1,25 +1,22 @@
 package com.example.madu_project;
 
-import android.app.AlertDialog;
+
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
+
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.constraintlayout.widget.Group;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.CountDownTimer;
-import android.os.Handler;
-import android.provider.MediaStore;
+
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,21 +25,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.madu_project.personaje.FragmentPersonaje;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 public class FragmentPreguntas extends Fragment {
 
@@ -75,7 +63,7 @@ public class FragmentPreguntas extends Fragment {
     Date currentTime = null;
     String dificultad = null;
     BitmapDrawable fondoGeneroUrl;
-    TextView lblcontador;
+
 
 
     @Override
@@ -90,7 +78,6 @@ public class FragmentPreguntas extends Fragment {
         descPregunta = view.findViewById(R.id.lblDescPregunta);
         imgPregunta = view.findViewById(R.id.imgPregunta);
 
-        lblcontador = view.findViewById(R.id.lblcontador);
 
         clFondoPreguntaGenero = view.findViewById(R.id.clFondoPreguntaGenero);
         clbotonesRrespuestas = view.findViewById(R.id.clbotonesRrespuestas);
@@ -115,7 +102,7 @@ public class FragmentPreguntas extends Fragment {
 
 
         btnSiguietePregunta = (Button) view.findViewById(R.id.btnSiguietePregunta);
-        lblItem = view.findViewById(R.id.lblItem);
+
 
         pixeles = convertirDpPixeles();
 
@@ -323,6 +310,14 @@ public class FragmentPreguntas extends Fragment {
         btnResp4.setBackgroundResource(R.drawable.bg_radiobutton4);
         btnRespVerdadero.setBackgroundResource(R.drawable.bg_radiobutton2);
         btnRespFalso.setBackgroundResource(R.drawable.bg_radiobutton1);
+        btnResp1.setTextColor(Color.WHITE);
+        btnResp2.setTextColor(Color.WHITE);
+        btnResp3.setTextColor(Color.WHITE);
+        btnResp4.setTextColor(Color.WHITE);
+        btnRespVerdadero.setTextColor(Color.WHITE);
+        btnRespFalso.setTextColor(Color.WHITE);
+
+
     }
 
     private void desactivarRadioButtons()
@@ -370,28 +365,28 @@ public class FragmentPreguntas extends Fragment {
         {
             if(r1.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
                 r1.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                r1.setTextColor(Color.WHITE);
+                r1.setTextColor(Color.BLACK);
             } else {
                 r1.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(r2.getText().equals(respuestas[1].getRespuestaDescripcion()) && respuestas[1].isEsCorrecta()){
                 r2.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                r2.setTextColor(Color.WHITE);
+                r2.setTextColor(Color.BLACK);
             } else {
                 r2.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(r3.getText().equals(respuestas[2].getRespuestaDescripcion()) && respuestas[2].isEsCorrecta()){
                 r3.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                r3.setTextColor(Color.WHITE);
+                r3.setTextColor(Color.BLACK);
             } else {
                 r3.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(r4.getText().equals(respuestas[3].getRespuestaDescripcion()) && respuestas[3].isEsCorrecta()){
                 r4.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                r4.setTextColor(Color.WHITE);
+                r4.setTextColor(Color.BLACK);
             } else {
                 r4.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
@@ -399,14 +394,14 @@ public class FragmentPreguntas extends Fragment {
 
             if(rVer.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
                 rVer.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                rVer.setTextColor(Color.WHITE);
+                rVer.setTextColor(Color.BLACK);
             } else {
                 rVer.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(rFals.getText().equals(respuestas[1].getRespuestaDescripcion()) && respuestas[1].isEsCorrecta()){
                 rFals.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                rFals.setTextColor(Color.WHITE);
+                rFals.setTextColor(Color.BLACK);
             } else {
                 rFals.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }

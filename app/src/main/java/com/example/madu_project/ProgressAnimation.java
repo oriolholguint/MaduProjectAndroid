@@ -76,28 +76,28 @@ public class ProgressAnimation extends Animation
         {
             if(r1.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
                 r1.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                r1.setTextColor(Color.WHITE);
+                r1.setTextColor(Color.BLACK);
             } else {
                 r1.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(r2.getText().equals(respuestas[1].getRespuestaDescripcion()) && respuestas[1].isEsCorrecta()){
                 r2.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                r2.setTextColor(Color.WHITE);
+                r2.setTextColor(Color.BLACK);
             } else {
                 r2.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(r3.getText().equals(respuestas[2].getRespuestaDescripcion()) && respuestas[2].isEsCorrecta()){
                 r3.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                r3.setTextColor(Color.WHITE);
+                r3.setTextColor(Color.BLACK);
             } else {
                 r3.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(r4.getText().equals(respuestas[3].getRespuestaDescripcion()) && respuestas[3].isEsCorrecta()){
                 r4.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                r4.setTextColor(Color.WHITE);
+                r4.setTextColor(Color.BLACK);
             } else {
                 r4.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
@@ -105,14 +105,14 @@ public class ProgressAnimation extends Animation
 
             if(rVer.getText().equals(respuestas[0].getRespuestaDescripcion()) && respuestas[0].isEsCorrecta()){
                 rVer.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                rVer.setTextColor(Color.WHITE);
+                rVer.setTextColor(Color.BLACK);
             } else {
                 rVer.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
 
             if(rFals.getText().equals(respuestas[1].getRespuestaDescripcion()) && respuestas[1].isEsCorrecta()){
                 rFals.setBackgroundResource(R.drawable.bg_respuesta_correcta);
-                rFals.setTextColor(Color.WHITE);
+                rFals.setTextColor(Color.BLACK);
             } else {
                 rFals.setBackgroundResource(R.drawable.bg_respuesta_incorrecta);
             }
