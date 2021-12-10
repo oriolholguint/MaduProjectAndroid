@@ -61,6 +61,18 @@ public class FragmentLogin extends Fragment {
         });
 
 
+        cbxMayorEdad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(cbxMayorEdad.isChecked()){
+                    mayorEdad = true;
+                } else {
+                    mayorEdad = false;
+                }
+
+            }
+        });
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,10 +84,11 @@ public class FragmentLogin extends Fragment {
                     activity.layout = "Menu";
                     activity.status = "Juego";
                     Group grpDificultad = activity.settingsDialog.findViewById(R.id.grpDificultad);
-                    if(cbxMayorEdad.isChecked()){
-                        mayorEdad = true;
+
+                    if(mayorEdad){
                         activity.findViewById(R.id.lblEdad).setVisibility(View.VISIBLE);
                     }
+
                     activity.jugador.setNombre(txtNombreUsuario.getText().toString());
                     activity.jugador.setEsMayorEdad(mayorEdad);
 
@@ -98,6 +111,8 @@ public class FragmentLogin extends Fragment {
         });
 
 
+
+
         return view;
     }
 
@@ -117,5 +132,6 @@ public class FragmentLogin extends Fragment {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
 
 }

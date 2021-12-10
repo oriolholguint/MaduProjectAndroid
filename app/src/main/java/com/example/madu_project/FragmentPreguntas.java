@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.TypedValue;
@@ -36,6 +37,7 @@ import com.example.madu_project.personaje.FragmentPersonaje;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
@@ -73,6 +75,7 @@ public class FragmentPreguntas extends Fragment {
     Date currentTime = null;
     String dificultad = null;
     BitmapDrawable fondoGeneroUrl;
+    TextView lblcontador;
 
 
     @Override
@@ -87,6 +90,8 @@ public class FragmentPreguntas extends Fragment {
         descPregunta = view.findViewById(R.id.lblDescPregunta);
         imgPregunta = view.findViewById(R.id.imgPregunta);
 
+        lblcontador = view.findViewById(R.id.lblcontador);
+
         clFondoPreguntaGenero = view.findViewById(R.id.clFondoPreguntaGenero);
         clbotonesRrespuestas = view.findViewById(R.id.clbotonesRrespuestas);
         posicionConstraintBarraRespuestas = (ConstraintLayout.LayoutParams) clbotonesRrespuestas.getLayoutParams();
@@ -95,6 +100,8 @@ public class FragmentPreguntas extends Fragment {
         grp4Respuestas = view.findViewById(R.id.grp4Respuestas);
         Group grpPuntuacion = activity.findViewById(R.id.grpPuntuacion);
         grpPuntuacion.setVisibility(View.VISIBLE);
+
+
 
         btnResp1 = view.findViewById(R.id.btnResp1);
         btnResp2 = view.findViewById(R.id.btnResp2);
@@ -139,6 +146,10 @@ public class FragmentPreguntas extends Fragment {
 
             }
         });
+
+
+
+
 
         btnResp1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -248,6 +259,8 @@ public class FragmentPreguntas extends Fragment {
                     llenarRespuestas(respuestas,grp2Respuestas,grp4Respuestas);
                     progressAnimation(respuestas,btnResp1,btnResp2,btnResp3,btnResp4,btnRespVerdadero,btnRespFalso,btnSiguietePregunta,progressBar, activity.duracion);
                     restablecerRadioButons();
+
+
                 }
 
             }
@@ -256,6 +269,8 @@ public class FragmentPreguntas extends Fragment {
 
         return view;
     }
+
+
 
 
     private void progressAnimation(Respuesta [] resps,RadioButton r1, RadioButton r2,RadioButton r3,RadioButton r4,RadioButton rVer,RadioButton rFals,Button button,ProgressBar progressBar,int duracion)
