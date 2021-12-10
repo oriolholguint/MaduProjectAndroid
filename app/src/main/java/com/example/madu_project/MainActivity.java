@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     public TextView LblNombreJugador;
     public ImageView imgAvatar;
     public TextView LblEdad;
+    public Animation buttonUp, buttonDown;
 
 
     @Override
@@ -60,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
         jugador = new Jugador(null,false,0);
 
         clBackgroundApp = findViewById(R.id.clBackgroundApp);
+
+        buttonUp = AnimationUtils.loadAnimation(this,R.anim.button_up);
+        buttonDown = AnimationUtils.loadAnimation(this,R.anim.button_down);
 
         LblNombreJugador = findViewById(R.id.LblNombreJugador);
         imgAvatar = findViewById(R.id.imgAvatar);

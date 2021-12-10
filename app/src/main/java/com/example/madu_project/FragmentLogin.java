@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -57,6 +58,21 @@ public class FragmentLogin extends Fragment {
             @Override
             public void onClick(View view) {
                 gvAvatares.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btnSelectAvatar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnSelectAvatar.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnSelectAvatar.startAnimation(activity.buttonDown);
+                        break;
+                }
+                return false;
             }
         });
 
@@ -114,6 +130,22 @@ public class FragmentLogin extends Fragment {
             }
         });
 
+        btnLogin.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnLogin.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnLogin.startAnimation(activity.buttonDown);
+                        break;
+                }
+
+                return false;
+            }
+        });
 
 
 

@@ -19,6 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -38,6 +39,7 @@ public class FragmentMenu extends Fragment {
    FrameLayout frLinformacion;
    ConstraintLayout frmMenu;
    ViewPager vpGeneros;
+   ImageButton imgBtnRanking, imgBtnInformacion;
 
 
     @Override
@@ -78,8 +80,8 @@ public class FragmentMenu extends Fragment {
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
         listGeneros.addItemDecoration(dividerItemDecoration);
 
-        ImageButton imgBtnRanking = view.findViewById(R.id.imgBtnRanking);
-        ImageButton imgBtnInformacion = view.findViewById(R.id.imgBtnInformacion);
+        imgBtnRanking = view.findViewById(R.id.imgBtnRanking);
+        imgBtnInformacion = view.findViewById(R.id.imgBtnInformacion);
 
 
 
@@ -112,12 +114,45 @@ public class FragmentMenu extends Fragment {
 
         });
 
+        imgBtnRanking.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        imgBtnRanking.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        imgBtnRanking.startAnimation(activity.buttonDown);
+                        break;
+                }
+
+                return false;
+            }
+        });
+
 
         imgBtnInformacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 frLinformacion.setVisibility(View.VISIBLE);
+            }
+        });
+
+        imgBtnInformacion.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        imgBtnInformacion.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        imgBtnInformacion.startAnimation(activity.buttonDown);
+                        break;
+                }
+                return false;
             }
         });
 

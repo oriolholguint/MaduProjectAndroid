@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -155,6 +156,23 @@ public class FragmentPreguntas extends Fragment {
             }
         });
 
+        btnResp1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnResp1.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnResp1.startAnimation(activity.buttonDown);
+                        break;
+                }
+
+                return false;
+            }
+        });
+
         btnResp2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -170,6 +188,22 @@ public class FragmentPreguntas extends Fragment {
             }
         });
 
+        btnResp2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnResp2.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnResp2.startAnimation(activity.buttonDown);
+                        break;
+                }
+
+                return false;
+            }
+        });
 
         btnResp3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +217,23 @@ public class FragmentPreguntas extends Fragment {
                 desactivarRadioButtons();
                 btnSiguietePregunta.setEnabled(true);
                 btnSiguietePregunta.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btnResp3.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnResp3.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnResp3.startAnimation(activity.buttonDown);
+                        break;
+                }
+
+                return false;
             }
         });
 
@@ -201,6 +252,23 @@ public class FragmentPreguntas extends Fragment {
             }
         });
 
+        btnResp4.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnResp4.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnResp4.startAnimation(activity.buttonDown);
+                        break;
+                }
+
+                return false;
+            }
+        });
+
         btnRespVerdadero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -214,6 +282,23 @@ public class FragmentPreguntas extends Fragment {
             }
         });
 
+        btnRespVerdadero.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnRespVerdadero.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnRespVerdadero.startAnimation(activity.buttonDown);
+                        break;
+                }
+
+                return false;
+            }
+        });
+
         btnRespFalso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -224,6 +309,22 @@ public class FragmentPreguntas extends Fragment {
                 btnSiguietePregunta.setEnabled(true);
                 btnSiguietePregunta.setVisibility(View.VISIBLE);
 
+            }
+        });
+
+        btnRespFalso.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnRespFalso.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnRespFalso.startAnimation(activity.buttonDown);
+                        break;
+                }
+
+                return false;
             }
         });
 
@@ -250,6 +351,23 @@ public class FragmentPreguntas extends Fragment {
 
                 }
 
+            }
+        });
+
+        btnSiguietePregunta.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnSiguietePregunta.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnSiguietePregunta.startAnimation(activity.buttonDown);
+                        break;
+                }
+
+                return false;
             }
         });
 

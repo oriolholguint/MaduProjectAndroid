@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -25,6 +26,8 @@ public class GeneroAdapter extends RecyclerView.Adapter<GeneroAdapter.ViewHolder
     {
         this.generos = generos;
     }
+
+
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder
@@ -83,6 +86,7 @@ public class GeneroAdapter extends RecyclerView.Adapter<GeneroAdapter.ViewHolder
             listener.onClick(view);
         }
     }
+
 
 
 }

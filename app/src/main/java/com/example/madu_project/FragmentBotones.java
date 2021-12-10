@@ -9,8 +9,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,9 +26,7 @@ import com.example.madu_project.introduccion.FragmentTutorial;
 public class FragmentBotones extends Fragment
 {
     View view;
-    Button btnAtras;
-    Button btnSiguienteCentro;
-    Button btnSiguiente;
+    Button btnAtras, btnSiguienteCentro, btnSiguiente;
     Group grpBotones;
     MainActivity ActivityMain;
 
@@ -48,6 +49,9 @@ public class FragmentBotones extends Fragment
         btnSiguienteCentro = view.findViewById(R.id.btnSiguienteCentro);
         btnSiguiente = view.findViewById(R.id.btnSiguiente);
         grpBotones = view.findViewById(R.id.grpBotones);
+
+
+
         FragmentIdioma fragmentIdioma = new FragmentIdioma();
 
         getFragmentManager().beginTransaction().add(R.id.frLContenedorFragments,fragmentIdioma).commit();
@@ -59,7 +63,6 @@ public class FragmentBotones extends Fragment
         btnSiguienteCentro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 if(ActivityMain.layout.equals("Idioma") && ActivityMain.generos != null){
                     ActivityMain.layout = "Introduccion";
@@ -75,6 +78,22 @@ public class FragmentBotones extends Fragment
                     btnSiguienteCentro.setVisibility(View.INVISIBLE);
                 }
 
+            }
+        });
+
+        btnSiguienteCentro.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnSiguienteCentro.startAnimation(ActivityMain.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnSiguienteCentro.startAnimation(ActivityMain.buttonDown);
+                        break;
+                }
+                return false;
             }
         });
 
@@ -119,6 +138,22 @@ public class FragmentBotones extends Fragment
             }
         });
 
+        btnAtras.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnAtras.startAnimation(ActivityMain.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnAtras.startAnimation(ActivityMain.buttonDown);
+                        break;
+                }
+
+                return false;
+            }
+        });
 
 
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
@@ -162,6 +197,22 @@ public class FragmentBotones extends Fragment
                     btnSiguiente.setText("Siguiente");
 
                 }
+            }
+        });
+
+        btnSiguiente.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnSiguiente.startAnimation(ActivityMain.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnSiguiente.startAnimation(ActivityMain.buttonDown);
+                        break;
+                }
+                return false;
             }
         });
 
