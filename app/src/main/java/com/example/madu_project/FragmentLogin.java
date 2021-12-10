@@ -66,20 +66,8 @@ public class FragmentLogin extends Fragment {
             public void onClick(View view) {
                 if(cbxMayorEdad.isChecked()){
                     mayorEdad = true;
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setMessage(Boolean.toString(mayorEdad))
-                            .setTitle("Aviso");
-
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
                 } else {
                     mayorEdad = false;
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setMessage(Boolean.toString(mayorEdad))
-                            .setTitle("Aviso");
-
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
                 }
 
             }
@@ -97,9 +85,6 @@ public class FragmentLogin extends Fragment {
                     activity.status = "Juego";
                     Group grpDificultad = activity.settingsDialog.findViewById(R.id.grpDificultad);
 
-                    if(mayorEdad){
-                        activity.findViewById(R.id.lblEdad).setVisibility(View.VISIBLE);
-                    }
 
                     activity.jugador.setNombre(txtNombreUsuario.getText().toString());
                     activity.jugador.setEsMayorEdad(mayorEdad);
@@ -115,6 +100,13 @@ public class FragmentLogin extends Fragment {
                     fragmentTransaction.commit();
 
                     activity.findViewById(R.id.grpDatosUsuario).setVisibility(View.VISIBLE);
+
+                    if(mayorEdad){
+                        activity.findViewById(R.id.LblEdad).setVisibility(View.VISIBLE);
+                    }else {
+                        activity.findViewById(R.id.LblEdad).setVisibility(View.INVISIBLE);
+                    }
+                    
                     grpDificultad.setVisibility(View.VISIBLE);
                 }
 
