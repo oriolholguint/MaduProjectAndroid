@@ -336,7 +336,12 @@ public class FragmentPreguntas extends Fragment {
         }
 
         if(correcto){
-            puntuacion += 100;
+            int valorDificultad = 0;
+            String[][] dif = {{"30","1"},{"25","2"},{"20","3"}};
+            for (String[] e : dif){
+                if (e[0].equals(String.valueOf(activity.duracion))) valorDificultad = Integer.parseInt(e[1]);
+            }
+            puntuacion += (valorDificultad*25) + 50 + (100 - (progressBar.getProgress()/10));//dificultad + tiempo
             lbLPuntos.setText(Integer.toString(puntuacion));
         }
 
