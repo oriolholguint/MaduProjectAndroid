@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -105,13 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 // duracion = sprDificultad.getSelectedItemPosition() * 5 + 20;
                 int index = sprDificultad.getSelectedItemPosition();
 
-                if (index == 0) {
-                    duracion = 30;
-                } else if (index == 1) {
-                    duracion = 25;
-                } else if (index == 2) {
-                    duracion = 20;
-                }
+                duracion = 30 - (5 * index);
             }
 
             @Override

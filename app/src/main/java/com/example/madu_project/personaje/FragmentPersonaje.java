@@ -20,7 +20,6 @@ import com.example.madu_project.personaje.Personaje;
 public class FragmentPersonaje extends Fragment
 {
     private final String IMAGE_PATH = "/data/data/com.example.madu_project/files/images/";
-    private final static int PUNTUACION_MAX = 1000;
     MainActivity activity = (MainActivity) getActivity();
     View view;
 
@@ -49,7 +48,7 @@ public class FragmentPersonaje extends Fragment
         Personaje personaje = null;
         int posicionJugador = 0;
 
-        if(puntuacionPartida >= PUNTUACION_MAX)
+/*        if(puntuacionPartida >= PUNTUACION_MAX)
         {
             posicionJugador = 1;
         }
@@ -60,7 +59,7 @@ public class FragmentPersonaje extends Fragment
         else if(puntuacionPartida > PUNTUACION_MAX * 0.333f)
         {
             posicionJugador = 3;
-        }
+        }*/
 
         boolean personajeEncontrado = false;
         int counter = 0;
