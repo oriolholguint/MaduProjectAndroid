@@ -66,8 +66,20 @@ public class FragmentLogin extends Fragment {
             public void onClick(View view) {
                 if(cbxMayorEdad.isChecked()){
                     mayorEdad = true;
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage(Boolean.toString(mayorEdad))
+                            .setTitle("Aviso");
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 } else {
                     mayorEdad = false;
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage(Boolean.toString(mayorEdad))
+                            .setTitle("Aviso");
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
 
             }

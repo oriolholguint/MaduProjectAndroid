@@ -167,10 +167,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if(status.equals("Juego")){
-                    clBackgroundApp.setBackgroundColor(Color.parseColor("#3498DB"));
+                    clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
-
                     fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales, fragmentBotones);
                     fragmentTransaction2.commit();
                     grpDatosUsuario.setVisibility(View.INVISIBLE);
