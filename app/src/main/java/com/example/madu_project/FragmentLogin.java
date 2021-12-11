@@ -112,6 +112,8 @@ public class FragmentLogin extends Fragment {
                     FragmentTransaction fragmentTransaction = mg.beginTransaction();
 
                     FragmentMenu fragmentMenu = new FragmentMenu();
+                    fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                            R.anim.enter_left_to_right,R.anim.exit_left_to_right);
                     fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentMenu);
                     fragmentTransaction.commit();
 

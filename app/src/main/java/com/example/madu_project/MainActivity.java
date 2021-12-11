@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 
@@ -140,6 +141,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        imgBtnConfiguracion.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        imgBtnConfiguracion.startAnimation(buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        imgBtnConfiguracion.startAnimation(buttonDown);
+                        break;
+                }
+                return false;
+            }
+        });
+
 
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,6 +179,22 @@ public class MainActivity extends AppCompatActivity {
                     settingsDialog.cancel();
                 }
 
+            }
+        });
+
+        btnMenu.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnMenu.startAnimation(buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnMenu.startAnimation(buttonDown);
+                        break;
+                }
+                return false;
             }
         });
 
@@ -218,7 +250,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        btnSalir.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        btnSalir.startAnimation(buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        btnSalir.startAnimation(buttonDown);
+                        break;
+                }
+                return false;
+            }
+        });
+
+
     }
+
+
 
 
     public ArrayList<String> llenarSpinner() {
