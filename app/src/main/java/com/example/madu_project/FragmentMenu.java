@@ -157,7 +157,8 @@ public class FragmentMenu extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("genero",genero);
                 getParentFragmentManager().setFragmentResult("genero",bundle);
-
+                //Igualo el genero seleccionado a la variable del main para utilizarlo en el personaje
+                activity.generoSelect = genero;
                 irAPreguntas();
 
 

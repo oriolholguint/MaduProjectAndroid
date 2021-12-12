@@ -114,7 +114,7 @@ public class FragmentPreguntas extends Fragment {
                 descPregunta.setText(genero.getNombre());
 
                 //FUNCIONA METODO OBTENER PREGUNTAS, CAMBIAR CANTIDAD PREGUNTAS PARA PRUEBAS
-                preguntas = activity.getPreguntasPartida(genero.getPreguntas(),5,activity.jugador);
+                preguntas = activity.getPreguntasPartida(genero.getPreguntas(),1,activity.jugador);
 
                 fondoGeneroUrl = new BitmapDrawable("/data/data/com.example.madu_project/files/images/"+genero.getImagenFondo());
                 activity.clBackgroundApp.setBackground(fondoGeneroUrl);
