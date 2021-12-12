@@ -32,15 +32,15 @@ import com.example.madu_project.introduccion.FragmentTutorial;
 
 public class FragmentMenu extends Fragment {
 
-   View view;
-   MainActivity activity;
-   Genero [] generos;
-   RecyclerView listGeneros;
-   FrameLayout frLinformacion;
-   ConstraintLayout frmMenu;
-   ViewPager vpGeneros;
-   ImageButton imgBtnRanking, imgBtnInformacion;
-
+    View view;
+    MainActivity activity;
+    Genero [] generos;
+    RecyclerView listGeneros;
+    FrameLayout frLinformacion;
+    ConstraintLayout frmMenu;
+    ImageButton imgBtnRanking, imgBtnInformacion;
+    FragmentManager mg;
+    FragmentTransaction fragmentTransaction;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,10 +50,12 @@ public class FragmentMenu extends Fragment {
 
         activity = (MainActivity) getActivity();
 
+        mg = getFragmentManager();
+
         generos = activity.generos;
         frLinformacion = view.findViewById(R.id.frLinformacion);
         frmMenu = view.findViewById(R.id.frmMenu);
-        //vpGeneros = view.findViewById(R.id.vpGeneros);
+
 
         FragmentTutorial fragmentTutorial = new FragmentTutorial();
         getFragmentManager().beginTransaction().add(R.id.frLinformacion,fragmentTutorial).commit();
@@ -61,9 +63,6 @@ public class FragmentMenu extends Fragment {
 
         listGeneros = view.findViewById(R.id.ListGeneros);
         GeneroAdapter generoAdapter = new GeneroAdapter(generos);
-
-        //GeneroAdapterCardView generoAdapterCardView = new GeneroAdapterCardView(getContext(),generos);
-        //vpGeneros.setAdapter(generoAdapterCardView);
 
 
         listGeneros.setHasFixedSize(true);
@@ -73,9 +72,6 @@ public class FragmentMenu extends Fragment {
 
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
-
-        //RecyclerView.ItemDecoration dividerItemDecorator = new DividerItemDecorator(getActivity());
-        //listGeneros.addItemDecoration(dividerItemDecorator);
 
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider));
         listGeneros.addItemDecoration(dividerItemDecoration);
@@ -101,15 +97,9 @@ public class FragmentMenu extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("generos",genero);
 
-
                 getParentFragmentManager().setFragmentResult("generos",bundle);
 
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fm.beginTransaction();
-
-                FragmentRanking fragmentRanking = new FragmentRanking();
-                fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentRanking);
-                fragmentTransaction.commit();
+                irARanking();
             }
 
         });
@@ -168,14 +158,7 @@ public class FragmentMenu extends Fragment {
                 bundle.putSerializable("genero",genero);
                 getParentFragmentManager().setFragmentResult("genero",bundle);
 
-                FragmentManager mg = getFragmentManager();
-                FragmentTransaction fragmentTransaction = mg.beginTransaction();
-
-                FragmentPreguntas fragmentPreguntas = new FragmentPreguntas();
-                fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
-                        R.anim.enter_left_to_right,R.anim.exit_left_to_right);
-                fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentPreguntas);
-                fragmentTransaction.commit();
+                irAPreguntas();
 
 
             }
@@ -203,6 +186,29 @@ public class FragmentMenu extends Fragment {
     }
 
 
+    public void AnimacionDerechaAIzquierda(){
+        fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                R.anim.enter_left_to_right,R.anim.exit_left_to_right);
+    }
+
+
+    public void irARanking(){
+
+        fragmentTransaction = mg.beginTransaction();
+        FragmentRanking fragmentRanking = new FragmentRanking();
+        fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentRanking);
+        fragmentTransaction.commit();
+    }
+
+    public void irAPreguntas(){
+
+        fragmentTransaction = mg.beginTransaction();
+
+        FragmentPreguntas fragmentPreguntas = new FragmentPreguntas();
+        AnimacionDerechaAIzquierda();
+        fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentPreguntas);
+        fragmentTransaction.commit();
+    }
 
 
 }

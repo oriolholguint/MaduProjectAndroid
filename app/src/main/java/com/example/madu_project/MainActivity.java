@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-
         duracion = 30;
         partida = null;
         jugador = new Jugador(null,false,0);
@@ -272,36 +271,36 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void AnimacionIzquierdaADerecha(FragmentTransaction fragmentTransaction){
+        fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
+                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
+    }
+
 
     public void volverAMenu(FragmentMenu fragmentMenu){
 
         FragmentManager mg = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
-
-        fragmentTransaction2.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
-                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
-
-        fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales, fragmentMenu);
-        fragmentTransaction2.commit();
+        FragmentTransaction fragmentTransaction = mg.beginTransaction();
+        AnimacionIzquierdaADerecha(fragmentTransaction);
+        fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales, fragmentMenu);
+        fragmentTransaction.commit();
     }
 
     public void volverAlPrincipio(FragmentBotones fragmentBotones){
         FragmentManager mg = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
-        fragmentTransaction2.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
-                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
-        fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales, fragmentBotones);
-        fragmentTransaction2.commit();
+        FragmentTransaction fragmentTransaction = mg.beginTransaction();
+        AnimacionIzquierdaADerecha(fragmentTransaction);
+        fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales, fragmentBotones);
+        fragmentTransaction.commit();
     }
 
     public void volverAIdioma(){
         FragmentManager mg = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
-        fragmentTransaction2.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
-                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
+        FragmentTransaction fragmentTransaction = mg.beginTransaction();
+        AnimacionIzquierdaADerecha(fragmentTransaction);
         FragmentIdioma fragmentIdioma = new FragmentIdioma();
-        fragmentTransaction2.replace(R.id.frLContenedorFragments, fragmentIdioma);
-        fragmentTransaction2.commit();
+        fragmentTransaction.replace(R.id.frLContenedorFragments, fragmentIdioma);
+        fragmentTransaction.commit();
     }
 
 

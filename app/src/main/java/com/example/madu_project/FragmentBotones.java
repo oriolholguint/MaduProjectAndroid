@@ -194,12 +194,20 @@ public class FragmentBotones extends Fragment
 
     }
 
+    public void AnimacionDerechaAIzquierda(){
+        fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                R.anim.enter_left_to_right,R.anim.exit_left_to_right);
+    }
+
+    public void AnimacionIzquierdaADerecha(){
+        fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
+                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
+    }
 
     public void volverAIdioma(){
         fragmentTransaction = mg.beginTransaction();
         FragmentIdioma fragmentIdioma = new FragmentIdioma();
-        fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
-                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
+        AnimacionIzquierdaADerecha();
         fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentIdioma);
         fragmentTransaction.commit();
     }
@@ -207,8 +215,7 @@ public class FragmentBotones extends Fragment
     public void irATutorial(){
         fragmentTransaction = mg.beginTransaction();
         FragmentTutorial fragmentTutorial = new FragmentTutorial();
-        fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
-                R.anim.enter_left_to_right,R.anim.exit_left_to_right);
+        AnimacionDerechaAIzquierda();
         fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentTutorial);
 
         fragmentTransaction.commit();
@@ -217,8 +224,7 @@ public class FragmentBotones extends Fragment
     public void volverATutorial(){
         fragmentTransaction = mg.beginTransaction();
         FragmentTutorial fragmentTutorial = new FragmentTutorial();
-        fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
-                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
+        AnimacionIzquierdaADerecha();
         fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentTutorial);
         fragmentTransaction.commit();
     }
@@ -228,8 +234,7 @@ public class FragmentBotones extends Fragment
     public void irALogin(){
         fragmentTransaction = mg.beginTransaction();
         FragmentLogin fragmentLogin = new FragmentLogin();
-        fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
-                R.anim.enter_left_to_right,R.anim.exit_left_to_right);
+        AnimacionDerechaAIzquierda();
         fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentLogin);
         fragmentTransaction.commit();
     }
@@ -237,8 +242,7 @@ public class FragmentBotones extends Fragment
     public void irAMenu(){
        fragmentTransaction = mg.beginTransaction();
         FragmentMenu fragmentMenu = new FragmentMenu();
-        fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
-                R.anim.enter_left_to_right,R.anim.exit_left_to_right);
+        AnimacionDerechaAIzquierda();
         fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentMenu);
         fragmentTransaction.commit();
     }
