@@ -195,6 +195,15 @@ public class FragmentBotones extends Fragment
     }
 
 
+    public void volverAIdioma(){
+        fragmentTransaction = mg.beginTransaction();
+        FragmentIdioma fragmentIdioma = new FragmentIdioma();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
+                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
+        fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentIdioma);
+        fragmentTransaction.commit();
+    }
+
     public void irATutorial(){
         fragmentTransaction = mg.beginTransaction();
         FragmentTutorial fragmentTutorial = new FragmentTutorial();
@@ -206,9 +215,7 @@ public class FragmentBotones extends Fragment
     }
 
     public void volverATutorial(){
-
         fragmentTransaction = mg.beginTransaction();
-
         FragmentTutorial fragmentTutorial = new FragmentTutorial();
         fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
                 R.anim.enter_right_to_left,R.anim.exit_right_to_left);
@@ -216,24 +223,7 @@ public class FragmentBotones extends Fragment
         fragmentTransaction.commit();
     }
 
-    public void irAIdioma(){
 
-        fragmentTransaction = mg.beginTransaction();
-        FragmentIdioma fragmentIdioma = new FragmentIdioma();
-        fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
-                R.anim.enter_left_to_right,R.anim.exit_left_to_right);
-        fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentIdioma);
-        fragmentTransaction.commit();
-    }
-
-    public void volverAIdioma(){
-        fragmentTransaction = mg.beginTransaction();
-        FragmentIdioma fragmentIdioma = new FragmentIdioma();
-        fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
-                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
-        fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentIdioma);
-        fragmentTransaction.commit();
-    }
 
     public void irALogin(){
         fragmentTransaction = mg.beginTransaction();
