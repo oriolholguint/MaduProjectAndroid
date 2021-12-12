@@ -21,17 +21,18 @@ import android.widget.ImageView;
 
 public class FragmentLogin extends Fragment {
 
-   View view;
-   int [] avatares;
-   EditText txtNombreUsuario;
-   CheckBox cbxMayorEdad;
-   GridView gvAvatares;
-   ImageView imgAvatarSelect;
-   Button btnSelectAvatar;
-   MainActivity activity;
-   Button btnLogin;
-   Boolean mayorEdad = false, visible = false;
-
+    View view;
+    int [] avatares;
+    EditText txtNombreUsuario;
+    CheckBox cbxMayorEdad;
+    GridView gvAvatares;
+    ImageView imgAvatarSelect;
+    Button btnSelectAvatar;
+    MainActivity activity;
+    Button btnLogin;
+    Boolean mayorEdad = false, visible = false;
+    FragmentManager mg;
+    FragmentTransaction fragmentTransaction;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,7 +41,7 @@ public class FragmentLogin extends Fragment {
         view = inflater.inflate(R.layout.fragment_login, container, false);
         avatares = llenarAvatares();
         activity = (MainActivity) getActivity();
-
+        mg = getFragmentManager();
 
         txtNombreUsuario = view.findViewById(R.id.txtNombreUsuario);
         cbxMayorEdad = view.findViewById(R.id.cbxMayorEdad);
@@ -104,7 +105,7 @@ public class FragmentLogin extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(txtNombreUsuario.getText().toString().equals(""))
+                if(txtNombreUsuario.getText().toString().equals("") || imgAvatarSelect.getDrawable() == null)
                 {
                     MensajeAlerta();
                 } else {
@@ -168,7 +169,7 @@ public class FragmentLogin extends Fragment {
     public void MensajeAlerta()
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("introduce un nombre")
+        builder.setMessage("falta un nombre o una imagen")
                 .setTitle("Aviso");
 
         AlertDialog dialog = builder.create();
@@ -176,8 +177,8 @@ public class FragmentLogin extends Fragment {
     }
 
     public void irAMenu(){
-        FragmentManager mg = getFragmentManager();
-        FragmentTransaction fragmentTransaction = mg.beginTransaction();
+
+        fragmentTransaction = mg.beginTransaction();
 
         FragmentMenu fragmentMenu = new FragmentMenu();
         fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
