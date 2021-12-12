@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgAvatar"
         android:layout_width="38dp"
         android:layout_height="38dp"
@@ -28,6 +28,7 @@
         android:layout_marginTop="16dp"
         android:scaleType="fitXY"
         android:contentDescription="Avatar"
+        app:shapeAppearanceOverlay="@style/roundImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

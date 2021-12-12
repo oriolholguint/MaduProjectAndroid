@@ -27,13 +27,13 @@ public class AvatarAdapter extends BaseAdapter{
 
 
 
+
     public AvatarAdapter(Context context, int[] avatares,ImageView imagenSelect,GridView gvAvatares,Jugador jugador) {
         this.context = context;
         this.avatares = avatares;
         this.imagenSelect = imagenSelect;
         this.gvAvatares = gvAvatares;
         this.jugador = jugador;
-
     }
 
     @Override
@@ -76,7 +76,9 @@ public class AvatarAdapter extends BaseAdapter{
             public void onClick(View view) {
 
                 imagenSelect.setImageResource(avatares[position]);
+
                 //gvAvatares.setVisibility(View.INVISIBLE);
+
                 jugador.setAvatar(avatares[position]);
             }
         });

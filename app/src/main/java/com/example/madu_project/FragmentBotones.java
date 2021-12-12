@@ -29,7 +29,8 @@ public class FragmentBotones extends Fragment
     Button btnAtras, btnSiguienteCentro, btnSiguiente;
     Group grpBotones;
     MainActivity ActivityMain;
-
+    FragmentManager mg;
+    FragmentTransaction fragmentTransaction;
 
     @Override
     public void onCreate( Bundle savedInstanceState) {
@@ -44,12 +45,12 @@ public class FragmentBotones extends Fragment
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_botones, container, false);
 
-
         btnAtras = view.findViewById(R.id.btnAtras);
         btnSiguienteCentro = view.findViewById(R.id.btnSiguienteCentro);
         btnSiguiente = view.findViewById(R.id.btnSiguiente);
         grpBotones = view.findViewById(R.id.grpBotones);
 
+        mg = getFragmentManager();
 
 
         FragmentIdioma fragmentIdioma = new FragmentIdioma();
@@ -67,16 +68,7 @@ public class FragmentBotones extends Fragment
                 if(ActivityMain.layout.equals("Idioma") && ActivityMain.generos != null){
                     ActivityMain.layout = "Introduccion";
                     btnSiguienteCentro.setVisibility(View.INVISIBLE);
-                    FragmentManager mg = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = mg.beginTransaction();
-
-                    FragmentTutorial fragmentTutorial = new FragmentTutorial();
-                    fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
-                            R.anim.enter_left_to_right,R.anim.exit_left_to_right);
-                    fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentTutorial);
-
-                    fragmentTransaction.commit();
-
+                    irATutorial();
                     grpBotones.setVisibility(View.VISIBLE);
 
                 }
@@ -111,15 +103,7 @@ public class FragmentBotones extends Fragment
                 {
                     ActivityMain.layout = "Idioma";
 
-                    FragmentManager mg = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = mg.beginTransaction();
-
-                    FragmentIdioma fragmentIdioma = new FragmentIdioma();
-                    fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
-                            R.anim.enter_right_to_left,R.anim.exit_right_to_left);
-                    fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentIdioma);
-                    fragmentTransaction.commit();
-
+                    volverAIdioma();
 
                     grpBotones.setVisibility(View.INVISIBLE);
                     btnSiguienteCentro.setVisibility(View.VISIBLE);
@@ -127,15 +111,7 @@ public class FragmentBotones extends Fragment
                 } else if(ActivityMain.layout.equals("Login")){
                     ActivityMain.layout = "Introduccion";
 
-                    FragmentManager mg = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = mg.beginTransaction();
-
-                    FragmentTutorial fragmentTutorial = new FragmentTutorial();
-                    fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
-                            R.anim.enter_right_to_left,R.anim.exit_right_to_left);
-                    fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentTutorial);
-                    fragmentTransaction.commit();
-
+                    volverATutorial();
 
                     btnSiguiente.setVisibility(View.VISIBLE);
                     btnSiguiente.setText("Siguiente");
@@ -172,35 +148,17 @@ public class FragmentBotones extends Fragment
                     btnSiguiente.setVisibility(View.INVISIBLE);
                     ActivityMain.layout = "Login";
 
+                    irALogin();
 
-                    FragmentManager mg = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = mg.beginTransaction();
-
-                    FragmentLogin fragmentLogin = new FragmentLogin();
-
-                    fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
-                            R.anim.enter_left_to_right,R.anim.exit_left_to_right);
-
-                    fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentLogin);
-                    fragmentTransaction.commit();
-
-
-
-                } else if (ActivityMain.layout.equals("Login"))
+                }
+                else if (ActivityMain.layout.equals("Login"))
                 {
                     Group grpDificultad = ActivityMain.settingsDialog.findViewById(R.id.grpDificultad);
 
                     ActivityMain.layout = "Menu";
                     ActivityMain.status = "Juego";
 
-                    FragmentManager mg = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = mg.beginTransaction();
-
-                    FragmentMenu fragmentMenu = new FragmentMenu();
-                    fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
-                            R.anim.enter_left_to_right,R.anim.exit_left_to_right);
-                    fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentMenu);
-                    fragmentTransaction.commit();
+                    irAMenu();
 
                     ActivityMain.findViewById(R.id.grpDatosUsuario).setVisibility(View.VISIBLE);
                     grpDificultad.setVisibility(View.VISIBLE);
@@ -237,6 +195,63 @@ public class FragmentBotones extends Fragment
     }
 
 
+    public void irATutorial(){
+        fragmentTransaction = mg.beginTransaction();
+        FragmentTutorial fragmentTutorial = new FragmentTutorial();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                R.anim.enter_left_to_right,R.anim.exit_left_to_right);
+        fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentTutorial);
+
+        fragmentTransaction.commit();
+    }
+
+    public void volverATutorial(){
+
+        fragmentTransaction = mg.beginTransaction();
+
+        FragmentTutorial fragmentTutorial = new FragmentTutorial();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
+                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
+        fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentTutorial);
+        fragmentTransaction.commit();
+    }
+
+    public void irAIdioma(){
+
+        fragmentTransaction = mg.beginTransaction();
+        FragmentIdioma fragmentIdioma = new FragmentIdioma();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                R.anim.enter_left_to_right,R.anim.exit_left_to_right);
+        fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentIdioma);
+        fragmentTransaction.commit();
+    }
+
+    public void volverAIdioma(){
+        fragmentTransaction = mg.beginTransaction();
+        FragmentIdioma fragmentIdioma = new FragmentIdioma();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
+                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
+        fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentIdioma);
+        fragmentTransaction.commit();
+    }
+
+    public void irALogin(){
+        fragmentTransaction = mg.beginTransaction();
+        FragmentLogin fragmentLogin = new FragmentLogin();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                R.anim.enter_left_to_right,R.anim.exit_left_to_right);
+        fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentLogin);
+        fragmentTransaction.commit();
+    }
+
+    public void irAMenu(){
+       fragmentTransaction = mg.beginTransaction();
+        FragmentMenu fragmentMenu = new FragmentMenu();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                R.anim.enter_left_to_right,R.anim.exit_left_to_right);
+        fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentMenu);
+        fragmentTransaction.commit();
+    }
 
 
 }

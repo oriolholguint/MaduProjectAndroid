@@ -61,9 +61,11 @@ public class FragmentLogin extends Fragment {
 
                 if (visible == false){
                     visible = true;
+                    btnSelectAvatar.setText("Deseleccionar Avatar");
                     gvAvatares.setVisibility(View.VISIBLE);
                 } else {
                     visible = false;
+                    btnSelectAvatar.setText("Seleccionar Avatar");
                     gvAvatares.setVisibility(View.INVISIBLE);
                 }
 
@@ -117,14 +119,7 @@ public class FragmentLogin extends Fragment {
                     activity.LblNombreJugador.setText(activity.jugador.getNombre());
                     activity.imgAvatar.setImageResource(activity.jugador.getAvatar());
 
-                    FragmentManager mg = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = mg.beginTransaction();
-
-                    FragmentMenu fragmentMenu = new FragmentMenu();
-                    fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
-                            R.anim.enter_left_to_right,R.anim.exit_left_to_right);
-                    fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentMenu);
-                    fragmentTransaction.commit();
+                    irAMenu();
 
                     activity.findViewById(R.id.grpDatosUsuario).setVisibility(View.VISIBLE);
 
@@ -178,6 +173,17 @@ public class FragmentLogin extends Fragment {
 
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    public void irAMenu(){
+        FragmentManager mg = getFragmentManager();
+        FragmentTransaction fragmentTransaction = mg.beginTransaction();
+
+        FragmentMenu fragmentMenu = new FragmentMenu();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                R.anim.enter_left_to_right,R.anim.exit_left_to_right);
+        fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentMenu);
+        fragmentTransaction.commit();
     }
 
 

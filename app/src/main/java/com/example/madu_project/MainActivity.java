@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
     public TextView LblEdad;
     public Animation buttonUp, buttonDown;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -58,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
 
         duracion = 30;
         partida = null;
@@ -165,14 +165,8 @@ public class MainActivity extends AppCompatActivity {
 
                     layout = "Menu";
                     clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
-                    FragmentManager mg = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
+                    volverAMenu(fragmentMenu);
 
-                    fragmentTransaction2.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
-                            R.anim.enter_right_to_left,R.anim.exit_right_to_left);
-
-                    fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales, fragmentMenu);
-                    fragmentTransaction2.commit();
                     partida = null;
                     grpMenu.setVisibility(View.INVISIBLE);
                     grpDificultad.setVisibility(View.VISIBLE);
@@ -209,12 +203,9 @@ public class MainActivity extends AppCompatActivity {
 
                 if(status.equals("Juego")){
                     clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
-                    FragmentManager mg = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
-                    fragmentTransaction2.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
-                            R.anim.enter_right_to_left,R.anim.exit_right_to_left);
-                    fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales, fragmentBotones);
-                    fragmentTransaction2.commit();
+
+                    volverAlPrincipio(fragmentBotones);
+
                     grpDatosUsuario.setVisibility(View.INVISIBLE);
                     status = "Principal";
                     layout = "Idioma";
@@ -233,19 +224,15 @@ public class MainActivity extends AppCompatActivity {
                     if (layout.equals("Idioma")) {
                         MainActivity.this.finish();
                         System.exit(0);
+                    } else {
+                        volverAIdioma();
+                        layout = "Idioma";
+                        fragmentBotones.grpBotones.setVisibility(View.INVISIBLE);
+                        fragmentBotones.btnSiguienteCentro.setVisibility(View.VISIBLE);
+                        generos = null;
                     }
 
-                    FragmentManager mg = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
-                    fragmentTransaction2.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
-                            R.anim.enter_right_to_left,R.anim.exit_right_to_left);
-                    FragmentIdioma fragmentIdioma = new FragmentIdioma();
-                    fragmentTransaction2.replace(R.id.frLContenedorFragments, fragmentIdioma);
-                    fragmentTransaction2.commit();
-                    layout = "Idioma";
-                    fragmentBotones.grpBotones.setVisibility(View.INVISIBLE);
-                    fragmentBotones.btnSiguienteCentro.setVisibility(View.VISIBLE);
-                    generos = null;
+
                 }
 
 
@@ -275,8 +262,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
     public ArrayList<String> llenarSpinner() {
         ArrayList<String> items = new ArrayList<>();
         items.add("Facil");
@@ -286,6 +271,39 @@ public class MainActivity extends AppCompatActivity {
         return items;
 
     }
+
+
+    public void volverAMenu(FragmentMenu fragmentMenu){
+
+        FragmentManager mg = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
+
+        fragmentTransaction2.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
+                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
+
+        fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales, fragmentMenu);
+        fragmentTransaction2.commit();
+    }
+
+    public void volverAlPrincipio(FragmentBotones fragmentBotones){
+        FragmentManager mg = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
+        fragmentTransaction2.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
+                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
+        fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales, fragmentBotones);
+        fragmentTransaction2.commit();
+    }
+
+    public void volverAIdioma(){
+        FragmentManager mg = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
+        fragmentTransaction2.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
+                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
+        FragmentIdioma fragmentIdioma = new FragmentIdioma();
+        fragmentTransaction2.replace(R.id.frLContenedorFragments, fragmentIdioma);
+        fragmentTransaction2.commit();
+    }
+
 
     /**
      * Se obtienen preguntas aleatorias de un array enviado por parametros.

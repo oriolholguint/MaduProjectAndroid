@@ -110,7 +110,7 @@
         android:layout_height="164dp"
         android:layout_marginTop="316dp"
         android:layout_weight="1"
-        android:background="@drawable/border_style2"
+        android:background="@drawable/border_style3"
         android:columnWidth="110dp"
         android:horizontalSpacing="50dp"
         android:numColumns="5"
@@ -136,6 +136,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
     <ImageView
         android:id="@+id/imgAvatarSelect"
         android:layout_width="48dp"
@@ -145,7 +146,17 @@
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgAvatarSelect"
+        android:layout_width="48dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="720dp"
+        android:layout_marginTop="250dp"
+        android:scaleType="fitXY"
+        app:shapeAppearanceOverlay="@style/roundImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
