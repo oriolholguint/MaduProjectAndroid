@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -17,17 +18,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class GeneroAdapter extends RecyclerView.Adapter<GeneroAdapter.ViewHolder> implements View.OnClickListener
+public class GeneroAdapter extends RecyclerView.Adapter<GeneroAdapter.ViewHolder> implements View.OnClickListener, View.OnTouchListener
 {
     private Genero [] generos;
     private View.OnClickListener listener;
+    private View.OnTouchListener touchListener;
+    private Animation buttonUp;
 
     public GeneroAdapter(Genero [] generos)
     {
         this.generos = generos;
     }
 
-
+    public void startAnimation(Animation buttonUp) {
+        this.buttonUp = buttonUp;
+    }
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder
@@ -87,6 +92,19 @@ public class GeneroAdapter extends RecyclerView.Adapter<GeneroAdapter.ViewHolder
         }
     }
 
+
+    public void setOnTouchListener(View.OnTouchListener touchListener)
+    {
+        this.touchListener = touchListener;
+    }
+
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        if(touchListener != null){
+            touchListener.onTouch(view,motionEvent);
+        }
+
+        return false;
+    }
 
 
 }

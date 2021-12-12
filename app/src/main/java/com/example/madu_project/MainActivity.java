@@ -168,6 +168,9 @@ public class MainActivity extends AppCompatActivity {
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
 
+                    fragmentTransaction2.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
+                            R.anim.enter_right_to_left,R.anim.exit_right_to_left);
+
                     fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales, fragmentMenu);
                     fragmentTransaction2.commit();
                     partida = null;
@@ -208,6 +211,8 @@ public class MainActivity extends AppCompatActivity {
                     clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
+                    fragmentTransaction2.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
+                            R.anim.enter_right_to_left,R.anim.exit_right_to_left);
                     fragmentTransaction2.replace(R.id.ContenedorFragmentsPricipales, fragmentBotones);
                     fragmentTransaction2.commit();
                     grpDatosUsuario.setVisibility(View.INVISIBLE);
@@ -232,7 +237,8 @@ public class MainActivity extends AppCompatActivity {
 
                     FragmentManager mg = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction2 = mg.beginTransaction();
-
+                    fragmentTransaction2.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
+                            R.anim.enter_right_to_left,R.anim.exit_right_to_left);
                     FragmentIdioma fragmentIdioma = new FragmentIdioma();
                     fragmentTransaction2.replace(R.id.frLContenedorFragments, fragmentIdioma);
                     fragmentTransaction2.commit();

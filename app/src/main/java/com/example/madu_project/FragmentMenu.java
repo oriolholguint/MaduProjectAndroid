@@ -172,11 +172,30 @@ public class FragmentMenu extends Fragment {
                 FragmentTransaction fragmentTransaction = mg.beginTransaction();
 
                 FragmentPreguntas fragmentPreguntas = new FragmentPreguntas();
+                fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                        R.anim.enter_left_to_right,R.anim.exit_left_to_right);
                 fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentPreguntas);
                 fragmentTransaction.commit();
 
 
 
+            }
+        });
+
+        generoAdapter.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        generoAdapter.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        view.startAnimation(activity.buttonDown);
+                        break;
+                }
+
+                return false;
             }
         });
 

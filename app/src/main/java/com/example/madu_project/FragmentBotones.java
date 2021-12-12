@@ -177,8 +177,10 @@ public class FragmentBotones extends Fragment
                     FragmentTransaction fragmentTransaction = mg.beginTransaction();
 
                     FragmentLogin fragmentLogin = new FragmentLogin();
+
                     fragmentTransaction.setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
                             R.anim.enter_left_to_right,R.anim.exit_left_to_right);
+
                     fragmentTransaction.replace(R.id.frLContenedorFragments,fragmentLogin);
                     fragmentTransaction.commit();
 
