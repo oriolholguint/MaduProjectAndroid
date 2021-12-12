@@ -63,6 +63,7 @@ public class GeneroAdapter extends RecyclerView.Adapter<GeneroAdapter.ViewHolder
                 inflate(R.layout.genero_page_item,parent,false);
 
         item.setOnClickListener(this);
+        item.setOnTouchListener(this);
 
         return new ViewHolder(item);
     }

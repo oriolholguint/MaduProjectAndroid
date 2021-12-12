@@ -178,7 +178,6 @@ public class FragmentMenu extends Fragment {
                 fragmentTransaction.commit();
 
 
-
             }
         });
 
