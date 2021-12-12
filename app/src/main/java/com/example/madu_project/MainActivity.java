@@ -311,8 +311,8 @@ public class MainActivity extends AppCompatActivity {
      * @param cantidadPreguntas cantidad de preguntas aleatorias a obtener
      * @return array con preguntas aleatorias
      */
-    public static ArrayList<Pregunta> getPreguntasPartida(Pregunta[] preguntas, int cantidadPreguntas, Jugador jugador) {
-        ArrayList<Pregunta> preguntasSeleccionadas = new ArrayList<>(); //Preguntas que saldran en la partida
+    public static Pregunta[] getPreguntasPartida(Pregunta[] preguntas, int cantidadPreguntas, Jugador jugador) {
+        Pregunta[] preguntasSeleccionadas = new Pregunta[cantidadPreguntas]; //Preguntas que saldran en la partida
         ArrayList<Integer> numerosAleatorios = new ArrayList<>(); //Numeros aleatorios para no repetirlos
         int numeroAleatorio = 0;
 
@@ -341,7 +341,7 @@ public class MainActivity extends AppCompatActivity {
                     //Agrego el numero aleatorio al array de los numeros que ya han salido
                     numerosAleatorios.add(numeroAleatorio);
                     //Agrego la pregunta al array de preguntas selecciondas
-                    preguntasSeleccionadas.add(preguntas[numeroAleatorio]);
+                    preguntasSeleccionadas[i] = preguntas[numeroAleatorio];
                     preguntaCorrecta = true; //Señalo que la respuesta se agrega correctamente para salir del bucle
                 }
             }
