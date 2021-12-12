@@ -27,7 +27,7 @@
         android:id="@+id/clBotonesMenu"
         android:layout_width="match_parent"
         android:layout_height="326dp"
-        android:layout_marginTop="484dp"
+        android:layout_marginTop="464dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

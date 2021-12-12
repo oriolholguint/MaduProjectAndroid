@@ -33,6 +33,7 @@ public class AvatarAdapter extends BaseAdapter{
         this.imagenSelect = imagenSelect;
         this.gvAvatares = gvAvatares;
         this.jugador = jugador;
+
     }
 
     @Override
@@ -75,7 +76,7 @@ public class AvatarAdapter extends BaseAdapter{
             public void onClick(View view) {
 
                 imagenSelect.setImageResource(avatares[position]);
-                gvAvatares.setVisibility(View.INVISIBLE);
+                //gvAvatares.setVisibility(View.INVISIBLE);
                 jugador.setAvatar(avatares[position]);
             }
         });

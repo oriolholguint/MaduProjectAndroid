@@ -30,7 +30,7 @@ public class FragmentLogin extends Fragment {
    Button btnSelectAvatar;
    MainActivity activity;
    Button btnLogin;
-   Boolean mayorEdad = false;
+   Boolean mayorEdad = false, visible = false;
 
 
     @Override
@@ -56,8 +56,17 @@ public class FragmentLogin extends Fragment {
 
         btnSelectAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View view) {
-                gvAvatares.setVisibility(View.VISIBLE);
+
+                if (visible == false){
+                    visible = true;
+                    gvAvatares.setVisibility(View.VISIBLE);
+                } else {
+                    visible = false;
+                    gvAvatares.setVisibility(View.INVISIBLE);
+                }
+
             }
         });
 

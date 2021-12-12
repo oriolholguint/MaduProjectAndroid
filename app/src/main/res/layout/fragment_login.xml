@@ -36,6 +36,7 @@
         android:id="@+id/txtNombreUsuario"
         android:layout_width="425dp"
         android:layout_height="58dp"
+        android:maxLength="10"
         android:layout_marginStart="108dp"
         android:layout_marginTop="112dp"
         android:background="@color/white"
