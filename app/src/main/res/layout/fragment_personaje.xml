@@ -29,14 +29,33 @@
         android:text="Tu puntuacion: 700p"
         android:textSize="30sp"/>
 
-    <Button
-        android:id="@+id/btnSiguientePersonaje"
-        android:layout_width="187dp"
-        android:layout_height="43dp"
-        android:background="@drawable/botonverde"
-        android:fontFamily="@font/diary"
-        android:text="Siguiente"
-        android:textColor="@color/white"
-        android:textSize="20sp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnIrMenu"
+            android:layout_width="187dp"
+            android:layout_height="43dp"
+            android:layout_marginRight="400dp"
+            android:background="@drawable/botonverde"
+            android:fontFamily="@font/diary"
+            android:text="Menu"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/btnIrRanking"
+            android:layout_width="187dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="400dp"
+            android:background="@drawable/botonverde"
+            android:fontFamily="@font/diary"
+            android:text="Ranking"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
 
 </LinearLayout>

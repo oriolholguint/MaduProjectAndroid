@@ -16,4 +16,8 @@
     <string name="facil">Easy: 30s</string>
     <string name="medio">Medium: 25s</string>
     <string name="dificil">Hard: 20s</string>
+
+    <!-- Botones -->
+    <string name="siguiente">Next</string>
+    <string name="atras">Back</string>
 </resources>

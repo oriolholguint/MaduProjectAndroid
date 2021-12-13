@@ -58,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
     private AudioManager audioManager;
 
     @Override
+    public void onBackPressed()
+    {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -295,6 +301,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
 
 
     }

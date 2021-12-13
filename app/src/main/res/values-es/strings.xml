@@ -16,4 +16,8 @@
     <string name="facil">Facil: 30\"</string>
     <string name="medio">Medio: 25\"</string>
     <string name="dificil">Dificil: 20\"</string>
+
+    <!-- Botones -->
+    <string name="siguiente">Siguiente</string>
+    <string name="atras">Atras</string>
 </resources>

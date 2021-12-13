@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,6 +33,8 @@ public class FragmentPersonaje extends Fragment
         TextView  nombrePersonaje   = view.findViewById(R.id.nombrePersonaje);
         ImageView imagenPersonaje   = view.findViewById(R.id.imagenPersonaje);
         TextView  puntuacionPartida = view.findViewById(R.id.puntuacionPartida);
+        Button btnIrRanking         = view.findViewById(R.id.btnIrRanking);
+        Button btnIrMenu            = view.findViewById(R.id.btnIrMenu);
 
         Personaje personaje = personajeElegido(activity.generoSelect, activity.partida.getPuntuacion());
 
@@ -39,6 +42,24 @@ public class FragmentPersonaje extends Fragment
         Bitmap bMap = BitmapFactory.decodeFile(IMAGE_PATH + personaje.getImagen());
         imagenPersonaje.setImageBitmap(bMap);
         puntuacionPartida.setText("Tu puntuacion: " + Integer.toString(activity.partida.getPuntuacion()));
+
+        btnIrRanking.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+
+            }
+        });
+
+        btnIrMenu.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+
+            }
+        });
 
         return view;
     }
