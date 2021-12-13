@@ -34,12 +34,12 @@
 
     <EditText
         android:id="@+id/txtNombreUsuario"
-        android:layout_width="425dp"
+        android:layout_width="325dp"
         android:layout_height="58dp"
-        android:maxLength="10"
         android:layout_marginStart="108dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="110dp"
         android:background="@color/white"
+        android:maxLength="10"
         android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/lblLoginUsuario"
         app:layout_constraintTop_toTopOf="parent" />
@@ -94,8 +94,8 @@
         android:id="@+id/btnLogin"
         android:layout_width="170dp"
         android:layout_height="67dp"
-        android:layout_marginStart="916dp"
-        android:layout_marginTop="103dp"
+        android:layout_marginStart="828dp"
+        android:layout_marginTop="108dp"
         android:background="@drawable/botonverde"
         android:fontFamily="@font/diary"
         android:text="Login"

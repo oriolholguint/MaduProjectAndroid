@@ -43,31 +43,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/LblNombreJugador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Jugador"
-        android:textSize="20sp"
         android:fontFamily="@font/diary"
+        android:text="Jugador"
         android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.387"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/LblEdad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
+        android:layout_marginStart="184dp"
         android:layout_marginTop="24dp"
-        android:text="+18"
-        android:textSize="20sp"
         android:fontFamily="@font/diary"
+        android:text="+18"
         android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/LblNombreJugador"
         app:layout_constraintTop_toTopOf="parent" />
 
