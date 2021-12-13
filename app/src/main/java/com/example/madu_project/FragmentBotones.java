@@ -151,24 +151,6 @@ public class FragmentBotones extends Fragment
                     irALogin();
 
                 }
-                else if (ActivityMain.layout.equals("Login"))
-                {
-                    Group grpDificultad = ActivityMain.settingsDialog.findViewById(R.id.grpDificultad);
-
-                    ActivityMain.layout = "Menu";
-                    ActivityMain.status = "Juego";
-
-                    irAMenu();
-
-                    ActivityMain.findViewById(R.id.grpDatosUsuario).setVisibility(View.VISIBLE);
-                    grpDificultad.setVisibility(View.VISIBLE);
-
-
-
-                    btnSiguiente.setVisibility(View.VISIBLE);
-                    btnSiguiente.setText("Siguiente");
-
-                }
             }
         });
 

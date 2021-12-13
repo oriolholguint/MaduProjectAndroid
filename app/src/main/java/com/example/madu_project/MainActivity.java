@@ -9,7 +9,11 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.Dialog;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -24,6 +28,7 @@ import android.widget.Button;
 
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -49,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     public ImageView imgAvatar;
     public TextView LblEdad;
     public Animation buttonUp, buttonDown;
+    private MediaPlayer mediaPlayer;
+    private AudioManager audioManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +64,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+
+        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        int currentVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+
+        //mediaPlayer = MediaPlayer.create(this, Uri.parse("/data/data/com.example.madu_project/files/audio/polynomial1m.mp4"));
+        mediaPlayer = MediaPlayer.create(this, R.raw.polynomial1m);
+
+        startAudio();
 
         duracion = 30;
         partida = null;
@@ -91,6 +108,25 @@ public class MainActivity extends AppCompatActivity {
         androidx.constraintlayout.widget.Group grpMenu = settingsDialog.findViewById(R.id.grpMenu);
         androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
 
+        SeekBar seekBar = settingsDialog.findViewById(R.id.sbrVolumen);
+        seekBar.setMax(maxVolume);
+        seekBar.setProgress(currentVolume);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress,0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         final ImageButton btnSalir = settingsDialog.findViewById(R.id.btnSalir);
         final ImageButton btnMenu = settingsDialog.findViewById(R.id.btnMenu);
@@ -171,7 +207,8 @@ public class MainActivity extends AppCompatActivity {
                     grpDificultad.setVisibility(View.VISIBLE);
                     grpPuntuacion.setVisibility(View.INVISIBLE);
                     lbLPuntos.setText("0");
-
+                    mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.polynomial1m);
+                    startAudio();
                     settingsDialog.cancel();
                 }
 
@@ -215,6 +252,8 @@ public class MainActivity extends AppCompatActivity {
                     grpDificultad.setVisibility(View.INVISIBLE);
                     grpPuntuacion.setVisibility(View.INVISIBLE);
                     jugador = new Jugador(null,false,0);
+                    mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.polynomial1m);
+                    startAudio();
                     lbLPuntos.setText("0");
 
 
@@ -261,6 +300,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     public ArrayList<String> llenarSpinner() {
         ArrayList<String> items = new ArrayList<>();
         items.add("Facil");
@@ -270,6 +310,19 @@ public class MainActivity extends AppCompatActivity {
         return items;
 
     }
+
+    public void startAudio(){
+        mediaPlayer.start();
+    }
+
+    public void pauseAudio(){
+        mediaPlayer.pause();
+    }
+
+    public void stopAudio(){
+        mediaPlayer.stop();
+    }
+
 
     public void AnimacionIzquierdaADerecha(FragmentTransaction fragmentTransaction){
         fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,

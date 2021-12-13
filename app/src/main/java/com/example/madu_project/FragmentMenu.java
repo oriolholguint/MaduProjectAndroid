@@ -159,6 +159,7 @@ public class FragmentMenu extends Fragment {
                 getParentFragmentManager().setFragmentResult("genero",bundle);
                 //Igualo el genero seleccionado a la variable del main para utilizarlo en el personaje
                 activity.generoSelect = genero;
+                activity.pauseAudio();
                 irAPreguntas();
 
 
