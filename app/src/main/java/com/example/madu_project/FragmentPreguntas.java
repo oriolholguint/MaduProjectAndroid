@@ -113,8 +113,8 @@ public class FragmentPreguntas extends Fragment {
                 genero = (Genero) result.getSerializable("genero");
                 descPregunta.setText(genero.getNombre());
 
-                preguntas = genero.getPreguntas();
-                //preguntas = (Pregunta[]) activity.getPreguntasPartida(genero.getPreguntas(),1,activity.jugador).toArray();
+                //FUNCIONA METODO OBTENER PREGUNTAS, CAMBIAR CANTIDAD PREGUNTAS PARA PRUEBAS
+                preguntas = activity.getPreguntasPartida(genero.getPreguntas(),1,activity.jugador);
 
                 fondoGeneroUrl = new BitmapDrawable("/data/data/com.example.madu_project/files/images/"+genero.getImagenFondo());
                 activity.clBackgroundApp.setBackground(fondoGeneroUrl);
@@ -544,7 +544,7 @@ public class FragmentPreguntas extends Fragment {
 
     public void MoverConstraintLayoutBarraRespuestas(String imagen){
 
-        if(!imagen.equals("")){
+        if(imagen != null){
             imgPregunta.setVisibility(View.VISIBLE);
             posicionConstraintBarraRespuestas.setMargins(posicionConstraintBarraRespuestas.leftMargin,450,posicionConstraintBarraRespuestas.rightMargin,posicionConstraintBarraRespuestas.bottomMargin);
             clbotonesRrespuestas.setLayoutParams(posicionConstraintBarraRespuestas);

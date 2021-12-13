@@ -1,41 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/nombrePersonaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/imagenPersonaje"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
         android:text="Tupac Shakur"
-        android:textSize="75sp"/>
+        android:textSize="40sp"/>
 
     <ImageView
         android:id="@+id/imagenPersonaje"
-        android:layout_width="600dp"
-        android:layout_height="400dp"
-        app:layout_constraintTop_toBottomOf="@id/nombrePersonaje"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/puntuacionPartida"
-        />
+        android:layout_width="500dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="40dp"/>
 
     <TextView
         android:id="@+id/puntuacionPartida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:text="Tu puntuacion: 700p"
-        android:textSize="40sp"
-        app:layout_constraintTop_toBottomOf="@id/imagenPersonaje"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:textSize="30sp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btnSiguientePersonaje"
+        android:layout_width="187dp"
+        android:layout_height="43dp"
+        android:background="@drawable/botonverde"
+        android:fontFamily="@font/diary"
+        android:text="Siguiente"
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
+
+</LinearLayout>
