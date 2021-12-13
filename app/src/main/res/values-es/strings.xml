@@ -20,4 +20,8 @@
     <!-- Botones -->
     <string name="siguiente">Siguiente</string>
     <string name="atras">Atras</string>
+
+    <!-- Puntuacion -->
+    <string name="info_puntuacion">Tu puntuacion: </string>
+
 </resources>

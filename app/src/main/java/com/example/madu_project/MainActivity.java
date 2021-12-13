@@ -3,6 +3,7 @@ package com.example.madu_project;
 import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.Group;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -54,14 +55,15 @@ public class MainActivity extends AppCompatActivity {
     public ImageView imgAvatar;
     public TextView LblEdad;
     public Animation buttonUp, buttonDown;
-    private MediaPlayer mediaPlayer;
+    public TextView lbLPuntos;
+    public Group grpPuntuacion;
+    public Group grpMenu;
+    public Group grpDificultad;
+    public MediaPlayer mediaPlayer;
     private AudioManager audioManager;
 
     @Override
-    public void onBackPressed()
-    {
-
-    }
+    public void onBackPressed() { }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,9 +99,9 @@ public class MainActivity extends AppCompatActivity {
         ImageButton imgBtnConfiguracion = findViewById(R.id.imgBtnConfiguracion);
         androidx.constraintlayout.widget.Group grpDatosUsuario = findViewById(R.id.grpDatosUsuario);
 
-        TextView lbLPuntos = findViewById(R.id.lbLPuntos);
-        androidx.fragment.app.FragmentManager mgr = getSupportFragmentManager();
-        final androidx.fragment.app.FragmentTransaction fragmentTransaction = mgr.beginTransaction();
+        lbLPuntos = findViewById(R.id.lbLPuntos);
+        FragmentManager mgr = getSupportFragmentManager();
+        final FragmentTransaction fragmentTransaction = mgr.beginTransaction();
 
         final FragmentBotones fragmentBotones = new FragmentBotones();
 
@@ -110,9 +112,9 @@ public class MainActivity extends AppCompatActivity {
         settingsDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         settingsDialog.setContentView(R.layout.settings_dialog);
 
-        androidx.constraintlayout.widget.Group grpPuntuacion = findViewById(R.id.grpPuntuacion);
-        androidx.constraintlayout.widget.Group grpMenu = settingsDialog.findViewById(R.id.grpMenu);
-        androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
+        grpPuntuacion = findViewById(R.id.grpPuntuacion);
+        grpMenu = settingsDialog.findViewById(R.id.grpMenu);
+        grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
 
         SeekBar seekBar = settingsDialog.findViewById(R.id.sbrVolumen);
         seekBar.setMax(maxVolume);
@@ -141,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
         final Spinner sprDificultad = (Spinner) settingsDialog.findViewById(R.id.sprDificultad);
         ArrayList<String> spritems = llenarSpinner();
 
-
         mAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spritems);
         mAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         sprDificultad.setAdapter(mAdapter);
@@ -162,12 +163,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         imgBtnConfiguracion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 settingsDialog.show();
-
 
                 if(layout.equals("Preguntas") || layout.equals("Ranking")){
 
@@ -178,7 +177,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     grpMenu.setVisibility(View.INVISIBLE);
                 }
-
             }
         });
 
@@ -196,7 +194,6 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
 
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,7 +214,6 @@ public class MainActivity extends AppCompatActivity {
                     startAudio();
                     settingsDialog.cancel();
                 }
-
             }
         });
 
@@ -237,11 +233,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         btnSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 if(status.equals("Juego")){
                     clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
@@ -262,8 +256,6 @@ public class MainActivity extends AppCompatActivity {
                     startAudio();
                     lbLPuntos.setText("0");
 
-
-
                 } else {
                     if (layout.equals("Idioma")) {
                         MainActivity.this.finish();
@@ -275,17 +267,10 @@ public class MainActivity extends AppCompatActivity {
                         fragmentBotones.btnSiguienteCentro.setVisibility(View.VISIBLE);
                         generos = null;
                     }
-
-
                 }
-
-
                 settingsDialog.cancel();
-
-
             }
         });
-
 
         btnSalir.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -301,12 +286,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
-
     }
-
-
 
     public ArrayList<String> llenarSpinner() {
         ArrayList<String> items = new ArrayList<>();
@@ -315,7 +295,6 @@ public class MainActivity extends AppCompatActivity {
         items.add("Dificil");
 
         return items;
-
     }
 
     public void startAudio(){
@@ -330,15 +309,12 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer.stop();
     }
 
-
     public void AnimacionIzquierdaADerecha(FragmentTransaction fragmentTransaction){
         fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
                 R.anim.enter_right_to_left,R.anim.exit_right_to_left);
     }
 
-
     public void volverAMenu(FragmentMenu fragmentMenu){
-
         FragmentManager mg = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = mg.beginTransaction();
         AnimacionIzquierdaADerecha(fragmentTransaction);
@@ -362,7 +338,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frLContenedorFragments, fragmentIdioma);
         fragmentTransaction.commit();
     }
-
 
     /**
      * Se obtienen preguntas aleatorias de un array enviado por parametros.
