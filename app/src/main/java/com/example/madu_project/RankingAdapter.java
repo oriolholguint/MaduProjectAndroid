@@ -2,9 +2,11 @@ package com.example.madu_project;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,7 +33,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
         public ViewHolder(@NonNull View item) {
             super(item);
             txtNombreRanking = item.findViewById(R.id.txtNombreRanking);
-            ImageGenre = item.findViewById(R.id.ImageGenre);
+            //ImageGenre = item.findViewById(R.id.ImageGenre);
         }
 
         void bindRanking(Ranking rank) {
@@ -44,17 +46,19 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
             rv.setHasFixedSize(true);
             rv.setLayoutManager(new LinearLayoutManager(itemView.getContext(),LinearLayoutManager.VERTICAL,false));
             rv.setAdapter(sa);
-            File imgFile = new  File("/data/data/com.example.madu_project/files/images/"+FragmentRanking.GetPathImageFromGeneroString(rank.getNombreGenero()));
-
-            if(imgFile.exists()){
-
-                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-
-
-                ImageGenre.setImageBitmap(myBitmap);
-
-            }
+//            File imgFile = new  File("/data/data/com.example.madu_project/files/images/"+FragmentRanking.GetPathImageFromGeneroString(rank.getNombreGenero()));
+//
+//            if(imgFile.exists()){
+//
+//                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+//
+//
+//                ImageGenre.setImageBitmap(myBitmap);
+//
+//            }
             txtNombreRanking.setText(ranking);
+
+
         }
 
     }

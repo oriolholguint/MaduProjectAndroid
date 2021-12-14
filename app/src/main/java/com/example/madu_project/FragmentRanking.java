@@ -1,5 +1,6 @@
 package com.example.madu_project;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
@@ -61,6 +64,22 @@ public class FragmentRanking extends Fragment {
                 generoAux = ma.generosAux;
                 //Inicializar variables, Arrays, GridViews,... y metodos
                 RecyclerView RankingList = view.findViewById(R.id.RankingList);
+                Button btnAtrasRanking = view.findViewById(R.id.btnAtrasRanking);
+                btnAtrasRanking.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ma.layout = "Menu";
+                        FragmentMenu fm = new FragmentMenu();
+                        ma.volverAMenu(fm);
+                        if(ma.layout.equals("RankingFinal")){
+                            ma.stopAudio();
+                            ma.mediaPlayer = MediaPlayer.create(ma.getBaseContext(), R.raw.musica_juego_madu);
+                            ma.bucleAudio();
+                        }
+
+                    }
+
+                });
 
                 Ranking[] rankings = new Ranking[generos.length];
                 int cont = 0;

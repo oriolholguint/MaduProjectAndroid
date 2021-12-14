@@ -89,7 +89,7 @@ public class FragmentMenu extends Fragment {
         });
 
 
-        /*imgBtnRanking.setOnClickListener(new View.OnClickListener(){
+        imgBtnRanking.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 activity.layout = "Ranking";
@@ -102,7 +102,7 @@ public class FragmentMenu extends Fragment {
                 irARanking();
             }
 
-        });*/
+        });
 
         imgBtnRanking.setOnTouchListener(new View.OnTouchListener() {
             @Override
