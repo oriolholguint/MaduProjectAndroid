@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -53,6 +54,7 @@ public class FragmentLogin extends Fragment {
 
         AvatarAdapter avatarAdapter = new AvatarAdapter(getContext(),avatares,imgAvatarSelect,gvAvatares,activity.jugador);
         gvAvatares.setAdapter(avatarAdapter);
+
 
 
         btnSelectAvatar.setOnClickListener(new View.OnClickListener() {

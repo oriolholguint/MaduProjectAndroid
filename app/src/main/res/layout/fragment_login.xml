@@ -41,6 +41,9 @@
         android:background="@color/white"
         android:maxLength="10"
         android:textSize="30sp"
+        android:maxLines="1"
+        android:lines="1"
+        android:singleLine="true"
         app:layout_constraintStart_toEndOf="@+id/lblLoginUsuario"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,6 +89,7 @@
         android:layout_marginTop="188dp"
         android:fontFamily="@font/diary"
         android:text="+18"
+        android:textSize="20sp"
         android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/lblEdad"
         app:layout_constraintTop_toTopOf="parent" />
