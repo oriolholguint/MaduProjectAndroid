@@ -11,10 +11,10 @@
 
     <ImageView
         android:id="@+id/imgLogo"
-        android:layout_width="52dp"
-        android:layout_height="55dp"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:contentDescription="Logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,15 +22,16 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgAvatar"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="588dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="576dp"
         android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
+        android:background="@color/white"
         android:contentDescription="Avatar"
-        app:shapeAppearanceOverlay="@style/roundImageView"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundImageView" />
 
     <ImageView
         android:id="@+id/imgPuntos"
@@ -46,15 +47,17 @@
 
     <TextView
         android:id="@+id/LblNombreJugador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="196dp"
+        android:layout_height="27dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/diary"
+        android:gravity="right"
         android:text="Jugador"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="25sp"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.387"
+        app:layout_constraintHorizontal_bias="0.343"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,12 +65,12 @@
         android:id="@+id/LblEdad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
+        android:layout_marginStart="212dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/diary"
         android:text="+18"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@+id/LblNombreJugador"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,16 +87,16 @@
         app:layout_constraintStart_toEndOf="@+id/imgPuntos"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageButton
         android:id="@+id/imgBtnConfiguracion"
-        android:layout_width="47dp"
-        android:layout_height="49dp"
+        android:layout_width="50dp"
+        android:layout_height="54dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/engranaje"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/grpDatosUsuario"
@@ -111,12 +114,11 @@
         android:id="@+id/ContenedorFragmentsPricipales"
         android:layout_width="1280dp"
         android:layout_height="733dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
 
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/grpPuntuacion"

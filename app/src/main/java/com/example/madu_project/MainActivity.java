@@ -9,7 +9,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.Dialog;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.media.AudioFormat;
 import android.media.AudioManager;
+import android.media.AudioTrack;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,6 +36,8 @@ import android.widget.TextView;
 
 import com.example.madu_project.idioma.FragmentIdioma;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 
@@ -77,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
         int currentVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 
         //mediaPlayer = MediaPlayer.create(this, Uri.parse("/data/data/com.example.madu_project/files/audio/polynomial1m.mp4"));
-        mediaPlayer = MediaPlayer.create(this, R.raw.polynomial1m);
+        mediaPlayer = MediaPlayer.create(this, R.raw.musica_juego_madu);
 
-        startAudio();
-
+        //startAudio();
+        bucleAudio();
         duracion = 30;
         partida = null;
         jugador = new Jugador(null,false,0);
@@ -213,8 +217,9 @@ public class MainActivity extends AppCompatActivity {
                     grpDificultad.setVisibility(View.VISIBLE);
                     grpPuntuacion.setVisibility(View.INVISIBLE);
                     lbLPuntos.setText("0");
-                    mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.polynomial1m);
-                    startAudio();
+                    stopAudio();
+                    mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.musica_juego_madu);
+                    bucleAudio();
                     settingsDialog.cancel();
                 }
 
@@ -244,23 +249,43 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if(status.equals("Juego")){
-                    clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
+                    if(layout.equals("Preguntas")){
+                        clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
+                        volverAlPrincipio(fragmentBotones);
+                        grpDatosUsuario.setVisibility(View.INVISIBLE);
+                        status = "Principal";
+                        layout = "Idioma";
+                        generos = null;
+                        partida = null;
+                        jugador = null;
+                        androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
+                        grpDificultad.setVisibility(View.INVISIBLE);
+                        grpPuntuacion.setVisibility(View.INVISIBLE);
+                        jugador = new Jugador(null,false,0);
+                        lbLPuntos.setText("0");
+                        stopAudio();
+                        mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.musica_juego_madu);
+                        bucleAudio();
+                    } else {
+                        clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
 
-                    volverAlPrincipio(fragmentBotones);
+                        volverAlPrincipio(fragmentBotones);
 
-                    grpDatosUsuario.setVisibility(View.INVISIBLE);
-                    status = "Principal";
-                    layout = "Idioma";
-                    generos = null;
-                    partida = null;
-                    jugador = null;
-                    androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
-                    grpDificultad.setVisibility(View.INVISIBLE);
-                    grpPuntuacion.setVisibility(View.INVISIBLE);
-                    jugador = new Jugador(null,false,0);
-                    mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.polynomial1m);
-                    startAudio();
-                    lbLPuntos.setText("0");
+                        grpDatosUsuario.setVisibility(View.INVISIBLE);
+                        status = "Principal";
+                        layout = "Idioma";
+                        generos = null;
+                        partida = null;
+                        jugador = null;
+                        androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
+                        grpDificultad.setVisibility(View.INVISIBLE);
+                        grpPuntuacion.setVisibility(View.INVISIBLE);
+                        jugador = new Jugador(null,false,0);
+
+                        lbLPuntos.setText("0");
+                    }
+
+
 
 
 
@@ -316,6 +341,18 @@ public class MainActivity extends AppCompatActivity {
 
         return items;
 
+    }
+
+    public void bucleAudio(){
+        startAudio();
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+               startAudio();
+            }
+
+        });
     }
 
     public void startAudio(){

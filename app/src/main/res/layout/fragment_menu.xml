@@ -13,11 +13,11 @@
         android:id="@+id/lblMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/diary"
         android:textColor="@color/white"
         android:text="MADU"
-        android:textSize="40sp"
+        android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,21 +35,23 @@
 
         <ImageButton
             android:id="@+id/imgBtnRanking"
-            android:layout_width="106dp"
-            android:layout_height="101dp"
-            android:layout_marginStart="128dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/ranking"
+            android:layout_width="131dp"
+            android:layout_height="115dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/branking"
+            android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/imgBtnInformacion"
-            android:layout_width="106dp"
-            android:layout_height="101dp"
-            android:layout_marginStart="820dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/informacion"
+            android:layout_width="131dp"
+            android:layout_height="115dp"
+            android:layout_marginStart="868dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/binformacion"
+            android:scaleType="fitXY"
             app:layout_constraintStart_toEndOf="@+id/imgBtnRanking"
             app:layout_constraintTop_toTopOf="parent" />
 
