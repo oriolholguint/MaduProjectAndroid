@@ -6,6 +6,8 @@ import android.graphics.Color;
 
 import android.graphics.drawable.BitmapDrawable;
 
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -64,6 +66,7 @@ public class FragmentPreguntas extends Fragment {
     Date currentTime = null;
     String dificultad = null;
     BitmapDrawable fondoGeneroUrl;
+    MediaPlayer media;
 
 
 
@@ -111,10 +114,15 @@ public class FragmentPreguntas extends Fragment {
             @Override
             public void onFragmentResult(@NonNull  String requestKey, @NonNull Bundle result) {
                 genero = (Genero) result.getSerializable("genero");
+
+                musicaGenero();
+
                 descPregunta.setText(genero.getNombre());
 
                 //FUNCIONA METODO OBTENER PREGUNTAS, CAMBIAR CANTIDAD PREGUNTAS PARA PRUEBAS
                 preguntas = activity.getPreguntasPartida(genero.getPreguntas(),3,activity.jugador);
+
+
 
                 fondoGeneroUrl = new BitmapDrawable("/data/data/com.example.madu_project/files/images/"+genero.getImagenFondo());
                 activity.clBackgroundApp.setBackground(fondoGeneroUrl);
@@ -375,6 +383,12 @@ public class FragmentPreguntas extends Fragment {
         return view;
     }
 
+
+    private void musicaGenero(){
+        activity.mediaPlayer.stop();
+        activity.mediaPlayer = MediaPlayer.create(getActivity(), Uri.parse("/data/data/com.example.madu_project/files/sound/" + genero.getMusicaFondo()));
+        activity.mediaPlayer.start();
+    }
 
 
 
