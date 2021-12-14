@@ -2,8 +2,6 @@ package com.example.madu_project.personaje;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -68,6 +66,25 @@ public class FragmentPersonaje extends Fragment
             }
         });
 
+        btnIrRanking.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent)
+            {
+                switch (motionEvent.getAction())
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        btnIrRanking.startAnimation(activity.buttonUp);
+                        break;
+                    /*case MotionEvent.ACTION_UP:
+                        btnIrRanking.startAnimation(activity.buttonUp);
+                        break;*/
+                }
+
+                return false;
+            }
+        });
+
         btnIrMenu.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -85,29 +102,25 @@ public class FragmentPersonaje extends Fragment
                 activity.lbLPuntos.setText("0");
                 activity.partida = null;
                 activity.mediaPlayer = MediaPlayer.create(activity.getBaseContext(), R.raw.polynomial1m);
-                activity.startAudio();
+                activity.bucleAudio();
                 activity.settingsDialog.cancel();
 
             }
         });
 
-        btnIrMenu.setOnTouchListener(new View.OnTouchListener() {
-
+        btnIrMenu.setOnTouchListener(new View.OnTouchListener()
+        {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-
-                Drawable drawable = btnIrMenu.getBackground();
-
+            public boolean onTouch(View view, MotionEvent motionEvent)
+            {
                 switch (motionEvent.getAction())
                 {
                     case MotionEvent.ACTION_DOWN:
-                        drawable.setColorFilter(0xffff0000, PorterDuff.Mode.MULTIPLY);
-                        btnIrMenu.setBackground(drawable);
+                        btnIrMenu.startAnimation(activity.buttonUp);
                         break;
-                    case MotionEvent.ACTION_UP:
-                        drawable.clearColorFilter();
-                        btnIrMenu.setBackground(drawable);
-                        break;
+                    /*case MotionEvent.ACTION_UP:
+                        btnIrMenu.startAnimation(activity.buttonUp);
+                        break;*/
                 }
 
                 return false;
