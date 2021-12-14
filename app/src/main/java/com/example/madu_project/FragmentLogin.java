@@ -56,12 +56,19 @@ public class FragmentLogin extends Fragment {
         gvAvatares.setAdapter(avatarAdapter);
 
 
+        activity.clBackgroundApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OcultarTecladoVirtual();
+            }
+        });
+
 
         btnSelectAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View view) {
-
+                OcultarTecladoVirtual();
                 if (visible == false){
                     visible = true;
                     btnSelectAvatar.setText("Deseleccionar Avatar");
@@ -94,6 +101,7 @@ public class FragmentLogin extends Fragment {
         cbxMayorEdad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                OcultarTecladoVirtual();
                 if(cbxMayorEdad.isChecked()){
                     mayorEdad = true;
                 } else {
@@ -106,7 +114,7 @@ public class FragmentLogin extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                OcultarTecladoVirtual();
                 if(txtNombreUsuario.getText().toString().equals("") || imgAvatarSelect.getDrawable() == null)
                 {
                     MensajeAlerta();
@@ -167,6 +175,12 @@ public class FragmentLogin extends Fragment {
         return avatares;
     }
 
+    public void OcultarTecladoVirtual() {
+        if(activity.getCurrentFocus()!=null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(activity.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        }
+    }
 
     public void MensajeAlerta()
     {
