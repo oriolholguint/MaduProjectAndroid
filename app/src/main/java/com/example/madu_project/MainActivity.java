@@ -175,8 +175,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 settingsDialog.show();
 
-                if(layout.equals("Preguntas") || layout.equals("Ranking")){
-
+                if(layout.equals("Preguntas") || layout.equals("Personaje") || layout.equals("Ranking") || layout.equals("RankingFinal")){
 
                     grpMenu.setVisibility(View.VISIBLE);
                     grpDificultad.setVisibility(View.INVISIBLE);
@@ -206,22 +205,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(layout.equals("Preguntas") || layout.equals("Ranking")){
+                if (status.equals("Juego")){
+                    if(layout.equals("Preguntas") || layout.equals("Personaje") || layout.equals("RankingFinal")){
+                        layout = "Menu";
+                        clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
+                        volverAMenu(fragmentMenu);
+                        partida = null;
+                        grpMenu.setVisibility(View.INVISIBLE);
+                        grpDificultad.setVisibility(View.VISIBLE);
+                        grpPuntuacion.setVisibility(View.INVISIBLE);
+                        lbLPuntos.setText("0");
+                        stopAudio();
+                        mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.musica_juego_madu);
+                        bucleAudio();
 
-                    layout = "Menu";
-                    clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
-                    volverAMenu(fragmentMenu);
-
-                    partida = null;
-                    grpMenu.setVisibility(View.INVISIBLE);
-                    grpDificultad.setVisibility(View.VISIBLE);
-                    grpPuntuacion.setVisibility(View.INVISIBLE);
-                    lbLPuntos.setText("0");
-                    stopAudio();
-                    mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.musica_juego_madu);
-                    bucleAudio();
-                    settingsDialog.cancel();
+                    }
+                    else {
+                        layout = "Menu";
+                        clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
+                        volverAMenu(fragmentMenu);
+                        partida = null;
+                        grpMenu.setVisibility(View.INVISIBLE);
+                        grpDificultad.setVisibility(View.VISIBLE);
+                        grpPuntuacion.setVisibility(View.INVISIBLE);
+                        lbLPuntos.setText("0");
+                    }
                 }
+                settingsDialog.cancel();
+
             }
         });
 
@@ -246,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(status.equals("Juego")){
-                    if(layout.equals("Preguntas")){
+                    if(layout.equals("Preguntas") || layout.equals("Personaje") || layout.equals("RankingFinal")){
                         clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
                         volverAlPrincipio(fragmentBotones);
                         grpDatosUsuario.setVisibility(View.INVISIBLE);

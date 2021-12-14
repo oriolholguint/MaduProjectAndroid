@@ -591,6 +591,7 @@ public class FragmentPreguntas extends Fragment {
             dificultad = "Dificil";
         }
 
+        activity.layout = "Personaje";
         currentTime = Calendar.getInstance().getTime();
 
         activity.partida = new Partida(puntuacion,dificultad,currentTime, activity.jugador);
