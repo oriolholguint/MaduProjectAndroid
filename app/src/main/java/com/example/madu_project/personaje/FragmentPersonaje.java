@@ -2,8 +2,6 @@ package com.example.madu_project.personaje;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -70,7 +68,6 @@ public class FragmentPersonaje extends Fragment
 
         btnIrRanking.setOnTouchListener(new View.OnTouchListener()
         {
-
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent)
             {
@@ -79,9 +76,9 @@ public class FragmentPersonaje extends Fragment
                     case MotionEvent.ACTION_DOWN:
                         btnIrRanking.startAnimation(activity.buttonUp);
                         break;
-                    case MotionEvent.ACTION_UP:
+                    /*case MotionEvent.ACTION_UP:
                         btnIrRanking.startAnimation(activity.buttonUp);
-                        break;
+                        break;*/
                 }
 
                 return false;
@@ -113,7 +110,6 @@ public class FragmentPersonaje extends Fragment
 
         btnIrMenu.setOnTouchListener(new View.OnTouchListener()
         {
-
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent)
             {
@@ -122,9 +118,9 @@ public class FragmentPersonaje extends Fragment
                     case MotionEvent.ACTION_DOWN:
                         btnIrMenu.startAnimation(activity.buttonUp);
                         break;
-                    case MotionEvent.ACTION_UP:
+                    /*case MotionEvent.ACTION_UP:
                         btnIrMenu.startAnimation(activity.buttonUp);
-                        break;
+                        break;*/
                 }
 
                 return false;
