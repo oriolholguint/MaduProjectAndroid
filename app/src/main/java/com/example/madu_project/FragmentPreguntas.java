@@ -114,8 +114,8 @@ public class FragmentPreguntas extends Fragment {
             @Override
             public void onFragmentResult(@NonNull  String requestKey, @NonNull Bundle result) {
                 genero = (Genero) result.getSerializable("genero");
-
                 musicaGenero();
+
 
                 descPregunta.setText(genero.getNombre());
 
@@ -594,10 +594,6 @@ public class FragmentPreguntas extends Fragment {
         currentTime = Calendar.getInstance().getTime();
 
         activity.partida = new Partida(puntuacion,dificultad,currentTime, activity.jugador);
-
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("genero",genero);
-        getParentFragmentManager().setFragmentResult("genero",bundle);
 
         FragmentManager mg = getFragmentManager();
         FragmentTransaction fragmentTransaction = mg.beginTransaction();

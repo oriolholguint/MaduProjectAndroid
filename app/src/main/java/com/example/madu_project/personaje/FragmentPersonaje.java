@@ -101,7 +101,7 @@ public class FragmentPersonaje extends Fragment
                 activity.grpPuntuacion.setVisibility(View.INVISIBLE);
                 activity.lbLPuntos.setText("0");
                 activity.partida = null;
-                activity.mediaPlayer = MediaPlayer.create(activity.getBaseContext(), R.raw.polynomial1m);
+                activity.mediaPlayer = MediaPlayer.create(activity.getBaseContext(), R.raw.musica_juego_madu);
                 activity.bucleAudio();
                 activity.settingsDialog.cancel();
 
