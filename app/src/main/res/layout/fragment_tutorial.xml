@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="25dp"
     android:layout_gravity="center"
-    android:background="@drawable/border_style2">
+    android:background="@drawable/border_style2"
+    android:layout_margin="20dp">
+
+    <!-- El del linear layout se cambiara dependiendo
+     si se ocultan zonas de los elementos-->
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/slider_introduccion"
