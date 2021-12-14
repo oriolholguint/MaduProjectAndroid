@@ -1,4 +1,6 @@
-package com.example.madu_project;
+package com.example.madu_project.partida;
+
+import com.example.madu_project.Jugador;
 
 import java.util.Date;
 

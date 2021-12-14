@@ -1,12 +1,8 @@
 package com.example.madu_project;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
+import com.example.madu_project.partida.Partida;
 
 public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHolder> implements View.OnClickListener {
 
@@ -38,7 +34,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
 
         void bindRanking(Ranking rank) {
 
-            rank = new Ranking(rank.getNombreGenero(), rank.getPartidasRank());
+            /*rank = new Ranking(rank.getNombreGenero(), rank.getPartidasRank());
             String ranking = rank.getNombreGenero() + "\n\n";
             Partida[] procesadas = RankingManager.bubbleSort(rank.getPartidasRank());
             ScoreAdapter sa = new ScoreAdapter(procesadas);
@@ -56,7 +52,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
 //                ImageGenre.setImageBitmap(myBitmap);
 //
 //            }
-            txtNombreRanking.setText(ranking);
+            txtNombreRanking.setText(ranking);*/
 
 
         }

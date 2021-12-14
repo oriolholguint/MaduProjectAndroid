@@ -1,19 +1,25 @@
 package com.example.madu_project;
 
+import com.example.madu_project.partida.Partida;
+
+import java.util.ArrayList;
+
 public class Ranking {
-    private Partida[] partidasRank;
+    private ArrayList<Partida> partidas;
     private String nombreGenero;
+    private String dificultad;
 
-    public Ranking(String nombreGenero,Partida[] ranks){
+    public Ranking(String nombreGenero,ArrayList<Partida> partidas, String dificultad){
         this.nombreGenero = nombreGenero;
-        this.partidasRank = ranks;
+        this.partidas = partidas;
+        this.dificultad = dificultad;
     }
-    public Partida[] getPartidasRank() {
-        return this.partidasRank;
+    public ArrayList<Partida> getpartidas() {
+        return this.partidas;
     }
 
-    public void setPartidasRank(Partida[] partidasRank) {
-        this.partidasRank = partidasRank;
+    public void setpartidas(ArrayList<Partida> partidas) {
+        this.partidas = partidas;
     }
 
     public String getNombreGenero() {
@@ -22,5 +28,13 @@ public class Ranking {
 
     public void setNombreGenero(String nombreGenero) {
         this.nombreGenero = nombreGenero;
+    }
+
+    public String getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(String dificultad) {
+        this.dificultad = dificultad;
     }
 }

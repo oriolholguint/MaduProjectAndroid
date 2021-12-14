@@ -10,9 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.ParseException;
+import com.example.madu_project.partida.Partida;
+
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 
 public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ViewHolder> implements View.OnClickListener  {
     private Partida[] scores;

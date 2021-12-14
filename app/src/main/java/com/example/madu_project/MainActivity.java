@@ -1,6 +1,5 @@
 package com.example.madu_project;
 
-import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Group;
@@ -9,24 +8,17 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Dialog;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
-import android.media.AudioFormat;
 import android.media.AudioManager;
-import android.media.AudioTrack;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 
 
 import android.widget.ImageButton;
@@ -36,9 +28,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.madu_project.idioma.FragmentIdioma;
+import com.example.madu_project.partida.Partida;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 
