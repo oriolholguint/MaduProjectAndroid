@@ -1,5 +1,6 @@
 package com.example.madu_project;
 
+import com.example.madu_project.partida.Partida;
 import com.example.madu_project.personaje.Personaje;
 
 import java.io.Serializable;
@@ -13,10 +14,9 @@ public class Genero implements Serializable
     private String imagenMenu;
     private Pregunta[] preguntas;
     private Personaje[] personajes;
-    private Partida[] partidas;
 
     public Genero(String nombre, String musicaFondo, String imagenFondo, String imagenMenu,
-                  Pregunta[] preguntas, Personaje[] personajes, Partida[] partidas)
+                  Pregunta[] preguntas, Personaje[] personajes)
     {
         this.nombre = nombre;
         this.musicaFondo = musicaFondo;
@@ -24,7 +24,6 @@ public class Genero implements Serializable
         this.imagenMenu = imagenMenu;
         this.preguntas = preguntas;
         this.personajes = personajes;
-        this.partidas = partidas;
     }
 
     public String getNombre() {
@@ -52,10 +51,6 @@ public class Genero implements Serializable
         return personajes;
     }
 
-    public Partida[] getPartidas() {
-        return partidas;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -80,10 +75,6 @@ public class Genero implements Serializable
         this.personajes = personajes;
     }
 
-    public void setPartidas( Partida[]  partidas) {
-        this.partidas = partidas;
-    }
-
     @Override
     public String toString() {
         return "{" +
@@ -93,7 +84,6 @@ public class Genero implements Serializable
                 ", imagenMenu='" + imagenMenu + '\'' +
                 ", preguntas=" + Arrays.toString(preguntas) +
                 ", personajes=" + Arrays.toString(personajes) +
-                ", partidas=" + Arrays.toString(partidas) +
                 '}';
     }
 }

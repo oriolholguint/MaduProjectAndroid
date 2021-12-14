@@ -1,5 +1,7 @@
 package com.example.madu_project;
 
+import com.example.madu_project.partida.Partida;
+
 import java.util.Arrays;
 
 public class RankingManager {

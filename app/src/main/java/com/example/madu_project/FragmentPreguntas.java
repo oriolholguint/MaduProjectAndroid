@@ -30,6 +30,7 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.example.madu_project.partida.Partida;
 import com.example.madu_project.personaje.FragmentPersonaje;
 
 import java.util.Calendar;

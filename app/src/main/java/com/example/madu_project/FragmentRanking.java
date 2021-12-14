@@ -84,11 +84,11 @@ public class FragmentRanking extends Fragment {
                 Ranking[] rankings = new Ranking[generos.length];
                 int cont = 0;
                 for ( Genero g : generos) {
-                    rankings[cont++] = new Ranking(g.getNombre(),g.getPartidas());
+                    //rankings[cont++] = new Ranking(g.getNombre(),g.getPartidas());
                 }
                 cont = 0;
                 for ( Genero g : generoAux) {
-                    rankings[cont++] = new Ranking(g.getNombre(),g.getPartidas());
+                    //rankings[cont++] = new Ranking(g.getNombre(),g.getPartidas());
                 }
 
                 RankingAdapter adapter = new RankingAdapter(rankings);
