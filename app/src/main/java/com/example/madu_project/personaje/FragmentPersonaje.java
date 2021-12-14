@@ -55,7 +55,7 @@ public class FragmentPersonaje extends Fragment
             public void onClick(View view)
             {
                 btnIrRanking.setEnabled(false);
-
+                activity.layout = "RankingFinal";
                 FragmentManager mg = activity.getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction;
 
