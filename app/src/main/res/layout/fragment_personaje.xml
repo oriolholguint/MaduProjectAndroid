@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
+        android:fontFamily="@font/diary"
         android:text="Tupac Shakur"
         android:textSize="40sp"/>
 
@@ -26,7 +27,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:text="Tu puntuacion: 700p"
+        android:fontFamily="@font/diary"
+        android:text="@string/info_puntuacion"
         android:textSize="30sp"/>
 
     <LinearLayout

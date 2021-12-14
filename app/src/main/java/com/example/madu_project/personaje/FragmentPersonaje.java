@@ -2,21 +2,28 @@ package com.example.madu_project.personaje;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.madu_project.FragmentMenu;
+import com.example.madu_project.FragmentRanking;
 import com.example.madu_project.Genero;
 import com.example.madu_project.MainActivity;
 import com.example.madu_project.R;
-import com.example.madu_project.personaje.Personaje;
 
 public class FragmentPersonaje extends Fragment
 {
@@ -39,16 +46,25 @@ public class FragmentPersonaje extends Fragment
         Personaje personaje = personajeElegido(activity.generoSelect, activity.partida.getPuntuacion());
 
         nombrePersonaje.setText(personaje.getNombre());
+
         Bitmap bMap = BitmapFactory.decodeFile(IMAGE_PATH + personaje.getImagen());
         imagenPersonaje.setImageBitmap(bMap);
-        puntuacionPartida.setText("Tu puntuacion: " + Integer.toString(activity.partida.getPuntuacion()));
+        puntuacionPartida.setText(getString(R.string.info_puntuacion) + " " + (activity.partida.getPuntuacion()));
 
         btnIrRanking.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
+                btnIrRanking.setEnabled(false);
 
+                FragmentManager mg = activity.getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction;
+
+                fragmentTransaction = mg.beginTransaction();
+                FragmentRanking fragmentRanking = new FragmentRanking();
+                fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentRanking);
+                fragmentTransaction.commit();
             }
         });
 
@@ -57,7 +73,44 @@ public class FragmentPersonaje extends Fragment
             @Override
             public void onClick(View view)
             {
+                btnIrMenu.setEnabled(false);
+                FragmentMenu fragmentMenu = new FragmentMenu();
 
+                activity.layout = "Menu";
+                activity.clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
+                activity.volverAMenu(fragmentMenu);
+                activity.grpMenu.setVisibility(View.INVISIBLE);
+                activity.grpDificultad.setVisibility(View.VISIBLE);
+                activity.grpPuntuacion.setVisibility(View.INVISIBLE);
+                activity.lbLPuntos.setText("0");
+                activity.partida = null;
+                activity.mediaPlayer = MediaPlayer.create(activity.getBaseContext(), R.raw.polynomial1m);
+                activity.startAudio();
+                activity.settingsDialog.cancel();
+
+            }
+        });
+
+        btnIrMenu.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                Drawable drawable = btnIrMenu.getBackground();
+
+                switch (motionEvent.getAction())
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        drawable.setColorFilter(0xffff0000, PorterDuff.Mode.MULTIPLY);
+                        btnIrMenu.setBackground(drawable);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        drawable.clearColorFilter();
+                        btnIrMenu.setBackground(drawable);
+                        break;
+                }
+
+                return false;
             }
         });
 
