@@ -57,7 +57,7 @@ public class FragmentTutorial extends Fragment
         {
             dots[i] = new TextView(getContext());
             dots[i].setText(Html.fromHtml("&#8226"));
-            dots[i].setTextSize(35);
+            dots[i].setTextSize(40);
             dots[i].setTextColor(getResources().getColor(R.color.inactive));
             dotsLayout.addView(dots[i]);
         }
