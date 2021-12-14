@@ -93,12 +93,15 @@ public class FragmentMenu extends Fragment {
             @Override
             public void onClick(View view) {
                 activity.layout = "Ranking";
+                /*
                 Genero[] genero = generos;
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("generos",genero);
 
                 getParentFragmentManager().setFragmentResult("generos",bundle);
 
+
+                 */
                 irARanking();
             }
 

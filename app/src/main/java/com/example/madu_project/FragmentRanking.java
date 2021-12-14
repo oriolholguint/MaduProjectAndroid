@@ -6,7 +6,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,6 +32,9 @@ public class FragmentRanking extends Fragment {
     Genero[] generos;
     Genero[] generoAux;
     public static Genero[] generosParaRanking;
+    Button btnAtrasRanking;
+    FragmentManager mg;
+    FragmentTransaction fragmentTransaction;
 
     //public static void sort(ArrayList<Partida> list)
     //{
@@ -52,6 +57,10 @@ public class FragmentRanking extends Fragment {
                              Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_ranking, container, false);
+        btnAtrasRanking = view.findViewById(R.id.btnAtrasRanking);
+        ma = (MainActivity)getActivity();
+
+        mg = getFragmentManager();
 
         getParentFragmentManager().setFragmentResultListener("generos", this, new FragmentResultListener() {
             @Override
@@ -60,26 +69,12 @@ public class FragmentRanking extends Fragment {
                 generosParaRanking = generos;
                 //ma = getActivity(MainActivity);
 
-                ma = (MainActivity)getActivity();
+
                 generoAux = ma.generosAux;
                 //Inicializar variables, Arrays, GridViews,... y metodos
                 RecyclerView RankingList = view.findViewById(R.id.RankingList);
-                Button btnAtrasRanking = view.findViewById(R.id.btnAtrasRanking);
-                btnAtrasRanking.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        ma.layout = "Menu";
-                        FragmentMenu fm = new FragmentMenu();
-                        ma.volverAMenu(fm);
-                        if(ma.layout.equals("RankingFinal")){
-                            ma.stopAudio();
-                            ma.mediaPlayer = MediaPlayer.create(ma.getBaseContext(), R.raw.musica_juego_madu);
-                            ma.bucleAudio();
-                        }
 
-                    }
 
-                });
 
                 Ranking[] rankings = new Ranking[generos.length];
                 int cont = 0;
@@ -104,6 +99,25 @@ public class FragmentRanking extends Fragment {
 
 
 
+        btnAtrasRanking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(ma.layout.equals("RankingFinal")){
+                    ma.layout = "Menu";
+                    ma.grpPuntuacion.setVisibility(View.INVISIBLE);
+                    ma.lbLPuntos.setText("0");
+                    ma.stopAudio();
+                    ma.mediaPlayer = MediaPlayer.create(ma.getBaseContext(), R.raw.musica_juego_madu);
+                    ma.bucleAudio();
+                } else {
+                    ma.layout = "Menu";
+                }
+                volverAMenu();
+            }
+
+        });
+
 
         //TabLayout tl = view.findViewById(R.id.tablayoutranking);
         //this.ma = (MainActivity) getActivity();
@@ -113,4 +127,20 @@ public class FragmentRanking extends Fragment {
 
         return view;
     }
+
+
+    public void AnimacionIzquierdaADerecha(FragmentTransaction fragmentTransaction){
+        fragmentTransaction.setCustomAnimations(R.anim.enter_left_to_right,R.anim.exit_left_to_right,
+                R.anim.enter_right_to_left,R.anim.exit_right_to_left);
+    }
+
+    public void volverAMenu(){
+        fragmentTransaction = mg.beginTransaction();
+        AnimacionIzquierdaADerecha(fragmentTransaction);
+        FragmentMenu fragmentMenu = new FragmentMenu();
+        fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales, fragmentMenu);
+        fragmentTransaction.commit();
+    }
+
+
 }
