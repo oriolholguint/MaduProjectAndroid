@@ -86,9 +86,9 @@ public class FragmentPersonaje extends Fragment
                     case MotionEvent.ACTION_DOWN:
                         btnIrRanking.startAnimation(activity.buttonUp);
                         break;
-                    /*case MotionEvent.ACTION_UP:
-                        btnIrRanking.startAnimation(activity.buttonUp);
-                        break;*/
+                    case MotionEvent.ACTION_UP:
+                        btnIrRanking.startAnimation(activity.buttonDown);
+                        break;
                 }
 
                 return false;
@@ -128,6 +128,9 @@ public class FragmentPersonaje extends Fragment
                 {
                     case MotionEvent.ACTION_DOWN:
                         btnIrMenu.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        btnIrMenu.startAnimation(activity.buttonDown);
                         break;
                     /*case MotionEvent.ACTION_UP:
                         btnIrMenu.startAnimation(activity.buttonUp);
