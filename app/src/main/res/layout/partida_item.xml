@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="500dp"
-    android:layout_height="30dp"
+    android:layout_width="400dp"
+    android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/imagenMedalla"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="27dp"
         android:layout_weight="1"
         android:foregroundGravity="center_vertical"/>
 
     <TextView
         android:id="@+id/posicionRanking"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="27dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="1."/>
+        android:fontFamily="@font/diary"
+        android:text="1."
+        android:textColor="@color/white"/>
 
     <ImageView
         android:id="@+id/avatarJugador"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="27dp"
         android:layout_weight="1"
         android:padding="5dp"
         android:foregroundGravity="center"
@@ -32,19 +34,22 @@
     <TextView
         android:id="@+id/nombreJugador"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="27dp"
         android:layout_weight="5"
         android:paddingLeft="10dp"
         android:gravity="center_vertical"
-        android:text="PepitoGrillo"/>
+        android:fontFamily="@font/diary"
+        android:text="PepitoGrillo"
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/puntuacionJugador"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="27dp"
         android:layout_weight="2"
-        android:paddingLeft="10dp"
         android:gravity="center_vertical"
-        android:text="1000p"/>
+        android:fontFamily="@font/diary"
+        android:text="1000p."
+        android:textColor="@color/white"/>
 
 </LinearLayout>

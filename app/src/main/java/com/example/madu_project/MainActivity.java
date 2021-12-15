@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     public Group grpDificultad;
     public MediaPlayer mediaPlayer;
     private AudioManager audioManager;
+    public String dificultadMenu = "Facil"; //Por defecto sera facil
 
     @Override
     public void onBackPressed() {
@@ -150,9 +151,8 @@ public class MainActivity extends AppCompatActivity {
         sprDificultad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                // duracion = sprDificultad.getSelectedItemPosition() * 5 + 20;
                 int index = sprDificultad.getSelectedItemPosition();
-
+                dificultadMenu = (String) mAdapter.getItem(index);
                 duracion = 30 - (5 * index);
             }
 

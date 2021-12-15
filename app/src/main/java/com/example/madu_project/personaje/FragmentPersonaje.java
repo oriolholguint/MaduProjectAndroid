@@ -229,7 +229,7 @@ public class FragmentPersonaje extends Fragment
         boolean partidaGuardada = false;
         int counter = 0;
 
-        if(partidas.size() != MAX_PARTIDAS - 1)
+        if(partidas.size() != MAX_PARTIDAS)
         {
             partidas.add(partida);
             partidaGuardada = true;
@@ -293,7 +293,7 @@ public class FragmentPersonaje extends Fragment
 
     public static void eliminarPartidas(ArrayList<Partida> partidas)
     {
-        if(partidas.size() > MAX_PARTIDAS - 1)
+        if(partidas.size() > MAX_PARTIDAS)
         {
             for(int i = MAX_PARTIDAS - 1; i < partidas.size(); i++)
             {

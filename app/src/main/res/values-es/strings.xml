@@ -24,4 +24,6 @@
     <!-- Puntuacion -->
     <string name="info_puntuacion">Tu puntuacion: </string>
 
+    <!-- Ranking -->
+    <string name="ranking_resultado_no_encontrado">Resultados no encontrados</string>
 </resources>
