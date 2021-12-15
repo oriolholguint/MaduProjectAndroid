@@ -121,7 +121,7 @@ public class FragmentPreguntas extends Fragment {
                 descPregunta.setText(genero.getNombre());
 
                 //FUNCIONA METODO OBTENER PREGUNTAS, CAMBIAR CANTIDAD PREGUNTAS PARA PRUEBAS
-                preguntas = activity.getPreguntasPartida(genero.getPreguntas(),1,activity.jugador);
+                preguntas = activity.getPreguntasPartida(genero.getPreguntas(),10,activity.jugador);
 
 
 
