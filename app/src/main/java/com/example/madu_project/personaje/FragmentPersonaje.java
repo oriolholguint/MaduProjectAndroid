@@ -279,7 +279,8 @@ public class FragmentPersonaje extends Fragment
         {
             for (j = 0; j < partidas.size() - i - 1; j++)
             {
-                if (partidas.get(j + 1).getPuntuacion() < partidas.get(j).getPuntuacion())
+                //Verificar direccion de orden si ascendente o descendente
+                if (partidas.get(j + 1).getPuntuacion() > partidas.get(j).getPuntuacion())
                 {
                     partidaAux = partidas.get(j + 1);
                     partidas.set(j + 1, partidas.get(j));
