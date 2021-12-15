@@ -2,9 +2,10 @@ package com.example.madu_project.partida;
 
 import com.example.madu_project.Jugador;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Partida
+public class Partida implements Serializable
 {
     private Integer puntuacion;
     private String dificultad;
@@ -53,6 +54,7 @@ public class Partida
     public boolean check(){
         return !(this.dificultad == null || this.fecha == null || this.jugador == null || this.puntuacion == null);
     }
+
     @Override
     public String toString()
     {
