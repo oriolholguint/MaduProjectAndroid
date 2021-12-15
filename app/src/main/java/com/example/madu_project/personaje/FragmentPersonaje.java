@@ -18,11 +18,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.madu_project.FragmentMenu;
-import com.example.madu_project.FragmentRanking;
+import com.example.madu_project.ranking.FragmentRanking;
 import com.example.madu_project.Genero;
 import com.example.madu_project.MainActivity;
 import com.example.madu_project.R;
-import com.example.madu_project.Ranking;
+import com.example.madu_project.ranking.Ranking;
 import com.example.madu_project.archivos.GestorArchivos;
 import com.example.madu_project.partida.Partida;
 
@@ -67,9 +67,8 @@ public class FragmentPersonaje extends Fragment
                 activity.layout = "RankingFinal";
                 activity.clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
                 FragmentManager mg = activity.getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction;
+                FragmentTransaction fragmentTransaction = mg.beginTransaction();
 
-                fragmentTransaction = mg.beginTransaction();
                 FragmentRanking fragmentRanking = new FragmentRanking();
                 fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentRanking);
                 fragmentTransaction.commit();
