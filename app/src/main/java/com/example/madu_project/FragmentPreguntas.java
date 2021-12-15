@@ -388,9 +388,22 @@ public class FragmentPreguntas extends Fragment {
     private void musicaGenero(){
         activity.mediaPlayer.stop();
         activity.mediaPlayer = MediaPlayer.create(getActivity(), Uri.parse("/data/data/com.example.madu_project/files/sound/" + genero.getMusicaFondo()));
-        activity.mediaPlayer.start();
+        //activity.mediaPlayer.start();
+        bucleAudio();
+
     }
 
+    public void bucleAudio(){
+        activity.mediaPlayer.start();
+        activity.mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                activity.mediaPlayer.start();
+            }
+
+        });
+    }
 
 
     private void progressAnimation(Respuesta [] resps,RadioButton r1, RadioButton r2,RadioButton r3,RadioButton r4,RadioButton rVer,RadioButton rFals,Button button,ProgressBar progressBar,int duracion)
