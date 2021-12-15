@@ -9,10 +9,12 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONException;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GestorArchivos
 {
@@ -47,21 +49,61 @@ public class GestorArchivos
         return generos;
     }
 
+    public static ArrayList<Ranking> getRanking()
+    {
+        Ranking[] rankings = null;
 
+        try
+        {
+            FileReader fr = new FileReader(MATCHES_FILE);
+            BufferedReader br = new BufferedReader(fr);
+
+            Gson gson = new Gson();
+
+            rankings = gson.fromJson(br, Ranking[].class);
+
+            br.close();
+            fr.close();
+        }
+        catch(IOException ex)
+        {
+            ex.printStackTrace();
+        }
+
+        if(rankings != null)
+        {
+            return new ArrayList<Ranking>(Arrays.asList(rankings));
+        }
+        else
+        {
+            return null;
+        }
+
+    }
 
     /**
      * Se escribe un fichero JSON
      * @param ranking array con objetos ranking a escribir en JSON
      * @throws JSONException
      */
-    public static void writeJson(Ranking[] ranking) throws JSONException
+    public static void writeJson(ArrayList<Ranking> ranking)
     {
+        Ranking[] rankingArray = new Ranking[ranking.size()];
+
+        for(int i = 0; i < rankingArray.length; i++)
+        {
+            rankingArray[i] = ranking.get(i);
+        }
+
         try
         {
+            File fichero = new File(MATCHES_FILE);
+            fichero.delete();
+
             FileWriter fw = new FileWriter(MATCHES_FILE);
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            fw.write(gson.toJson(ranking));
+            fw.write(gson.toJson(rankingArray));
 
             fw.close();
         }
@@ -69,90 +111,5 @@ public class GestorArchivos
         {
             ex.printStackTrace();
         }
-    }
-
-    public static void guardarPartidaRanking(ArrayList<Ranking> rankings, Partida partida, Genero generoJugado)
-    {
-        Ranking ranking = null;
-        boolean rankingEncontrado = false;
-        int counter = 0;
-
-        while(counter < rankings.size() && !rankingEncontrado)
-        {
-            if(rankings.get(counter).getNombreGenero().equals(generoJugado.getNombre())
-            && rankings.get(counter).getDificultad().equals(partida.getDificultad()))
-            {
-                rankingEncontrado = true;
-                ranking = rankings.get(counter);
-            }
-            else
-            {
-                counter++;
-            }
-        }
-
-        if(ranking != null) //Si encuentra el ranking guarda partida
-        {
-            guardarPartida(ranking, partida);
-        }
-        else //Si no encuentra el ranking lo crea
-        {
-            Ranking rankingNuevo = new Ranking(generoJugado.getNombre(), new ArrayList<Partida>(), partida.getDificultad());
-            guardarPartida(rankingNuevo, partida);
-        }
-    }
-
-    public static void guardarPartida(Ranking ranking, Partida partida)
-    {
-        ArrayList<Partida> partidas = ranking.getpartidas();
-
-        //Guardo la nueva partida en la lista de partidas si supera alguna puntuacion de las guardadas
-        boolean partidaGuardada = false;
-        int counter = 0;
-        while(counter < partidas.size() && !partidaGuardada)
-        {
-            if(partidas.get(counter).getPuntuacion() < partida.getPuntuacion())
-            {
-                partidas.add(partida);
-                partidaGuardada = true;
-            }
-            else
-            {
-                counter++;
-            }
-        }
-
-        if(partidaGuardada) //Si se ha guardado la partida entra aqui
-        {
-            //Se ordena el array de partidas con metodo burbuja
-            partidas = ordenarBurbuja(partidas);
-
-            //Si el array de partidas es mas grande que el limite se elimina el ultimo
-            if(partidas.size() > 10)
-            {
-                partidas.remove(partidas.size());
-            }
-        }
-    }
-
-    public static ArrayList<Partida> ordenarBurbuja(ArrayList<Partida> partidas)
-    {
-        Partida partidaAux;
-        int i, j;
-
-        for (i = 0; i < partidas.size() - 1; i++)
-        {
-            for (j = 0; j < partidas.size() - i - 1; j++)
-            {
-                if (partidas.get(j + 1).getPuntuacion() < partidas.get(j).getPuntuacion())
-                {
-                    partidaAux = partidas.get(j + 1);
-                    partidas.set(j + 1, partidas.get(j));
-                    partidas.set(j, partidaAux);
-                }
-            }
-        }
-
-        return partidas;
     }
 }

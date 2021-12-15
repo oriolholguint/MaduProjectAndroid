@@ -22,10 +22,16 @@ import com.example.madu_project.FragmentRanking;
 import com.example.madu_project.Genero;
 import com.example.madu_project.MainActivity;
 import com.example.madu_project.R;
+import com.example.madu_project.Ranking;
+import com.example.madu_project.archivos.GestorArchivos;
+import com.example.madu_project.partida.Partida;
+
+import java.util.ArrayList;
 
 public class FragmentPersonaje extends Fragment
 {
-    private final String IMAGE_PATH = "/data/data/com.example.madu_project/files/images/";
+    private final static String IMAGE_PATH = "/data/data/com.example.madu_project/files/images/";
+    private final static int MAX_PARTIDAS = 10;
     View view;
 
     @Override
@@ -48,6 +54,9 @@ public class FragmentPersonaje extends Fragment
         Bitmap bMap = BitmapFactory.decodeFile(IMAGE_PATH + personaje.getImagen());
         imagenPersonaje.setImageBitmap(bMap);
         puntuacionPartida.setText(getString(R.string.info_puntuacion) + " " + (activity.partida.getPuntuacion()));
+
+        ArrayList<Ranking> rankings = GestorArchivos.getRanking();
+        guardarPartidaRanking(rankings, activity.partida, activity.generoSelect);
 
         btnIrRanking.setOnClickListener(new View.OnClickListener()
         {
@@ -77,9 +86,9 @@ public class FragmentPersonaje extends Fragment
                     case MotionEvent.ACTION_DOWN:
                         btnIrRanking.startAnimation(activity.buttonUp);
                         break;
-                    /*case MotionEvent.ACTION_UP:
-                        btnIrRanking.startAnimation(activity.buttonUp);
-                        break;*/
+                    case MotionEvent.ACTION_UP:
+                        btnIrRanking.startAnimation(activity.buttonDown);
+                        break;
                 }
 
                 return false;
@@ -119,6 +128,9 @@ public class FragmentPersonaje extends Fragment
                 {
                     case MotionEvent.ACTION_DOWN:
                         btnIrMenu.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        btnIrMenu.startAnimation(activity.buttonDown);
                         break;
                     /*case MotionEvent.ACTION_UP:
                         btnIrMenu.startAnimation(activity.buttonUp);
@@ -166,5 +178,127 @@ public class FragmentPersonaje extends Fragment
         }
 
         return personaje;
+    }
+
+    public static void guardarPartidaRanking(ArrayList<Ranking> rankings, Partida partida, Genero generoJugado)
+    {
+        Ranking ranking = null;
+
+        if(rankings != null)
+        {
+            boolean rankingEncontrado = false;
+            int counter = 0;
+
+            while (counter < rankings.size() && !rankingEncontrado)
+            {
+                if (rankings.get(counter).getNombreGenero().equals(generoJugado.getNombre())
+                        && rankings.get(counter).getDificultad().equals(partida.getDificultad()))
+                {
+                    rankingEncontrado = true;
+                    ranking = rankings.get(counter);
+                }
+                else
+                {
+                    counter++;
+                }
+            }
+        }
+        else
+        {
+            rankings = new ArrayList<>();
+        }
+
+        if(ranking != null) //Si encuentra el ranking guarda partida
+        {
+            guardarPartida(ranking, partida);
+            GestorArchivos.writeJson(rankings);
+        }
+        else //Si no encuentra el ranking lo crea
+        {
+            Ranking rankingNuevo = new Ranking(generoJugado.getNombre(), new ArrayList<Partida>(), partida.getDificultad());
+            rankingNuevo.getpartidas().add(partida);
+            rankings.add(rankingNuevo);
+            GestorArchivos.writeJson(rankings);
+        }
+    }
+
+    public static Ranking guardarPartida(Ranking ranking, Partida partida)
+    {
+        ArrayList<Partida> partidas = ranking.getpartidas();
+
+        //Guardo la nueva partida en la lista de partidas si supera alguna puntuacion de las guardadas
+        boolean partidaGuardada = false;
+        int counter = 0;
+
+        if(partidas.size() != MAX_PARTIDAS - 1)
+        {
+            partidas.add(partida);
+            partidaGuardada = true;
+        }
+        else
+        {
+            while(counter < partidas.size() && !partidaGuardada)
+            {
+                if(partidas.get(counter).getPuntuacion() < partida.getPuntuacion())
+                {
+                    partidas.add(partida);
+                    partidaGuardada = true;
+                }
+                else
+                {
+                    counter++;
+                }
+            }
+        }
+
+        if(partidaGuardada) //Si se ha guardado la partida entra aqui
+        {
+            //Se ordena el array de partidas con metodo burbuja
+            partidas = ordenarBurbuja(partidas);
+
+            //Si el array de partidas es mas grande que el limite se eliminan las partidas que sobrepasan el maximo
+            //Esto se hace asi por si se cambia el numero de partidas que aparecen en el ranking
+            eliminarPartidas(partidas);
+        }
+        else
+        {
+            eliminarPartidas(partidas);
+        }
+
+        ranking.setPartidas(partidas);
+
+        return ranking;
+    }
+
+    public static ArrayList<Partida> ordenarBurbuja(ArrayList<Partida> partidas)
+    {
+        Partida partidaAux;
+        int i, j;
+
+        for (i = 0; i < partidas.size() - 1; i++)
+        {
+            for (j = 0; j < partidas.size() - i - 1; j++)
+            {
+                if (partidas.get(j + 1).getPuntuacion() < partidas.get(j).getPuntuacion())
+                {
+                    partidaAux = partidas.get(j + 1);
+                    partidas.set(j + 1, partidas.get(j));
+                    partidas.set(j, partidaAux);
+                }
+            }
+        }
+
+        return partidas;
+    }
+
+    public static void eliminarPartidas(ArrayList<Partida> partidas)
+    {
+        if(partidas.size() > MAX_PARTIDAS - 1)
+        {
+            for(int i = MAX_PARTIDAS - 1; i < partidas.size(); i++)
+            {
+                partidas.remove(i);
+            }
+        }
     }
 }
