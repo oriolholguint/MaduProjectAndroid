@@ -1,4 +1,4 @@
-package com.example.madu_project;
+package com.example.madu_project.ranking;
 
 import com.example.madu_project.partida.Partida;
 

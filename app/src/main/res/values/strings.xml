@@ -23,4 +23,7 @@
 
     <!-- Puntuacion -->
     <string name="info_puntuacion">Your puntuation: </string>
+
+    <!-- Ranking -->
+    <string name="ranking_resultado_no_encontrado">Results not found</string>
 </resources>

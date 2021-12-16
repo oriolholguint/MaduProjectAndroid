@@ -1,8 +1,7 @@
 package com.example.madu_project.archivos;
 
 import com.example.madu_project.Genero;
-import com.example.madu_project.Ranking;
-import com.example.madu_project.partida.Partida;
+import com.example.madu_project.ranking.Ranking;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

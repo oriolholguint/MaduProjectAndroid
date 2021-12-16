@@ -8,11 +8,11 @@ import java.util.Date;
 public class Partida implements Serializable
 {
     private Integer puntuacion;
-    private String dificultad;
+    private int dificultad; //Facil: 0, Medio:1, Dificil:2
     private Date fecha;
     private Jugador jugador;
 
-    public Partida(int puntuacion, String dificultad, Date fecha, Jugador jugador)
+    public Partida(int puntuacion, int dificultad, Date fecha, Jugador jugador)
     {
         this.puntuacion = puntuacion;
         this.dificultad = dificultad;
@@ -24,7 +24,7 @@ public class Partida implements Serializable
         return puntuacion;
     }
 
-    public String getDificultad() {
+    public int getDificultad() {
         return dificultad;
     }
 
@@ -40,7 +40,7 @@ public class Partida implements Serializable
         this.puntuacion = puntuacion;
     }
 
-    public void setDificultad(String dificultad) {
+    public void setDificultad(int dificultad) {
         this.dificultad = dificultad;
     }
 
@@ -52,7 +52,7 @@ public class Partida implements Serializable
         this.jugador = jugador;
     }
     public boolean check(){
-        return !(this.dificultad == null || this.fecha == null || this.jugador == null || this.puntuacion == null);
+        return !(this.dificultad == 0 || this.fecha == null || this.jugador == null || this.puntuacion == null);
     }
 
     @Override

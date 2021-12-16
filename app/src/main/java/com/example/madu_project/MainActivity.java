@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     public Group grpDificultad;
     public MediaPlayer mediaPlayer;
     private AudioManager audioManager;
+    public int dificultadMenu; //Facil: 0, Medio: 1, Dificil: 2
 
     @Override
     public void onBackPressed() {
@@ -139,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         final Spinner sprDificultad = (Spinner) settingsDialog.findViewById(R.id.sprDificultad);
-        ArrayList<String> spritems = llenarSpinner();
+        ArrayList<String> spritems = llenarSpinnerDificultad();
 
         mAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spritems);
         mAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -150,9 +151,8 @@ public class MainActivity extends AppCompatActivity {
         sprDificultad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                // duracion = sprDificultad.getSelectedItemPosition() * 5 + 20;
                 int index = sprDificultad.getSelectedItemPosition();
-
+                dificultadMenu = (int) mAdapter.getItemId(index);
                 duracion = 30 - (5 * index);
             }
 
@@ -318,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public ArrayList<String> llenarSpinner() {
+    public ArrayList<String> llenarSpinnerDificultad() {
         ArrayList<String> items = new ArrayList<>();
         items.add("Facil");
         items.add("Medio");

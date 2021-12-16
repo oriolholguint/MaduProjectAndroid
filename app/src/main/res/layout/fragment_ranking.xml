@@ -1,45 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    tools:context=".FragmentRanking">
+    android:gravity="center_horizontal"
+    tools:context=".ranking.FragmentRanking"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewRanking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="549dp"
-        android:layout_marginTop="37dp"
-        android:text="Ránking"
-        android:textSize="50dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/diary"
+        android:text="Ranking"
+        android:textSize="50sp"
+        android:textStyle="bold"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RankingList"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/opcionesSpinner"
+        android:layout_width="550dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <Spinner
+            android:id="@+id/spinnerGenero"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="25dp"
+            android:background="@color/white"/>
+
+        <Spinner
+            android:id="@+id/spinnerDificultad"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="25dp"
+            android:background="@color/white"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/containterPartidas"
+        android:layout_width="600dp"
+        android:layout_height="400dp"
+        android:paddingTop="30dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/ranking"
+        android:scaleType="centerCrop">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listaPartidas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"/>
+
+        <TextView
+            android:id="@+id/rankingError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:fontFamily="@font/diary"
+            android:layout_gravity="center"
+            android:text="@string/ranking_resultado_no_encontrado"/>
+
+    </FrameLayout>
 
     <Button
         android:id="@+id/btnAtrasRanking"
         android:layout_width="207dp"
         android:layout_height="61dp"
         android:layout_gravity="center"
-        android:layout_marginStart="536dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="100dp"
         android:fontFamily="@font/diary"
         android:text="Volver al menu"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RankingList"></Button>
+        android:textColor="@color/white"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
