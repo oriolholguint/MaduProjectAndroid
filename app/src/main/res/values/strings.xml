@@ -12,6 +12,13 @@
     <string name="introduccion_3">Tere are three difficulties and depending on the one selected, the time to answer the questions will vary.</string>
     <string name="introduccion_4">Once you\'re finished you will get a score and a musical artist. If the score is high, you could lead the matches leaderboard.</string>
 
+    <!-- Login -->
+    <string name="login">Login</string>
+    <string name="usuario">User: </string>
+    <string name="edad">Age: </string>
+    <string name="avatar">Avatar: </string>
+    <string name="seleccionar_avatar">Select Avatar</string>
+
     <!-- Niveles de dificultad + tiempo -->
     <string name="facil">Easy: 30s</string>
     <string name="medio">Medium: 25s</string>
