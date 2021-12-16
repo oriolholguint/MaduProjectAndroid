@@ -17,7 +17,8 @@
     <string name="usuario">User: </string>
     <string name="edad">Age: </string>
     <string name="avatar">Avatar: </string>
-    <string name="seleccionar_avatar">Select Avatar</string>
+    <string name="seleccionar_avatar">Open Avatar</string>
+    <string name="deseleccionar_avatar">Close Avatar</string>
 
     <!-- Niveles de dificultad + tiempo -->
     <string name="facil">Easy: 30\"</string>

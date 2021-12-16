@@ -64,17 +64,25 @@ public class FragmentIdioma extends Fragment
             public void onClick(View view)
             {
                 //Creamos un objeto Idioma con los atributos del elemento seleccionado
-                Idioma idioma = idiomas[listaIdiomas.getChildAdapterPosition(view)];
+                try
+                {
+                    Idioma idioma = idiomas[listaIdiomas.getChildAdapterPosition(view)];
 
-                //Guardo la posicion del elemento seleccionado en una variable del adapter
-                adapter.selectedPos = listaIdiomas.getChildAdapterPosition(view);
-                //Recargo el adapter
-                adapter.notifyDataSetChanged();
+                    //Guardo la posicion del elemento seleccionado en una variable del adapter
+                    adapter.selectedPos = listaIdiomas.getChildAdapterPosition(view);
+                    //Recargo el adapter
+                    adapter.notifyDataSetChanged();
 
-                activity.generos = GestorArchivos.getGeneros(path + idiomas[adapter.selectedPos].getFilePath());
+                    activity.generos = GestorArchivos.getGeneros(path + idiomas[adapter.selectedPos].getFilePath());
 
-                //Cambio el idioma de la tablet el nuevo idioma para usar fichero strings.xml correspondiente
-                cambiarIdioma(idioma.getNombre());
+                    //Cambio el idioma de la tablet el nuevo idioma para usar fichero strings.xml correspondiente
+                    cambiarIdioma(idioma.getNombre());
+                }
+                catch (ArrayIndexOutOfBoundsException ex)
+                {
+                    ex.printStackTrace();
+                }
+
             }
         });
 
