@@ -41,13 +41,33 @@ public class FragmentPersonaje extends Fragment
 
         view = inflater.inflate(R.layout.fragment_personaje, container, false);
 
-        TextView  nombrePersonaje   = view.findViewById(R.id.nombrePersonaje);
-        ImageView imagenPersonaje   = view.findViewById(R.id.imagenPersonaje);
-        TextView  puntuacionPartida = view.findViewById(R.id.puntuacionPartida);
-        Button btnIrRanking         = view.findViewById(R.id.btnIrRanking);
-        Button btnIrMenu            = view.findViewById(R.id.btnIrMenu);
+        TextView nombreJugador          = view.findViewById(R.id.nombreJugador);
+        ImageView avatarJugadorPartida  = view.findViewById(R.id.avatarJugadorPartida);
+        TextView dificultadPartida      = view.findViewById(R.id.dificultadPartida);
+        TextView  puntuacionPartida     = view.findViewById(R.id.puntuacionPartida);
+        TextView  nombrePersonaje       = view.findViewById(R.id.nombrePersonaje);
+        ImageView imagenPersonaje       = view.findViewById(R.id.imagenPersonaje);
+        Button btnIrRanking             = view.findViewById(R.id.btnIrRanking);
+        Button btnIrMenu                = view.findViewById(R.id.btnIrMenu);
 
         Personaje personaje = personajeElegido(activity.generoSelect, activity.partida.getPuntuacion());
+
+        nombreJugador.setText(activity.partida.getJugador().getNombre());
+
+        avatarJugadorPartida.setImageResource(activity.partida.getJugador().getAvatar());
+
+        switch (activity.partida.getDificultad())
+        {
+            case 0:
+                dificultadPartida.setText(R.string.facil);
+                break;
+            case 1:
+                dificultadPartida.setText(R.string.medio);
+                break;
+            case 2:
+                dificultadPartida.setText(R.string.dificil);
+                break;
+        }
 
         nombrePersonaje.setText(personaje.getNombre());
 
@@ -145,11 +165,11 @@ public class FragmentPersonaje extends Fragment
         Personaje personaje = null;
         int posicionJugador = 0;
 
-        if(puntuacionPartida >= 1000)
+        if(puntuacionPartida >= 1200)
         {
             posicionJugador = 1;
         }
-        else if(puntuacionPartida > 500)
+        else if(puntuacionPartida > 700)
         {
             posicionJugador = 2;
         }
