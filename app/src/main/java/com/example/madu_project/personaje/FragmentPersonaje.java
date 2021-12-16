@@ -249,39 +249,8 @@ public class FragmentPersonaje extends Fragment
             ranking.setPartidas(partidas);
         }
 
-        /*if(partidaGuardada) //Si se ha guardado la partida entra aqui
-        {
-            //Se ordena el array de partidas con metodo burbuja
-            partidas = ordenarBurbuja(partidas);
-        }
-
-        eliminarPartidas(partidas);
-        ranking.setPartidas(partidas);*/
-
         return ranking;
     }
-
-    /*public static ArrayList<Partida> ordenarBurbuja(ArrayList<Partida> partidas)
-    {
-        Partida partidaAux;
-        int i, j;
-
-        for (i = 0; i < partidas.size() - 1; i++)
-        {
-            for (j = 0; j < partidas.size() - i - 1; j++)
-            {
-                //Verificar direccion de orden si ascendente o descendente
-                if (partidas.get(j + 1).getPuntuacion() > partidas.get(j).getPuntuacion())
-                {
-                    partidaAux = partidas.get(j + 1);
-                    partidas.set(j + 1, partidas.get(j));
-                    partidas.set(j, partidaAux);
-                }
-            }
-        }
-
-        return partidas;
-    }*/
 
     public static void eliminarPartidas(ArrayList<Partida> partidas)
     {
@@ -315,4 +284,26 @@ public class FragmentPersonaje extends Fragment
 
         return partidasNuevo;
     }
+
+    /*public static ArrayList<Partida> ordenarBurbuja(ArrayList<Partida> partidas)
+    {
+        Partida partidaAux;
+        int i, j;
+
+        for (i = 0; i < partidas.size() - 1; i++)
+        {
+            for (j = 0; j < partidas.size() - i - 1; j++)
+            {
+                //Verificar direccion de orden si ascendente o descendente
+                if (partidas.get(j + 1).getPuntuacion() > partidas.get(j).getPuntuacion())
+                {
+                    partidaAux = partidas.get(j + 1);
+                    partidas.set(j + 1, partidas.get(j));
+                    partidas.set(j, partidaAux);
+                }
+            }
+        }
+
+        return partidas;
+    }*/
 }
