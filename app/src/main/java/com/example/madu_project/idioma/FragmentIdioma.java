@@ -22,10 +22,12 @@ import android.widget.Toast;
 
 import com.example.madu_project.Genero;
 import com.example.madu_project.MainActivity;
+import com.example.madu_project.Pregunta;
 import com.example.madu_project.R;
 import com.example.madu_project.archivos.GestorArchivos;
 import com.example.madu_project.idioma.Idioma;
 import com.example.madu_project.idioma.IdiomasAdapter;
+import com.example.madu_project.personaje.Personaje;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -104,10 +106,5 @@ public class FragmentIdioma extends Fragment
         return new Idioma[]{
                 new Idioma("es", "espana_flag.png", "GenerosEsp.json"),
                 new Idioma("en", "reino_unido_flag.png", "GenerosEng.json")};
-    }
-
-    public void cambiarIdiomaBotones()
-    {
-
     }
 }
