@@ -242,7 +242,13 @@ public class FragmentPersonaje extends Fragment
                 counter++;
             }
         }
-        
+
+        if(!partidaGuardada && counter < MAX_PARTIDAS)
+        {
+            partidas.add(partida);
+            ranking.setPartidas(partidas);
+        }
+
         /*if(partidaGuardada) //Si se ha guardado la partida entra aqui
         {
             //Se ordena el array de partidas con metodo burbuja
