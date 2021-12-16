@@ -84,12 +84,20 @@
 
         <CheckBox
             android:id="@+id/cbxMayorEdad"
+            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_marginRight="20dp"
             android:gravity="center"
+            android:scaleX="2"
+            android:scaleY="2" />
+
+        <TextView
+            android:id="@+id/mayorEdad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/diary"
             android:text="+18"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:textColor="@color/white"/>
 
     </LinearLayout>
@@ -125,8 +133,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgAvatarSelect"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
             android:scaleType="fitXY"
             app:shapeAppearanceOverlay="@style/roundImageView" />
 
