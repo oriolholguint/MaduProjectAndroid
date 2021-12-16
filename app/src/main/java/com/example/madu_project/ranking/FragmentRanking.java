@@ -46,7 +46,6 @@ public class FragmentRanking extends Fragment
         TextView rankingError = view.findViewById(R.id.rankingError); //Mensaje de aviso si no hay ranking
         btnAtrasRanking = view.findViewById(R.id.btnAtrasRanking); //Boton volver al menu
         RecyclerView listaPartidas = view.findViewById(R.id.listaPartidas); //RecyclerView con la lista de partidas
-        Ranking ranking; //Objeto ranking del cual sacar la lista de partidas
 
         //Obtengo los rankings del fichero partidas.json
         ArrayList<Ranking> rankings = GestorArchivos.getRanking();
@@ -90,30 +89,8 @@ public class FragmentRanking extends Fragment
             int posicionDificultad = adapterDificultad.getPosition(activity.partida.getDificultad());
             spinnerDificultad.setSelection(posicionDificultad); //Selecciono en el spinner el genero se la partida jugada
 
-            //Dado el spinner dificultad y genero obtengo el ranking en el caso que exista sino sera null
-            ranking = obtenerRanking(rankings, activity.generoSelect.getNombre(), activity.partida.getDificultad());
+            //Al haber modificado la seleccion del spinner saltaran los evento setOnItemSelectedListener
         }
-        else //No se acaba de jugar una partida - saldra el ranking menu, el primer genero de la lista y la dificultad del menu
-        {
-            //Obtengo el ranking dado el primer genero de la lista y la dificultad del menu
-            ranking = obtenerRanking(rankings, (String) adapterGenero.getItem(0), activity.dificultadMenu);
-        }
-
-        /*if(ranking != null)
-        {
-            rankingError.setVisibility(View.INVISIBLE);
-            listaPartidas.setVisibility(View.VISIBLE);
-            PartidaAdapter adapter = new PartidaAdapter(ranking.getpartidas());
-            listaPartidas.setHasFixedSize(true);
-            listaPartidas.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-            listaPartidas.setAdapter(adapter);
-        }
-        else
-        {
-            listaPartidas.setVisibility(View.INVISIBLE);
-            rankingError.setVisibility(View.VISIBLE);
-        }*/
-
 
         mg = getFragmentManager();
 
