@@ -35,6 +35,7 @@ public class FragmentRanking extends Fragment
     Button btnAtrasRanking;
     FragmentManager mg;
     FragmentTransaction fragmentTransaction;
+    ArrayList<Ranking> rankings;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,10 +47,7 @@ public class FragmentRanking extends Fragment
         TextView rankingError = view.findViewById(R.id.rankingError); //Mensaje de aviso si no hay ranking
         btnAtrasRanking = view.findViewById(R.id.btnAtrasRanking); //Boton volver al menu
         RecyclerView listaPartidas = view.findViewById(R.id.listaPartidas); //RecyclerView con la lista de partidas
-
-        //Obtengo los rankings del fichero partidas.json
-        ArrayList<Ranking> rankings = GestorArchivos.getRanking();
-
+        
         //Creo spinner generos y su adapter
         Spinner spinnerGenero = view.findViewById(R.id.spinnerGenero);
         ArrayList<String> opcionesGenero = obtenerNombreGeneros(activity);
@@ -99,10 +97,17 @@ public class FragmentRanking extends Fragment
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
             {
+                //Obtengo los rankings del fichero partidas.json
+                rankings = GestorArchivos.getRanking();
+                Ranking ranking = null;
+
                 int dificultad = (int) spinnerDificultad.getSelectedItemId();
                 String genero = (String) spinnerGenero.getSelectedItem();
 
-                Ranking ranking = obtenerRanking(rankings, genero, dificultad);
+                if(rankings != null)
+                {
+                    ranking = obtenerRanking(rankings, genero, dificultad);
+                }
 
                 if(ranking != null)
                 {
@@ -133,10 +138,17 @@ public class FragmentRanking extends Fragment
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
             {
+                //Obtengo los rankings del fichero partidas.json
+                rankings = GestorArchivos.getRanking();
+                Ranking ranking = null;
+
                 int dificultad = (int) spinnerDificultad.getSelectedItemId();
                 String genero = (String) spinnerGenero.getSelectedItem();
 
-                Ranking ranking = obtenerRanking(rankings, genero, dificultad);
+                if(rankings != null)
+                {
+                    ranking = obtenerRanking(rankings, genero, dificultad);
+                }
 
                 if(ranking != null)
                 {
