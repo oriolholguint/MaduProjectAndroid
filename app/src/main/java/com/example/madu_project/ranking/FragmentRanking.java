@@ -249,5 +249,4 @@ public class FragmentRanking extends Fragment
 
         return ranking;
     }
-
 }

@@ -34,9 +34,6 @@ import java.util.Locale;
 
 public class FragmentIdioma extends Fragment
 {
-    public static final String GENEROS_ESP = "GenerosEsp.json";
-    public static final String GENEROS_ENG = "GenerosEng.json";
-
     MainActivity activity;
     String path = "/data/data/com.example.madu_project/files/";
     Idioma[] idiomas = getIdiomas();
@@ -57,8 +54,8 @@ public class FragmentIdioma extends Fragment
         listaIdiomas.setAdapter(adapter);
 
         //Por defecto el idioma seleccionado es el espannol
-        activity.generos = GestorArchivos.getGeneros(path + GENEROS_ESP);
-        activity.generosAux = GestorArchivos.getGeneros(path + GENEROS_ENG);
+        activity.generos = GestorArchivos.getGeneros(path + idiomas[0].getFilePath());
+        cambiarIdioma(idiomas[0].getNombre());
 
         //Cuando se selecciona un elemento del RecyclerView entra en el evento
         adapter.setOnClickListener(new View.OnClickListener()
@@ -74,20 +71,7 @@ public class FragmentIdioma extends Fragment
                 //Recargo el adapter
                 adapter.notifyDataSetChanged();
 
-                /*Dependiendo del idioma seleccionado se enviara como array de generos principal un idioma
-                u otro y como array aux otros, en el caso que se añado un idioma nuevo se tendra que
-                annadir un else if con el idioma nuevo*/
-                if(idiomas[adapter.selectedPos].getFilePath().equals(GENEROS_ESP))
-                {
-                    activity.generos = GestorArchivos.getGeneros(path + GENEROS_ESP);
-                    activity.generosAux = GestorArchivos.getGeneros(path + GENEROS_ENG);
-                }
-                else if(idiomas[adapter.selectedPos].getFilePath().equals(GENEROS_ENG))
-                {
-
-                    activity.generos = GestorArchivos.getGeneros(path + GENEROS_ENG);
-                    activity.generosAux = GestorArchivos.getGeneros(path + GENEROS_ESP);
-                }
+                activity.generos = GestorArchivos.getGeneros(path + idiomas[adapter.selectedPos].getFilePath());
 
                 //Cambio el idioma de la tablet el nuevo idioma para usar fichero strings.xml correspondiente
                 cambiarIdioma(idioma.getNombre());
@@ -99,8 +83,7 @@ public class FragmentIdioma extends Fragment
 
     public void cambiarIdioma(String idioma)
     {
-        String nuevoLenguaje = idioma;
-        Locale locale = new Locale(nuevoLenguaje);
+        Locale locale = new Locale(idioma);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
@@ -109,10 +92,14 @@ public class FragmentIdioma extends Fragment
 
     public static Idioma[] getIdiomas()
     {
-        Idioma[] idiomas = {
+
+        return new Idioma[]{
                 new Idioma("es", "espana_flag.png", "GenerosEsp.json"),
                 new Idioma("en", "reino_unido_flag.png", "GenerosEng.json")};
+    }
 
-        return idiomas;
+    public void cambiarIdiomaBotones()
+    {
+
     }
 }

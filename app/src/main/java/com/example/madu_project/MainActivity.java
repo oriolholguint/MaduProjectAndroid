@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     public String layout = "Idioma";
     public String status = "Pricipal";
     public Genero[] generos;
-    public Genero[] generosAux;
     public Dialog settingsDialog;
     public int duracion;
     private ArrayAdapter mAdapter;
@@ -56,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     public Group grpDificultad;
     public MediaPlayer mediaPlayer;
     private AudioManager audioManager;
+    public String idioma;
     public int dificultadMenu; //Facil: 0, Medio: 1, Dificil: 2
 
     @Override

@@ -12,12 +12,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import com.example.madu_project.idioma.FragmentIdioma;
 import com.example.madu_project.introduccion.FragmentTutorial;
@@ -39,7 +35,6 @@ public class FragmentBotones extends Fragment
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,7 +46,6 @@ public class FragmentBotones extends Fragment
         grpBotones = view.findViewById(R.id.grpBotones);
 
         mg = getFragmentManager();
-
 
         FragmentIdioma fragmentIdioma = new FragmentIdioma();
 
@@ -65,12 +59,13 @@ public class FragmentBotones extends Fragment
             @Override
             public void onClick(View view) {
 
-                if(ActivityMain.layout.equals("Idioma") && ActivityMain.generos != null){
+                if(ActivityMain.layout.equals("Idioma") && ActivityMain.generos != null)
+                {
                     ActivityMain.layout = "Introduccion";
+                    actualizarBotones();
                     btnSiguienteCentro.setVisibility(View.INVISIBLE);
-                    irATutorial();
                     grpBotones.setVisibility(View.VISIBLE);
-
+                    irATutorial();
                 }
 
             }
@@ -81,9 +76,9 @@ public class FragmentBotones extends Fragment
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
                 switch (motionEvent.getAction()){
-                    case MotionEvent.ACTION_UP:
+                    /*case MotionEvent.ACTION_UP:
                         btnSiguienteCentro.startAnimation(ActivityMain.buttonUp);
-                        break;
+                        break;*/
                     case MotionEvent.ACTION_DOWN:
                         btnSiguienteCentro.startAnimation(ActivityMain.buttonDown);
                         break;
@@ -97,25 +92,17 @@ public class FragmentBotones extends Fragment
             @Override
             public void onClick(View view)
             {
-
-
                 if(ActivityMain.layout.equals("Introduccion"))
                 {
                     ActivityMain.layout = "Idioma";
-
-                    volverAIdioma();
-
+                    inicializarBotones();
                     grpBotones.setVisibility(View.INVISIBLE);
                     btnSiguienteCentro.setVisibility(View.VISIBLE);
-
+                    volverAIdioma();
                 } else if(ActivityMain.layout.equals("Login")){
                     ActivityMain.layout = "Introduccion";
-
-                    volverATutorial();
-
                     btnSiguiente.setVisibility(View.VISIBLE);
-                    btnSiguiente.setText("Siguiente");
-
+                    volverATutorial();
                 }
 
             }
@@ -126,9 +113,9 @@ public class FragmentBotones extends Fragment
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
                 switch (motionEvent.getAction()){
-                    case MotionEvent.ACTION_UP:
+                    /*case MotionEvent.ACTION_UP:
                         btnAtras.startAnimation(ActivityMain.buttonUp);
-                        break;
+                        break;*/
                     case MotionEvent.ACTION_DOWN:
                         btnAtras.startAnimation(ActivityMain.buttonDown);
                         break;
@@ -147,9 +134,7 @@ public class FragmentBotones extends Fragment
                 {
                     btnSiguiente.setVisibility(View.INVISIBLE);
                     ActivityMain.layout = "Login";
-
                     irALogin();
-
                 }
             }
         });
@@ -159,9 +144,9 @@ public class FragmentBotones extends Fragment
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
                 switch (motionEvent.getAction()){
-                    case MotionEvent.ACTION_UP:
+                    /*case MotionEvent.ACTION_UP:
                         btnSiguiente.startAnimation(ActivityMain.buttonUp);
-                        break;
+                        break;*/
                     case MotionEvent.ACTION_DOWN:
                         btnSiguiente.startAnimation(ActivityMain.buttonDown);
                         break;
@@ -211,8 +196,6 @@ public class FragmentBotones extends Fragment
         fragmentTransaction.commit();
     }
 
-
-
     public void irALogin(){
         fragmentTransaction = mg.beginTransaction();
         FragmentLogin fragmentLogin = new FragmentLogin();
@@ -229,5 +212,17 @@ public class FragmentBotones extends Fragment
         fragmentTransaction.commit();
     }
 
+    public void actualizarBotones()
+    {
+        btnAtras.setText(R.string.atras);
+        btnSiguiente.setText(R.string.siguiente);
+        btnSiguienteCentro.setText(R.string.siguiente);
+    }
 
+    public void inicializarBotones()
+    {
+        btnAtras.setText("Atras");
+        btnSiguiente.setText("Siguiente");
+        btnSiguienteCentro.setText("Siguiente");
+    }
 }
