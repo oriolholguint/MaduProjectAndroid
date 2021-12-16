@@ -68,13 +68,13 @@ public class FragmentRanking extends Fragment
         //Pongo la dificultad del menu en el spinner (cambiar para que se haga automaticamente segun idioma)
         switch (activity.dificultadMenu)
         {
-            case "Facil":
+            case 0:
                 spinnerDificultad.setSelection(0);
                 break;
-            case "Medio":
+            case 1:
                 spinnerDificultad.setSelection(1);
                 break;
-            case "Dificil":
+            case 2:
                 spinnerDificultad.setSelection(2);
                 break;
         }
@@ -122,8 +122,7 @@ public class FragmentRanking extends Fragment
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
             {
-
-                String dificultad = (String) spinnerDificultad.getSelectedItem();
+                int dificultad = (int) spinnerDificultad.getSelectedItemId();
                 String genero = (String) spinnerGenero.getSelectedItem();
 
                 Ranking ranking = obtenerRanking(rankings, genero, dificultad);
@@ -157,7 +156,7 @@ public class FragmentRanking extends Fragment
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
             {
-                String dificultad = (String) spinnerDificultad.getSelectedItem();
+                int dificultad = (int) spinnerDificultad.getSelectedItemId();
                 String genero = (String) spinnerGenero.getSelectedItem();
 
                 Ranking ranking = obtenerRanking(rankings, genero, dificultad);
@@ -239,7 +238,7 @@ public class FragmentRanking extends Fragment
         return nombres;
     }
 
-    private static Ranking obtenerRanking(ArrayList<Ranking> rankings, String genero, String dificultad)
+    private static Ranking obtenerRanking(ArrayList<Ranking> rankings, String genero, int dificultad)
     {
         Ranking ranking = null;
         boolean rankingEncontrado = false;
@@ -247,7 +246,7 @@ public class FragmentRanking extends Fragment
 
         while (counter < rankings.size() && !rankingEncontrado)
         {
-            if (rankings.get(counter).getDificultad().equals(dificultad)
+            if (rankings.get(counter).getDificultad() == dificultad
                     && rankings.get(counter).getNombreGenero().equals(genero))
             {
                 ranking = rankings.get(counter);

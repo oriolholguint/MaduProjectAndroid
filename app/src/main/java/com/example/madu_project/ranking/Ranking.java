@@ -8,9 +8,9 @@ import java.util.Arrays;
 public class Ranking {
     private ArrayList<Partida> partidas;
     private String nombreGenero;
-    private String dificultad;
+    private int dificultad; //Facil: 0, Medio:1, Dificil:2
 
-    public Ranking(String nombreGenero,ArrayList<Partida> partidas, String dificultad)
+    public Ranking(String nombreGenero,ArrayList<Partida> partidas, int dificultad)
     {
         this.nombreGenero = nombreGenero;
         this.partidas = partidas;
@@ -32,11 +32,11 @@ public class Ranking {
         this.nombreGenero = nombreGenero;
     }
 
-    public String getDificultad() {
+    public int getDificultad() {
         return dificultad;
     }
 
-    public void setDificultad(String dificultad) {
+    public void setDificultad(int dificultad) {
         this.dificultad = dificultad;
     }
 
