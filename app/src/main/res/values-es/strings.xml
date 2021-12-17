@@ -21,9 +21,9 @@
     <string name="deseleccionar_avatar">Cerrar Avatar</string>
 
     <!-- Niveles de dificultad + tiempo -->
-    <string name="facil">Facil: 30\"</string>
-    <string name="medio">Medio: 25\"</string>
-    <string name="dificil">Dificil: 20\"</string>
+    <string name="facil">Facil"</string>
+    <string name="medio">Medio"</string>
+    <string name="dificil">Dificil"</string>
 
     <!-- Botones -->
     <string name="siguiente">Siguiente</string>
@@ -34,4 +34,7 @@
 
     <!-- Ranking -->
     <string name="ranking_resultado_no_encontrado">Resultados no encontrados</string>
+
+    <string name="ranking">Ranking</string>
+    <string name="menu">Menu</string>
 </resources>
