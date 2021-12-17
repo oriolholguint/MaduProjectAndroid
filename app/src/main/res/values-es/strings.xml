@@ -12,10 +12,18 @@
     <string name="introduccion_3">Hay tres niveles de dificultad, como más dificultad menos tiempo para responder las preguntas.</string>
     <string name="introduccion_4">Al finalizar la partida obtendrás una puntuación y un artista musical. Si la puntuación es alta, podrás liderar el ranking.</string>
 
+    <!-- Login -->
+    <string name="login">Login</string>
+    <string name="usuario">Usuario: </string>
+    <string name="edad">Edad: </string>
+    <string name="avatar">Avatar: </string>
+    <string name="seleccionar_avatar">Abrir Avatar</string>
+    <string name="deseleccionar_avatar">Cerrar Avatar</string>
+
     <!-- Niveles de dificultad + tiempo -->
-    <string name="facil">Facil: 30\"</string>
-    <string name="medio">Medio: 25\"</string>
-    <string name="dificil">Dificil: 20\"</string>
+    <string name="facil">Facil"</string>
+    <string name="medio">Medio"</string>
+    <string name="dificil">Dificil"</string>
 
     <!-- Botones -->
     <string name="siguiente">Siguiente</string>
@@ -24,4 +32,9 @@
     <!-- Puntuacion -->
     <string name="info_puntuacion">Tu puntuacion: </string>
 
+    <!-- Ranking -->
+    <string name="ranking_resultado_no_encontrado">Resultados no encontrados</string>
+
+    <string name="ranking">Ranking</string>
+    <string name="menu">Menu</string>
 </resources>

@@ -65,7 +65,7 @@ public class FragmentPreguntas extends Fragment {
     private int pixeles;
     private boolean ultimaPregunta = false;
     Date currentTime = null;
-    String dificultad = null;
+    int dificultad = 0;
     BitmapDrawable fondoGeneroUrl;
     MediaPlayer media;
 
@@ -598,11 +598,11 @@ public class FragmentPreguntas extends Fragment {
     public void IrAfragmentPersonaje()
     {
         if(activity.duracion == 30){
-            dificultad = "Facil";
+            dificultad = 0;
         } else if (activity.duracion == 25){
-            dificultad = "Medio";
+            dificultad = 1;
         } else if (activity.duracion == 20){
-            dificultad = "Dificil";
+            dificultad = 2;
         }
 
         activity.layout = "Personaje";

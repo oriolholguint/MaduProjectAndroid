@@ -22,10 +22,12 @@ import android.widget.Toast;
 
 import com.example.madu_project.Genero;
 import com.example.madu_project.MainActivity;
+import com.example.madu_project.Pregunta;
 import com.example.madu_project.R;
 import com.example.madu_project.archivos.GestorArchivos;
 import com.example.madu_project.idioma.Idioma;
 import com.example.madu_project.idioma.IdiomasAdapter;
+import com.example.madu_project.personaje.Personaje;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,9 +36,6 @@ import java.util.Locale;
 
 public class FragmentIdioma extends Fragment
 {
-    public static final String GENEROS_ESP = "GenerosEsp.json";
-    public static final String GENEROS_ENG = "GenerosEng.json";
-
     MainActivity activity;
     String path = "/data/data/com.example.madu_project/files/";
     Idioma[] idiomas = getIdiomas();
@@ -57,8 +56,8 @@ public class FragmentIdioma extends Fragment
         listaIdiomas.setAdapter(adapter);
 
         //Por defecto el idioma seleccionado es el espannol
-        activity.generos = GestorArchivos.getGeneros(path + GENEROS_ESP);
-        activity.generosAux = GestorArchivos.getGeneros(path + GENEROS_ENG);
+        activity.generos = GestorArchivos.getGeneros(path + idiomas[0].getFilePath());
+        cambiarIdioma(idiomas[0].getNombre());
 
         //Cuando se selecciona un elemento del RecyclerView entra en el evento
         adapter.setOnClickListener(new View.OnClickListener()
@@ -67,30 +66,25 @@ public class FragmentIdioma extends Fragment
             public void onClick(View view)
             {
                 //Creamos un objeto Idioma con los atributos del elemento seleccionado
-                Idioma idioma = idiomas[listaIdiomas.getChildAdapterPosition(view)];
-
-                //Guardo la posicion del elemento seleccionado en una variable del adapter
-                adapter.selectedPos = listaIdiomas.getChildAdapterPosition(view);
-                //Recargo el adapter
-                adapter.notifyDataSetChanged();
-
-                /*Dependiendo del idioma seleccionado se enviara como array de generos principal un idioma
-                u otro y como array aux otros, en el caso que se añado un idioma nuevo se tendra que
-                annadir un else if con el idioma nuevo*/
-                if(idiomas[adapter.selectedPos].getFilePath().equals(GENEROS_ESP))
+                try
                 {
-                    activity.generos = GestorArchivos.getGeneros(path + GENEROS_ESP);
-                    activity.generosAux = GestorArchivos.getGeneros(path + GENEROS_ENG);
+                    Idioma idioma = idiomas[listaIdiomas.getChildAdapterPosition(view)];
+
+                    //Guardo la posicion del elemento seleccionado en una variable del adapter
+                    adapter.selectedPos = listaIdiomas.getChildAdapterPosition(view);
+                    //Recargo el adapter
+                    adapter.notifyDataSetChanged();
+
+                    activity.generos = GestorArchivos.getGeneros(path + idiomas[adapter.selectedPos].getFilePath());
+
+                    //Cambio el idioma de la tablet el nuevo idioma para usar fichero strings.xml correspondiente
+                    cambiarIdioma(idioma.getNombre());
                 }
-                else if(idiomas[adapter.selectedPos].getFilePath().equals(GENEROS_ENG))
+                catch (ArrayIndexOutOfBoundsException ex)
                 {
-
-                    activity.generos = GestorArchivos.getGeneros(path + GENEROS_ENG);
-                    activity.generosAux = GestorArchivos.getGeneros(path + GENEROS_ESP);
+                    ex.printStackTrace();
                 }
 
-                //Cambio el idioma de la tablet el nuevo idioma para usar fichero strings.xml correspondiente
-                cambiarIdioma(idioma.getNombre());
             }
         });
 
@@ -99,8 +93,7 @@ public class FragmentIdioma extends Fragment
 
     public void cambiarIdioma(String idioma)
     {
-        String nuevoLenguaje = idioma;
-        Locale locale = new Locale(nuevoLenguaje);
+        Locale locale = new Locale(idioma);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
@@ -109,10 +102,9 @@ public class FragmentIdioma extends Fragment
 
     public static Idioma[] getIdiomas()
     {
-        Idioma[] idiomas = {
+
+        return new Idioma[]{
                 new Idioma("es", "espana_flag.png", "GenerosEsp.json"),
                 new Idioma("en", "reino_unido_flag.png", "GenerosEng.json")};
-
-        return idiomas;
     }
 }

@@ -10,11 +10,13 @@ import android.app.Dialog;
 import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
@@ -38,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     public String layout = "Idioma";
     public String status = "Pricipal";
     public Genero[] generos;
-    public Genero[] generosAux;
     public Dialog settingsDialog;
     public int duracion;
     private ArrayAdapter mAdapter;
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     public Group grpDificultad;
     public MediaPlayer mediaPlayer;
     private AudioManager audioManager;
+    public String idioma;
+    public int dificultadMenu; //Facil: 0, Medio: 1, Dificil: 2
 
     @Override
     public void onBackPressed() {
@@ -69,6 +72,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Esconde barra de notificaciones
+        if (Build.VERSION.SDK_INT > 16) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+
+        //Bloqueo orientacion de la aplicacion en landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
@@ -139,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         final Spinner sprDificultad = (Spinner) settingsDialog.findViewById(R.id.sprDificultad);
-        ArrayList<String> spritems = llenarSpinner();
+        ArrayList<String> spritems = llenarSpinnerDificultad();
 
         mAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spritems);
         mAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -150,9 +160,8 @@ public class MainActivity extends AppCompatActivity {
         sprDificultad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                // duracion = sprDificultad.getSelectedItemPosition() * 5 + 20;
                 int index = sprDificultad.getSelectedItemPosition();
-
+                dificultadMenu = (int) mAdapter.getItemId(index);
                 duracion = 30 - (5 * index);
             }
 
@@ -318,7 +327,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public ArrayList<String> llenarSpinner() {
+    public ArrayList<String> llenarSpinnerDificultad() {
         ArrayList<String> items = new ArrayList<>();
         items.add("Facil");
         items.add("Medio");

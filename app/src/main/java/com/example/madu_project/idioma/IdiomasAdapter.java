@@ -2,14 +2,11 @@ package com.example.madu_project.idioma;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
-import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -49,7 +46,7 @@ public class IdiomasAdapter extends RecyclerView.Adapter<IdiomasAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.idioma_layout, parent, false);
+        View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.idioma_item, parent, false);
         item.setOnClickListener(listener);
 
         return new ViewHolder(item);

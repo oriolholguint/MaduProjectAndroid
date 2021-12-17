@@ -1,8 +1,7 @@
 package com.example.madu_project.archivos;
 
 import com.example.madu_project.Genero;
-import com.example.madu_project.Ranking;
-import com.example.madu_project.partida.Partida;
+import com.example.madu_project.ranking.Ranking;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -84,7 +83,6 @@ public class GestorArchivos
     /**
      * Se escribe un fichero JSON
      * @param ranking array con objetos ranking a escribir en JSON
-     * @throws JSONException
      */
     public static void writeJson(ArrayList<Ranking> ranking)
     {

@@ -71,11 +71,11 @@ public class FragmentLogin extends Fragment {
                 OcultarTecladoVirtual();
                 if (visible == false){
                     visible = true;
-                    btnSelectAvatar.setText("Deseleccionar Avatar");
+                    btnSelectAvatar.setText(R.string.deseleccionar_avatar);
                     gvAvatares.setVisibility(View.VISIBLE);
                 } else {
                     visible = false;
-                    btnSelectAvatar.setText("Seleccionar Avatar");
+                    btnSelectAvatar.setText(R.string.seleccionar_avatar);
                     gvAvatares.setVisibility(View.INVISIBLE);
                 }
 

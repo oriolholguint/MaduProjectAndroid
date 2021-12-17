@@ -31,13 +31,14 @@
         android:enabled="false"
         android:visibility="invisible"
         android:fontFamily="@font/diary"
-        android:text="Siguiente"
+        android:text="@string/siguiente"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <ImageView
         android:id="@+id/imgPregunta"

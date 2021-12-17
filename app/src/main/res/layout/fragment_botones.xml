@@ -7,15 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".FragmentBotones">
 
+    <FrameLayout
+        android:id="@+id/frLContenedorFragments"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <Button
         android:id="@+id/btnAtras"
         android:layout_width="187dp"
         android:layout_height="43dp"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="550dp"
         android:background="@drawable/botonverde"
         android:fontFamily="@font/diary"
-        android:text="Atras"
+        android:text="@string/atras"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,10 +34,10 @@
         android:layout_width="187dp"
         android:layout_height="43dp"
         android:layout_marginStart="272dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="550dp"
         android:background="@drawable/botonverde"
         android:fontFamily="@font/diary"
-        android:text="Siguiente"
+        android:text="@string/siguiente"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/btnAtras"
@@ -40,10 +48,10 @@
         android:layout_width="187dp"
         android:layout_height="43dp"
         android:layout_marginStart="272dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="550dp"
         android:background="@drawable/botonverde"
         android:fontFamily="@font/diary"
-        android:text="Siguiente"
+        android:text="@string/siguiente"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/btnSiguienteCentro"
@@ -54,18 +62,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="btnAtras,btnSiguiente"
-        android:visibility="invisible"
-        />
-
-
-    <FrameLayout
-        android:id="@+id/frLContenedorFragments"
-        android:layout_width="match_parent"
-        android:layout_height="490dp"
-        android:layout_marginStart="4dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
+        android:visibility="invisible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

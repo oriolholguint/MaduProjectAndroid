@@ -1,10 +1,6 @@
 package com.example.madu_project;
 
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-
-import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -15,9 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,6 +22,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
 import com.example.madu_project.introduccion.FragmentTutorial;
+import com.example.madu_project.ranking.FragmentRanking;
 
 
 public class FragmentMenu extends Fragment {
