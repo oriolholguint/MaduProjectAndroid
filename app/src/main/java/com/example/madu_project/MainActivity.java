@@ -118,9 +118,10 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.commit();
 
         settingsDialog = new Dialog(this);
+
         settingsDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         settingsDialog.setContentView(R.layout.settings_dialog);
-
+        settingsDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         grpPuntuacion = findViewById(R.id.grpPuntuacion);
         grpMenu = settingsDialog.findViewById(R.id.grpMenu);
         grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
