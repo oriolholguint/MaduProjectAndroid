@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.madu_project.R;
@@ -30,7 +29,7 @@ public class IdiomasAdapter extends RecyclerView.Adapter<IdiomasAdapter.ViewHold
     {
         ImageView imagen;
 
-        public ViewHolder(@NonNull View item)
+        public ViewHolder(View item)
         {
             super(item);
             imagen = item.findViewById(R.id.imgIdioma);
