@@ -119,6 +119,7 @@ public class FragmentLogin extends Fragment {
                 {
                     MensajeAlerta();
                 } else {
+                    activity.clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
                     activity.layout = "Menu";
                     activity.status = "Juego";
                     Group grpDificultad = activity.settingsDialog.findViewById(R.id.grpDificultad);
