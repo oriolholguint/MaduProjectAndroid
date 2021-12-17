@@ -151,7 +151,7 @@ public class FragmentMenu extends Fragment {
 
                 activity.layout = "Preguntas";
                 Genero genero = generos[listGeneros.getChildAdapterPosition(view)];
-
+                activity.frmSombra.setVisibility(View.VISIBLE);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("genero",genero);
                 getParentFragmentManager().setFragmentResult("genero",bundle);

@@ -23,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public MediaPlayer mediaPlayer;
     private AudioManager audioManager;
     public Spinner sprDificultad;
+    public FrameLayout frmSombra;
     public int dificultadMenu; //Facil: 0, Medio: 1, Dificil: 2
 
     @Override
@@ -77,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
+
+        frmSombra = findViewById(R.id.frmSombra);
 
         //Bloqueo orientacion de la aplicacion en landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -202,7 +206,9 @@ public class MainActivity extends AppCompatActivity {
                 if (status.equals("Juego")){
                     if(layout.equals("Preguntas") || layout.equals("Personaje") || layout.equals("RankingFinal")){
                         layout = "Menu";
+                        frmSombra.setVisibility(View.INVISIBLE);
                         clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
+
                         volverAMenu(fragmentMenu);
                         partida = null;
                         grpMenu.setVisibility(View.INVISIBLE);
@@ -216,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else {
                         layout = "Menu";
+                        frmSombra.setVisibility(View.INVISIBLE);
                         clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
                         volverAMenu(fragmentMenu);
                         partida = null;
@@ -252,6 +259,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(status.equals("Juego")){
                     if(layout.equals("Preguntas") || layout.equals("Personaje") || layout.equals("RankingFinal")){
+                        frmSombra.setVisibility(View.INVISIBLE);
                         clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
                         volverAlPrincipio(fragmentBotones);
                         grpDatosUsuario.setVisibility(View.INVISIBLE);
