@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 if (status.equals("Juego")){
                     if(layout.equals("Preguntas") || layout.equals("Personaje") || layout.equals("RankingFinal")){
                         layout = "Menu";
-                        clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
+                        clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
                         volverAMenu(fragmentMenu);
                         partida = null;
                         grpMenu.setVisibility(View.INVISIBLE);
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else {
                         layout = "Menu";
-                        clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
+                        clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
                         volverAMenu(fragmentMenu);
                         partida = null;
                         grpMenu.setVisibility(View.INVISIBLE);
