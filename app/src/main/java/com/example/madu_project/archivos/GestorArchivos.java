@@ -83,7 +83,6 @@ public class GestorArchivos
     /**
      * Se escribe un fichero JSON
      * @param ranking array con objetos ranking a escribir en JSON
-     * @throws JSONException
      */
     public static void writeJson(ArrayList<Ranking> ranking)
     {

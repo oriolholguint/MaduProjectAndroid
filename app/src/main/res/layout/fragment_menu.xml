@@ -75,9 +75,8 @@
     <FrameLayout
         android:id="@+id/frLinformacion"
         android:layout_width="988dp"
-        android:layout_height="484dp"
+        android:layout_height="500dp"
         android:layout_marginStart="156dp"
-        android:background="@drawable/border_style2"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
