@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/diary"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:text="MADU"
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
