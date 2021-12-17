@@ -63,7 +63,6 @@ public class FragmentLogin extends Fragment {
             }
         });
 
-
         btnSelectAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -143,8 +142,6 @@ public class FragmentLogin extends Fragment {
 
                     grpDificultad.setVisibility(View.VISIBLE);
                 }
-
-
             }
         });
 
@@ -165,8 +162,6 @@ public class FragmentLogin extends Fragment {
             }
         });
 
-
-
         return view;
     }
 
@@ -177,9 +172,11 @@ public class FragmentLogin extends Fragment {
     }
 
     public void OcultarTecladoVirtual() {
-        if(activity.getCurrentFocus()!=null) {
+        if (activity.getCurrentFocus() != null) {
             InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(activity.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+            View decorView = activity.getWindow().getDecorView();
+            decorView.setSystemUiVisibility(Ventana.WINDOW_SETTINGS);
         }
     }
 
@@ -203,6 +200,4 @@ public class FragmentLogin extends Fragment {
         fragmentTransaction.replace(R.id.ContenedorFragmentsPricipales,fragmentMenu);
         fragmentTransaction.commit();
     }
-
-
 }

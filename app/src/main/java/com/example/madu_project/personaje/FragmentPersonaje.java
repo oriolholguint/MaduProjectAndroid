@@ -85,7 +85,7 @@ public class FragmentPersonaje extends Fragment
             {
                 btnIrRanking.setEnabled(false);
                 activity.layout = "RankingFinal";
-                activity.clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
+                activity.clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
                 FragmentManager mg = activity.getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = mg.beginTransaction();
 

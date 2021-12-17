@@ -3,10 +3,12 @@ package com.example.madu_project;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Group;
+import androidx.core.view.WindowCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -19,6 +21,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
@@ -36,8 +39,8 @@ import com.example.madu_project.partida.Partida;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity
+{
     public String layout = "Idioma";
     public String status = "Pricipal";
     public Genero[] generos;
@@ -63,10 +66,7 @@ public class MainActivity extends AppCompatActivity {
     public int dificultadMenu; //Facil: 0, Medio: 1, Dificil: 2
 
     @Override
-    public void onBackPressed() {
-
-    }
-
+    public void onBackPressed() {}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,11 +74,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Esconde barra de notificaciones
-        if (Build.VERSION.SDK_INT > 16) {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(Ventana.WINDOW_SETTINGS);
 
         frmSombra = findViewById(R.id.frmSombra);
 
@@ -181,6 +178,16 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     grpMenu.setVisibility(View.INVISIBLE);
                 }
+
+            }
+        });
+
+        settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialogInterface) {
+                View decorView = getWindow().getDecorView();
+                decorView.setSystemUiVisibility(Ventana.WINDOW_SETTINGS);
+
             }
         });
 
