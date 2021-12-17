@@ -79,6 +79,9 @@ public class FragmentIdioma extends Fragment
 
                     //Cambio el idioma de la tablet el nuevo idioma para usar fichero strings.xml correspondiente
                     cambiarIdioma(idioma.getNombre());
+
+                    //Creo spinner con el idioma de las dificultades correspondientes
+                    activity.crearSpinnerDificultad();
                 }
                 catch (ArrayIndexOutOfBoundsException ex)
                 {

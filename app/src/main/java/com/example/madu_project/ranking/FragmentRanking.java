@@ -62,7 +62,7 @@ public class FragmentRanking extends Fragment
         ArrayAdapter adapterDificultad = new ArrayAdapter<>(activity, R.layout.support_simple_spinner_dropdown_item, opcionesDificultad);
         spinnerDificultad.setAdapter(adapterDificultad);
 
-        //Pongo la dificultad del menu en el spinner (cambiar para que se haga automaticamente segun idioma)
+        //Pongo la dificultad del menu en el spinner
         switch (activity.dificultadMenu)
         {
             case 0:
@@ -87,6 +87,20 @@ public class FragmentRanking extends Fragment
             int posicionDificultad = adapterDificultad.getPosition(activity.partida.getDificultad());
             spinnerDificultad.setSelection(posicionDificultad); //Selecciono en el spinner el genero se la partida jugada
 
+            //Pongo la dificultad de la partida jugada en el spinner
+            switch (activity.partida.getDificultad())
+            {
+                case 0:
+                    spinnerDificultad.setSelection(0);
+                    break;
+                case 1:
+                    spinnerDificultad.setSelection(1);
+                    break;
+                case 2:
+                    spinnerDificultad.setSelection(2);
+                    break;
+            }
+
             //Al haber modificado la seleccion del spinner saltaran los evento setOnItemSelectedListener
         }
 
@@ -104,12 +118,12 @@ public class FragmentRanking extends Fragment
                 int dificultad = (int) spinnerDificultad.getSelectedItemId();
                 String genero = (String) spinnerGenero.getSelectedItem();
 
-                if(rankings != null)
+                if(rankings != null) //Si hay rankings en el fichero entra aqui
                 {
                     ranking = obtenerRanking(rankings, genero, dificultad);
                 }
 
-                if(ranking != null)
+                if(ranking != null)  //Si hay un ranking del seleccinado entra aqui
                 {
                     rankingError.setVisibility(View.INVISIBLE);
                     listaPartidas.setVisibility(View.VISIBLE);
@@ -188,6 +202,7 @@ public class FragmentRanking extends Fragment
                     activity.stopAudio();
                     activity.mediaPlayer = MediaPlayer.create(activity.getBaseContext(), R.raw.musica_juego_madu);
                     activity.partida = null;
+                    activity.crearSpinnerDificultad();
                     activity.bucleAudio();
                 }
                 else

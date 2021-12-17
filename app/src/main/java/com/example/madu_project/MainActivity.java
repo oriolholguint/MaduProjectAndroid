@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
     public String layout = "Idioma";
     public String status = "Pricipal";
     public Genero[] generos;
+    private ArrayAdapter mAdapter;
     public Dialog settingsDialog;
     public int duracion;
-    private ArrayAdapter mAdapter;
     public Partida partida;
     public Jugador jugador;
     public Genero generoSelect;
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public Group grpDificultad;
     public MediaPlayer mediaPlayer;
     private AudioManager audioManager;
-    public String idioma;
+    public Spinner sprDificultad;
     public int dificultadMenu; //Facil: 0, Medio: 1, Dificil: 2
 
     @Override
@@ -147,13 +147,7 @@ public class MainActivity extends AppCompatActivity {
         final ImageButton btnSalir = settingsDialog.findViewById(R.id.btnSalir);
         final ImageButton btnMenu = settingsDialog.findViewById(R.id.btnMenu);
 
-
-        final Spinner sprDificultad = (Spinner) settingsDialog.findViewById(R.id.sprDificultad);
-        ArrayList<String> spritems = llenarSpinnerDificultad();
-
-        mAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, spritems);
-        mAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        sprDificultad.setAdapter(mAdapter);
+        crearSpinnerDificultad();
 
         final FragmentMenu fragmentMenu = new FragmentMenu();
 
@@ -327,11 +321,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void crearSpinnerDificultad()
+    {
+        sprDificultad = settingsDialog.findViewById(R.id.sprDificultad);
+        ArrayList<String> spritems = llenarSpinnerDificultad();
+        mAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spritems);
+        mAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        sprDificultad.setAdapter(mAdapter);
+    }
+
     public ArrayList<String> llenarSpinnerDificultad() {
         ArrayList<String> items = new ArrayList<>();
-        items.add("Facil");
-        items.add("Medio");
-        items.add("Dificil");
+
+        items.add(getString(R.string.facil));
+        items.add(getString(R.string.medio));
+        items.add(getString(R.string.dificil));
 
         return items;
     }
