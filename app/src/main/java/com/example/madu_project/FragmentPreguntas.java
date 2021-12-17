@@ -407,10 +407,13 @@ private void llenarRespuestas(Respuesta[] resp, androidx.constraintlayout.widget
         if (resp.length == 4) {
                 grpRes2.setVisibility(View.INVISIBLE);
                 grpRes4.setVisibility(View.VISIBLE);
-                btnResp1.setText(resp[0].getRespuestaDescripcion());
-                btnResp2.setText(resp[1].getRespuestaDescripcion());
-                btnResp3.setText(resp[2].getRespuestaDescripcion());
-                btnResp4.setText(resp[3].getRespuestaDescripcion());
+
+                List<Integer> values = { 0, 1, 2, 3, 4 };
+                Collections.shuffle(values);
+                btnResp1.setText(resp[values.get(0)].getRespuestaDescripcion());
+                btnResp2.setText(resp[values.get(1)].getRespuestaDescripcion());
+                btnResp3.setText(resp[values.get(2)].getRespuestaDescripcion());
+                btnResp4.setText(resp[values.get(3)].getRespuestaDescripcion());
         } else {
                 grpRes2.setVisibility(View.VISIBLE);
                 grpRes4.setVisibility(View.INVISIBLE);
@@ -459,7 +462,6 @@ private void desactivarRadioButtons() {
 
 private void VerificarRespuesta(String respuesta, Boolean esCorrecta) {
         boolean correcto = false;
-
 
         for (int i = 0; i < respuestas.length; i++) {
                 if (respuesta.equals(respuestas[i].getRespuestaDescripcion()) && esCorrecta == respuestas[i].isEsCorrecta()) {
