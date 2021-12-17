@@ -1,6 +1,9 @@
 package com.example.madu_project.archivos;
 
 import com.example.madu_project.Genero;
+import com.example.madu_project.Pregunta;
+import com.example.madu_project.personaje.FragmentPersonaje;
+import com.example.madu_project.personaje.Personaje;
 import com.example.madu_project.ranking.Ranking;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,7 +48,19 @@ public class GestorArchivos
             ex.printStackTrace();
         }
 
-        return generos;
+        Genero generoMixto = new Genero("Mix", "musica_rap.mp3", "fondo_rap.jpg",
+                "electronica_menu.jpg", new Pregunta[FragmentPersonaje.MAX_PARTIDAS], new Personaje[3]);
+
+        Genero[] generosExtra = new Genero[generos.length + 1];
+
+        for(int i = 0; i < generos.length; i++)
+        {
+            generosExtra[i] = generos[i];
+        }
+
+        generosExtra[generos.length] = generoMixto;
+
+        return generosExtra;
     }
 
     public static ArrayList<Ranking> getRanking()

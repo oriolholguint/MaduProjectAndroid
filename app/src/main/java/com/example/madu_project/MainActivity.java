@@ -417,7 +417,7 @@ public class MainActivity extends AppCompatActivity
      * @param cantidadPreguntas cantidad de preguntas aleatorias a obtener
      * @return array con preguntas aleatorias
      */
-    public static Pregunta[] getPreguntasPartida(Pregunta[] preguntas, int cantidadPreguntas, Jugador jugador) {
+    public Pregunta[] getPreguntasPartida(Pregunta[] preguntas, int cantidadPreguntas, Jugador jugador) {
         Pregunta[] preguntasSeleccionadas = new Pregunta[cantidadPreguntas]; //Preguntas que saldran en la partida
         ArrayList<Integer> numerosAleatorios = new ArrayList<>(); //Numeros aleatorios para no repetirlos
         int numeroAleatorio = 0;
@@ -456,6 +456,55 @@ public class MainActivity extends AppCompatActivity
         return preguntasSeleccionadas;
     }
 
+    public Pregunta[] getPreguntasMix(int cantidadPreguntas, Jugador jugador)
+    {
+        Pregunta[] preguntasSeleccionadas = new Pregunta[cantidadPreguntas];
+        Genero generoSeleccionado;
+        int numeroAleatorio;
+        Pregunta pregunta;
+
+        for(int i = 0; i < cantidadPreguntas; i++)
+        {
+            //Selecciono el genero del cual sacare la pregunta
+            generoSeleccionado = generos[obtenerNumeroAleatorio(0, generos.length - 2)];
+
+            boolean preguntaCorrecta = false;
+
+            while (!preguntaCorrecta) //Bucle para elegir pregunta que no se repita y sea para la edad correcta
+            {
+                //Obtengo un numero aleatorio referente a la cantidad de preguntas del genero seleccionado
+                numeroAleatorio = obtenerNumeroAleatorio(0, generoSeleccionado.getPreguntas().length - 1);
+                //Guardo la pregunta
+                pregunta = generoSeleccionado.getPreguntas()[numeroAleatorio];
+                //Inicializo variables para bucle de comprobacion
+                int counter = 0;
+                boolean preguntaRepetida = false;
+                //Compruebo que la pregunta no haya salido
+                while (counter < preguntasSeleccionadas.length && !preguntaRepetida)
+                {
+                    //Si la pregunta ya esta dentro o es para una edad no recomendada
+                    if (pregunta == preguntasSeleccionadas[counter] || (!jugador.getEsMayorEdad() && pregunta.isEsMayorEdad()))
+                    {
+                        preguntaRepetida = true;
+                    } else //Si la pregunta no se encuentra dentro del array de preguntasSelecciondas entra aqui
+                    {
+                        counter++; //Itera el contador para comprobar siguiente numero
+                    }
+                }
+
+                if (!preguntaRepetida)//Si el numero no esta repetido
+                {
+                    //Agrego la pregunta al array de preguntas selecciondas
+                    preguntasSeleccionadas[i] = pregunta;
+                    preguntaCorrecta = true; //Señalo que la respuesta se agrega correctamente para salir del bucle
+                }
+            }
+
+        }
+
+        return preguntasSeleccionadas;
+    }
+
     /**
      * Devuelve un numero aleatorio dado un minimo y un maximo, ambos incluidos
      *
@@ -463,7 +512,7 @@ public class MainActivity extends AppCompatActivity
      * @param max numero maximo a obtener
      * @return numero aleatorio
      */
-    public static int obtenerNumeroAleatorio(int min, int max) {
+    public int obtenerNumeroAleatorio(int min, int max) {
         int range = (max - min) + 1;
         return (int) (Math.random() * range + min);
     }
