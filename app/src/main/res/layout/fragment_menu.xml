@@ -39,7 +39,7 @@
             android:layout_height="115dp"
             android:layout_marginStart="88dp"
             android:layout_marginTop="36dp"
-            android:background="@drawable/branking"
+            android:background="@drawable/boton_ranking_negro"
             android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +50,7 @@
             android:layout_height="115dp"
             android:layout_marginStart="868dp"
             android:layout_marginTop="36dp"
-            android:background="@drawable/binformacion"
+            android:background="@drawable/informacion_boton_negro"
             android:scaleType="fitXY"
             app:layout_constraintStart_toEndOf="@+id/imgBtnRanking"
             app:layout_constraintTop_toTopOf="parent" />
