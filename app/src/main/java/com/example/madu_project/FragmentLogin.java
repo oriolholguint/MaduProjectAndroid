@@ -121,6 +121,7 @@ public class FragmentLogin extends Fragment {
                     activity.clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
                     activity.layout = "Menu";
                     activity.status = "Juego";
+                    //activity.dialogSettings.setBackgroundResource(R.drawable.pergamino_settings);
                     Group grpDificultad = activity.settingsDialog.findViewById(R.id.grpDificultad);
 
 

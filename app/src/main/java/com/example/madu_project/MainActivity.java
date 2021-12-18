@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity
     private AudioManager audioManager;
     public Spinner sprDificultad;
     public FrameLayout frmSombra;
+    public ConstraintLayout dialogSettings;
     public int dificultadMenu; //Facil: 0, Medio: 1, Dificil: 2
 
     @Override
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity
         decorView.setSystemUiVisibility(Ventana.WINDOW_SETTINGS);
 
         frmSombra = findViewById(R.id.frmSombra);
-
+        dialogSettings = findViewById(R.id.dialogSettings);
         //Bloqueo orientacion de la aplicacion en landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
@@ -303,7 +304,7 @@ public class MainActivity extends AppCompatActivity
                         lbLPuntos.setText("0");
                     }
 
-
+                    //dialogSettings.setBackgroundResource(R.drawable.entrada_settings);
 
                 } else {
                     if (layout.equals("Idioma")) {
