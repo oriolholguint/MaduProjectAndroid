@@ -38,33 +38,46 @@ import com.example.madu_project.partida.Partida;
 
 import java.util.ArrayList;
 
-
 public class MainActivity extends AppCompatActivity
 {
     public String layout = "Idioma";
     public String status = "Pricipal";
-    public Genero[] generos;
-    private ArrayAdapter mAdapter;
-    public Dialog settingsDialog;
-    public int duracion;
-    public Partida partida;
-    public Jugador jugador;
-    public Genero generoSelect;
+    
+    public Genero[] generos; //Generos musicales que hay en el juego
+
+    //Dificultades del juego
+    public Spinner sprDificultad; //Spinner con las dificultades que hay en el juego
+    private ArrayAdapter adapterDificultad; //Se guardan los strings de las dificultades del juego
+    public int dificultadMenu; //Facil: 0, Medio: 1, Dificil: 2
+
+    public Partida partida; //Objeto partida que se juega
+    public int duracion; //Duracion de la pregunta
+    public Jugador jugador; //Objeto jugador que juega al juego
+    public Genero generoSelect; //Genero seleccionado para jugar
     public ConstraintLayout clBackgroundApp;
-    public TextView LblNombreJugador;
-    public ImageView imgAvatar;
-    public TextView LblEdad;
-    public Animation buttonUp, buttonDown;
-    public TextView lbLPuntos;
+
+    //Views de la barra de menu superior
+    public TextView LblNombreJugador; //Nombre del jugador
+    public ImageView imgAvatar; //Avatar del jugador
+    public TextView LblEdad; //Edad del jugador
+    public Dialog settingsDialog; //Cuadro emergente de opciones
+    public TextView lbLPuntos; //Puntos de la partida aparece si esta en una partida
+
+    //Grupos de los views anteriores
+    public FrameLayout frmSombra; //Sombra que aparece cuando se esta en el FragmentPreguntas
     public Group grpPuntuacion;
     public Group grpMenu;
     public Group grpDificultad;
+
+    public Animation buttonUp, buttonDown;
     public MediaPlayer mediaPlayer;
     private AudioManager audioManager;
+
     public Spinner sprDificultad;
     public FrameLayout frmSombra;
     public ConstraintLayout dialogSettings;
     public int dificultadMenu; //Facil: 0, Medio: 1, Dificil: 2
+
 
     @Override
     public void onBackPressed() {}
@@ -75,27 +88,28 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(Ventana.WINDOW_SETTINGS);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); //Bloqueo orientacion de la aplicacion en landscape
+
 
         frmSombra = findViewById(R.id.frmSombra);
         dialogSettings = findViewById(R.id.dialogSettings);
         //Bloqueo orientacion de la aplicacion en landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        ocultarBarrasDispositivo(); //Ocultar barra de navegacion y barra de notificaciones
+
+        frmSombra = findViewById(R.id.frmSombra);
+
+
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int currentVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 
-        //mediaPlayer = MediaPlayer.create(this, Uri.parse("/data/data/com.example.madu_project/files/audio/polynomial1m.mp4"));
-        mediaPlayer = MediaPlayer.create(this, R.raw.musica_juego_madu);
-
-        //startAudio();
-        bucleAudio();
-        duracion = 30;
-        partida = null;
-        jugador = new Jugador(null,false,0);
+        mediaPlayer = MediaPlayer.create(this, R.raw.musica_juego_madu); //Objeto de la musica del juego
+        bucleAudio(); //Inicia la musica del menu
+        duracion = 30; //La duracion de cada pregunta es 30 ya que por defecto se juega en facil
+        jugador = new Jugador();
 
         clBackgroundApp = findViewById(R.id.clBackgroundApp);
 
@@ -107,7 +121,7 @@ public class MainActivity extends AppCompatActivity
         LblEdad = findViewById(R.id.lblEdad);
 
         ImageButton imgBtnConfiguracion = findViewById(R.id.imgBtnConfiguracion);
-        androidx.constraintlayout.widget.Group grpDatosUsuario = findViewById(R.id.grpDatosUsuario);
+        Group grpDatosUsuario = findViewById(R.id.grpDatosUsuario);
 
         lbLPuntos = findViewById(R.id.lbLPuntos);
         FragmentManager mgr = getSupportFragmentManager();
@@ -128,8 +142,9 @@ public class MainActivity extends AppCompatActivity
         grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
 
         SeekBar seekBar = settingsDialog.findViewById(R.id.sbrVolumen);
-        seekBar.setMax(maxVolume);
+        //seekBar.setMax(maxVolume);
         seekBar.setProgress(currentVolume);
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -158,7 +173,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 int index = sprDificultad.getSelectedItemPosition();
-                dificultadMenu = (int) mAdapter.getItemId(index);
+                dificultadMenu = (int) adapterDificultad.getItemId(index);
                 duracion = 30 - (5 * index);
             }
 
@@ -187,9 +202,7 @@ public class MainActivity extends AppCompatActivity
         settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialogInterface) {
-                View decorView = getWindow().getDecorView();
-                decorView.setSystemUiVisibility(Ventana.WINDOW_SETTINGS);
-
+                ocultarBarrasDispositivo();
             }
         });
 
@@ -217,7 +230,7 @@ public class MainActivity extends AppCompatActivity
                         layout = "Menu";
                         frmSombra.setVisibility(View.INVISIBLE);
                         clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
-
+                        frmSombra.setVisibility(View.INVISIBLE);
                         volverAMenu(fragmentMenu);
                         partida = null;
                         grpMenu.setVisibility(View.INVISIBLE);
@@ -272,12 +285,12 @@ public class MainActivity extends AppCompatActivity
                         clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
                         volverAlPrincipio(fragmentBotones);
                         grpDatosUsuario.setVisibility(View.INVISIBLE);
+                        frmSombra.setVisibility(View.INVISIBLE);
                         status = "Principal";
                         layout = "Idioma";
-                        generos = null;
                         partida = null;
                         jugador = null;
-                        androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
+                        grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
                         grpDificultad.setVisibility(View.INVISIBLE);
                         grpPuntuacion.setVisibility(View.INVISIBLE);
                         jugador = new Jugador(null,false,0);
@@ -293,10 +306,9 @@ public class MainActivity extends AppCompatActivity
                         grpDatosUsuario.setVisibility(View.INVISIBLE);
                         status = "Principal";
                         layout = "Idioma";
-                        generos = null;
                         partida = null;
                         jugador = null;
-                        androidx.constraintlayout.widget.Group grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
+                        grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
                         grpDificultad.setVisibility(View.INVISIBLE);
                         grpPuntuacion.setVisibility(View.INVISIBLE);
                         jugador = new Jugador(null,false,0);
@@ -315,7 +327,6 @@ public class MainActivity extends AppCompatActivity
                         layout = "Idioma";
                         fragmentBotones.grpBotones.setVisibility(View.INVISIBLE);
                         fragmentBotones.btnSiguienteCentro.setVisibility(View.VISIBLE);
-                        generos = null;
                     }
                 }
                 settingsDialog.cancel();
@@ -338,13 +349,26 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        pauseAudio();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startAudio();
+        ocultarBarrasDispositivo();
+    }
+
     public void crearSpinnerDificultad()
     {
         sprDificultad = settingsDialog.findViewById(R.id.sprDificultad);
         ArrayList<String> spritems = llenarSpinnerDificultad();
-        mAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spritems);
-        mAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        sprDificultad.setAdapter(mAdapter);
+        adapterDificultad = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spritems);
+        adapterDificultad.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        sprDificultad.setAdapter(adapterDificultad);
     }
 
     public ArrayList<String> llenarSpinnerDificultad() {
@@ -411,14 +435,20 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.commit();
     }
 
+    public void ocultarBarrasDispositivo()
+    {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(Ventana.WINDOW_SETTINGS);
+    }
+
     /**
      * Se obtienen preguntas aleatorias de un array enviado por parametros.
-     *
-     * @param preguntas         array donde obtener preguntas
+     * @param preguntas array donde obtener preguntas
      * @param cantidadPreguntas cantidad de preguntas aleatorias a obtener
      * @return array con preguntas aleatorias
      */
-    public static Pregunta[] getPreguntasPartida(Pregunta[] preguntas, int cantidadPreguntas, Jugador jugador) {
+    public Pregunta[] getPreguntasPartida(Pregunta[] preguntas, int cantidadPreguntas, Jugador jugador)
+    {
         Pregunta[] preguntasSeleccionadas = new Pregunta[cantidadPreguntas]; //Preguntas que saldran en la partida
         ArrayList<Integer> numerosAleatorios = new ArrayList<>(); //Numeros aleatorios para no repetirlos
         int numeroAleatorio = 0;
@@ -458,13 +488,67 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
+     * Se obtienen preguntas aleatorias de los generos musicales que hay en la aplicacion aleatoriamente.
+     * @param cantidadPreguntas cantidad de preguntas aleatorias a obtener
+     * @param jugador jugador para saber si es menor o mayor de edad
+     * @return array con preguntas aleatorias
+     */
+    public Pregunta[] getPreguntasMix(int cantidadPreguntas, Jugador jugador)
+    {
+        Pregunta[] preguntasSeleccionadas = new Pregunta[cantidadPreguntas];
+        Genero generoSeleccionado;
+        int numeroAleatorio;
+        Pregunta pregunta;
+
+        for(int i = 0; i < cantidadPreguntas; i++)
+        {
+            //Selecciono el genero del cual sacare la pregunta
+            generoSeleccionado = generos[obtenerNumeroAleatorio(0, generos.length - 2)];
+
+            boolean preguntaCorrecta = false;
+
+            while (!preguntaCorrecta) //Bucle para elegir pregunta que no se repita y sea para la edad correcta
+            {
+                //Obtengo un numero aleatorio referente a la cantidad de preguntas del genero seleccionado
+                numeroAleatorio = obtenerNumeroAleatorio(0, generoSeleccionado.getPreguntas().length - 1);
+                //Guardo la pregunta
+                pregunta = generoSeleccionado.getPreguntas()[numeroAleatorio];
+                //Inicializo variables para bucle de comprobacion
+                int counter = 0;
+                boolean preguntaRepetida = false;
+                //Compruebo que la pregunta no haya salido
+                while (counter < preguntasSeleccionadas.length && !preguntaRepetida)
+                {
+                    //Si la pregunta ya esta dentro o es para una edad no recomendada
+                    if (pregunta == preguntasSeleccionadas[counter] || (!jugador.getEsMayorEdad() && pregunta.isEsMayorEdad()))
+                    {
+                        preguntaRepetida = true;
+                    } else //Si la pregunta no se encuentra dentro del array de preguntasSelecciondas entra aqui
+                    {
+                        counter++; //Itera el contador para comprobar siguiente numero
+                    }
+                }
+
+                if (!preguntaRepetida)//Si el numero no esta repetido
+                {
+                    //Agrego la pregunta al array de preguntas selecciondas
+                    preguntasSeleccionadas[i] = pregunta;
+                    preguntaCorrecta = true; //Señalo que la respuesta se agrega correctamente para salir del bucle
+                }
+            }
+
+        }
+
+        return preguntasSeleccionadas;
+    }
+
+    /**
      * Devuelve un numero aleatorio dado un minimo y un maximo, ambos incluidos
-     *
      * @param min numero minimo a obtener
      * @param max numero maximo a obtener
      * @return numero aleatorio
      */
-    public static int obtenerNumeroAleatorio(int min, int max) {
+    public int obtenerNumeroAleatorio(int min, int max) {
         int range = (max - min) + 1;
         return (int) (Math.random() * range + min);
     }

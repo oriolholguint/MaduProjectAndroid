@@ -13,6 +13,8 @@ public class Jugador
         this.avatar = avatar;
     }
 
+    public Jugador() {}
+
     public String getNombre() {
         return nombre;
     }

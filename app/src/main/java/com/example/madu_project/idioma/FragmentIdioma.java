@@ -6,7 +6,9 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -59,15 +61,19 @@ public class FragmentIdioma extends Fragment
         activity.generos = GestorArchivos.getGeneros(path + idiomas[0].getFilePath());
         cambiarIdioma(idiomas[0].getNombre());
 
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
+
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider_idioma));
+        listaIdiomas.addItemDecoration(dividerItemDecoration);
+
         //Cuando se selecciona un elemento del RecyclerView entra en el evento
         adapter.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                //Creamos un objeto Idioma con los atributos del elemento seleccionado
-                try
-                {
+                if( listaIdiomas.getChildAdapterPosition(view) != -1) {
+                    //Creamos un objeto Idioma con los atributos del elemento seleccionado
                     Idioma idioma = idiomas[listaIdiomas.getChildAdapterPosition(view)];
 
                     //Guardo la posicion del elemento seleccionado en una variable del adapter
@@ -83,11 +89,6 @@ public class FragmentIdioma extends Fragment
                     //Creo spinner con el idioma de las dificultades correspondientes
                     activity.crearSpinnerDificultad();
                 }
-                catch (ArrayIndexOutOfBoundsException ex)
-                {
-                    ex.printStackTrace();
-                }
-
             }
         });
 

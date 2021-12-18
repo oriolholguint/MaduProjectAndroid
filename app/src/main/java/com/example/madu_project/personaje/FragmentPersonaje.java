@@ -31,13 +31,14 @@ import java.util.ArrayList;
 public class FragmentPersonaje extends Fragment
 {
     private final static String IMAGE_PATH = "/data/data/com.example.madu_project/files/images/";
-    private final static int MAX_PARTIDAS = 10;
+    public final static int MAX_PARTIDAS = 10;
+    MainActivity activity;
     View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        MainActivity activity = (MainActivity) getActivity();
+        activity = (MainActivity) getActivity();
 
         view = inflater.inflate(R.layout.fragment_personaje, container, false);
 
@@ -178,18 +179,37 @@ public class FragmentPersonaje extends Fragment
             posicionJugador = 3;
         }
 
-        boolean personajeEncontrado = false;
-        int counter = 0;
-        while(counter < genero.getPersonajes().length && !personajeEncontrado)
+        if(!activity.generoSelect.getNombre().equals("Mix"))
         {
-            if(genero.getPersonajes()[counter].getPosicionRanking() == posicionJugador)
+            boolean personajeEncontrado = false;
+            int counter = 0;
+            while (counter < genero.getPersonajes().length && !personajeEncontrado)
             {
-                personajeEncontrado = true;
-                personaje = genero.getPersonajes()[counter];
+                if (genero.getPersonajes()[counter].getPosicionRanking() == posicionJugador) {
+                    personajeEncontrado = true;
+                    personaje = genero.getPersonajes()[counter];
+                } else {
+                    counter++;
+                }
             }
-            else
+        }
+        else
+        {
+            int numeroAleatorio = activity.obtenerNumeroAleatorio(0, activity.generos.length - 2);
+            Genero generoAleatorio = activity.generos[numeroAleatorio];
+            boolean personajeEncontrado = false;
+            int counter = 0;
+            while (counter < generoAleatorio.getPersonajes().length && !personajeEncontrado)
             {
-                counter++;
+                if (generoAleatorio.getPersonajes()[counter].getPosicionRanking() == posicionJugador)
+                {
+                    personajeEncontrado = true;
+                    personaje = generoAleatorio.getPersonajes()[counter];
+                }
+                else
+                {
+                    counter++;
+                }
             }
         }
 
