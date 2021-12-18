@@ -12,8 +12,8 @@
         android:id="@+id/frmSombra"
         android:layout_width="match_parent"
         android:layout_height="72dp"
-        android:background="@color/white"
-        android:alpha="0.5"
+        android:background="@drawable/degradado_blanco"
+
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
