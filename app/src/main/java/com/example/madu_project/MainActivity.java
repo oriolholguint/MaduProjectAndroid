@@ -73,10 +73,8 @@ public class MainActivity extends AppCompatActivity
     public MediaPlayer mediaPlayer;
     private AudioManager audioManager;
 
-    public Spinner sprDificultad;
-    public FrameLayout frmSombra;
     public ConstraintLayout dialogSettings;
-    public int dificultadMenu; //Facil: 0, Medio: 1, Dificil: 2
+
 
 
     @Override
@@ -282,7 +280,7 @@ public class MainActivity extends AppCompatActivity
                 if(status.equals("Juego")){
                     if(layout.equals("Preguntas") || layout.equals("Personaje") || layout.equals("RankingFinal")){
                         frmSombra.setVisibility(View.INVISIBLE);
-                        clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
+                        clBackgroundApp.setBackgroundResource(R.drawable.fondo_playa_cola);
                         volverAlPrincipio(fragmentBotones);
                         grpDatosUsuario.setVisibility(View.INVISIBLE);
                         frmSombra.setVisibility(View.INVISIBLE);
@@ -299,7 +297,7 @@ public class MainActivity extends AppCompatActivity
                         mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.musica_juego_madu);
                         bucleAudio();
                     } else {
-                        clBackgroundApp.setBackgroundResource(R.drawable.fondojuego);
+                        clBackgroundApp.setBackgroundResource(R.drawable.fondo_playa_cola);
 
                         volverAlPrincipio(fragmentBotones);
 

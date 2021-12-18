@@ -17,7 +17,7 @@
         android:fontFamily="@font/diary"
         android:text="Ranking"
         android:textSize="50sp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textStyle="bold"/>
 
     <LinearLayout
