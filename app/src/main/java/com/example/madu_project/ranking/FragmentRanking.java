@@ -139,6 +139,7 @@ public class FragmentRanking extends Fragment
                     rankingError.setVisibility(View.VISIBLE);
                 }
 
+                activity.ocultarBarrasDispositivo();
             }
 
             @Override
@@ -180,6 +181,7 @@ public class FragmentRanking extends Fragment
                     rankingError.setVisibility(View.VISIBLE);
                 }
 
+                activity.ocultarBarrasDispositivo();
             }
 
             @Override
@@ -210,6 +212,7 @@ public class FragmentRanking extends Fragment
                 {
                     activity.layout = "Menu";
                 }
+                activity.ocultarBarrasDispositivo();
                 volverAMenu();
             }
 

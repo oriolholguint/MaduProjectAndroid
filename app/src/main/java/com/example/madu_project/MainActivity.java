@@ -87,8 +87,7 @@ public class MainActivity extends AppCompatActivity
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         //Ocultar barra de navegacion y barra de notificaciones
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(Ventana.WINDOW_SETTINGS);
+        ocultarBarrasDispositivo();
 
         frmSombra = findViewById(R.id.frmSombra);
 
@@ -137,7 +136,7 @@ public class MainActivity extends AppCompatActivity
         grpDificultad = settingsDialog.findViewById(R.id.grpDificultad);
 
         SeekBar seekBar = settingsDialog.findViewById(R.id.sbrVolumen);
-        seekBar.setMax(maxVolume);
+        //seekBar.setMax(maxVolume);
         seekBar.setProgress(currentVolume);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -196,9 +195,7 @@ public class MainActivity extends AppCompatActivity
         settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialogInterface) {
-                View decorView = getWindow().getDecorView();
-                decorView.setSystemUiVisibility(Ventana.WINDOW_SETTINGS);
-
+                ocultarBarrasDispositivo();
             }
         });
 
@@ -416,6 +413,12 @@ public class MainActivity extends AppCompatActivity
         FragmentIdioma fragmentIdioma = new FragmentIdioma();
         fragmentTransaction.replace(R.id.frLContenedorFragments, fragmentIdioma);
         fragmentTransaction.commit();
+    }
+
+    public void ocultarBarrasDispositivo()
+    {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(Ventana.WINDOW_SETTINGS);
     }
 
     /**

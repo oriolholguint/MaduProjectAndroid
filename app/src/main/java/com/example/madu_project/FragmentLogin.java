@@ -1,6 +1,7 @@
 package com.example.madu_project;
 
 import android.app.AlertDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.Group;
@@ -96,6 +97,13 @@ public class FragmentLogin extends Fragment {
             }
         });
 
+        txtNombreUsuario.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                txtNombreUsuario.setBackgroundColor(Color.WHITE);
+            }
+        });
 
         cbxMayorEdad.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,10 +122,14 @@ public class FragmentLogin extends Fragment {
             @Override
             public void onClick(View view) {
                 OcultarTecladoVirtual();
-                if(txtNombreUsuario.getText().toString().equals("") || imgAvatarSelect.getDrawable() == null)
-                {
-                    MensajeAlerta();
-                } else {
+                if(!comprobarNombre(txtNombreUsuario.getText().toString())) {
+                    txtNombreUsuario.setBackgroundColor(Color.RED);
+                }
+                else if(imgAvatarSelect.getDrawable() == null) {
+                    gvAvatares.setVisibility(View.VISIBLE);
+                    txtNombreUsuario.setBackgroundColor(Color.WHITE);
+                }
+                else {
                     activity.clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
                     activity.layout = "Menu";
                     activity.status = "Juego";
@@ -165,22 +177,47 @@ public class FragmentLogin extends Fragment {
         return view;
     }
 
-    public int [] llenarAvatares(){
+    private int [] llenarAvatares(){
         int [] avatares = {R.drawable.avatar1h,R.drawable.avatar2h,R.drawable.avatar3h,R.drawable.avatar4h,R.drawable.avatar5h,R.drawable.avatar6m,R.drawable.avatar7m,R.drawable.avatar8m,R.drawable.avatar9m,R.drawable.avatar10m};
 
         return avatares;
     }
 
-    public void OcultarTecladoVirtual() {
+    private void OcultarTecladoVirtual() {
         if (activity.getCurrentFocus() != null) {
             InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(activity.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-            View decorView = activity.getWindow().getDecorView();
-            decorView.setSystemUiVisibility(Ventana.WINDOW_SETTINGS);
+            txtNombreUsuario.clearFocus();
+            activity.ocultarBarrasDispositivo();
         }
     }
 
-    public void MensajeAlerta()
+    /**
+     * Comprueba el nombre del usuario, no puede contener espacios ni estar vacio
+     * @param nombre nombre a comprobar
+     * @return TRUE = nombre correcto, FALSE = nombre incorrecto
+     */
+    private boolean comprobarNombre(String nombre)
+    {
+        boolean nombreCorrecto = true;
+
+        for(int i = 0; i < nombre.length(); i++)
+        {
+            if(nombre.charAt(i) == 32)
+            {
+                nombreCorrecto = false;
+            }
+        }
+
+        if(nombre.isEmpty())
+        {
+            nombreCorrecto = false;
+        }
+
+        return nombreCorrecto;
+    }
+
+    private void MensajeAlerta()
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage("falta un nombre o una imagen")
@@ -190,7 +227,7 @@ public class FragmentLogin extends Fragment {
         dialog.show();
     }
 
-    public void irAMenu(){
+    private void irAMenu(){
 
         fragmentTransaction = mg.beginTransaction();
 
