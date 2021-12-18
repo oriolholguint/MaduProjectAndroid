@@ -86,6 +86,7 @@ public class FragmentPersonaje extends Fragment
             {
                 btnIrRanking.setEnabled(false);
                 activity.layout = "RankingFinal";
+                activity.frmSombra.setVisibility(View.INVISIBLE);
                 activity.clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
                 FragmentManager mg = activity.getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = mg.beginTransaction();
@@ -129,6 +130,8 @@ public class FragmentPersonaje extends Fragment
                 activity.grpMenu.setVisibility(View.INVISIBLE);
                 activity.grpDificultad.setVisibility(View.VISIBLE);
                 activity.grpPuntuacion.setVisibility(View.INVISIBLE);
+                //Cuando sea la ultima pregunta significa que se saldra del fragment pregunta por lo que quito el sombreado
+                activity.frmSombra.setVisibility(View.INVISIBLE);
                 activity.lbLPuntos.setText("0");
                 activity.partida = null;
                 activity.stopAudio();
