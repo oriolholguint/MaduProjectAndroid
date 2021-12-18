@@ -561,8 +561,6 @@ public class FragmentPreguntas extends Fragment {
     public void Verificarultimapregunta() {
         if (cont == preguntas.length - 1) {
             ultimaPregunta = true;
-            //Cuando sea la ultima pregunta significa que se saldra del fragment pregunta por lo que quito el sombreado
-
         }
     }
 
