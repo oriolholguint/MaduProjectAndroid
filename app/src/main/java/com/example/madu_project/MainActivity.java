@@ -38,7 +38,6 @@ import com.example.madu_project.partida.Partida;
 
 import java.util.ArrayList;
 
-
 public class MainActivity extends AppCompatActivity
 {
     public String layout = "Idioma";

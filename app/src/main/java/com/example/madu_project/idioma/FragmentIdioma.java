@@ -6,7 +6,9 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -58,6 +60,11 @@ public class FragmentIdioma extends Fragment
         //Por defecto el idioma seleccionado es el espannol
         activity.generos = GestorArchivos.getGeneros(path + idiomas[0].getFilePath());
         cambiarIdioma(idiomas[0].getNombre());
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
+
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(),R.drawable.divider_idioma));
+        listaIdiomas.addItemDecoration(dividerItemDecoration);
 
         //Cuando se selecciona un elemento del RecyclerView entra en el evento
         adapter.setOnClickListener(new View.OnClickListener()
