@@ -82,11 +82,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Bloqueo orientacion de la aplicacion en landscape
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); //Bloqueo orientacion de la aplicacion en landscape
 
-        //Ocultar barra de navegacion y barra de notificaciones
-        ocultarBarrasDispositivo();
+        ocultarBarrasDispositivo(); //Ocultar barra de navegacion y barra de notificaciones
 
         frmSombra = findViewById(R.id.frmSombra);
 
@@ -95,14 +93,10 @@ public class MainActivity extends AppCompatActivity
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int currentVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 
-        //mediaPlayer = MediaPlayer.create(this, Uri.parse("/data/data/com.example.madu_project/files/audio/polynomial1m.mp4"));
-        mediaPlayer = MediaPlayer.create(this, R.raw.musica_juego_madu);
-
-        //startAudio();
-        bucleAudio();
-        duracion = 30;
-        partida = null;
-        jugador = new Jugador(null,false,0);
+        mediaPlayer = MediaPlayer.create(this, R.raw.musica_juego_madu); //Objeto de la musica del juego
+        bucleAudio(); //Inicia la musica del menu
+        duracion = 30; //La duracion de cada pregunta es 30 ya que por defecto se juega en facil
+        jugador = new Jugador();
 
         clBackgroundApp = findViewById(R.id.clBackgroundApp);
 
@@ -137,6 +131,7 @@ public class MainActivity extends AppCompatActivity
         SeekBar seekBar = settingsDialog.findViewById(R.id.sbrVolumen);
         //seekBar.setMax(maxVolume);
         seekBar.setProgress(currentVolume);
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -339,6 +334,19 @@ public class MainActivity extends AppCompatActivity
                 return false;
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        pauseAudio();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startAudio();
+        ocultarBarrasDispositivo();
     }
 
     public void crearSpinnerDificultad()

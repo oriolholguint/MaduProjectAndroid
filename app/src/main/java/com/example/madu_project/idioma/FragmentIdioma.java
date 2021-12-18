@@ -72,9 +72,8 @@ public class FragmentIdioma extends Fragment
             @Override
             public void onClick(View view)
             {
-                //Creamos un objeto Idioma con los atributos del elemento seleccionado
-                try
-                {
+                if( listaIdiomas.getChildAdapterPosition(view) != -1) {
+                    //Creamos un objeto Idioma con los atributos del elemento seleccionado
                     Idioma idioma = idiomas[listaIdiomas.getChildAdapterPosition(view)];
 
                     //Guardo la posicion del elemento seleccionado en una variable del adapter
@@ -90,11 +89,6 @@ public class FragmentIdioma extends Fragment
                     //Creo spinner con el idioma de las dificultades correspondientes
                     activity.crearSpinnerDificultad();
                 }
-                catch (ArrayIndexOutOfBoundsException ex)
-                {
-                    ex.printStackTrace();
-                }
-
             }
         });
 

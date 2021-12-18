@@ -20,7 +20,6 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-
 public class FragmentLogin extends Fragment {
 
     View view;
@@ -126,7 +125,10 @@ public class FragmentLogin extends Fragment {
                     txtNombreUsuario.setBackgroundColor(Color.RED);
                 }
                 else if(imgAvatarSelect.getDrawable() == null) {
-                    gvAvatares.setVisibility(View.VISIBLE);
+                    if(gvAvatares.getVisibility() == View.INVISIBLE)
+                    {
+                        btnSelectAvatar.callOnClick();
+                    }
                     txtNombreUsuario.setBackgroundColor(Color.WHITE);
                 }
                 else {
