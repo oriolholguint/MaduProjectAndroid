@@ -31,9 +31,9 @@ public class FragmentMenu extends Fragment {
     MainActivity activity;
     Genero [] generos;
     RecyclerView listGeneros;
-    FrameLayout frLinformacion;
+    FrameLayout frLinformacion, frLgrupo;
     ConstraintLayout frmMenu;
-    ImageButton imgBtnRanking, imgBtnInformacion;
+    ImageButton imgBtnRanking, imgBtnGrupo, imgBtnInformacion;
     FragmentManager mg;
     FragmentTransaction fragmentTransaction;
 
@@ -49,11 +49,11 @@ public class FragmentMenu extends Fragment {
 
         generos = activity.generos;
         frLinformacion = view.findViewById(R.id.frLinformacion);
+        frLgrupo = view.findViewById(R.id.frLgrupo);
         frmMenu = view.findViewById(R.id.frmMenu);
 
 
-        FragmentTutorial fragmentTutorial = new FragmentTutorial();
-        getFragmentManager().beginTransaction().add(R.id.frLinformacion,fragmentTutorial).commit();
+
 
 
         listGeneros = view.findViewById(R.id.ListGeneros);
@@ -72,6 +72,7 @@ public class FragmentMenu extends Fragment {
         listGeneros.addItemDecoration(dividerItemDecoration);
 
         imgBtnRanking = view.findViewById(R.id.imgBtnRanking);
+        imgBtnGrupo = view.findViewById(R.id.imgBtnGrupo);
         imgBtnInformacion = view.findViewById(R.id.imgBtnInformacion);
 
 
@@ -80,6 +81,7 @@ public class FragmentMenu extends Fragment {
             @Override
             public void onClick(View view) {
                 frLinformacion.setVisibility(View.INVISIBLE);
+                frLgrupo.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -120,10 +122,38 @@ public class FragmentMenu extends Fragment {
         });
 
 
+        imgBtnGrupo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentGrupo fragmentGrupo = new FragmentGrupo();
+
+                getFragmentManager().beginTransaction().add(R.id.frLgrupo,fragmentGrupo).commit();
+                frLgrupo.setVisibility(View.VISIBLE);
+            }
+        });
+
+        imgBtnGrupo.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_UP:
+                        imgBtnGrupo.startAnimation(activity.buttonUp);
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        imgBtnGrupo.startAnimation(activity.buttonDown);
+                        break;
+                }
+
+                return false;
+            }
+        });
+
         imgBtnInformacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                FragmentTutorial fragmentTutorial = new FragmentTutorial();
+                getFragmentManager().beginTransaction().add(R.id.frLinformacion,fragmentTutorial).commit();
                 frLinformacion.setVisibility(View.VISIBLE);
             }
         });

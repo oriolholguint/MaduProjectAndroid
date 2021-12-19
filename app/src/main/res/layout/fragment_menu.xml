@@ -44,6 +44,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+        <ImageButton
+            android:id="@+id/imgBtnGrupo"
+            android:layout_width="116dp"
+            android:layout_height="115dp"
+            android:layout_marginStart="584dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/boton_grupo"
+            android:scaleType="fitXY"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageButton
             android:id="@+id/imgBtnInformacion"
             android:layout_width="131dp"
@@ -77,6 +89,18 @@
         android:id="@+id/frLinformacion"
         android:layout_width="988dp"
         android:layout_height="500dp"
+        android:layout_marginStart="156dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frLgrupo"
+        android:layout_width="988dp"
+        android:layout_height="470dp"
         android:layout_marginStart="156dp"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
