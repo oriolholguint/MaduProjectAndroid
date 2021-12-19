@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="25dp"
     android:layout_gravity="center"
-    android:background="@drawable/border_style2"
+    android:background=""
     android:layout_margin="20dp">
 
     <!-- El del linear layout se cambiara dependiendo
