@@ -1,6 +1,5 @@
 package com.example.madu_project;
 
-import android.app.AlertDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -55,7 +54,6 @@ public class FragmentLogin extends Fragment {
         AvatarAdapter avatarAdapter = new AvatarAdapter(getContext(),avatares,imgAvatarSelect,gvAvatares,activity.jugador);
         gvAvatares.setAdapter(avatarAdapter);
 
-
         activity.clBackgroundApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,10 +63,9 @@ public class FragmentLogin extends Fragment {
 
         btnSelectAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
-
             public void onClick(View view) {
                 OcultarTecladoVirtual();
-                if (visible == false){
+                if (!visible){
                     visible = true;
                     btnSelectAvatar.setText(R.string.deseleccionar_avatar);
                     gvAvatares.setVisibility(View.VISIBLE);
@@ -77,21 +74,21 @@ public class FragmentLogin extends Fragment {
                     btnSelectAvatar.setText(R.string.seleccionar_avatar);
                     gvAvatares.setVisibility(View.INVISIBLE);
                 }
-
             }
         });
 
         btnSelectAvatar.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getAction()){
-                    case MotionEvent.ACTION_UP:
+                switch (motionEvent.getAction()) {
+                    /*case MotionEvent.ACTION_UP:
                         btnSelectAvatar.startAnimation(activity.buttonUp);
-                        break;
+                        break;*/
                     case MotionEvent.ACTION_DOWN:
                         btnSelectAvatar.startAnimation(activity.buttonDown);
                         break;
                 }
+
                 return false;
             }
         });
@@ -108,12 +105,7 @@ public class FragmentLogin extends Fragment {
             @Override
             public void onClick(View view) {
                 OcultarTecladoVirtual();
-                if(cbxMayorEdad.isChecked()){
-                    mayorEdad = true;
-                } else {
-                    mayorEdad = false;
-                }
-
+                mayorEdad = cbxMayorEdad.isChecked();
             }
         });
 
@@ -137,7 +129,6 @@ public class FragmentLogin extends Fragment {
                     activity.status = "Juego";
                     //activity.dialogSettings.setBackgroundResource(R.drawable.pergamino_settings);
                     Group grpDificultad = activity.settingsDialog.findViewById(R.id.grpDificultad);
-
 
                     activity.jugador.setNombre(txtNombreUsuario.getText().toString());
                     activity.jugador.setEsMayorEdad(mayorEdad);
@@ -165,9 +156,9 @@ public class FragmentLogin extends Fragment {
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
                 switch (motionEvent.getAction()){
-                    case MotionEvent.ACTION_UP:
+                    /*case MotionEvent.ACTION_UP:
                         btnLogin.startAnimation(activity.buttonUp);
-                        break;
+                        break;*/
                     case MotionEvent.ACTION_DOWN:
                         btnLogin.startAnimation(activity.buttonDown);
                         break;
@@ -218,16 +209,6 @@ public class FragmentLogin extends Fragment {
         }
 
         return nombreCorrecto;
-    }
-
-    private void MensajeAlerta()
-    {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("falta un nombre o una imagen")
-                .setTitle("Aviso");
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
     }
 
     private void irAMenu(){
