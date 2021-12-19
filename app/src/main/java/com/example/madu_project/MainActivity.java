@@ -75,8 +75,6 @@ public class MainActivity extends AppCompatActivity
 
     public ConstraintLayout dialogSettings;
 
-
-
     @Override
     public void onBackPressed() {}
 
@@ -87,7 +85,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); //Bloqueo orientacion de la aplicacion en landscape
-
 
         frmSombra = findViewById(R.id.frmSombra);
         dialogSettings = findViewById(R.id.dialogSettings);

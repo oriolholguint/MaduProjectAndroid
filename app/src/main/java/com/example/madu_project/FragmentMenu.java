@@ -52,10 +52,6 @@ public class FragmentMenu extends Fragment {
         frLgrupo = view.findViewById(R.id.frLgrupo);
         frmMenu = view.findViewById(R.id.frmMenu);
 
-
-
-
-
         listGeneros = view.findViewById(R.id.ListGeneros);
         GeneroAdapter generoAdapter = new GeneroAdapter(generos);
 
@@ -183,18 +179,19 @@ public class FragmentMenu extends Fragment {
             @Override
             public void onClick(View view) {
 
-                activity.layout = "Preguntas";
-                Genero genero = generos[listGeneros.getChildAdapterPosition(view)];
-                activity.frmSombra.setVisibility(View.VISIBLE);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("genero",genero);
-                getParentFragmentManager().setFragmentResult("genero",bundle);
-                //Igualo el genero seleccionado a la variable del main para utilizarlo en el personaje
-                activity.generoSelect = genero;
-                activity.pauseAudio();
-                irAPreguntas();
-
-
+                if(frLgrupo.getVisibility() == View.INVISIBLE && frLinformacion.getVisibility() == View.INVISIBLE)
+                {
+                    activity.layout = "Preguntas";
+                    Genero genero = generos[listGeneros.getChildAdapterPosition(view)];
+                    activity.frmSombra.setVisibility(View.VISIBLE);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("genero", genero);
+                    getParentFragmentManager().setFragmentResult("genero", bundle);
+                    //Igualo el genero seleccionado a la variable del main para utilizarlo en el personaje
+                    activity.generoSelect = genero;
+                    activity.pauseAudio();
+                    irAPreguntas();
+                }
             }
         });
 
@@ -203,9 +200,9 @@ public class FragmentMenu extends Fragment {
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
                 switch (motionEvent.getAction()){
-                    case MotionEvent.ACTION_UP:
-                        generoAdapter.startAnimation(activity.buttonUp);
-                        break;
+                    /*case MotionEvent.ACTION_UP:
+                        view.startAnimation(activity.buttonUp);
+                        break;*/
                     case MotionEvent.ACTION_DOWN:
                         view.startAnimation(activity.buttonDown);
                         break;

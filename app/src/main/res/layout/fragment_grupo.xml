@@ -12,7 +12,7 @@
     <TextView
         android:id="@+id/lblUri"
         android:layout_width="196dp"
-        android:layout_height="41dp"
+        android:layout_height="71dp"
         android:layout_marginTop="36dp"
         android:fontFamily="@font/diary"
         android:gravity="center_horizontal"
@@ -60,7 +60,7 @@
         android:layout_height="139dp"
         android:layout_marginTop="164dp"
         android:scaleType="fitXY"
-        android:src="@drawable/fondojuego"
+        android:src="@drawable/avatar_uri"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
