@@ -59,7 +59,7 @@ public class AdapterIntroduccion extends PagerAdapter
     public Object instantiateItem(ViewGroup container, int position)
     {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.fragment_introduccion, container, false);
+        View view = layoutInflater.inflate(R.layout.introduccion_item, container, false);
 
         ImageView imagen_introduccion_1 = (ImageView) view.findViewById(R.id.imagen_introduccion);
         TextView titulo_introduccion_1 = (TextView) view.findViewById(R.id.titulo_introduccion);
