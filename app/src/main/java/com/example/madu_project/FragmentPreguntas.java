@@ -341,6 +341,7 @@ public class FragmentPreguntas extends Fragment {
             public void onClick(View view) {
                 if (ultimaPregunta) {
                     IrAfragmentPersonaje();
+                    activity.clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
                 } else {
                     cont++;
                     btnSiguietePregunta.setEnabled(false);
