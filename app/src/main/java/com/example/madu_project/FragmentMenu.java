@@ -99,6 +99,8 @@ public class FragmentMenu extends Fragment {
 
 
                  */
+                frLinformacion.setVisibility(View.INVISIBLE);
+                frLgrupo.setVisibility(View.INVISIBLE);
                 irARanking();
             }
 
@@ -125,6 +127,7 @@ public class FragmentMenu extends Fragment {
         imgBtnGrupo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                frLinformacion.setVisibility(View.INVISIBLE);
                 FragmentGrupo fragmentGrupo = new FragmentGrupo();
 
                 getFragmentManager().beginTransaction().add(R.id.frLgrupo,fragmentGrupo).commit();
@@ -151,10 +154,11 @@ public class FragmentMenu extends Fragment {
         imgBtnInformacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                frLgrupo.setVisibility(View.INVISIBLE);
                 FragmentTutorial fragmentTutorial = new FragmentTutorial();
                 getFragmentManager().beginTransaction().add(R.id.frLinformacion,fragmentTutorial).commit();
                 frLinformacion.setVisibility(View.VISIBLE);
+
             }
         });
 
