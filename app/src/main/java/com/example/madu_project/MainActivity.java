@@ -231,6 +231,7 @@ public class MainActivity extends AppCompatActivity
                         frmSombra.setVisibility(View.INVISIBLE);
                         volverAMenu(fragmentMenu);
                         partida = null;
+                        findViewById(R.id.grpDatosUsuario).setVisibility(View.VISIBLE);
                         grpMenu.setVisibility(View.INVISIBLE);
                         grpDificultad.setVisibility(View.VISIBLE);
                         grpPuntuacion.setVisibility(View.INVISIBLE);

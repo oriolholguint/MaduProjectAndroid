@@ -200,6 +200,7 @@ public class FragmentRanking extends Fragment
                 if(activity.layout.equals("RankingFinal"))
                 {
                     activity.layout = "Menu";
+                    activity.findViewById(R.id.grpDatosUsuario).setVisibility(View.VISIBLE);
                     activity.grpPuntuacion.setVisibility(View.INVISIBLE);
                     activity.lbLPuntos.setText("0");
                     activity.stopAudio();

@@ -125,6 +125,7 @@ public class FragmentPersonaje extends Fragment
                 FragmentMenu fragmentMenu = new FragmentMenu();
 
                 activity.layout = "Menu";
+                activity.findViewById(R.id.grpDatosUsuario).setVisibility(View.VISIBLE);
                 activity.clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
                 activity.volverAMenu(fragmentMenu);
                 activity.grpMenu.setVisibility(View.INVISIBLE);

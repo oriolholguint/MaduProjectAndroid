@@ -8,8 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="530dp"
-        android:orientation="horizontal"
-        android:background="@drawable/cartel_madera_personaje">
+        android:orientation="horizontal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -21,18 +20,20 @@
 
             <TextView
                 android:id="@+id/nombreJugador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/avatarJugadorPartida"
                 android:layout_marginBottom="30dp"
                 android:fontFamily="@font/diary"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/fondo_degradado_blanco2"
                 android:text="Nombre Jugador"
-                android:textSize="35sp"
-                style="@style/shadoweffect"/>
+                android:padding="10dp"
+                android:textSize="35sp"/>
 
 
             <ImageView
@@ -48,33 +49,37 @@
 
             <TextView
                 android:id="@+id/dificultadPartida"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
                 app:layout_constraintTop_toBottomOf="@id/avatarJugadorPartida"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/puntuacionPartida"
                 android:layout_marginBottom="30dp"
+                android:textAlignment="center"
+                android:padding="10dp"
                 android:fontFamily="@font/diary"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:text="Dificultad Partida"
+                android:background="@drawable/fondo_degradado_blanco2"
                 android:textSize="35sp"
-                android:shadowColor="#000000"
                 android:shadowRadius="10"/>
 
             <TextView
                 android:id="@+id/puntuacionPartida"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="400dp"
+                android:layout_height="50dp"
                 app:layout_constraintTop_toBottomOf="@id/dificultadPartida"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:fontFamily="@font/diary"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:padding="10dp"
                 android:text="@string/info_puntuacion"
-                android:textSize="35sp"
-                style="@style/shadoweffect"/>
+                android:background="@drawable/fondo_degradado_blanco2"
+                android:textSize="35sp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -88,19 +93,21 @@
 
         <TextView
             android:id="@+id/nombrePersonaje"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="40dp"
+            android:textAlignment="center"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toTopOf="@id/imagenPersonaje"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:fontFamily="@font/diary"
+            android:padding="10dp"
+            android:background="@drawable/fondo_degradado_blanco2"
             android:text="Tupac Shakur"
-            android:textSize="35sp"
-            style="@style/shadoweffect"/>
+            android:textSize="35sp"/>
 
         <ImageView
             android:id="@+id/imagenPersonaje"

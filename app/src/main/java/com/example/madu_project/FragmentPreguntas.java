@@ -341,7 +341,7 @@ public class FragmentPreguntas extends Fragment {
             public void onClick(View view) {
                 if (ultimaPregunta) {
                     IrAfragmentPersonaje();
-                    activity.clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
+                    //activity.clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
                 } else {
                     cont++;
                     btnSiguietePregunta.setEnabled(false);
@@ -576,7 +576,8 @@ public class FragmentPreguntas extends Fragment {
 
         activity.layout = "Personaje";
         currentTime = Calendar.getInstance().getTime();
-
+        activity.findViewById(R.id.grpDatosUsuario).setVisibility(View.INVISIBLE);
+        activity.frmSombra.setVisibility(View.INVISIBLE);
         activity.partida = new Partida(puntuacion, dificultad, currentTime, activity.jugador);
 
         FragmentManager mg = getFragmentManager();
