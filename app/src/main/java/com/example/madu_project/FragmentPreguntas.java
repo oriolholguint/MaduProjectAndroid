@@ -47,7 +47,7 @@ public class FragmentPreguntas extends Fragment {
     Genero genero;
     ImageView imgPregunta;
     ProgressBar progressBar,prbarDificultadTiempo2;
-    Button btnSiguietePregunta;
+    Button btnSiguientePregunta;
     androidx.constraintlayout.widget.Group grp2Respuestas;
     androidx.constraintlayout.widget.Group grp4Respuestas;
     androidx.constraintlayout.widget.ConstraintLayout clFondoPreguntaGenero;
@@ -107,7 +107,7 @@ public class FragmentPreguntas extends Fragment {
         btnRespFalso = view.findViewById(R.id.btnRespFalso);
 
 
-        btnSiguietePregunta = (Button) view.findViewById(R.id.btnSiguietePregunta);
+        btnSiguientePregunta = (Button) view.findViewById(R.id.btnSiguietePregunta);
 
 
         pixeles = convertirDpPixeles();
@@ -145,7 +145,7 @@ public class FragmentPreguntas extends Fragment {
 
                 llenarRespuestas(respuestas, grp2Respuestas, grp4Respuestas);
 
-                progressAnimation(respuestas, btnResp1, btnResp2, btnResp3, btnResp4, btnRespVerdadero, btnRespFalso, btnSiguietePregunta, progressBar, activity.duracion);
+                progressAnimation(respuestas, btnResp1, btnResp2, btnResp3, btnResp4, btnRespVerdadero, btnRespFalso, btnSiguientePregunta, progressBar, activity.duracion);
             }
         });
 
@@ -164,8 +164,8 @@ public class FragmentPreguntas extends Fragment {
                 VerificarRespuesta(btnResp1.getText().toString(), btnResp1.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1, btnResp2, btnResp3, btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
-                btnSiguietePregunta.setEnabled(true);
-                btnSiguietePregunta.setVisibility(View.VISIBLE);
+                btnSiguientePregunta.setEnabled(true);
+                btnSiguientePregunta.setVisibility(View.VISIBLE);
 
             }
         });
@@ -201,8 +201,8 @@ public class FragmentPreguntas extends Fragment {
                 VerificarRespuesta(btnResp2.getText().toString(), btnResp2.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1, btnResp2, btnResp3, btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
-                btnSiguietePregunta.setEnabled(true);
-                btnSiguietePregunta.setVisibility(View.VISIBLE);
+                btnSiguientePregunta.setEnabled(true);
+                btnSiguientePregunta.setVisibility(View.VISIBLE);
             }
         });
 
@@ -237,8 +237,8 @@ public class FragmentPreguntas extends Fragment {
                 VerificarRespuesta(btnResp3.getText().toString(), btnResp3.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1, btnResp2, btnResp3, btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
-                btnSiguietePregunta.setEnabled(true);
-                btnSiguietePregunta.setVisibility(View.VISIBLE);
+                btnSiguientePregunta.setEnabled(true);
+                btnSiguientePregunta.setVisibility(View.VISIBLE);
             }
         });
 
@@ -273,8 +273,8 @@ public class FragmentPreguntas extends Fragment {
                 VerificarRespuesta(btnResp4.getText().toString(), btnResp4.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1, btnResp2, btnResp3, btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
-                btnSiguietePregunta.setEnabled(true);
-                btnSiguietePregunta.setVisibility(View.VISIBLE);
+                btnSiguientePregunta.setEnabled(true);
+                btnSiguientePregunta.setVisibility(View.VISIBLE);
             }
         });
 
@@ -307,8 +307,8 @@ public class FragmentPreguntas extends Fragment {
                 VerificarRespuesta(btnRespVerdadero.getText().toString(), btnRespVerdadero.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1, btnResp2, btnResp3, btnResp4, btnRespVerdadero, btnRespFalso);
                 desactivarRadioButtons();
-                btnSiguietePregunta.setEnabled(true);
-                btnSiguietePregunta.setVisibility(View.VISIBLE);
+                btnSiguientePregunta.setEnabled(true);
+                btnSiguientePregunta.setVisibility(View.VISIBLE);
             }
         });
 
@@ -340,8 +340,8 @@ public class FragmentPreguntas extends Fragment {
                 
                 VerificarRespuesta(btnRespFalso.getText().toString(), btnRespFalso.isChecked());
                 VerRespuestasCorrectasIncorrectas(btnResp1, btnResp2, btnResp3, btnResp4, btnRespVerdadero, btnRespFalso);
-                btnSiguietePregunta.setEnabled(true);
-                btnSiguietePregunta.setVisibility(View.VISIBLE);
+                btnSiguientePregunta.setEnabled(true);
+                btnSiguientePregunta.setVisibility(View.VISIBLE);
             }
         });
 
@@ -363,23 +363,22 @@ public class FragmentPreguntas extends Fragment {
         });
 
 
-        btnSiguietePregunta.setOnClickListener(new View.OnClickListener() {
+        btnSiguientePregunta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (ultimaPregunta) {
                     IrAfragmentPersonaje();
-                    //activity.clBackgroundApp.setBackgroundResource(R.drawable.fondo_menu_madu);
                 } else {
                     cont++;
-                    btnSiguietePregunta.setEnabled(false);
-                    btnSiguietePregunta.setVisibility(View.INVISIBLE);
+                    btnSiguientePregunta.setEnabled(false);
+                    btnSiguientePregunta.setVisibility(View.INVISIBLE);
                     descPregunta.setText(preguntas[cont].getPreguntaDescripcion());
 
                     MoverConstraintLayoutBarraRespuestas(preguntas[cont].getImagen());
 
                     respuestas = preguntas[cont].getRespuestas();
                     llenarRespuestas(respuestas, grp2Respuestas, grp4Respuestas);
-                    progressAnimation(respuestas, btnResp1, btnResp2, btnResp3, btnResp4, btnRespVerdadero, btnRespFalso, btnSiguietePregunta, progressBar, activity.duracion);
+                    progressAnimation(respuestas, btnResp1, btnResp2, btnResp3, btnResp4, btnRespVerdadero, btnRespFalso, btnSiguientePregunta, progressBar, activity.duracion);
                     restablecerRadioButons();
 
                     prbarDificultadTiempo2.setVisibility(View.INVISIBLE);
@@ -387,16 +386,16 @@ public class FragmentPreguntas extends Fragment {
             }
         });
 
-        btnSiguietePregunta.setOnTouchListener(new View.OnTouchListener() {
+        btnSiguientePregunta.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 switch (motionEvent.getAction()) {
                     case MotionEvent.ACTION_UP:
-                        btnSiguietePregunta.startAnimation(activity.buttonUp);
+                        btnSiguientePregunta.startAnimation(activity.buttonUp);
                         break;
 
                     case MotionEvent.ACTION_DOWN:
-                        btnSiguietePregunta.startAnimation(activity.buttonDown);
+                        btnSiguientePregunta.startAnimation(activity.buttonDown);
                         break;
                 }
 
@@ -608,6 +607,7 @@ public class FragmentPreguntas extends Fragment {
         activity.findViewById(R.id.grpDatosUsuario).setVisibility(View.INVISIBLE);
         activity.frmSombra.setVisibility(View.INVISIBLE);
         activity.partida = new Partida(puntuacion, dificultad, currentTime, activity.jugador);
+        activity.grpPuntuacion.setVisibility(View.INVISIBLE);
 
         FragmentManager mg = getFragmentManager();
         FragmentTransaction fragmentTransaction = mg.beginTransaction();
