@@ -36,7 +36,7 @@
                 android:textSize="35sp"/>
 
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/avatarJugadorPartida"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -46,7 +46,8 @@
                 app:layout_constraintBottom_toTopOf="@id/dificultadPartida"
                 android:layout_marginBottom="30dp"
                 app:shapeAppearanceOverlay="@style/roundImageView"
-                android:src="@drawable/avatar1h"/>
+                android:src="@drawable/avatar1h"
+                android:background="@color/white"/>
 
             <TextView
                 android:id="@+id/dificultadPartida"
@@ -68,8 +69,8 @@
 
             <TextView
                 android:id="@+id/puntuacionPartida"
-                android:layout_width="400dp"
-                android:layout_height="50dp"
+                android:layout_width="500dp"
+                android:layout_height="60dp"
                 app:layout_constraintTop_toBottomOf="@id/dificultadPartida"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -77,7 +78,8 @@
                 android:fontFamily="@font/diary"
                 android:textColor="@color/black"
                 android:textAlignment="center"
-                android:padding="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:text="@string/info_puntuacion"
                 android:background="@drawable/fondo_degradado_blanco2"
                 android:textSize="35sp"/>

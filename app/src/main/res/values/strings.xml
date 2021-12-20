@@ -30,13 +30,11 @@
     <string name="atras">Back</string>
 
     <!-- Puntuacion -->
-    <string name="info_puntuacion">Your puntuation: </string>
+    <string name="info_puntuacion">Your score: </string>
 
     <!-- Ranking -->
     <string name="ranking_resultado_no_encontrado">Results not found</string>
 
     <string name="ranking">Ranking</string>
     <string name="menu">Menu</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -30,7 +30,7 @@
     <string name="atras">Back</string>
 
     <!-- Puntuacion -->
-    <string name="info_puntuacion">Your puntuation: </string>
+    <string name="info_puntuacion">Your score: </string>
 
     <!-- Ranking -->
     <string name="ranking_resultado_no_encontrado">Results not found</string>
