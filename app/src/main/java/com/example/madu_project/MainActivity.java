@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
@@ -94,7 +95,6 @@ public class MainActivity extends AppCompatActivity
         ocultarBarrasDispositivo(); //Ocultar barra de navegacion y barra de notificaciones
 
         frmSombra = findViewById(R.id.frmSombra);
-
 
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
@@ -362,7 +362,7 @@ public class MainActivity extends AppCompatActivity
     {
         sprDificultad = settingsDialog.findViewById(R.id.sprDificultad);
         ArrayList<String> spritems = llenarSpinnerDificultad();
-        adapterDificultad = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, spritems);
+        adapterDificultad = new ArrayAdapter<>(this, R.layout.spinner_dificultad_item, spritems);
         adapterDificultad.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         sprDificultad.setAdapter(adapterDificultad);
     }
