@@ -53,14 +53,14 @@ public class FragmentRanking extends Fragment
         Spinner spinnerGenero = view.findViewById(R.id.spinnerGenero);
         ArrayList<String> opcionesGenero = obtenerNombreGeneros(activity);
 
-        ArrayAdapter adapterGenero = new ArrayAdapter<>(activity, R.layout.support_simple_spinner_dropdown_item, opcionesGenero);
+        ArrayAdapter adapterGenero = new ArrayAdapter<>(activity, R.layout.spinner_ranking_item, opcionesGenero);
         spinnerGenero.setAdapter(adapterGenero);
 
         //Creo spinner de dificultad y su adapter
         Spinner spinnerDificultad = view.findViewById(R.id.spinnerDificultad);
         ArrayList<String> opcionesDificultad = activity.llenarSpinnerDificultad();
 
-        ArrayAdapter adapterDificultad = new ArrayAdapter<>(activity, R.layout.support_simple_spinner_dropdown_item, opcionesDificultad);
+        ArrayAdapter adapterDificultad = new ArrayAdapter<>(activity, R.layout.spinner_ranking_item, opcionesDificultad);
         spinnerDificultad.setAdapter(adapterDificultad);
 
         //Pongo la dificultad del menu en el spinner
