@@ -30,7 +30,7 @@
                 android:fontFamily="@font/diary"
                 android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/fondo_degradado_blanco2"
+                android:background="@drawable/fondo_degradado_blanco3"
                 android:text="Nombre Jugador"
                 android:padding="10dp"
                 android:textSize="35sp"/>
@@ -63,7 +63,7 @@
                 android:fontFamily="@font/diary"
                 android:textColor="@color/black"
                 android:text="Dificultad Partida"
-                android:background="@drawable/fondo_degradado_blanco2"
+                android:background="@drawable/fondo_degradado_blanco3"
                 android:textSize="35sp"
                 android:shadowRadius="10"/>
 
@@ -81,7 +81,7 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:text="@string/info_puntuacion"
-                android:background="@drawable/fondo_degradado_blanco2"
+                android:background="@drawable/fondo_degradado_blanco3"
                 android:textSize="35sp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -108,7 +108,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/diary"
             android:padding="10dp"
-            android:background="@drawable/fondo_degradado_blanco2"
+            android:background="@drawable/fondo_degradado_blanco3"
             android:text="Tupac Shakur"
             android:textSize="35sp"/>
 

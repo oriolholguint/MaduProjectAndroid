@@ -203,6 +203,7 @@ public class FragmentRanking extends Fragment
                     activity.findViewById(R.id.grpDatosUsuario).setVisibility(View.VISIBLE);
                     activity.grpPuntuacion.setVisibility(View.INVISIBLE);
                     activity.lbLPuntos.setText("0");
+                    activity.settingsDialog.findViewById(R.id.grpDificultad).setVisibility(View.VISIBLE);
                     activity.stopAudio();
                     activity.mediaPlayer = MediaPlayer.create(activity.getBaseContext(), R.raw.musica_juego_madu);
                     activity.partida = null;
@@ -212,6 +213,7 @@ public class FragmentRanking extends Fragment
                 else
                 {
                     activity.layout = "Menu";
+                    activity.settingsDialog.findViewById(R.id.grpDificultad).setVisibility(View.VISIBLE);
                 }
                 activity.ocultarBarrasDispositivo();
                 volverAMenu();
