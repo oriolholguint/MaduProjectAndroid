@@ -128,7 +128,7 @@ public class FragmentRanking extends Fragment
                 {
                     rankingError.setVisibility(View.INVISIBLE);
                     listaPartidas.setVisibility(View.VISIBLE);
-                    PartidaAdapter adapter = new PartidaAdapter(ranking.getpartidas());
+                    PartidaAdapter adapter = new PartidaAdapter(ranking.getpartidas(), activity.partida);
                     listaPartidas.setHasFixedSize(true);
                     listaPartidas.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
                     listaPartidas.setAdapter(adapter);
@@ -170,7 +170,7 @@ public class FragmentRanking extends Fragment
                 {
                     rankingError.setVisibility(View.INVISIBLE);
                     listaPartidas.setVisibility(View.VISIBLE);
-                    PartidaAdapter adapter = new PartidaAdapter(ranking.getpartidas());
+                    PartidaAdapter adapter = new PartidaAdapter(ranking.getpartidas(), activity.partida);
                     listaPartidas.setHasFixedSize(true);
                     listaPartidas.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
                     listaPartidas.setAdapter(adapter);

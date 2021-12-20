@@ -1,6 +1,6 @@
 package com.example.madu_project.partida;
 
-import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,24 +16,28 @@ import java.util.ArrayList;
 public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHolder>
 {
     private ArrayList<Partida> partidas;
+    private Partida partidaJugada;
 
-    public PartidaAdapter(ArrayList<Partida> partidas)
+    public PartidaAdapter(ArrayList<Partida> partidas, Partida partidaJugada)
     {
         this.partidas = partidas;
+        this.partidaJugada = partidaJugada;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
+        Partida partidaJugada;
         ImageView imagenMedalla;
         TextView posicionRanking;
         ImageView avatarJugador;
         TextView nombreJugador;
         TextView puntuacionJugador;
 
-        public ViewHolder(View item)
+        public ViewHolder(View item, Partida partidaJugada)
         {
             super(item);
 
+            this.partidaJugada = partidaJugada;
             imagenMedalla = item.findViewById(R.id.imagenMedalla);
             posicionRanking = item.findViewById(R.id.posicionRanking);
             avatarJugador = item.findViewById(R.id.avatarJugador);
@@ -43,21 +47,35 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
 
         void bindPartida(Partida partida, int medalla, int position)
         {
-            if(medalla == 0) //Se añade partida sin medalla
+            if(partidaJugada != null)
             {
-                posicionRanking.setText(position + ". ");
-                avatarJugador.setImageResource(partida.getJugador().getAvatar());
-                nombreJugador.setText(partida.getJugador().getNombre());
-                puntuacionJugador.setText(partida.getPuntuacion() + "p.");
+                if (partida.getFecha().getDay() == partidaJugada.getFecha().getDay()
+                        && partida.getFecha().getMonth() == partidaJugada.getFecha().getMonth()
+                        && partida.getFecha().getYear() == partidaJugada.getFecha().getYear()
+                        && partida.getFecha().getHours() == partidaJugada.getFecha().getHours()
+                        && partida.getFecha().getSeconds() == partidaJugada.getFecha().getSeconds()
+                        && partida.getJugador().getNombre().equals(partidaJugada.getJugador().getNombre())) {
+                    posicionRanking.setTextColor(Color.GREEN);
+                    nombreJugador.setTextColor(Color.GREEN);
+                    puntuacionJugador.setTextColor(Color.GREEN);
+                }
+                else
+                {
+                    posicionRanking.setTextColor(Color.WHITE);
+                    nombreJugador.setTextColor(Color.WHITE);
+                    puntuacionJugador.setTextColor(Color.WHITE);
+                }
             }
-            else //Se añade partida con medalla
+
+            if(medalla != 0) //Se añade partida sin medalla
             {
                 imagenMedalla.setImageResource(medalla);
-                posicionRanking.setText(position + ". ");
-                avatarJugador.setImageResource(partida.getJugador().getAvatar());
-                nombreJugador.setText(partida.getJugador().getNombre());
-                puntuacionJugador.setText(partida.getPuntuacion() + "p.");
             }
+
+            posicionRanking.setText(position + ". ");
+            avatarJugador.setImageResource(partida.getJugador().getAvatar());
+            nombreJugador.setText(partida.getJugador().getNombre());
+            puntuacionJugador.setText(partida.getPuntuacion() + "p.");
         }
     }
 
@@ -65,7 +83,7 @@ public class PartidaAdapter extends RecyclerView.Adapter<PartidaAdapter.ViewHold
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.partida_item, parent, false);
-        return new ViewHolder(item);
+        return new ViewHolder(item, partidaJugada);
     }
 
     @Override
