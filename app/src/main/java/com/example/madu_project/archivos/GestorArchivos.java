@@ -48,7 +48,7 @@ public class GestorArchivos
             ex.printStackTrace();
         }
 
-        Genero generoMixto = new Genero("Mix", "musica_rap.mp3", "fondo_mix.jpg",
+        Genero generoMixto = new Genero("Mix", "musica_mix.mp3", "fondo_mix.jpg",
                 "fondo_menu_mix.jpg", new Pregunta[FragmentPersonaje.MAX_PARTIDAS], new Personaje[3]);
 
         Genero[] generosExtra = new Genero[generos.length + 1];
