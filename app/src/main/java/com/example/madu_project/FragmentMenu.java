@@ -60,7 +60,7 @@ public class FragmentMenu extends Fragment {
         listGeneros.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
 
         listGeneros.setAdapter(generoAdapter);
-
+        listGeneros.setMotionEventSplittingEnabled(false);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL);
 
