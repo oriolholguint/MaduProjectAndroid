@@ -363,7 +363,6 @@ public class MainActivity extends AppCompatActivity
         sprDificultad = settingsDialog.findViewById(R.id.sprDificultad);
         ArrayList<String> spritems = llenarSpinnerDificultad();
         adapterDificultad = new ArrayAdapter<>(this, R.layout.spinner_dificultad_item, spritems);
-        adapterDificultad.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         sprDificultad.setAdapter(adapterDificultad);
     }
 
